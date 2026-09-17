@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<title>IA en el cole · Formación</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+<style>
+/* Boli azul para actuar, boli rojo para el margen y los avisos, subrayador para lo importante */
+:root{
+  --papel:#FFFFFF; --cuadricula:#EAF0F8; --linea:#D8E1EC;
+  --tinta:#1B2A4E; --tinta-suave:#56627C;
+  --azul:#2459C7; --azul-hover:#1B47A3; --azul-claro:#E8EFFC;
+  --rojo:#D23B4A; --rojo-claro:#FDECEE;
+  --subrayador:#FFE45C;
+  --ok:#177A4C; --ok-claro:#E2F4EA;
+  --aviso:#8A5A00; --aviso-claro:#FFF4D6;
+  --display:'Bricolage Grotesque', system-ui, sans-serif;
+  --texto:'Atkinson Hyperlegible', system-ui, sans-serif;
+  --mono:ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --r-s:6px; --r-m:10px; --r-l:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--texto);font-size:17px;line-height:1.6;color:var(--tinta);
+  background:linear-gradient(120deg,#EAF2FF,#F4ECFF,#FFF0EC,#EAF7F0,#EAF2FF);
+  background-size:300% 300%;background-attachment:fixed;
+  animation:fondoCambia 34s ease-in-out infinite;
+  -webkit-font-smoothing:antialiased}
+@keyframes fondoCambia{0%{background-position:0% 50%}25%{background-position:50% 100%}50%{background-position:100% 50%}75%{background-position:50% 0%}100%{background-position:0% 50%}}
+@media (prefers-reduced-motion:reduce){body{animation:none;background:linear-gradient(120deg,#EAF2FF,#EAF7F0)}}
+::selection{background:var(--subrayador);color:var(--tinta)}
+a{color:var(--azul)}
+code{font-family:var(--mono);font-size:.86em;background:#F1F5FA;border:1px solid var(--linea);
+  padding:1px 6px;border-radius:5px;white-space:nowrap}
+:focus-visible{outline:3px solid var(--azul);outline-offset:3px;border-radius:4px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ── Cabecera y pestañas ─────────────────────────────── */
+header.cab{padding:28px 24px 0;max-width:1160px;margin:0 auto;display:flex;align-items:flex-end;
+  justify-content:space-between;gap:16px;flex-wrap:wrap}
+.marca h1{font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,3.2vw,2.05rem);
+  line-height:1.1;letter-spacing:-.01em}
+.marca p{color:var(--tinta-suave);font-size:.95rem;margin-top:4px}
+.ponente{font-size:.92rem;color:var(--tinta-suave);text-align:right}
+.ponente strong{color:var(--tinta);display:block;font-size:1rem}
+
+nav.pestanas{max-width:1160px;margin:22px auto 0;padding:0 24px;display:flex;gap:4px;
+  overflow-x:auto;scrollbar-width:none;position:relative}
+nav.pestanas::-webkit-scrollbar{display:none}
+.pestanas-borde{border-bottom:1.5px solid var(--linea);margin-top:-1.5px}
+.pestana{appearance:none;font:700 .95rem var(--texto);color:var(--tinta-suave);background:#F4F7FB;
+  border:1.5px solid var(--linea);border-bottom:0;border-radius:12px 12px 0 0;padding:11px 18px 10px;
+  cursor:pointer;white-space:nowrap;position:relative;top:1.5px;transition:background .15s,color .15s}
+.pestana:hover{background:#fff;color:var(--tinta)}
+.pestana[aria-selected="true"]{background:#fff;color:var(--tinta);padding-bottom:11.5px;
+  box-shadow:inset 0 3px 0 var(--rojo)}
+
+main{max-width:1160px;margin:0 auto;padding:34px 24px 80px}
+section.panel{display:none}
+section.panel.activo{display:block}
+
+.intro{max-width:70ch;margin-bottom:28px}
+.intro h2{font-family:var(--display);font-weight:800;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.15;margin-bottom:8px}
+.intro p{color:var(--tinta-suave)}
+h3.bloque{font-family:var(--display);font-weight:600;font-size:1.35rem;margin:44px 0 14px}
+
+/* ── Botones ─────────────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;
+  padding:10px 20px;border-radius:var(--r-m);font:700 .98rem var(--texto);text-decoration:none;
+  cursor:pointer;border:2px solid transparent;transition:background .15s,transform .1s,border-color .15s}
+.btn:active{transform:scale(.97)}
+.btn svg{width:18px;height:18px;flex:none}
+.btn.azul{background:var(--azul);color:#fff}
+.btn.azul:hover{background:var(--azul-hover)}
+.btn.linea{background:#fff;color:var(--azul);border-color:#BFD0EF}
+.btn.linea:hover{border-color:var(--azul);background:var(--azul-claro)}
+.btn.suave{background:var(--azul-claro);color:var(--azul-hover)}
+.btn.suave:hover{background:#DCE7FB}
+.btn.icono{width:46px;padding:0;background:#fff;color:var(--tinta);border-color:var(--linea)}
+.btn.icono:hover{border-color:var(--tinta-suave)}
+.btn[disabled],.btn.off{background:#F1F4F8;color:#7A869C;border-color:transparent;cursor:not-allowed;transform:none}
+.fila{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+
+/* ── Presentación (diapositivas en papel cuadriculado) ─ */
+.diapos{position:relative;border:1.5px solid var(--linea);border-radius:var(--r-l);overflow:hidden;
+  background-color:rgba(255,255,255,.92);backdrop-filter:blur(2px);
+  background-image:linear-gradient(var(--cuadricula) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--cuadricula) 1px,transparent 1px);
+  background-size:28px 28px;min-height:560px;display:flex;flex-direction:column}
+.diapos::before{content:"";position:absolute;top:0;bottom:0;left:76px;width:2px;background:var(--rojo);opacity:.75}
+.diapos:fullscreen{border:0;border-radius:0;min-height:100vh}
+.diapos:fullscreen .diapo{font-size:1.25em}
+.diapo{display:none;flex:1;padding:56px 56px 30px 116px;animation:entra .35s ease}
+.diapo.activa{display:block}
+@keyframes entra{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:none}}
+.diapo .num{font:700 .85rem var(--texto);color:var(--rojo);margin-bottom:14px}
+.diapo h2{font-family:var(--display);font-weight:800;font-size:clamp(2rem,4.6vw,3.6rem);line-height:1.04;
+  letter-spacing:-.02em;max-width:18ch;margin-bottom:22px}
+.diapo h2.medio{font-size:clamp(1.7rem,3.4vw,2.6rem);max-width:24ch}
+.diapo p.lead{font-size:1.2em;max-width:52ch;color:var(--tinta-suave)}
+.diapo .firma{margin-top:40px;font-size:1em;color:var(--tinta-suave)}
+.diapo .firma strong{color:var(--tinta)}
+
+.agenda{list-style:none;counter-reset:a;display:grid;gap:14px;max-width:760px}
+.agenda li{counter-increment:a;display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:start;
+  background:rgba(255,255,255,.88);padding:12px 16px 12px 12px;border-radius:var(--r-m)}
+.agenda li::before{content:counter(a);font:800 1.4rem var(--display);width:44px;height:44px;border-radius:50%;
+  display:grid;place-items:center;background:var(--subrayador)}
+.agenda strong{display:block;font-size:1.1em}
+.agenda span{color:var(--tinta-suave);font-size:.95em}
+
+.nube-apps{display:flex;flex-wrap:wrap;gap:10px 12px;max-width:900px}
+.nube-apps span{background:#fff;border:1.5px solid var(--linea);border-left:6px solid var(--c);
+  padding:10px 16px;border-radius:8px;font-weight:700;font-size:1.05em}
+
+.flujo{display:grid;grid-template-columns:repeat(5,1fr);gap:0;max-width:980px;margin-top:10px}
+.flujo div{position:relative;background:rgba(255,255,255,.92);border:1.5px solid var(--linea);padding:16px 14px 14px;
+  margin-right:18px;border-radius:var(--r-m)}
+.flujo div:not(:last-child)::after{content:"";position:absolute;right:-17px;top:50%;width:16px;height:2px;background:var(--tinta-suave)}
+.flujo b{display:block;font-family:var(--display);font-size:1.15em;margin-bottom:4px}
+.flujo small{display:block;color:var(--tinta-suave);font-size:.86em;line-height:1.45}
+
+.tres{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:980px}
+.tres div{background:rgba(255,255,255,.92);border-top:4px solid var(--c,var(--azul));padding:16px;border-radius:0 0 var(--r-m) var(--r-m)}
+.tres b{display:block;font-size:1.12em;margin-bottom:4px}
+.tres p{font-size:.95em;color:var(--tinta-suave)}
+
+.controles{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px 12px 96px;
+  border-top:1.5px solid var(--linea);background:rgba(255,255,255,.95)}
+.puntos{display:flex;gap:6px}
+.puntos button{width:11px;height:11px;border-radius:50%;border:0;background:#C9D4E3;cursor:pointer;padding:0}
+.puntos button[aria-current="true"]{background:var(--rojo);width:26px;border-radius:6px}
+.contador{font-size:.9rem;color:var(--tinta-suave);min-width:48px;text-align:center}
+
+/* ── Fichas de apps ───────────────────────────────────── */
+.fichas{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:20px}
+.ficha{background:#fff;border:1.5px solid var(--linea);border-radius:var(--r-l);padding:22px;
+  display:flex;flex-direction:column;gap:12px;position:relative}
+.ficha::before{content:"";position:absolute;left:22px;right:22px;top:-1.5px;height:4px;background:var(--c);border-radius:0 0 4px 4px}
+.ficha-cab{display:flex;gap:14px;align-items:center}
+.sello{width:50px;height:50px;border-radius:12px;background:var(--c);color:#fff;display:grid;place-items:center;
+  font:800 1.45rem var(--display);flex:none}
+.ficha h3{font-family:var(--display);font-weight:800;font-size:1.3rem;line-height:1.15}
+.ficha .usa{font-size:.84rem;color:var(--tinta-suave)}
+.ficha p.desc{color:var(--tinta);font-size:.98rem}
+.ficha .nota{font-size:.88rem;background:var(--aviso-claro);color:var(--aviso);padding:8px 12px;border-radius:8px}
+.ficha .acciones{margin-top:auto;padding-top:6px;display:grid;grid-template-columns:1fr auto;gap:8px}
+.ficha .acciones > :first-child:nth-last-child(2),.ficha .acciones .descarga{grid-column:1/-1}
+.ficha .extra{font-size:.9rem}
+.ficha .prompt-app{margin-top:12px;padding-top:12px;border-top:1px dashed var(--linea)}
+.ficha .prompt-app-fila{display:flex;gap:8px;flex-wrap:wrap}
+.ficha .prompt-app-fila .btn{flex:1 1 auto;min-height:42px}
+.ficha .prompt-app-aviso{font-size:.85rem;color:var(--aviso);background:var(--aviso-claro);border-radius:8px;padding:8px 11px;margin-top:8px;line-height:1.5}
+
+/* ── Configurador ────────────────────────────────────── */
+.config{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;max-width:900px}
+.paso{background:#fff;border:1.5px solid var(--linea);border-radius:var(--r-l);padding:24px 24px 24px 84px;position:relative}
+.paso::before{content:attr(data-n);position:absolute;left:22px;top:22px;width:42px;height:42px;border-radius:50%;
+  display:grid;place-items:center;font:800 1.25rem var(--display);background:var(--subrayador)}
+.paso.hecho::before{content:"✓";background:var(--ok);color:#fff}
+.paso h3{font-family:var(--display);font-weight:600;font-size:1.25rem;margin-bottom:4px}
+.paso > p{color:var(--tinta-suave);font-size:.95rem;margin-bottom:14px;max-width:68ch}
+.soltar{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;
+  border:2px dashed #B7C6DC;border-radius:var(--r-m);padding:26px;cursor:pointer;background:#FAFCFF;transition:background .15s,border-color .15s}
+.soltar:hover,.soltar.encima{border-color:var(--azul);background:var(--azul-claro)}
+.soltar b{font-size:1.02rem}
+.soltar small{color:var(--tinta-suave)}
+label.campo{display:block;margin-bottom:14px}
+label.campo > span{display:block;font-weight:700;font-size:.93rem;margin-bottom:5px}
+label.campo > small{display:block;color:var(--tinta-suave);font-size:.84rem;margin-top:4px;line-height:1.45}
+input[type=text],textarea{width:100%;font:1rem var(--texto);color:var(--tinta);border:2px solid var(--linea);
+  border-radius:var(--r-m);padding:11px 13px;background:#fff;transition:border-color .15s}
+input[type=text]:focus,textarea:focus{border-color:var(--azul);outline:none}
+textarea{font-family:var(--mono);font-size:.88rem;min-height:170px;line-height:1.6;resize:vertical}
+input.mal{border-color:var(--rojo)}
+.rejilla2{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip{font-size:.82rem;font-weight:700;padding:3px 10px;border-radius:20px;background:#F1F4F8;color:var(--tinta-suave)}
+.chip.si{background:var(--ok-claro);color:var(--ok)}
+.chip.no{background:var(--rojo-claro);color:var(--rojo)}
+.estado{display:none;gap:10px;align-items:flex-start;padding:11px 14px;border-radius:var(--r-m);font-size:.94rem;margin-top:12px}
+.estado.ver{display:flex}
+.estado.ok{background:var(--ok-claro);color:var(--ok)}
+.estado.error{background:var(--rojo-claro);color:var(--rojo)}
+.estado.aviso{background:var(--aviso-claro);color:var(--aviso)}
+.estado b{flex:none}
+pre.codigo{font-family:var(--mono);font-size:.82rem;background:#F6F9FC;border:1.5px solid var(--linea);border-radius:var(--r-m);
+  padding:14px 16px;overflow:auto;max-height:330px;white-space:pre;line-height:1.55;color:#243456}
+.caja-codigo{position:relative}
+.caja-codigo .copiar{position:absolute;top:8px;right:8px;min-height:36px;padding:6px 12px;font-size:.85rem}
+.caja-codigo pre.codigo{padding-top:52px}
+ol.pasos-lista{padding-left:22px;display:grid;gap:6px}
+ol.pasos-lista li::marker{font-weight:700;color:var(--rojo)}
+
+/* ── Guías (acordeón) ────────────────────────────────── */
+.guias{display:grid;gap:12px;max-width:900px}
+details.guia{background:#fff;border:1.5px solid var(--linea);border-radius:var(--r-l)}
+details.guia[open]{border-color:#BFCDE0}
+details.guia > summary{list-style:none;cursor:pointer;padding:18px 22px;display:flex;align-items:center;gap:14px}
+details.guia > summary::-webkit-details-marker{display:none}
+details.guia > summary::after{content:"";margin-left:auto;width:10px;height:10px;border-right:2.5px solid var(--tinta-suave);
+  border-bottom:2.5px solid var(--tinta-suave);transform:rotate(45deg);transition:transform .2s;flex:none}
+details.guia[open] > summary::after{transform:rotate(-135deg)}
+details.guia > summary b{font-family:var(--display);font-weight:600;font-size:1.15rem;line-height:1.25}
+details.guia > summary small{display:block;color:var(--tinta-suave);font-size:.88rem;font-weight:400;font-family:var(--texto)}
+.guia-cuerpo{padding:0 22px 22px 22px;max-width:74ch}
+.guia-cuerpo ol{padding-left:24px;display:grid;gap:9px}
+.guia-cuerpo ol li::marker{font-weight:700;color:var(--rojo)}
+.guia-cuerpo p{margin:10px 0}
+.consejo{border-left:4px solid var(--subrayador);background:#FFFBE6;padding:10px 14px;border-radius:0 8px 8px 0;margin-top:14px;font-size:.95rem}
+.alerta{border-left:4px solid var(--rojo);background:var(--rojo-claro);padding:10px 14px;border-radius:0 8px 8px 0;margin-top:14px;font-size:.95rem}
+.etiqueta-grupo{font:700 .9rem var(--texto);color:var(--rojo);margin:30px 0 10px}
+
+/* ── IA ──────────────────────────────────────────────── */
+.dos-col{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:26px;align-items:start}
+.metodo{list-style:none;counter-reset:m;display:grid;gap:12px}
+.metodo li{counter-increment:m;padding-left:46px;position:relative}
+.metodo li::before{content:counter(m);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;
+  background:var(--subrayador);display:grid;place-items:center;font:800 1rem var(--display)}
+.metodo b{display:block}
+.metodo span{color:var(--tinta-suave);font-size:.95rem}
+.prompts{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.prompt{background:#fff;border:1.5px solid var(--linea);border-radius:var(--r-l);padding:18px;display:flex;flex-direction:column;gap:10px}
+.prompt h4{font-family:var(--display);font-weight:600;font-size:1.08rem}
+.prompt p{font-size:.9rem;color:var(--tinta-suave)}
+.prompt pre{font-family:var(--mono);font-size:.8rem;white-space:pre-wrap;background:#F6F9FC;border-radius:8px;padding:12px;
+  max-height:190px;overflow:auto;border:1px solid var(--linea);line-height:1.5}
+.prompt .btn{align-self:flex-start;min-height:40px;padding:6px 14px;font-size:.9rem}
+.retos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.reto{border:1.5px dashed #B7C6DC;border-radius:var(--r-l);padding:16px;background:#FAFCFF}
+.reto b{display:block;font-family:var(--display);font-size:1.08rem;margin-bottom:4px}
+.reto p{font-size:.92rem;color:var(--tinta-suave)}
+
+/* ── Recursos ────────────────────────────────────────── */
+.lista-control{list-style:none;display:grid;gap:4px;max-width:760px}
+.lista-control label{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border-radius:8px;cursor:pointer}
+.lista-control label:hover{background:#F6F9FC}
+.lista-control input{width:22px;height:22px;margin-top:2px;accent-color:var(--ok);flex:none}
+.lista-control input:checked + span{color:var(--tinta-suave);text-decoration:line-through;text-decoration-color:var(--rojo)}
+.progreso{height:10px;background:#EEF2F7;border-radius:6px;overflow:hidden;max-width:760px;margin:6px 0 16px}
+.progreso i{display:block;height:100%;width:0;background:var(--ok);transition:width .25s}
+dl.glosario{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:10px 22px;max-width:900px}
+dl.glosario dt{font-weight:700}
+dl.glosario dd{color:var(--tinta-suave)}
+ul.enlaces{list-style:none;display:flex;flex-wrap:wrap;gap:10px}
+
+/* ── Modal y aviso ───────────────────────────────────── */
+.velo{position:fixed;inset:0;background:rgba(27,42,78,.35);display:none;align-items:center;justify-content:center;padding:20px;z-index:50}
+.velo.ver{display:flex}
+.modal{background:#fff;border-radius:var(--r-l);padding:26px;max-width:380px;width:100%;text-align:center;box-shadow:0 20px 50px rgba(27,42,78,.2)}
+.modal h3{font-family:var(--display);font-size:1.3rem;margin-bottom:4px}
+.modal p{font-size:.9rem;color:var(--tinta-suave);word-break:break-all;margin-bottom:14px}
+#qrCaja{display:flex;justify-content:center;padding:14px;background:#fff;border:1.5px solid var(--linea);border-radius:var(--r-m);margin-bottom:16px;min-height:270px;align-items:center}
+.tostada{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(120px);background:var(--tinta);color:#fff;
+  padding:11px 20px;border-radius:30px;font-weight:700;font-size:.94rem;transition:transform .25s,visibility .25s;z-index:60;visibility:hidden}
+.tostada.ver{transform:translateX(-50%) translateY(0);visibility:visible}
+
+footer{border-top:1.5px solid var(--linea);color:var(--tinta-suave);font-size:.88rem;text-align:center;padding:22px;background:rgba(255,255,255,.55)}
+
+@media (max-width:860px){
+  .flujo{grid-template-columns:1fr;gap:12px}
+  .flujo div{margin-right:0}
+  .flujo div:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-13px;width:2px;height:12px}
+  .tres,.retos{grid-template-columns:1fr}
+  .dos-col{grid-template-columns:1fr}
+  .rejilla2{grid-template-columns:1fr}
+  dl.glosario{grid-template-columns:1fr;gap:2px}
+  dl.glosario dd{margin-bottom:10px}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .diapos::before{left:30px}
+  .diapo{padding:34px 20px 24px 50px}
+  .controles{padding:10px 12px 10px 44px}
+  .puntos{display:none}
+  .paso{padding:22px 18px 20px}
+  .paso::before{position:static;margin-bottom:10px}
+  .ponente{text-align:left}
+}
+@media print{
+  header.cab,nav.pestanas,.pestanas-borde,footer,.no-imprimir{display:none !important}
+  section.panel{display:none !important}
+  section.panel.imprimir{display:block !important}
+  main{padding:0}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}
+</style>
+</head>
+<body>
+
+<header class="cab">
+  <div class="marca">
+    <h1 id="tituloFormacion">IA en el cole</h1>
+    <p id="subtituloFormacion">Crea herramientas para tu centro con inteligencia artificial</p>
+  </div>
+  <div class="ponente" id="ponente"></div>
+</header>
+
+<nav class="pestanas" role="tablist" aria-label="Secciones de la formación">
+  <button class="pestana" role="tab" id="t-inicio" aria-controls="panel-inicio" data-panel="inicio">Presentación</button>
+  <button class="pestana" role="tab" id="t-apps" aria-controls="panel-apps" data-panel="apps">Las apps</button>
+  <button class="pestana" role="tab" id="t-configurar" aria-controls="panel-configurar" data-panel="configurar">Configurar para tu centro</button>
+  <button class="pestana" role="tab" id="t-guias" aria-controls="panel-guias" data-panel="guias">Guías paso a paso</button>
+  <button class="pestana" role="tab" id="t-ia" aria-controls="panel-ia" data-panel="ia">Crea la tuya con IA</button>
+  <button class="pestana" role="tab" id="t-recursos" aria-controls="panel-recursos" data-panel="recursos">Recursos</button>
+</nav>
+<div class="pestanas-borde"></div>
+
+<main>
+
+<!-- ═════════════════════ PRESENTACIÓN ═════════════════════ -->
+<section class="panel" id="panel-inicio" role="tabpanel" aria-labelledby="t-inicio">
+  <div class="diapos" id="diapos" tabindex="-1" aria-roledescription="presentación">
+
+    <div class="diapo" aria-roledescription="diapositiva">
+      <h2>IA en el cole</h2>
+      <p class="lead">Herramientas hechas con inteligencia artificial para planificar, evaluar, convivir y reunirnos. Hoy verás cómo funcionan, cómo llevarlas a tu centro y cómo crear las tuyas.</p>
+      <p class="firma" id="firmaDiapo"></p>
+    </div>
+
+    <div class="diapo" aria-roledescription="diapositiva">
+      <h2 class="medio">Lo que vamos a hacer hoy</h2>
+      <ol class="agenda">
+        <li><div><strong>Conocer las apps</strong><span>Qué problema resuelve cada una y cómo se usa en el día a día.</span></div></li>
+        <li><div><strong>Entender cómo están hechas</strong><span>Un archivo, una base de datos gratuita y una web pública.</span></div></li>
+        <li><div><strong>Llevarlas a tu centro</strong><span>Descargar, conectar con el Firebase del centro y publicar.</span></div></li>
+        <li><div><strong>Crear la tuya con IA</strong><span>Un Gem de Gemini que te acompaña desde la idea hasta la app.</span></div></li>
+      </ol>
+    </div>
+
+    <div class="diapo" aria-roledescription="diapositiva">
+      <h2 class="medio">Diez apps, un mismo patrón</h2>
+      <div class="nube-apps" id="nubeApps"></div>
+      <p class="lead" style="margin-top:26px">Todas nacieron de una necesidad concreta del centro y todas son un único archivo HTML. Unas guardan en el navegador y otras en Firebase para compartir datos. Si entiendes una, entiendes todas.</p>
+    </div>
+
+    <div class="diapo" aria-roledescription="diapositiva">
+      <h2 class="medio">Cómo se hace una app así</h2>
+      <div class="flujo">
+        <div><b>Necesidad</b><small>Algo que hoy haces con papel, correos o una hoja de cálculo.</small></div>
+        <div><b>Conversación con IA</b><small>Describes el problema y la IA escribe el código.</small></div>
+        <div><b>Un solo archivo</b><small>index.html: diseño, textos y funciones juntos.</small></div>
+        <div><b>Firebase</b><small>La base de datos donde se guardan y comparten los datos.</small></div>
+        <div><b>GitHub Pages</b><small>La publica con una dirección web gratuita.</small></div>
+      </div>
+      <p class="lead" style="margin-top:26px">No hace falta saber programar. Hace falta saber qué quieres y tener paciencia para probar.</p>
+    </div>
+
+    <div class="diapo" aria-roledescription="diapositiva">
+      <h2 class="medio">Qué necesitas para llevártelas</h2>
+      <div class="tres">
+        <div style="--c:var(--azul)"><b>Una cuenta de Google del centro</b><p>Para crear el proyecto de Firebase. Mejor del centro que personal: si cambias de destino, la app sigue.</p></div>
+        <div style="--c:var(--ok)"><b>Una cuenta de GitHub</b><p>Gratuita. Es donde se publica la app para abrirla desde cualquier dispositivo.</p></div>
+        <div style="--c:var(--rojo)"><b>Una tarde tranquila</b><p>Para la primera app con base de datos. Las que guardan en el navegador funcionan nada más descargarlas.</p></div>
+      </div>
+      <p class="lead" style="margin-top:26px">Coste: el plan gratuito de Firebase suele bastar para el uso normal de un centro.</p>
+    </div>
+
+    <div class="diapo" aria-roledescription="diapositiva">
+      <h2 class="medio">Tres reglas antes de empezar</h2>
+      <div class="tres">
+        <div style="--c:var(--rojo)"><b>Ningún dato personal en el código</b><p>La web es pública. Nombres, usuarios y notas van en la base de datos, nunca dentro del HTML.</p></div>
+        <div style="--c:var(--rojo)"><b>Reglas de seguridad siempre</b><p>Cada app trae sus reglas. Una base de datos sin reglas está abierta a cualquiera.</p></div>
+        <div style="--c:var(--rojo)"><b>No sustituyen a Séneca</b><p>Ayudan a organizar y analizar. Lo oficial se sigue registrando donde corresponde.</p></div>
+      </div>
+    </div>
+
+    <div class="diapo" aria-roledescription="diapositiva">
+      <h2>Manos a la obra</h2>
+      <p class="lead">Empieza por ver las apps en marcha, elige una y conéctala con tu centro siguiendo los pasos.</p>
+      <div class="fila" style="margin-top:30px">
+        <button class="btn azul" data-ir="apps">Ver las apps</button>
+        <button class="btn linea" data-ir="configurar">Ir al configurador</button>
+        <button class="btn linea" data-ir="ia">Crear con IA</button>
+      </div>
+    </div>
+
+    <div class="controles no-imprimir">
+      <div class="fila">
+        <button class="btn icono" id="dAnt" aria-label="Diapositiva anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <span class="contador" id="dCont" aria-live="polite">1 / 7</span>
+        <button class="btn icono" id="dSig" aria-label="Diapositiva siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+      <div class="puntos" id="dPuntos"></div>
+      <button class="btn icono" id="dPantalla" aria-label="Pantalla completa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+    </div>
+  </div>
+  <p style="margin-top:12px;font-size:.9rem;color:var(--tinta-suave)">Usa las flechas del teclado para avanzar y la tecla F para pantalla completa.</p>
+</section>
+
+<!-- ═════════════════════ APPS ═════════════════════ -->
+<section class="panel" id="panel-apps" role="tabpanel" aria-labelledby="t-apps">
+  <div class="intro">
+    <h2>Las apps</h2>
+    <p>Pulsa <strong>Ver</strong> para abrir la versión de demostración. <strong>Descargar</strong> te da la plantilla limpia, sin datos de ningún centro. Las que no usan base de datos funcionan nada más descomprimirlas; las demás se conectan con el Firebase de tu centro en la pestaña Configurar. El botón del código QR sirve para abrirla en el móvil durante la sesión.</p>
+  </div>
+  <div class="fichas" id="fichas"></div>
+</section>
+
+<!-- ═════════════════════ CONFIGURADOR ═════════════════════ -->
+<section class="panel" id="panel-configurar" role="tabpanel" aria-labelledby="t-configurar">
+  <div class="intro">
+    <h2>Configurar una app para tu centro</h2>
+    <p>Todo ocurre en tu navegador: el archivo no se sube a ningún sitio. Las apps con base de datos necesitan además el bloque de configuración de tu proyecto de Firebase (lo tienes explicado en <a href="#guias" data-ir="guias">Guías paso a paso</a>). Cuadra Horarios, Mis Lecturas, PDF a Markdown y Word y el Troglodita no necesitan configuración.</p>
+  </div>
+
+  <div class="config">
+    <div class="paso" data-n="1" id="paso1">
+      <h3>Sube la plantilla</h3>
+      <p>El <code>index.html</code> de la app. Si descargaste un .zip, descomprímelo primero.</p>
+      <label class="soltar" id="zonaSoltar" tabindex="0">
+        <b id="soltarTexto">Arrastra aquí el index.html o pulsa para elegirlo</b>
+        <small>Solo se lee en este ordenador</small>
+        <input type="file" id="archivo" accept=".html,.htm,text/html" class="sr">
+      </label>
+      <div class="estado" id="est1" role="status"></div>
+    </div>
+
+    <div class="paso" data-n="2" id="paso2">
+      <h3>Pega la configuración de Firebase</h3>
+      <div id="fbZona">
+        <p>En la consola de Firebase: <code>⚙ Configuración del proyecto</code> → <code>Tus apps</code> → copia el bloque <code>const firebaseConfig = {…}</code> completo y pégalo tal cual.</p>
+        <label class="campo" for="fbTexto"><span>Configuración de Firebase</span></label>
+        <textarea id="fbTexto" spellcheck="false" placeholder="const firebaseConfig = {
+  apiKey: &quot;AIza...&quot;,
+  authDomain: &quot;tu-proyecto.firebaseapp.com&quot;,
+  databaseURL: &quot;https://tu-proyecto-default-rtdb.europe-west1.firebasedatabase.app&quot;,
+  projectId: &quot;tu-proyecto&quot;,
+  ...
+};"></textarea>
+        <div class="chips" id="fbChips"></div>
+      </div>
+      <div class="estado" id="est2" role="status"></div>
+    </div>
+
+    <div class="paso" data-n="3" id="paso3">
+      <h3>Datos del centro</h3>
+      <p>Se guardan en este navegador para no tener que repetirlos con la siguiente app.</p>
+      <div id="camposCentro"><p style="color:var(--tinta-suave);font-size:.95rem">Aparecerán cuando subas la plantilla.</p></div>
+    </div>
+
+    <div class="paso" data-n="4" id="paso4">
+      <h3 id="tituloPaso4">Descarga la app</h3>
+      <p>El archivo descargado sustituye al <code>index.html</code> de la plantilla. Súbelo a GitHub junto con el resto de archivos del zip.</p>
+      <div class="fila">
+        <button class="btn azul" id="btnDescargar" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+          Descargar index.html configurado
+        </button>
+      </div>
+      <div class="estado" id="est4" role="status"></div>
+      <div id="bloqueReglas" style="display:none;margin-top:20px">
+        <label class="campo" style="margin-bottom:6px"><span id="reglasTitulo">Reglas de seguridad</span></label>
+        <div class="caja-codigo">
+          <pre class="codigo" id="reglasTexto"></pre>
+          <button class="btn suave copiar" data-copiar="reglasTexto">Copiar reglas</button>
+        </div>
+        <small style="display:block;color:var(--tinta-suave);margin-top:6px" id="reglasAyuda"></small>
+      </div>
+      <div id="siguientes" style="margin-top:20px"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════ GUÍAS ═════════════════════ -->
+<section class="panel" id="panel-guias" role="tabpanel" aria-labelledby="t-guias">
+  <div class="intro">
+    <h2>Guías paso a paso</h2>
+    <p>En orden, de la cuenta vacía a la app publicada. Los nombres de los menús pueden variar un poco según el idioma de tu consola.</p>
+  </div>
+
+  <div class="guias">
+    <p class="etiqueta-grupo">Poner una app en marcha</p>
+
+    <details class="guia">
+      <summary><div><b>1. Crear el proyecto de Firebase</b><small>Solo para Evaluaciones, ConVive y Teletrabajo</small></div></summary>
+      <div class="guia-cuerpo">
+        <ol>
+          <li>Entra en <a href="https://console.firebase.google.com" target="_blank" rel="noopener">console.firebase.google.com</a> con la cuenta de Google del centro.</li>
+          <li>Pulsa <strong>Crear un proyecto</strong> y ponle un nombre claro, por ejemplo <code>teletrabajo-losolivos</code>. Google Analytics no hace falta: puedes desactivarlo.</li>
+          <li>Ya dentro del proyecto, activa primero la base de datos (guía 2, o 2 bis para ConVive). Así el bloque de configuración traerá la dirección de la base de datos.</li>
+          <li>En la portada del proyecto pulsa el icono web <code>&lt;/&gt;</code> para registrar una app. Ponle un apodo y <strong>no</strong> marques Firebase Hosting.</li>
+          <li>Copia el bloque <code>const firebaseConfig = {…}</code>. Es lo que pegarás en el configurador. Siempre puedes volver a verlo en <code>⚙ Configuración del proyecto</code> → <code>Tus apps</code>.</li>
+        </ol>
+        <p class="consejo"><strong>Un proyecto por app.</strong> Cada proyecto tiene sus propias reglas de seguridad; si mezclas dos apps en uno, las reglas de una pueden romper la otra.</p>
+      </div>
+    </details>
+
+    <details class="guia">
+      <summary><div><b>2. Activar Realtime Database</b><small>Donde se guardan los datos</small></div></summary>
+      <div class="guia-cuerpo">
+        <ol>
+          <li>Menú lateral: <code>Compilación</code> → <code>Realtime Database</code> → <strong>Crear base de datos</strong>.</li>
+          <li>Ubicación: <strong>Bélgica (europe-west1)</strong>, para que los datos queden en la Unión Europea.</li>
+          <li>Elige <strong>modo bloqueado</strong>. Las reglas de verdad las pegarás después.</li>
+          <li>Arriba verás una dirección que termina en <code>firebasedatabase.app</code>. Si tu firebaseConfig no la trae, añádela como <code>databaseURL</code>.</li>
+          <li>Pestaña <code>Reglas</code>: pega las reglas que te da el configurador y pulsa <strong>Publicar</strong>.</li>
+        </ol>
+        <p class="alerta">Si alguna vez lees <code>".read": true, ".write": true</code> para toda la base de datos, no lo publiques: cualquiera con la dirección podría leer y borrar todo.</p>
+      </div>
+    </details>
+
+    <details class="guia">
+      <summary><div><b>2 bis. Activar Firestore</b><small>Solo para ConVive</small></div></summary>
+      <div class="guia-cuerpo">
+        <ol>
+          <li>Menú lateral: <code>Compilación</code> → <code>Firestore Database</code> → <strong>Crear base de datos</strong>.</li>
+          <li>Ubicación en Europa (por ejemplo <strong>eur3</strong> o <strong>europe-west1</strong>). No se puede cambiar después.</li>
+          <li>Elige <strong>modo de producción</strong>.</li>
+          <li>Pestaña <code>Reglas</code>: pega las reglas que te da el configurador y pulsa <strong>Publicar</strong>.</li>
+        </ol>
+        <p class="consejo">ConVive no necesita <code>databaseURL</code>: con el firebaseConfig normal es suficiente.</p>
+      </div>
+    </details>
+
+    <details class="guia">
+      <summary><div><b>3. Activar el acceso con usuario</b><small>Authentication, para apps con entrada por IdEA</small></div></summary>
+      <div class="guia-cuerpo">
+        <ol>
+          <li><code>Compilación</code> → <code>Authentication</code> → <strong>Comenzar</strong>.</li>
+          <li>Pestaña <code>Sign-in method</code> → <strong>Correo electrónico/contraseña</strong> → activa solo el primer interruptor → <strong>Guardar</strong>.</li>
+          <li>No hace falta crear usuarios a mano: cada app los crea desde su panel (Teletrabajo en <em>Personal</em>, Evaluaciones en <em>Ajustes → Gestionar profesorado</em>, ConVive en <em>Configuración</em>).</li>
+        </ol>
+        <p class="consejo">Los "correos" del tipo <code>usuario@micentro.local</code> no existen ni reciben nada: son solo el identificador interno que Firebase necesita.</p>
+      </div>
+    </details>
+
+    <details class="guia">
+      <summary><div><b>4. Configurar la app</b><small>Con la pestaña "Configurar para tu centro"</small></div></summary>
+      <div class="guia-cuerpo">
+        <ol>
+          <li>Descarga la plantilla desde <a href="#apps" data-ir="apps">Las apps</a> y descomprímela.</li>
+          <li>Abre <a href="#configurar" data-ir="configurar">Configurar para tu centro</a> y sube el <code>index.html</code>.</li>
+          <li>Si la app usa Firebase, pega el firebaseConfig. Después rellena los datos del centro.</li>
+          <li>Descarga el <code>index.html</code> configurado y sustituye con él al de la carpeta.</li>
+          <li>Copia las reglas y publícalas en Firebase (guía 2, último paso).</li>
+        </ol>
+        <p class="consejo">Cuadra Horarios, Mis Lecturas, PDF a Markdown y Word y el Troglodita no llevan configuración: úsalos tal cual. ¿Prefieres configurar a mano las demás? Abre el <code>index.html</code> con el Bloc de notas: al principio verás el bloque <code>CONFIGURACIÓN DEL CENTRO</code>. Cambia solo lo que hay entre comillas.</p>
+      </div>
+    </details>
+
+    <details class="guia">
+      <summary><div><b>5. Publicar en GitHub Pages</b><small>Tu app con dirección web gratuita</small></div></summary>
+      <div class="guia-cuerpo">
+        <ol>
+          <li>Crea una cuenta en <a href="https://github.com" target="_blank" rel="noopener">github.com</a>. Tu nombre de usuario formará parte de la dirección: <code>usuario.github.io</code>.</li>
+          <li>Pulsa <strong>New repository</strong>. Nombre corto y sin espacios (por ejemplo <code>teletrabajo</code>), marca <strong>Public</strong> y crea el repositorio.</li>
+          <li>Pulsa <strong>uploading an existing file</strong> y arrastra <em>el contenido</em> de la carpeta: <code>index.html</code>, <code>sw.js</code>, <code>manifest.json</code> y los iconos. Después, <strong>Commit changes</strong>.</li>
+          <li>Ve a <code>Settings</code> → <code>Pages</code>. En <em>Branch</em> elige <code>main</code> y la carpeta <code>/ (root)</code>. Guarda.</li>
+          <li>En uno o dos minutos la app estará en <code>https://usuario.github.io/teletrabajo/</code>.</li>
+        </ol>
+        <p class="consejo">El repositorio es público: cualquiera puede ver el código. Por eso no lleva datos personales. La <code>apiKey</code> que se ve no es una contraseña; lo que protege los datos son las reglas y el acceso con usuario.</p>
+      </div>
+    </details>
+
+    <details class="guia">
+      <summary><div><b>6. Primera entrada y alta del claustro</b><small>Para apps con acceso por usuario IdEA</small></div></summary>
+      <div class="guia-cuerpo">
+        <ol>
+          <li>Abre la app publicada. La primera vez solo existe la persona administradora que pusiste en el configurador.</li>
+          <li>Entra con su usuario IdEA. La cuenta de administración se crea sola esa primera vez.</li>
+          <li>Desde el panel de personal de la app, da de alta a cada docente con su nombre y usuario IdEA.</li>
+          <li>Comparte la dirección o el código QR con el claustro. Cada persona entra eligiendo su nombre y escribiendo su IdEA.</li>
+        </ol>
+        <p class="consejo">El usuario IdEA se usa como clave para que nadie tenga que recordar otra contraseña. Es cómodo, pero no es secreto: úsalo para la gestión interna del claustro, no para información sensible.</p>
+      </div>
+    </details>
+
+    <details class="guia">
+      <summary><div><b>7. Instalar la app en móvil y ordenador</b><small>Para abrirla como una app más</small></div></summary>
+      <div class="guia-cuerpo">
+        <ol>
+          <li><strong>Android (Chrome):</strong> menú <code>⋮</code> → <em>Instalar aplicación</em> o <em>Añadir a pantalla de inicio</em>.</li>
+          <li><strong>iPhone o iPad (Safari):</strong> botón <em>Compartir</em> → <em>Añadir a pantalla de inicio</em>.</li>
+          <li><strong>Ordenador (Chrome o Edge):</strong> icono de instalar en la barra de direcciones.</li>
+        </ol>
+      </div>
+    </details>
+
+    <details class="guia">
+      <summary><div><b>8. Actualizar una app ya publicada</b><small>Cuando salga una versión nueva de la plantilla</small></div></summary>
+      <div class="guia-cuerpo">
+        <ol>
+          <li>Descarga la plantilla nueva y pásala por el configurador. Tus datos del centro seguirán guardados en el navegador.</li>
+          <li>Pega de nuevo tu firebaseConfig: es el mismo de siempre.</li>
+          <li>En GitHub, entra en el repositorio, sube el nuevo <code>index.html</code> y confirma con <strong>Commit changes</strong>.</li>
+          <li>Si las reglas han cambiado, vuelve a publicarlas.</li>
+        </ol>
+        <p class="consejo">Los datos no se pierden al actualizar: viven en Firebase, no en el archivo.</p>
+      </div>
+    </details>
+
+    <p class="etiqueta-grupo">Cuando algo no funciona</p>
+
+    <details class="guia">
+      <summary><div><b>Sale "Esta app aún no está configurada"</b></div></summary>
+      <div class="guia-cuerpo"><p>Falta algún dato imprescindible en el bloque de configuración: normalmente la <code>apiKey</code>, la <code>databaseURL</code> o el usuario IdEA de la persona administradora. Vuelve a pasar el archivo por el configurador y comprueba que todos los indicadores están en verde.</p></div>
+    </details>
+    <details class="guia">
+      <summary><div><b>No guarda o aparece "PERMISSION_DENIED"</b></div></summary>
+      <div class="guia-cuerpo"><p>Casi siempre son las reglas: no se han publicado, se pegaron las de otra app o se publicaron con un IdEA de administración distinto. Copia de nuevo las del configurador, sustituye todo el contenido de la pestaña <code>Reglas</code> y pulsa <strong>Publicar</strong>.</p></div>
+    </details>
+    <details class="guia">
+      <summary><div><b>Error "auth/operation-not-allowed"</b></div></summary>
+      <div class="guia-cuerpo"><p>No está activado el método <strong>Correo electrónico/contraseña</strong> en Authentication (guía 3).</p></div>
+    </details>
+    <details class="guia">
+      <summary><div><b>"La contraseña debe tener al menos 6 caracteres"</b></div></summary>
+      <div class="guia-cuerpo"><p>Firebase no acepta claves de menos de 6 caracteres. Si algún usuario IdEA es más corto, esa persona necesitará una cuenta creada a mano desde la consola, en <code>Authentication</code> → <code>Users</code>.</p></div>
+    </details>
+    <details class="guia">
+      <summary><div><b>He subido cambios y sigo viendo la versión antigua</b></div></summary>
+      <div class="guia-cuerpo"><p>GitHub Pages tarda uno o dos minutos en publicar. Después, recarga forzando la actualización (<code>Ctrl + F5</code> en el ordenador) o cierra y abre la app instalada. Si la app muestra un aviso de nueva versión, púlsalo.</p></div>
+    </details>
+    <details class="guia">
+      <summary><div><b>Con la cuenta educativa no me deja entrar en Firebase o Gemini</b></div></summary>
+      <div class="guia-cuerpo"><p>En las cuentas corporativas o educativas, la administración puede tener bloqueados algunos servicios de Google. Crea una cuenta de Google para el centro y úsala solo para esto.</p></div>
+    </details>
+
+    <p class="etiqueta-grupo">Datos personales</p>
+
+    <details class="guia">
+      <summary><div><b>Lo mínimo imprescindible</b><small>Antes de meter datos de alumnado o familias</small></div></summary>
+      <div class="guia-cuerpo">
+        <ol>
+          <li>Nada de nombres, usuarios ni notas escritos dentro del código: el repositorio es público.</li>
+          <li>Proyecto de Firebase creado con la cuenta del centro y base de datos en Bélgica (europe-west1).</li>
+          <li>Reglas publicadas siempre, y cuentas individuales para quien tenga que escribir.</li>
+          <li>Guarda solo lo que la app necesita. Si un dato no se usa, no se pide.</li>
+          <li>Si la app va a tratar datos del alumnado, coméntalo con dirección y consulta a la persona delegada de protección de datos de tu administración educativa.</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ═════════════════════ IA ═════════════════════ -->
+<section class="panel" id="panel-ia" role="tabpanel" aria-labelledby="t-ia">
+  <div class="intro">
+    <h2>Crea la tuya con IA</h2>
+    <p>Así nacieron estas apps: conversando. Aquí tienes el método, dos Gems de Gemini listos para montar y los encargos que mejor funcionan.</p>
+  </div>
+
+  <div class="dos-col">
+    <div>
+      <h3 class="bloque" style="margin-top:0">El método</h3>
+      <ol class="metodo">
+        <li><b>Describe el problema, no la app</b><span>"Perdemos las autorizaciones de salida" funciona mejor que "hazme un formulario".</span></li>
+        <li><b>Deja que la IA pregunte</b><span>Pídele que te haga preguntas antes de programar. Ahorra muchas vueltas.</span></li>
+        <li><b>Un único archivo</b><span>Exige siempre el index.html completo. Nada de fragmentos sueltos.</span></li>
+        <li><b>Prueba, copia el error y pégalo</b><span>Tecla F12 → Consola. Lo que salga en rojo, a la conversación.</span></li>
+        <li><b>Primero sin base de datos</b><span>Cuando todo funcione, conéctala con Firebase.</span></li>
+        <li><b>Publica y comparte</b><span>GitHub Pages y un código QR para el claustro.</span></li>
+      </ol>
+    </div>
+    <div>
+      <h3 class="bloque" style="margin-top:0">Gem 1: Constructor de apps del cole</h3>
+      <ol class="pasos-lista" style="margin-bottom:14px">
+        <li>Abre <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> y, en el menú lateral, entra en <strong>Gems</strong>.</li>
+        <li>Pulsa <strong>Nueva Gem</strong>. Nombre: <em>Constructor de apps del cole</em>.</li>
+        <li>Pega las instrucciones de abajo en el cuadro <strong>Instrucciones</strong>.</li>
+        <li>Si te deja elegir herramienta predeterminada, elige <strong>Canvas</strong>: verás la app funcionando junto a la conversación.</li>
+        <li>En <strong>Conocimiento</strong>, sube como ejemplo el <code>index.html</code> del Troglodita o de Mis Lecturas: son apps completas en un solo archivo.</li>
+        <li>Guarda y compártela con el claustro.</li>
+      </ol>
+      <div class="caja-codigo">
+        <pre class="codigo" id="gemConstructor" style="white-space:pre-wrap;max-height:300px"></pre>
+        <button class="btn suave copiar" data-copiar="gemConstructor">Copiar instrucciones</button>
+      </div>
+      <p class="consejo">Las apps que salgan de este Gem usan el mismo bloque de configuración que las plantillas, así que también podrás pasarlas por el configurador.</p>
+    </div>
+  </div>
+
+  <h3 class="bloque">Gem 2: Soporte de instalación</h3>
+  <div class="dos-col">
+    <div>
+      <p style="color:var(--tinta-suave)">Un ayudante para después de la formación: responde dudas sobre Firebase, GitHub y los errores más comunes. Créalo igual que el anterior y sube como conocimiento el <code>LEEME.txt</code> de cada app. Así nadie se queda atascado un martes por la tarde.</p>
+    </div>
+    <div class="caja-codigo">
+      <pre class="codigo" id="gemSoporte" style="white-space:pre-wrap;max-height:260px"></pre>
+      <button class="btn suave copiar" data-copiar="gemSoporte">Copiar instrucciones</button>
+    </div>
+  </div>
+
+  <h3 class="bloque">Encargos que funcionan</h3>
+  <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Cambia lo que está entre corchetes. Sirven igual con Gemini, ChatGPT o Claude.</p>
+  <div class="prompts" id="prompts"></div>
+
+  <h3 class="bloque">Reto de 15 minutos</h3>
+  <p style="color:var(--tinta-suave);margin:-6px 0 16px">Elige uno y constrúyelo con el Gem durante la sesión. Ninguno necesita base de datos.</p>
+  <div class="retos">
+    <div class="reto"><b>Temporizador de rincones</b><p>Grupos que rotan cada X minutos, con aviso sonoro y el nombre del rincón en grande para la pizarra digital.</p></div>
+    <div class="reto"><b>Semáforo del ruido</b><p>Usa el micrófono del ordenador y cambia de verde a rojo cuando el aula pasa de cierto nivel.</p></div>
+    <div class="reto"><b>Préstamos de la biblioteca de aula</b><p>Quién tiene qué libro y desde cuándo. Exporta e importa un archivo para no perder nada.</p></div>
+  </div>
+</section>
+
+<!-- ═════════════════════ RECURSOS ═════════════════════ -->
+<section class="panel" id="panel-recursos" role="tabpanel" aria-labelledby="t-recursos">
+  <div class="intro">
+    <h2>Recursos</h2>
+    <p>La lista de comprobación para dejar una app funcionando en tu centro, el vocabulario de la sesión y los enlaces que vas a necesitar.</p>
+  </div>
+
+  <h3 class="bloque" style="margin-top:0">Lista de comprobación</h3>
+  <div class="progreso" aria-hidden="true"><i id="barraLista"></i></div>
+  <p id="textoLista" style="font-size:.92rem;color:var(--tinta-suave);margin-bottom:8px" aria-live="polite"></p>
+  <ul class="lista-control" id="listaControl"></ul>
+  <div class="fila no-imprimir" style="margin-top:14px">
+    <button class="btn linea" id="btnImprimir">Imprimir la lista</button>
+    <button class="btn linea" id="btnVaciarLista">Desmarcar todo</button>
+  </div>
+
+  <h3 class="bloque">Vocabulario</h3>
+  <dl class="glosario">
+    <dt>Firebase</dt><dd>Servicio de Google que pone la base de datos y el acceso con usuario. Tiene un plan gratuito.</dd>
+    <dt>Realtime Database</dt><dd>La base de datos que usan casi todas estas apps. Los cambios llegan al instante a todos los dispositivos.</dd>
+    <dt>Firestore</dt><dd>Otra base de datos de Firebase, pensada para datos más grandes. Algunas apps la usan en lugar de Realtime Database.</dd>
+    <dt>Authentication</dt><dd>La parte de Firebase que comprueba quién entra.</dd>
+    <dt>Reglas de seguridad</dt><dd>El texto que dice quién puede leer y escribir cada parte de la base de datos.</dd>
+    <dt>firebaseConfig y apiKey</dt><dd>Identifican tu proyecto. No son contraseñas y pueden verse en la web sin problema.</dd>
+    <dt>GitHub</dt><dd>Plataforma para guardar código. Cada app vive en un repositorio.</dd>
+    <dt>GitHub Pages</dt><dd>La opción de GitHub que convierte un repositorio en una web con dirección propia.</dd>
+    <dt>PWA</dt><dd>Web que se puede instalar como una app en el móvil o el ordenador.</dd>
+    <dt>Service worker</dt><dd>El archivo <code>sw.js</code>: permite instalar la app y abrirla aunque falle la conexión.</dd>
+    <dt>Usuario IdEA</dt><dd>El usuario de Séneca de cada docente. Estas apps lo usan para identificar a cada persona; nunca se pide la contraseña de Séneca.</dd>
+    <dt>Gem</dt><dd>Asistente de Gemini con instrucciones guardadas, para no repetirlas en cada conversación.</dd>
+    <dt>Canvas</dt><dd>Espacio de Gemini donde se ve y se prueba el código mientras se conversa.</dd>
+  </dl>
+
+  <h3 class="bloque">Enlaces</h3>
+  <ul class="enlaces">
+    <li><a class="btn linea" href="https://console.firebase.google.com" target="_blank" rel="noopener">Consola de Firebase</a></li>
+    <li><a class="btn linea" href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
+    <li><a class="btn linea" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></li>
+    <li><a class="btn linea" href="https://notebooklm.google.com" target="_blank" rel="noopener">NotebookLM</a></li>
+  </ul>
+</section>
+
+</main>
+
+<footer id="pie"></footer>
+
+<div class="velo" id="veloQR" role="dialog" aria-modal="true" aria-labelledby="qrTitulo">
+  <div class="modal">
+    <h3 id="qrTitulo">Abrir en el móvil</h3>
+    <p id="qrUrl"></p>
+    <div id="qrCaja"></div>
+    <button class="btn azul" id="qrCerrar" style="width:100%">Cerrar</button>
+  </div>
+</div>
+<div class="tostada" id="tostada" role="status" aria-live="polite"></div>
+
+<script>
+/* ════════════════════════════════════════════════════════════════
+   EDITA AQUÍ: datos de la formación y catálogo de apps
+   ─ url:      dirección de la demo (vacío = botón desactivado)
+   ─ descarga: ruta del zip o html dentro de este repositorio
+               (vacío = "Plantilla en preparación")
+   ════════════════════════════════════════════════════════════════ */
+const FORMACION = {
+  titulo: 'IA en el cole',
+  subtitulo: 'Crea herramientas para tu centro con inteligencia artificial',
+  ponente: 'Víctor',
+  centro: 'CEIP Capitulaciones de Santa Fe',
+  fecha: ''
+};
+
+const APPS = [
+  {
+    id: 'agora', nombre: 'Ágora', color: '#1F4E8C',
+    desc: 'Plan de lectura y resolución de problemas por cursos, meses y semanas, con guía de dificultades lectoras y los documentos del plan en Word ya personalizados con tu centro.',
+    usa: 'Sin base de datos · Configurable', url: 'https://vunisal706-droid.github.io/leoresuelvo/', descarga: 'descargas/agora.zip'
+  },
+  {
+    id: 'evaluaciones', nombre: 'Gestor de Evaluaciones', color: '#1A237E',
+    desc: 'Analiza los resultados de cada evaluación por curso, área y grupo, y genera actas, informes y plan de mejora. Cada docente entra con su usuario IdEA.',
+    usa: 'Realtime Database · Acceso con usuario',
+    nota: 'Versión para centros: sin la publicación en la web del centro.',
+    url: 'https://vunisal706-droid.github.io/gestorevalu/', descarga: 'descargas/evaluaciones.zip'
+  },
+  {
+    id: 'convive', nombre: 'ConVive', color: '#D2503B',
+    desc: 'Sociometría del grupo: cuestionario al alumnado, sociograma, índices de cohesión y rechazo, agrupamientos y prompts para el informe de convivencia.',
+    usa: 'Firestore · Acceso con usuario', url: 'https://vunisal706-droid.github.io/convivencia/', descarga: 'descargas/convive.zip'
+  },
+  {
+    id: 'convivemas', nombre: 'Convive+', color: '#2563EB',
+    desc: 'Partes de convivencia según el Decreto 328/2010: conductas contrarias y graves, correcciones, alumnado implicado, parte oficial en PDF y gráficas. Es el registro de incidencias, distinto del sociograma de ConVive.',
+    usa: 'Realtime Database · Acceso con usuario', url: 'https://vunisal706-droid.github.io/parteconvivencia/', descarga: 'descargas/convivemas.zip'
+  },
+  {
+    id: 'horarios', nombre: 'Cuadra Horarios', color: '#B7791F',
+    desc: 'Genera el horario del centro a partir de las condiciones del profesorado y comprueba los choques, con intercambios entre grupos. Trae un centro de ejemplo.',
+    usa: 'Sin base de datos · Lista para usar', url: 'https://vunisal706-droid.github.io/horario/', descarga: 'descargas/horarios.zip'
+  },
+  {
+    id: 'registro', nombre: 'Mis Lecturas', color: '#E8612C',
+    desc: 'Biblioteca de lecturas por ciclos con preguntas de comprensión. El alumnado lee y responde, y el panel del maestro o maestra recoge los resultados.',
+    usa: 'Sin base de datos · Lista para usar', url: 'https://vunisal706-droid.github.io/lectura/', descarga: 'descargas/registro.zip'
+  },
+  {
+    id: 'sda', nombre: 'Generador de SdA', color: '#1E40AF',
+    desc: 'Diseña situaciones de aprendizaje con el currículo andaluz, el calendario escolar, el plan de lectura y el itinerario de problemas, y prepara el prompt para completarlas con IA.',
+    usa: 'Sin base de datos · Configurable', url: 'https://vunisal706-droid.github.io/sdacapitulaciones/', descarga: 'descargas/sda.zip'
+  },
+  {
+    id: 'teletrabajo', nombre: 'Teletrabajo', color: '#3949AB',
+    desc: 'Reuniones telemáticas de los órganos colegiados: orden del día, asistencia, aportaciones y votaciones en directo, convocatoria en PDF con QR y ayuda para redactar el acta con IA.',
+    usa: 'Realtime Database · Acceso con usuario',
+    url: 'https://vunisal706-droid.github.io/teletrabajo/', descarga: 'descargas/teletrabajo.zip'
+  },
+  {
+    id: 'troglodita', nombre: 'Troglodita de Santa Fe', color: '#8A4B1C',
+    desc: 'Juego de plataformas ambientado en la historia local, en un solo archivo. Un modelo para crear con IA el juego de la historia de tu pueblo.',
+    usa: 'Juego · Sin base de datos', url: 'https://vunisal706-droid.github.io/cavernicola/', descarga: 'descargas/troglodita.zip'
+  },
+  {
+    id: 'pdfaword', nombre: 'PDF a Markdown y Word', color: '#DC2626',
+    desc: 'Convierte uno o varios PDF en Markdown y en Word respetando títulos, listas y tablas, e indica dónde iba cada foto. Se revisa antes de descargar y todo se procesa en el propio dispositivo.',
+    usa: 'Sin base de datos · Lista para usar', url: 'https://vunisal706-droid.github.io/pdfaword/', descarga: 'descargas/pdfaword.zip'
+  }
+];
+
+/* ── Textos de los Gems y encargos ─────────────────────────────── */
+const GEM_CONSTRUCTOR = `Eres «Constructor de apps del cole», un asistente que ayuda a docentes sin conocimientos de programación a crear pequeñas aplicaciones web para su centro educativo.
+
+CÓMO TRABAJAS
+1. Antes de programar, haz como máximo 5 preguntas cortas para entender: qué problema resuelve, quién la usa (alumnado, docentes, familias o dirección), qué datos maneja, si esos datos deben guardarse y compartirse entre varias personas y en qué dispositivos se usará.
+2. Resume en 5 a 8 líneas lo que vas a construir y espera a que el docente diga «sí» antes de escribir código.
+3. Entrega SIEMPRE un único archivo index.html completo, con HTML, CSS y JavaScript juntos, sin frameworks ni pasos de instalación. Nunca entregues fragmentos ni escribas «el resto sigue igual»: el docente copiará y pegará el archivo entero.
+4. Después de cada versión, explica en tres frases cómo probarla y pregunta qué quiere cambiar.
+
+DISEÑO
+- Claro y luminoso, nunca modo oscuro. Letra de 16 px como mínimo, botones grandes y textos en español sencillo.
+- Debe verse bien en el móvil y en la pizarra digital.
+- Accesible: buen contraste, etiquetas en todos los campos y avisos que no dependan solo del color.
+
+DATOS
+- Si la app no necesita compartir datos entre personas, no uses base de datos: guarda en el navegador y ofrece exportar e importar un archivo JSON.
+- Si necesita compartir datos, usa Firebase Realtime Database cargando el SDK desde gstatic.com. Pon la configuración en este bloque al principio del archivo y léela siempre desde ahí:
+  <script id="config-centro">
+  window.CONFIG_CENTRO = { "_app": "nombre-de-la-app", "_requiere": ["apiKey", "databaseURL"], "nombre": "CEIP Nombre del Centro" };
+  window.FIREBASE_CONFIG = { "apiKey": "PEGA_AQUI_TU_API_KEY", "authDomain": "", "databaseURL": "", "projectId": "", "storageBucket": "", "messagingSenderId": "", "appId": "" };
+  <\/script>
+  Si la configuración está sin rellenar, muestra un aviso amable en lugar de fallar.
+- Añade justo después las reglas de seguridad en <script type="application/json" id="reglas-firebase">…<\/script> y explica en lenguaje llano qué permiten. Nunca propongas ".read": true y ".write": true para toda la base de datos.
+
+PRIVACIDAD (innegociable)
+- Nunca escribas dentro del código nombres de alumnado, familias o docentes, ni contraseñas: el archivo se publica en abierto.
+- Pide solo los datos imprescindibles. Si la app trata datos de menores, recuérdalo y sugiere comentarlo con dirección.
+
+ERRORES
+- Cuando el docente pegue un error o describa un fallo, explica la causa en una frase y entrega el archivo completo corregido.`;
+
+const GEM_SOPORTE = `Eres «Soporte de apps del cole». Ayudas a docentes que acaban de hacer una formación a poner en marcha en su centro unas apps web que funcionan con Firebase y se publican en GitHub Pages.
+
+CÓMO RESPONDES
+- Primero pregunta qué app están instalando y en qué paso se han quedado, si no lo dicen.
+- Da un solo paso cada vez, con el nombre exacto del menú o botón, y espera confirmación antes del siguiente.
+- Si mencionan un error, pide el texto exacto o una captura.
+- Lenguaje sencillo, sin tecnicismos innecesarios, en español.
+
+LO QUE SABES
+- Orden correcto: proyecto de Firebase con la cuenta del centro → Realtime Database en Bélgica (europe-west1) → Authentication con Correo electrónico/contraseña → registrar app web y copiar firebaseConfig → configurador de la formación → publicar reglas → subir a GitHub y activar Pages → primera entrada de la persona administradora.
+- Errores habituales: PERMISSION_DENIED (reglas sin publicar o equivocadas), auth/operation-not-allowed (falta activar Correo/contraseña), contraseña de menos de 6 caracteres (IdEA demasiado corto), versión antigua tras actualizar (esperar a GitHub Pages y recargar con Ctrl+F5), "app no configurada" (falta apiKey, databaseURL o IdEA de administración).
+- Consulta siempre los archivos LEEME que tienes como conocimiento antes de responder sobre una app concreta.
+
+LÍMITES
+- Nunca pidas ni aceptes contraseñas, ni la de Séneca ni la de Google.
+- Nunca recomiendes reglas con ".read": true y ".write": true para toda la base de datos.
+- Si la duda es sobre protección de datos del alumnado, recomienda consultarlo con dirección y con la persona delegada de protección de datos.`;
+
+const PROMPTS = [
+  { t: 'De la idea a la app', d: 'Para empezar desde cero.', p: `En mi centro tenemos este problema: [describe qué pasa y a quién afecta].
+Ahora lo resolvemos así: [papel, correos, hoja de cálculo…].
+Lo usarían: [docentes / alumnado de X curso / familias / dirección], sobre todo desde [móvil / ordenador / pizarra digital].
+Antes de programar, hazme las preguntas que necesites y propón qué debería hacer la app en su primera versión.` },
+  { t: 'Conectar con Firebase', d: 'Cuando la app ya funciona sin base de datos.', p: `Esta app ya funciona guardando en el navegador. Quiero que los datos se compartan entre varios docentes con Firebase Realtime Database.
+- Pon la configuración en el bloque <script id="config-centro"> al principio del archivo.
+- Si falta la configuración, muestra un aviso en lugar de fallar.
+- Dame las reglas de seguridad y explícame qué permiten.
+Devuélveme el index.html completo.
+[pega aquí tu archivo]` },
+  { t: 'Arreglar un error', d: 'Abre la consola con F12 y copia lo que salga en rojo.', p: `Mi app falla cuando [describe qué haces y qué pasa].
+Esto es lo que aparece en la consola (F12):
+[pega el error]
+Explícame la causa en una frase y devuélveme el index.html completo corregido.
+[pega aquí tu archivo]` },
+  { t: 'Hacerla instalable', d: 'Para que se pueda añadir a la pantalla de inicio.', p: `Convierte esta app en una PWA instalable para publicarla en GitHub Pages dentro de una carpeta.
+Necesito: manifest.json, sw.js que priorice la red y use la caché solo sin conexión, y las etiquetas necesarias en el index.html. Usa rutas relativas.
+Dame cada archivo completo por separado.
+[pega aquí tu archivo]` },
+  { t: 'Revisión antes de publicar', d: 'El último paso antes de compartirla.', p: `Revisa esta app antes de publicarla en un repositorio público de GitHub. Dime, en una lista corta y ordenada por importancia:
+1. Si hay datos personales, nombres o contraseñas escritos en el código.
+2. Si las reglas de Firebase dejan leer o escribir a quien no debería.
+3. Problemas de accesibilidad o de uso en móvil.
+No cambies nada todavía: primero el informe.
+[pega aquí tu archivo]` },
+  { t: 'Adaptar una de estas apps', d: 'Para ajustar una plantilla a tu centro.', p: `Esta es una app de la formación. Quiero adaptarla a mi centro: [describe el cambio, por ejemplo añadir un campo, cambiar textos o quitar una pestaña].
+No toques el bloque <script id="config-centro"> ni la forma de conectarse con Firebase.
+Devuélveme el index.html completo e indícame qué partes has cambiado.
+[pega aquí el archivo]` }
+];
+
+const LISTA = [
+  'Cuenta de Google del centro para Firebase',
+  'Cuenta de GitHub',
+  'Proyecto de Firebase creado para la app',
+  'Base de datos activada en Europa (Realtime Database o Firestore, según la app)',
+  'Correo electrónico/contraseña activado en Authentication',
+  'Plantilla descargada y descomprimida',
+  'App configurada y descargada desde el configurador',
+  'Reglas de seguridad publicadas',
+  'Archivos subidos a GitHub y Pages activado',
+  'Primera entrada de la persona administradora',
+  'Claustro dado de alta dentro de la app',
+  'Enlace o código QR compartido con el claustro'
+];
+
+
+/* ── Prompts para recrear las apps con Gemini (se copian al portapapeles) ──
+   Cada texto pide a Gemini el index.html completo con el bloque de configuración
+   del centro, para que después se pueda pasar por el configurador. */
+const PROMPTS_APPS = {
+  agora: `Actúa como desarrollador web experto en aplicaciones educativas. Quiero que crees una aplicación web COMPLETA en un ÚNICO archivo index.html (HTML, CSS y JavaScript juntos, sin frameworks ni pasos de instalación, sin librerías externas salvo las que indique). En español de España, diseño claro y luminoso (nunca modo oscuro), letra de 16px mínimo, botones grandes, accesible y responsive (móvil y pizarra digital).
+
+QUÉ HACE LA APP («Ágora»): planificador anual de lectura y resolución de problemas para Educación Primaria.
+- Selección de curso (1º a 6º), trimestre y mes.
+- Cuatro vistas: «Todo el trimestre» (visión general), «Un mes» (qué y cómo trabajarlo), «Semana a semana» (plan día a día con una casilla para marcar cada semana como hecha) y «Dificultades» (guía de dificultades lectoras y quién necesita ayuda).
+- Para cada mes, un tema y una propuesta de textos y actividades de comprensión, y un itinerario de resolución de problemas por tipos.
+- Botón para descargar en Word (.docx) los documentos del plan, usando la librería JSZip desde cdnjs para generar el .docx; los documentos deben rellenarse con el nombre del centro, la localidad, la provincia y el curso escolar.
+- Botón «¿Qué es cada tipo de texto?» con explicaciones breves.
+
+DATOS: no usa base de datos. Guarda en el navegador (localStorage) qué semanas están marcadas como hechas. Ofrece un botón para exportar e importar ese progreso como archivo JSON.
+
+CONFIGURACIÓN DEL CENTRO: al principio del archivo incluye este bloque y lee de él todos los datos del centro (nombre, localidad, etc.), sin escribir jamás datos reales en el código:
+<script id="config-centro">
+window.CONFIG_CENTRO = { "_app": "agora", "_requiere": ["nombre","localidad","curso"], "nombre": "CEIP Nombre del Centro", "nombreCorto": "CEIP Nombre", "localidad": "Localidad", "provincia": "Provincia", "codigo": "00000000", "curso": "2026/2027", "contexto": "", "enlaceProblemas": "" };
+<\/script>
+Si «contexto» tiene texto, tenlo en cuenta en las propuestas. Si «enlaceProblemas» está vacío, no muestres el botón que lleva a esa app externa.
+
+Entrégame el index.html completo, sin recortes ni «el resto sigue igual». Antes de programar, hazme como máximo 3 preguntas si algo no queda claro.`,
+
+  convivemas: `Actúa como desarrollador web experto en aplicaciones educativas. Crea una aplicación web COMPLETA en un ÚNICO archivo index.html (HTML, CSS y JavaScript juntos, sin frameworks). En español de España, diseño claro y luminoso (nunca modo oscuro), letra de 16px mínimo, accesible y responsive.
+
+QUÉ HACE LA APP («Convive+»): registro de partes de convivencia de un centro de Primaria conforme al Decreto 328/2010 de Andalucía.
+- Formulario para registrar una incidencia: fecha, tramo horario (en clase, recreo, entrada/salida, comedor…), alumnado implicado, tipo de conducta (contraria a las normas — art. 33 — o grave — art. 36 —) con su catálogo de conductas, y las correcciones o medidas aplicadas (arts. 34 y 38) más otras medidas (mediación, aula de convivencia, compromiso de convivencia…).
+- Incidencias colectivas con varios alumnos.
+- Listado con filtros por fecha y tipo, y gráficas resumen.
+- Generar el parte oficial en PDF (con jsPDF desde cdnjs) con cabecera del centro y pie de firma.
+- Protocolos de referencia (acoso, conducta suicida y bienestar emocional).
+
+ACCESO: usa Firebase Authentication con Correo electrónico/contraseña. Cada docente entra eligiendo su nombre de una lista y escribiendo su usuario de Séneca (IdEA); internamente se crea/usa una cuenta <idea>@<dominio del centro>. La primera vez, solo la persona administradora indicada en la configuración puede entrar por «Configuración inicial» y su cuenta se crea sola; después, desde una pestaña «Personal», da de alta al claustro (a mano). No guardes el IdEA en el código.
+
+DATOS: Firebase Realtime Database bajo el nodo «convivencia» (personal, incidencias y acceso). Carga el SDK de Firebase 10.x como módulos desde gstatic.com. Añade también, en un <script type="application/json" id="reglas-firebase">, unas reglas de seguridad que solo permitan leer y escribir a usuarios con sesión y que reserven la gestión del personal a la persona administradora; explica en lenguaje llano qué permiten. Nunca uses reglas abiertas (".read": true, ".write": true) para toda la base de datos.
+
+CONFIGURACIÓN DEL CENTRO: al principio del archivo incluye este bloque y lee de él la configuración; muestra un aviso amable si falta algo en lugar de fallar:
+<script id="config-centro">
+window.CONFIG_CENTRO = { "_app": "convivemas", "_requiere": ["apiKey","authDomain","projectId","appId","databaseURL","nombre","dominio","adminNombre","adminIdea"], "nombre": "CEIP Nombre del Centro", "localidad": "Localidad", "provincia": "Provincia", "codigo": "00000000", "dominio": "micentro.local", "adminNombre": "Apellidos, Nombre", "adminIdea": "" };
+window.FIREBASE_CONFIG = { "apiKey": "PEGA_AQUI_TU_API_KEY", "authDomain": "", "databaseURL": "", "projectId": "", "storageBucket": "", "messagingSenderId": "", "appId": "" };
+<\/script>
+
+PRIVACIDAD: la app maneja datos de menores; no escribas ningún dato real en el código y pide solo lo imprescindible.
+
+Entrégame el index.html completo, sin recortes. Antes de programar, hazme como máximo 3 preguntas si algo no queda claro.`,
+
+  teletrabajo: `Actúa como desarrollador web experto en aplicaciones educativas. Crea una aplicación web COMPLETA en un ÚNICO archivo index.html (HTML, CSS y JavaScript juntos, sin frameworks). En español de España, diseño claro y luminoso (nunca modo oscuro), letra de 16px mínimo, accesible y responsive. Debe poder instalarse como PWA (incluye manifest y service worker con rutas relativas, prioridad a la red y caché solo sin conexión).
+
+QUÉ HACE LA APP («Teletrabajo»): gestión de reuniones telemáticas de los órganos colegiados de un centro (claustro, consejo escolar, ETCP…).
+- Crear una reunión con su orden del día.
+- Control de asistencia del profesorado.
+- Aportaciones y votaciones en directo sobre cada punto, con resultados que se actualizan al instante en todos los dispositivos.
+- Generar la convocatoria oficial en PDF (jsPDF desde cdnjs) con cabecera del centro y un código QR con el enlace a la sala.
+- Botón que prepara un prompt para redactar el acta con IA a partir de lo tratado, y enlace para abrir Gemini.
+
+ACCESO: Firebase Authentication con Correo electrónico/contraseña. Cada docente entra eligiendo su nombre y escribiendo su usuario de Séneca (IdEA); internamente se usa <idea>@<dominio del centro>. La primera vez, solo la persona administradora indicada en la configuración entra y su cuenta se crea sola; después, desde un panel «Personal», da de alta al claustro. El IdEA de cada persona se guarda en un nodo aparte que solo puede leer la administración (no en la ficha pública). No escribas el IdEA en el código.
+
+DATOS: Firebase Realtime Database (SDK 10.x compat o módulos desde gstatic.com). Añade en un <script type="application/json" id="reglas-firebase"> unas reglas de seguridad: lectura del personal pública, escritura del personal y de los IdEA solo para la administración, e incidencias/sesiones solo para usuarios con sesión; explica qué permiten. Nunca reglas abiertas para toda la base de datos.
+
+CONFIGURACIÓN DEL CENTRO: al principio del archivo incluye este bloque, lee de él la configuración y muestra un aviso si falta algo en vez de fallar:
+<script id="config-centro">
+window.CONFIG_CENTRO = { "_app": "teletrabajo", "_requiere": ["apiKey","authDomain","projectId","appId","databaseURL","nombre","dominio","adminNombre","adminIdea"], "nombre": "CEIP Nombre del Centro", "nombreCorto": "CEIP Nombre", "localidad": "Localidad", "provincia": "Provincia", "codigo": "00000000", "dominio": "micentro.local", "adminNombre": "Apellidos, Nombre", "adminPuesto": "Dirección", "adminIdea": "", "enlaceGem": "", "enlaceGPT": "" };
+window.FIREBASE_CONFIG = { "apiKey": "PEGA_AQUI_TU_API_KEY", "authDomain": "", "databaseURL": "", "projectId": "", "storageBucket": "", "messagingSenderId": "", "appId": "" };
+<\/script>
+
+Entrégame el index.html completo, sin recortes. Antes de programar, hazme como máximo 3 preguntas si algo no queda claro.`,
+
+  evaluaciones: `Actúa como desarrollador web experto en aplicaciones educativas. Crea una aplicación web COMPLETA en un ÚNICO archivo index.html (HTML, CSS y JavaScript juntos, sin frameworks). En español de España, diseño claro y luminoso (nunca modo oscuro), letra de 16px mínimo, accesible y responsive (móvil y pizarra digital). Debe poder instalarse como PWA (manifest y service worker con rutas relativas, prioridad a la red y caché solo sin conexión).
+
+QUÉ HACE LA APP («Gestor de Evaluaciones»): análisis de los resultados de las evaluaciones de un centro de Primaria.
+- Introducir o pegar las calificaciones por curso, área y grupo en cada evaluación (1.ª, 2.ª y 3.ª).
+- Cuadros y gráficas de resultados por área, por grupo y por curso, con porcentajes de aprobados y suspensos y comparativa entre evaluaciones.
+- Detección de áreas y grupos con peores resultados.
+- Generar actas e informes en PDF (jsPDF desde cdnjs) con cabecera del centro y firma de la dirección.
+- Un apartado de «plan de mejora» donde anotar propuestas por área.
+NO incluyas ninguna función para publicar los resultados en la web del centro.
+
+ACCESO: Firebase Authentication con Correo electrónico/contraseña. Cada docente entra eligiendo su nombre y escribiendo su usuario de Séneca (IdEA); internamente se usa <idea>@<dominio del centro>. Hay dos roles: «super» (dirección: gestiona el profesorado y ve todo) y profesorado normal. La primera vez, solo la persona administradora indicada en la configuración entra y su cuenta de superusuario se crea sola; después, desde «Ajustes → Gestionar profesorado», da de alta al claustro indicando quién es super. No escribas el IdEA en el código.
+
+DATOS: Firebase Realtime Database con nodos «profesorado», «evaluaciones» y «planesMejora». Carga el SDK de Firebase (compat o módulos) desde gstatic.com. Añade en un <script type="application/json" id="reglas-firebase"> unas reglas de seguridad: lectura del profesorado pública, escritura del profesorado solo para superusuarios, y evaluaciones y planes de mejora solo para usuarios dados de alta; explica en lenguaje llano qué permiten. Nunca uses reglas abiertas para toda la base de datos.
+
+CONFIGURACIÓN DEL CENTRO: al principio del archivo incluye este bloque, lee de él la configuración y muestra un aviso amable si falta algo en lugar de fallar:
+<script id="config-centro">
+window.CONFIG_CENTRO = { "_app": "evaluaciones", "_requiere": ["apiKey","authDomain","projectId","appId","databaseURL","nombre","dominio","adminNombre","adminIdea"], "nombre": "CEIP Nombre del Centro", "nombreCorto": "CEIP Nombre", "localidad": "Localidad", "provincia": "Provincia", "codigo": "00000000", "curso": "2026/2027", "dominio": "micentro.local", "adminNombre": "Apellidos, Nombre", "adminIdea": "", "director": "" };
+window.FIREBASE_CONFIG = { "apiKey": "PEGA_AQUI_TU_API_KEY", "authDomain": "", "databaseURL": "", "projectId": "", "storageBucket": "", "messagingSenderId": "", "appId": "" };
+<\/script>
+Si «director» tiene texto, úsalo bajo la firma de actas e informes.
+
+PRIVACIDAD: la app maneja calificaciones de alumnado; no escribas ningún dato real en el código y pide solo lo imprescindible.
+
+Entrégame el index.html completo, sin recortes ni «el resto sigue igual». Antes de programar, hazme como máximo 3 preguntas si algo no queda claro.`,
+
+  convive: `Actúa como desarrollador web experto en aplicaciones educativas. Crea una aplicación web COMPLETA en un ÚNICO archivo index.html (HTML, CSS y JavaScript juntos, sin frameworks). En español de España, diseño claro y luminoso (nunca modo oscuro), letra de 16px mínimo, accesible y responsive.
+
+QUÉ HACE LA APP («ConVive», análisis sociométrico — no confundir con un registro de partes de convivencia):
+- El maestro o maestra, ya identificado, pasa a su grupo un cuestionario sociométrico (preguntas de elección y rechazo entre compañeros: con quién trabajarían, con quién no, a quién invitarían, etc.).
+- A partir de las respuestas, genera el sociograma del grupo (grafo de relaciones), índices de cohesión, popularidad y rechazo, y detecta alumnado aislado o rechazado y líderes positivos.
+- Propone agrupamientos y una distribución del aula.
+- Genera prompts para redactar con IA el informe de convivencia del grupo, con un apartado para incluir a los profesionales de apoyo del centro si los hay.
+
+ACCESO: Firebase Authentication con Correo electrónico/contraseña. Cada docente entra con su usuario de Séneca (IdEA); internamente se usa <idea>@<dominio del centro>. La primera vez, solo la persona administradora indicada en la configuración entra y su cuenta se crea sola; después da de alta al claustro. No escribas el IdEA en el código.
+
+DATOS: Firebase Firestore (SDK 10.x como módulos desde gstatic.com), con colecciones para el acceso de docentes, las clases, las respuestas del alumnado y la configuración. ConVive NO necesita databaseURL. Añade en un <script type="application/json" id="reglas-firebase" data-tipo="firestore"> unas reglas de seguridad de Firestore que solo permitan acceso a docentes con sesión y reserven la gestión a la persona administradora; explica en lenguaje llano qué permiten. Nunca dejes Firestore en modo de prueba abierto.
+
+CONFIGURACIÓN DEL CENTRO: al principio del archivo incluye este bloque, lee de él la configuración y muestra un aviso si falta algo en lugar de fallar:
+<script id="config-centro">
+window.CONFIG_CENTRO = { "_app": "convive", "_requiere": ["apiKey","authDomain","projectId","appId","nombre","dominio","adminNombre","adminIdea"], "nombre": "CEIP Nombre del Centro", "localidad": "Localidad", "provincia": "Provincia", "codigo": "00000000", "dominio": "micentro.local", "adminNombre": "Apellidos, Nombre", "adminIdea": "" };
+window.FIREBASE_CONFIG = { "apiKey": "PEGA_AQUI_TU_API_KEY", "authDomain": "", "databaseURL": "", "projectId": "", "storageBucket": "", "messagingSenderId": "", "appId": "" };
+<\/script>
+
+PRIVACIDAD: la app maneja respuestas de menores sobre sus compañeros; no escribas ningún dato real en el código y pide solo lo imprescindible.
+
+Entrégame el index.html completo, sin recortes. Antes de programar, hazme como máximo 3 preguntas si algo no queda claro.`,
+
+  horarios: `Actúa como desarrollador web experto en aplicaciones educativas. Crea una aplicación web COMPLETA en un ÚNICO archivo index.html (HTML, CSS y JavaScript juntos, sin frameworks). En español de España, diseño claro y luminoso (nunca modo oscuro), letra de 16px mínimo, accesible y responsive. Debe poder instalarse como PWA (manifest y service worker con rutas relativas, prioridad a la red y caché solo sin conexión).
+
+QUÉ HACE LA APP («Cuadra Horarios»): generador del horario de un centro de Primaria.
+- Definir el profesorado y sus condiciones (reducciones, disponibilidad, especialidades), las horas de cada área por curso y las horas de religión/alternativa.
+- Generar automáticamente el horario de cada grupo respetando esas condiciones (método por restricciones), y detectar y avisar de los choques (un maestro en dos sitios a la vez).
+- Permitir intercambios manuales entre grupos y recalcular.
+- Vista por grupo y vista por maestro.
+- Un botón «Cargar ejemplo» que rellene un centro de prueba completo para ver cómo funciona.
+
+DATOS: no usa base de datos. Guarda todo en el navegador (localStorage) y ofrece «Guardar archivo» y «Cargar archivo» para exportar e importar el trabajo como JSON, de modo que se pueda continuar en otro ordenador.
+
+CONFIGURACIÓN: no necesita datos del centro ni Firebase; funciona nada más abrirla.
+
+Entrégame el index.html completo, sin recortes ni «el resto sigue igual». Antes de programar, hazme como máximo 3 preguntas si algo no queda claro.`,
+
+  registro: `Actúa como desarrollador web experto en aplicaciones educativas. Crea una aplicación web COMPLETA en un ÚNICO archivo index.html (HTML, CSS y JavaScript juntos, sin frameworks). En español de España, diseño claro y luminoso (nunca modo oscuro), letra de 16px mínimo, muy sencilla para el alumnado, accesible y responsive (funciona en tablet y en el ordenador de clase).
+
+QUÉ HACE LA APP («Mis Lecturas»): biblioteca de lecturas con preguntas de comprensión para Primaria.
+- Lecturas organizadas por ciclos (o por cursos), cada una con su texto y varias preguntas de comprensión (opción múltiple y respuesta corta).
+- El alumno o alumna escribe su nombre, elige una lectura, la lee y responde; al terminar ve su resultado.
+- Un panel para el maestro o maestra donde se ven los intentos y aciertos del alumnado.
+- Incluye varias lecturas de ejemplo ya preparadas y una forma sencilla de añadir nuevas lecturas.
+
+DATOS: no usa base de datos. Guarda los resultados en el navegador (localStorage) del dispositivo donde se hacen, y ofrece exportar e importar tanto las lecturas como los resultados como archivo JSON.
+
+CONFIGURACIÓN: no necesita datos del centro ni Firebase; funciona nada más abrirla o publicarla.
+
+Entrégame el index.html completo, sin recortes. Antes de programar, hazme como máximo 3 preguntas si algo no queda claro.`,
+
+  sda: `Actúa como desarrollador web experto en aplicaciones educativas. Crea una aplicación web COMPLETA en un ÚNICO archivo index.html (HTML, CSS y JavaScript juntos, sin frameworks). En español de España, diseño claro y luminoso (nunca modo oscuro), letra de 16px mínimo, accesible y responsive.
+
+QUÉ HACE LA APP («Generador de SdA»): asistente para diseñar situaciones de aprendizaje del currículo andaluz (LOMLOE) en Educación Primaria.
+- Un formulario por pasos: etapa y curso, área(s), temporalización (fechas y número de sesiones), contexto y producto final, criterios de evaluación y saberes básicos, medidas de atención a la diversidad, y conexión con planes y programas del centro (plan de lectura, resolución de problemas, etc.).
+- Un calendario escolar editable (con la posibilidad de exportarlo e importarlo en JSON); incluye uno de ejemplo, pero que el centro pueda sustituir por el de su provincia.
+- Al final, genera un PROMPT completo listo para pegar en una IA que redacte la situación de aprendizaje y sus rúbricas, y permite descargar un borrador en Word/HTML.
+- Un catálogo editable de «apps y juegos» del centro que se pueda incluir como recurso (presentado como propuesta, no fijo).
+
+DATOS: no usa base de datos. Guarda en el navegador (localStorage) y permite exportar e importar la configuración y el calendario como JSON.
+
+CONFIGURACIÓN DEL CENTRO: al principio del archivo incluye este bloque y lee de él los datos del centro, sin escribir datos reales en el código:
+<script id="config-centro">
+window.CONFIG_CENTRO = { "_app": "sda", "_requiere": ["nombre","localidad","provincia"], "nombre": "CEIP Nombre del Centro", "nombreCorto": "CEIP Nombre", "localidad": "Localidad", "provincia": "Provincia", "codigo": "00000000" };
+<\/script>
+
+Entrégame el index.html completo, sin recortes. Antes de programar, hazme como máximo 3 preguntas si algo no queda claro.`,
+
+  pdfaword: `Actúa como desarrollador web experto en aplicaciones educativas. Crea una aplicación web COMPLETA en un ÚNICO archivo index.html (HTML, CSS y JavaScript juntos, sin frameworks). En español de España, diseño claro y luminoso (nunca modo oscuro), letra de 16px mínimo, accesible y responsive. Debe poder instalarse como PWA (incluye manifest y service worker con rutas relativas, prioridad a la red y caché solo sin conexión).
+
+QUÉ HACE LA APP («PDF a Markdown y Word»): convierte documentos PDF en texto Markdown (.md) y en documentos Word (.docx).
+- Zona para arrastrar o elegir UNO O VARIOS PDF; se convierten uno tras otro con barra de progreso y una lista de archivos con su estado (convertido, sin texto, protegido con contraseña, error).
+- Usa pdf.js (desde cdnjs) para leer el texto con su posición y tamaño de letra.
+- Reconstruye la estructura: títulos según el tamaño de letra (#, ##, ###), párrafos uniendo líneas y palabras cortadas con guion, listas con viñetas y numeradas.
+- Detecta TABLAS agrupando líneas con texto alineado en columnas y las exporta como tabla (en Markdown y como tabla real en Word, con cabecera destacada).
+- Donde haya una imagen grande escribe «[Aquí viene foto de la página X]».
+- Aparta el texto girado de los márgenes y quita encabezados, pies y números de página repetidos (opción activable).
+- Resultado editable con pestañas Markdown / Vista previa, botones Copiar, Descargar .md y Descargar Word, y descarga de todos los archivos juntos en ZIP (JSZip). El .docx se genera en el navegador con JSZip, sin servidor.
+
+DATOS: no usa base de datos ni sube nada: todo se procesa en el navegador.
+
+CONFIGURACIÓN: no necesita datos del centro ni Firebase; funciona nada más abrirla o publicarla.
+
+Entrégame el index.html completo, sin recortes. Antes de programar, hazme como máximo 3 preguntas si algo no queda claro.`
+};
+
+/* ════════════════════════ A partir de aquí, no hace falta tocar ════════════════════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const guardar = (k, v) => { try { localStorage.setItem('formacion-apps:' + k, JSON.stringify(v)); } catch (e) {} };
+const leer = (k, def) => { try { const v = localStorage.getItem('formacion-apps:' + k); return v ? JSON.parse(v) : def; } catch (e) { return def; } };
+
+let tTostada;
+function tostada(msg) {
+  const t = $('tostada'); t.textContent = msg; t.classList.add('ver');
+  clearTimeout(tTostada); tTostada = setTimeout(() => t.classList.remove('ver'), 2200);
+}
+async function copiar(texto) {
+  try { await navigator.clipboard.writeText(texto); return true; }
+  catch (e) {
+    const ta = document.createElement('textarea'); ta.value = texto; ta.style.cssText = 'position:fixed;opacity:0';
+    document.body.appendChild(ta); ta.select();
+    let ok = false; try { ok = document.execCommand('copy'); } catch (e2) {}
+    ta.remove(); return ok;
+  }
+}
+
+/* ── Cabecera ─────────────────────────────────────────── */
+$('tituloFormacion').textContent = FORMACION.titulo;
+$('subtituloFormacion').textContent = FORMACION.subtitulo;
+document.title = FORMACION.titulo + ' · Formación';
+$('ponente').innerHTML = '<strong>' + esc(FORMACION.ponente) + '</strong>' + esc(FORMACION.centro) +
+  (FORMACION.fecha ? '<br>' + esc(FORMACION.fecha) : '');
+$('firmaDiapo').innerHTML = '<strong>' + esc(FORMACION.ponente) + '</strong> · ' + esc(FORMACION.centro);
+$('pie').textContent = FORMACION.titulo + ' · ' + FORMACION.centro;
+
+/* ── Pestañas ─────────────────────────────────────────── */
+const pestanas = [...document.querySelectorAll('.pestana')];
+function irA(id, foco) {
+  if (!pestanas.some(p => p.dataset.panel === id)) id = 'inicio';
+  pestanas.forEach(p => {
+    const on = p.dataset.panel === id;
+    p.setAttribute('aria-selected', on); p.tabIndex = on ? 0 : -1;
+    if (on && foco) p.focus();
+  });
+  document.querySelectorAll('section.panel').forEach(s => s.classList.toggle('activo', s.id === 'panel-' + id));
+  if (location.hash.slice(1) !== id) history.replaceState(null, '', '#' + id);
+}
+pestanas.forEach((p, i) => {
+  p.addEventListener('click', () => { irA(p.dataset.panel); window.scrollTo({ top: 0 }); });
+  p.addEventListener('keydown', e => {
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    const n = (i + (e.key === 'ArrowRight' ? 1 : -1) + pestanas.length) % pestanas.length;
+    irA(pestanas[n].dataset.panel, true);
+  });
+});
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-ir]');
+  if (!b) return;
+  e.preventDefault();
+  if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+  irA(b.dataset.ir); window.scrollTo({ top: 0 });
+});
+window.addEventListener('hashchange', () => irA(location.hash.slice(1)));
+irA(location.hash.slice(1) || 'inicio');
+
+/* ── Diapositivas ─────────────────────────────────────── */
+const diapos = [...document.querySelectorAll('.diapo')];
+let dActual = 0;
+diapos.forEach((_, i) => {
+  const b = document.createElement('button');
+  b.setAttribute('aria-label', 'Ir a la diapositiva ' + (i + 1));
+  b.addEventListener('click', () => verDiapo(i));
+  $('dPuntos').appendChild(b);
+});
+function verDiapo(n) {
+  dActual = Math.max(0, Math.min(diapos.length - 1, n));
+  diapos.forEach((d, i) => d.classList.toggle('activa', i === dActual));
+  [...$('dPuntos').children].forEach((b, i) => b.setAttribute('aria-current', i === dActual));
+  $('dCont').textContent = (dActual + 1) + ' / ' + diapos.length;
+  $('dAnt').disabled = dActual === 0;
+  $('dSig').disabled = dActual === diapos.length - 1;
+}
+$('dAnt').onclick = () => verDiapo(dActual - 1);
+$('dSig').onclick = () => verDiapo(dActual + 1);
+$('dPantalla').onclick = () => {
+  if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+  else if ($('diapos').requestFullscreen) $('diapos').requestFullscreen().catch(() => {});
+};
+document.addEventListener('keydown', e => {
+  if (!$('panel-inicio').classList.contains('activo')) return;
+  if (e.target.closest('input,textarea,[role=tab]')) return;
+  if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); verDiapo(dActual + 1); }
+  else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); verDiapo(dActual - 1); }
+  else if (e.key === 'Home') verDiapo(0);
+  else if (e.key === 'End') verDiapo(diapos.length - 1);
+  else if (e.key === 'f' || e.key === 'F') $('dPantalla').click();
+});
+$('nubeApps').innerHTML = APPS.map(a => '<span style="--c:' + a.color + '">' + esc(a.nombre) + '</span>').join('');
+verDiapo(0);
+
+/* ── Fichas de apps ───────────────────────────────────── */
+const ICO = {
+  ver: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>',
+  bajar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>',
+  qr: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3M21 14v.01M14 21h3M21 18v3M17.5 17.5v.01"/></svg>',
+  chispa: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M18 15l.8 2.2L21 18l-2.2.8L18 21l-.8-2.2L15 18l2.2-.8z"/></svg>'
+};
+function formatoDescarga(ruta) {
+  const ext = (ruta.split('.').pop() || '').toLowerCase();
+  return ext === 'zip' ? '.zip' : ext === 'rar' ? '.rar' : ext === 'html' ? '.html' : '';
+}
+$('fichas').innerHTML = APPS.map(a => {
+  const ver = a.url
+    ? '<a class="btn azul" href="' + esc(a.url) + '" target="_blank" rel="noopener">' + ICO.ver + 'Ver</a>'
+    : '<span class="btn off" aria-disabled="true">Demo pendiente</span>';
+  const bajar = a.descarga
+    ? '<a class="btn linea descarga" href="' + esc(a.descarga) + '" download>' + ICO.bajar + 'Descargar ' + formatoDescarga(a.descarga) + '</a>'
+    : '<span class="btn off descarga" aria-disabled="true">Plantilla en preparación</span>';
+  const qr = a.url
+    ? '<button class="btn icono" data-qr="' + esc(a.id) + '" aria-label="Código QR de ' + esc(a.nombre) + '">' + ICO.qr + '</button>'
+    : '';
+  const extras = (a.extras || []).map(x => '<a class="extra" href="' + esc(x.href) + '" download>' + esc(x.texto) + '</a>').join('');
+  const prompt = PROMPTS_APPS[a.id]
+    ? '<div class="prompt-app">' +
+        '<div class="prompt-app-fila">' +
+          '<button class="btn suave" data-prompt="' + esc(a.id) + '">' + ICO.chispa + 'Copiar prompt (Gemini)</button>' +
+          '<a class="btn linea" href="https://gemini.google.com" target="_blank" rel="noopener">Abrir Gemini</a>' +
+        '</div>' +
+        '<p class="prompt-app-aviso">Pégalo <strong>solo en el cuadro de texto</strong> de Gemini (con Ctrl+V) y envíalo. No lo pongas en ningún otro sitio.</p>' +
+      '</div>'
+    : '';
+  return '<article class="ficha" style="--c:' + a.color + '">' +
+    '<div class="ficha-cab"><span class="sello" aria-hidden="true">' + esc(a.nombre.charAt(0)) + '</span>' +
+    '<div><h3>' + esc(a.nombre) + '</h3>' + (a.usa ? '<p class="usa">' + esc(a.usa) + '</p>' : '') + '</div></div>' +
+    '<p class="desc">' + esc(a.desc) + '</p>' +
+    (a.nota ? '<p class="nota">' + esc(a.nota) + '</p>' : '') +
+    '<div class="acciones">' + ver + qr + bajar + '</div>' + extras + prompt +
+    '</article>';
+}).join('');
+
+/* ── QR ───────────────────────────────────────────────── */
+let focoPrevio = null;
+function abrirQR(app) {
+  focoPrevio = document.activeElement;
+  $('qrTitulo').textContent = app.nombre;
+  $('qrUrl').textContent = app.url;
+  const caja = $('qrCaja'); caja.innerHTML = '';
+  if (window.QRCode) new QRCode(caja, { text: app.url, width: 240, height: 240, colorDark: '#1B2A4E', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M });
+  else caja.textContent = 'No se ha podido generar el código. Comparte la dirección de arriba.';
+  $('veloQR').classList.add('ver');
+  $('qrCerrar').focus();
+}
+function cerrarQR() { $('veloQR').classList.remove('ver'); if (focoPrevio) focoPrevio.focus(); }
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-qr]');
+  if (b) abrirQR(APPS.find(a => a.id === b.dataset.qr));
+});
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-prompt]');
+  if (!b) return;
+  const ok = await copiar(PROMPTS_APPS[b.dataset.prompt]);
+  tostada(ok ? 'Prompt copiado · pégalo en el cuadro de texto de Gemini' : 'No se pudo copiar');
+});
+$('qrCerrar').onclick = cerrarQR;
+$('veloQR').addEventListener('click', e => { if (e.target === $('veloQR')) cerrarQR(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && $('veloQR').classList.contains('ver')) cerrarQR(); });
+
+/* ── IA ───────────────────────────────────────────────── */
+$('gemConstructor').textContent = GEM_CONSTRUCTOR;
+$('gemSoporte').textContent = GEM_SOPORTE;
+$('prompts').innerHTML = PROMPTS.map((p, i) =>
+  '<div class="prompt"><h4>' + esc(p.t) + '</h4><p>' + esc(p.d) + '</p>' +
+  '<pre id="prompt' + i + '">' + esc(p.p) + '</pre>' +
+  '<button class="btn suave" data-copiar="prompt' + i + '">Copiar</button></div>').join('');
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-copiar]');
+  if (!b) return;
+  const ok = await copiar($(b.dataset.copiar).textContent);
+  tostada(ok ? 'Copiado' : 'No se pudo copiar: selecciónalo a mano');
+});
+
+/* ── Lista de comprobación ───────────────────────────── */
+let marcados = leer('lista', []);
+function pintarLista() {
+  $('listaControl').innerHTML = LISTA.map((t, i) =>
+    '<li><label><input type="checkbox" data-i="' + i + '"' + (marcados.includes(i) ? ' checked' : '') + '><span>' + esc(t) + '</span></label></li>').join('');
+  actualizarProgreso();
+}
+function actualizarProgreso() {
+  const n = marcados.length;
+  $('barraLista').style.width = Math.round(n * 100 / LISTA.length) + '%';
+  $('textoLista').textContent = n === LISTA.length ? 'Todo listo. La app ya está funcionando en tu centro.' : n + ' de ' + LISTA.length + ' completados';
+}
+$('listaControl').addEventListener('change', e => {
+  const i = +e.target.dataset.i;
+  marcados = e.target.checked ? [...new Set([...marcados, i])] : marcados.filter(x => x !== i);
+  guardar('lista', marcados); actualizarProgreso();
+});
+$('btnVaciarLista').onclick = () => { marcados = []; guardar('lista', marcados); pintarLista(); };
+$('btnImprimir').onclick = () => {
+  $('panel-recursos').classList.add('imprimir'); window.print();
+  setTimeout(() => $('panel-recursos').classList.remove('imprimir'), 500);
+};
+pintarLista();
+
+/* ════════════════════════ CONFIGURADOR ════════════════════════ */
+const CAMPOS = {
+  nombre:      { et: 'Nombre completo del centro', ej: 'CEIP Los Olivos de Villanueva', ay: 'Así aparecerá en documentos, actas y cabeceras.' },
+  nombreCorto: { et: 'Nombre corto', ej: 'CEIP Los Olivos' },
+  localidad:   { et: 'Localidad', ej: 'Villanueva' },
+  provincia:   { et: 'Provincia', ej: 'Granada' },
+  codigo:      { et: 'Código del centro', ej: '18000000', ay: 'Las 8 cifras del código oficial.' },
+  curso:       { et: 'Curso escolar', ej: '2026/2027' },
+  director:    { et: 'Nombre de quien firma como director/a (opcional)', ej: 'Nombre Apellidos', ay: 'Aparece bajo la firma de las actas y del plan de mejora.' },
+  contexto:    { et: 'Rasgos del centro para la IA (opcional)', ej: 'centro bilingüe con aula específica de TEA', ay: 'Se añade a los prompts para que las propuestas se ajusten a vuestra realidad.' },
+  enlaceProblemas: { et: 'Enlace a una app de problemas (opcional)', ej: 'https://…', ay: 'Si lo dejas vacío, no aparece el botón de generar problemas.' },
+  dominio:     { et: 'Dominio interno de las cuentas', ej: 'losolivos.local', ay: 'No es un correo real: solo sirve para crear las cuentas (usuario@dominio). No lo cambies una vez en uso.' },
+  adminNombre: { et: 'Persona administradora', ej: 'Apellidos, Nombre', ay: 'En formato «Apellidos, Nombre», tal cual aparecerá en la lista del claustro.' },
+  adminPuesto: { et: 'Cargo de la persona administradora', ej: 'Dirección' },
+  adminIdea:   { et: 'Usuario IdEA de la persona administradora', ej: 'abcdef123', ay: 'El usuario de Séneca, nunca la contraseña. Con él se crea su cuenta la primera vez que entra.' },
+  enlaceGem:   { et: 'Enlace al Gem de Gemini del centro (opcional)', ej: 'https://gemini.google.com/gem/…', ay: 'Si lo dejas vacío, la app abrirá Gemini normal.' },
+  enlaceGPT:   { et: 'Enlace al GPT del centro (opcional)', ej: 'https://chatgpt.com/g/…', ay: 'Si lo dejas vacío, la app abrirá ChatGPT normal.' }
+};
+const ANCHOS = ['nombre', 'dominio', 'adminIdea', 'enlaceGem', 'enlaceGPT', 'contexto', 'enlaceProblemas', 'director'];
+const FIREBASE_CLAVES = ['apiKey', 'authDomain', 'databaseURL', 'projectId', 'storageBucket', 'messagingSenderId', 'appId', 'measurementId'];
+const TIPOS_REGLAS = {
+  rtdb: { titulo: 'Reglas de Realtime Database', ayuda: 'Pégalas en <code>Realtime Database</code> → <code>Reglas</code>, sustituyendo todo lo que haya, y pulsa <code>Publicar</code>.' },
+  firestore: { titulo: 'Reglas de Firestore', ayuda: 'Pégalas en <code>Firestore Database</code> → <code>Reglas</code>, sustituyendo todo lo que haya, y pulsa <code>Publicar</code>. Llevan dentro la cuenta de administración: si cambias su IdEA o el dominio, vuelve a copiarlas.' }
+};
+const CONF = { html: '', app: '', centroPlantilla: null, fbPlantilla: null, requiere: [], reglas: '', reglasTipo: 'rtdb', fb: {} };
+let datosCentro = leer('centro', {});
+
+function estado(id, tipo, html) {
+  const e = $(id);
+  e.className = 'estado ver ' + tipo;
+  e.innerHTML = '<b aria-hidden="true">' + (tipo === 'ok' ? '✓' : tipo === 'error' ? '✕' : '!') + '</b><span>' + html + '</span>';
+}
+function ocultarEstado(id) { $(id).className = 'estado'; }
+const usaFirebase = () => !!CONF.fbPlantilla;
+
+function extraerObjeto(texto, nombre) {
+  const m = texto.match(new RegExp('window\\.' + nombre + '\\s*=\\s*(\\{[\\s\\S]*?\\})\\s*;'));
+  if (!m) return null;
+  try { return JSON.parse(m[1]); } catch (e) { return null; }
+}
+
+function cargarPlantilla(file) {
+  if (!file) return;
+  if (!/\.html?$/i.test(file.name)) {
+    estado('est1', 'error', 'Eso no es un archivo .html. Si tienes un .zip, descomprímelo y sube el <code>index.html</code>.');
+    return;
+  }
+  const lector = new FileReader();
+  lector.onload = () => {
+    const html = String(lector.result);
+    const bloque = html.match(/<script id="config-centro">([\s\S]*?)<\/script>/);
+    const centro = bloque && extraerObjeto(bloque[1], 'CONFIG_CENTRO');
+    if (!bloque || !centro) {
+      CONF.html = '';
+      $('paso1').classList.remove('hecho');
+      estado('est1', 'error', 'Este archivo no tiene el bloque <code>CONFIGURACIÓN DEL CENTRO</code>. Si es Cuadra Horarios, Mis Lecturas, PDF a Markdown y Word o el Troglodita, no necesita configuración: úsalo tal cual. Si es otra app, descarga la plantilla desde la pestaña Las apps.');
+      $('camposCentro').innerHTML = '';
+      validar();
+      return;
+    }
+    const fb = extraerObjeto(bloque[1], 'FIREBASE_CONFIG');
+    const reglas = html.match(/<script type="[^"]*" id="reglas-firebase"(?: data-tipo="(\w+)")?>([\s\S]*?)<\/script>/);
+    Object.assign(CONF, {
+      html, app: centro._app || 'app', centroPlantilla: centro, fbPlantilla: fb,
+      requiere: centro._requiere || ['nombre'],
+      reglas: reglas ? reglas[2].trim() : '', reglasTipo: (reglas && reglas[1]) || 'rtdb'
+    });
+    $('soltarTexto').textContent = file.name + ' · pulsa para cambiarlo';
+    $('paso1').classList.add('hecho');
+    const nombreApp = (APPS.find(a => a.id === CONF.app) || {}).nombre || CONF.app;
+    estado('est1', 'ok', 'Plantilla de <strong>' + esc(nombreApp) + '</strong> lista para configurar.');
+    $('fbZona').style.display = usaFirebase() ? '' : 'none';
+    $('tituloPaso4').textContent = CONF.reglas ? 'Descarga la app y copia las reglas' : 'Descarga la app';
+    pintarCampos();
+    if (usaFirebase() && !$('fbTexto').value.trim() && fb.apiKey && fb.apiKey.indexOf('PEGA_AQUI') === -1) {
+      $('fbTexto').value = JSON.stringify(fb, null, 2);
+    }
+    leerFirebase();
+  };
+  lector.onerror = () => estado('est1', 'error', 'No se ha podido leer el archivo. Prueba otra vez.');
+  lector.readAsText(file, 'utf-8');
+}
+
+$('archivo').addEventListener('change', e => cargarPlantilla(e.target.files[0]));
+const zona = $('zonaSoltar');
+zona.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); $('archivo').click(); } });
+['dragenter', 'dragover'].forEach(ev => zona.addEventListener(ev, e => { e.preventDefault(); zona.classList.add('encima'); }));
+['dragleave', 'drop'].forEach(ev => zona.addEventListener(ev, e => { e.preventDefault(); zona.classList.remove('encima'); }));
+zona.addEventListener('drop', e => cargarPlantilla(e.dataTransfer.files[0]));
+
+function leerFirebase() {
+  ocultarEstado('est2');
+  if (CONF.html && !usaFirebase()) {
+    CONF.fb = {};
+    estado('est2', 'ok', 'Esta app no usa Firebase: guarda en el navegador. Puedes saltarte este paso.');
+    return validar();
+  }
+  const txt = $('fbTexto').value;
+  const fb = {};
+  const re = /["']?(\w+)["']?\s*:\s*["'`]([^"'`]*)["'`]/g;
+  let m;
+  while ((m = re.exec(txt))) if (FIREBASE_CLAVES.includes(m[1])) fb[m[1]] = m[2].trim();
+  CONF.fb = fb;
+
+  const req = CONF.html ? CONF.requiere.filter(k => FIREBASE_CLAVES.includes(k)) : ['apiKey', 'authDomain', 'projectId', 'appId'];
+  const mostrar = FIREBASE_CLAVES.filter(k => k !== 'measurementId' && (req.includes(k) || fb[k]));
+  $('fbChips').innerHTML = mostrar.map(k => {
+    const obligatorio = req.includes(k);
+    const cls = fb[k] ? 'si' : (obligatorio ? 'no' : '');
+    return '<span class="chip ' + cls + '">' + (fb[k] ? '✓ ' : obligatorio ? '✕ ' : '') + k + '</span>';
+  }).join('');
+
+  if (txt.trim()) {
+    if (fb.apiKey && !/^AIza[\w-]{20,}$/.test(fb.apiKey)) estado('est2', 'aviso', 'La <code>apiKey</code> no tiene la forma habitual (empieza por <code>AIza</code>). Revisa que la has copiado entera.');
+    else if (req.includes('databaseURL') && !fb.databaseURL) estado('est2', 'error', 'Falta <code>databaseURL</code>. Activa Realtime Database en tu proyecto y vuelve a copiar la configuración, o añade la línea a mano: <code>databaseURL: "https://…firebasedatabase.app"</code>.');
+    else if (fb.databaseURL && !/^https:\/\/[\w.-]+\.(firebasedatabase\.app|firebaseio\.com)\/?$/.test(fb.databaseURL)) estado('est2', 'aviso', 'La <code>databaseURL</code> no parece una dirección de Realtime Database.');
+    else if (req.every(k => fb[k])) estado('est2', 'ok', 'Configuración de Firebase completa.');
+  }
+  validar();
+}
+$('fbTexto').addEventListener('input', leerFirebase);
+
+function pintarCampos() {
+  const claves = Object.keys(CONF.centroPlantilla).filter(k => !k.startsWith('_'));
+  $('camposCentro').innerHTML = '<div class="rejilla2">' + claves.map(k => {
+    const c = CAMPOS[k] || { et: k };
+    const valor = datosCentro[k] != null ? datosCentro[k] : '';
+    const obligatorio = CONF.requiere.includes(k);
+    const ancho = ANCHOS.includes(k) ? ' style="grid-column:1/-1"' : '';
+    return '<label class="campo"' + ancho + '><span>' + esc(c.et) + (obligatorio ? ' *' : '') + '</span>' +
+      '<input type="text" data-campo="' + k + '" value="' + esc(valor) + '" placeholder="' + esc(c.ej || '') + '"' +
+      (k === 'adminIdea' || k === 'dominio' ? ' autocapitalize="off" spellcheck="false"' : '') + '>' +
+      (c.ay ? '<small>' + esc(c.ay) + '</small>' : '') + '</label>';
+  }).join('') + '</div><div class="estado" id="est3" role="status"></div>';
+  $('camposCentro').querySelectorAll('input').forEach(i => i.addEventListener('input', () => {
+    datosCentro[i.dataset.campo] = i.value.trim();
+    guardar('centro', datosCentro);
+    validar();
+  }));
+  validar();
+}
+
+function valorCentro(k) {
+  let v = String(datosCentro[k] || '').trim();
+  if (k === 'adminIdea') v = v.toLowerCase();
+  if (k === 'dominio') v = v.toLowerCase().replace(/^@/, '');
+  return v;
+}
+
+function erroresCentro() {
+  const errores = [];
+  if (!CONF.centroPlantilla) return errores;
+  Object.keys(CONF.centroPlantilla).filter(k => !k.startsWith('_')).forEach(k => {
+    const v = valorCentro(k);
+    const input = document.querySelector('[data-campo="' + k + '"]');
+    let mal = false;
+    if (CONF.requiere.includes(k) && !v) { errores.push('Falta: ' + (CAMPOS[k] || { et: k }).et); mal = true; }
+    else if (k === 'adminIdea' && v && !/^[a-z0-9._-]{6,30}$/.test(v)) { errores.push('El usuario IdEA solo admite letras, números y . _ - y necesita al menos 6 caracteres'); mal = true; }
+    else if (k === 'dominio' && v && !/^[a-z0-9-]+(\.[a-z0-9-]+)+$/.test(v)) { errores.push('El dominio debe tener la forma nombre.local'); mal = true; }
+    else if (k === 'adminNombre' && v && v.indexOf(',') === -1) { errores.push('Escribe la persona administradora como «Apellidos, Nombre»'); mal = true; }
+    else if (/^enlace/.test(k) && v && !/^https:\/\//.test(v)) { errores.push('Los enlaces deben empezar por https://'); mal = true; }
+    if (input) input.classList.toggle('mal', mal);
+  });
+  return errores;
+}
+
+function reglasPersonalizadas() {
+  const correo = (valorCentro('adminIdea') || 'IDEA-ADMIN') + '@' + (valorCentro('dominio') || 'micentro.local');
+  return CONF.reglas.split('{{ADMIN_EMAIL}}').join(correo);
+}
+
+function validar() {
+  const hayPlantilla = !!CONF.html;
+  const faltaFb = hayPlantilla && usaFirebase() ? CONF.requiere.filter(k => FIREBASE_CLAVES.includes(k) && !CONF.fb[k]) : [];
+  const errCentro = erroresCentro();
+
+  $('paso2').classList.toggle('hecho', hayPlantilla && (!usaFirebase() || (!faltaFb.length && !!CONF.fb.apiKey)));
+  $('paso3').classList.toggle('hecho', hayPlantilla && !errCentro.length);
+  if ($('est3')) {
+    if (errCentro.length) estado('est3', 'error', errCentro.map(esc).join('<br>'));
+    else if (hayPlantilla) estado('est3', 'ok', 'Datos del centro completos.');
+  }
+
+  const listo = hayPlantilla && !faltaFb.length && (!usaFirebase() || !!CONF.fb.apiKey) && !errCentro.length;
+  $('btnDescargar').disabled = !listo;
+  $('paso4').classList.remove('hecho');
+  if (!hayPlantilla) { ocultarEstado('est4'); $('bloqueReglas').style.display = 'none'; $('siguientes').innerHTML = ''; return; }
+  if (!listo) estado('est4', 'aviso', usaFirebase() ? 'Completa los pasos 2 y 3 para poder descargar.' : 'Completa el paso 3 para poder descargar.');
+  else ocultarEstado('est4');
+
+  if (CONF.reglas) {
+    const tipo = TIPOS_REGLAS[CONF.reglasTipo] || TIPOS_REGLAS.rtdb;
+    $('reglasTitulo').textContent = tipo.titulo;
+    $('reglasAyuda').innerHTML = tipo.ayuda;
+    $('reglasTexto').textContent = reglasPersonalizadas();
+    $('bloqueReglas').style.display = 'block';
+  } else $('bloqueReglas').style.display = 'none';
+  pintarSiguientes();
+}
+
+function pintarSiguientes() {
+  const pasos = [];
+  if (CONF.reglas) pasos.push('Publica las reglas de arriba en <code>' + (CONF.reglasTipo === 'firestore' ? 'Firestore Database' : 'Realtime Database') + '</code> → <code>Reglas</code>.');
+  if (CONF.requiere.includes('adminIdea')) pasos.push('Comprueba que está activado <code>Correo electrónico/contraseña</code> en <code>Authentication</code>.');
+  pasos.push('Sube a GitHub el <code>index.html</code> configurado junto con el resto de archivos de la plantilla y activa Pages.');
+  if (CONF.requiere.includes('adminIdea')) {
+    const quien = datosCentro.adminNombre || 'la persona administradora';
+    pasos.push('Abre la app y entra como <strong>' + esc(quien) + '</strong> con su usuario IdEA. La cuenta se crea sola esa primera vez.');
+    pasos.push('Da de alta al resto del claustro desde el panel de personal de la app.');
+  }
+  $('siguientes').innerHTML = '<label class="campo" style="margin-bottom:8px"><span>Y después</span></label><ol class="pasos-lista">' +
+    pasos.map(p => '<li>' + p + '</li>').join('') + '</ol>';
+}
+
+$('btnDescargar').addEventListener('click', () => {
+  if ($('btnDescargar').disabled) return;
+  const centro = {};
+  Object.keys(CONF.centroPlantilla).forEach(k => {
+    if (k.startsWith('_')) centro[k] = CONF.centroPlantilla[k];
+    else centro[k] = valorCentro(k) || (CONF.requiere.includes(k) ? CONF.centroPlantilla[k] : (CONF.centroPlantilla[k] || ''));
+  });
+  const json = o => JSON.stringify(o, null, 2).replace(/</g, '\\u003c').replace(/\n/g, '\n    ');
+  let bloque = '<script id="config-centro">\n    window.CONFIG_CENTRO = ' + json(centro) + ';\n';
+  if (usaFirebase()) {
+    const fb = {};
+    Object.keys(CONF.fbPlantilla).forEach(k => { fb[k] = CONF.fb[k] || ''; });
+    Object.keys(CONF.fb).forEach(k => { if (!(k in fb)) fb[k] = CONF.fb[k]; });
+    bloque += '    window.FIREBASE_CONFIG = ' + json(fb) + ';\n';
+  }
+  bloque += '    <\/script>';
+  let salida = CONF.html.replace(/<script id="config-centro">[\s\S]*?<\/script>/, () => bloque);
+  if (CONF.reglas) {
+    const r = reglasPersonalizadas();
+    salida = salida.replace(/(<script type="[^"]*" id="reglas-firebase"[^>]*>)[\s\S]*?(<\/script>)/, (m, a, b) => a + '\n' + r + '\n' + b);
+  }
+
+  const blob = new Blob([salida], { type: 'text/html;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'index.html';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+
+  $('paso4').classList.add('hecho');
+  estado('est4', 'ok', 'Descargado <code>index.html</code> para <strong>' + esc(centro.nombre || 'tu centro') + '</strong>.' + (CONF.reglas || CONF.requiere.includes('adminIdea') ? ' Sigue con los pasos de abajo.' : ''));
+});
+
+validar();
+</script>
+</body>
+</html>
