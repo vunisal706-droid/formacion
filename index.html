@@ -461,6 +461,53 @@ details.activar ol{padding-left:22px;display:grid;gap:6px;margin:8px 0}
 .modal.ancho p{word-break:normal}
 @media (max-width:860px){ .radio-diapo{grid-template-columns:1fr} }
 
+/* Gemini */
+.gem-dos{display:grid;grid-template-columns:minmax(260px,360px) minmax(0,1fr);gap:24px;align-items:start}
+.gem-menu{background:#fff;border-radius:28px;padding:12px;box-shadow:0 10px 34px rgba(27,42,78,.12);border:1px solid var(--linea)}
+.gem-menu hr{border:0;border-top:1.5px solid var(--linea);margin:6px 14px}
+.gem-op{display:flex;align-items:center;gap:14px;width:100%;border:0;background:none;border-radius:18px;padding:12px 16px;
+  font:400 1.05rem var(--texto);color:var(--tinta);cursor:pointer;text-align:left;position:relative}
+.gem-op:hover{background:#F2F4F8}
+.gem-op[aria-selected="true"]{background:var(--azul-claro);font-weight:700}
+.gem-op svg{width:24px;height:24px;flex:none}
+.gem-op.sub{padding-left:52px;font-size:.98rem}
+.gem-op .visto{margin-left:auto;width:20px;height:20px;border-radius:50%;background:var(--ok);color:#fff;display:none;place-items:center;font-size:.72rem;font-weight:800}
+.gem-op.hecha .visto{display:grid}
+.gem-progreso{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:.88rem;color:var(--tinta-suave)}
+.gem-progreso .progreso{flex:1;margin:0}
+.gem-ficha{animation:entra .3s ease}
+.gem-ficha .donde{font-size:.85rem;color:var(--rojo);font-weight:700}
+.gem-ficha h3{font-size:1.6rem;font-weight:800;margin:4px 0 8px}
+.gem-ficha .que{font-size:1.05rem;margin-bottom:14px}
+.gem-ficha h4{font-family:var(--display);font-size:1.02rem;margin:16px 0 6px}
+.gem-ficha ul{padding-left:22px;display:grid;gap:4px}
+.gem-ficha .gem-nav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:18px;padding-top:14px;border-top:1px dashed var(--linea)}
+.actividades{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.actividad{background:#fff;border:1.5px solid var(--linea);border-top:5px solid var(--c);border-radius:var(--r-l);padding:20px}
+.actividad small{color:var(--c);font-weight:700;font-size:.82rem}
+.actividad h4{font-family:var(--display);font-weight:800;font-size:1.35rem;margin:2px 0 6px}
+.actividad > p{color:var(--tinta-suave);margin-bottom:10px}
+.actividad ol{padding-left:22px;display:grid;gap:5px;margin-bottom:14px}
+.actividad ol li::marker{font-weight:700;color:var(--c)}
+
+/* Recreativa */
+.recreativa{position:fixed;inset:0;z-index:75;display:none;flex-direction:column;overflow:auto;padding:26px 30px;
+  background:radial-gradient(ellipse at 10% 0%,#FFE9A8 0%,transparent 55%),radial-gradient(ellipse at 90% 10%,#FFD1DC 0%,transparent 50%),
+  radial-gradient(ellipse at 50% 100%,#CFE3FF 0%,transparent 60%),#FFFDF7}
+.recreativa.ver{display:flex}
+.recreativa-cab{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+.recreativa-cab h2{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,4vw,3rem);letter-spacing:-.02em}
+.recreativa-cab p{color:var(--tinta-suave)}
+.maquinas{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px}
+.maquina{background:#fff;border-radius:22px;padding:16px;text-align:center;border:3px solid var(--c);box-shadow:0 8px 0 var(--c);animation:entra .4s ease;display:flex;flex-direction:column;gap:8px}
+.maquina h3{font-family:var(--display);font-weight:800;font-size:1.2rem;line-height:1.15}
+.maquina .quien{font-size:.82rem;color:var(--tinta-suave)}
+.maquina .qr{display:flex;justify-content:center;min-height:160px;align-items:center}
+.maquina .votos{font:800 1.1rem var(--display);color:var(--rojo)}
+.maquina.top{transform:scale(1.03)}
+.maquina.top::before{content:"🏆 Más votada";font-weight:800;font-size:.85rem;color:var(--aviso)}
+@media (max-width:860px){ .gem-dos,.actividades{grid-template-columns:1fr} }
+
 @media (max-width:860px){
   .flujo{grid-template-columns:1fr;gap:12px}
   .flujo div{margin-right:0}
@@ -509,6 +556,7 @@ details.activar ol{padding-left:22px;display:grid;gap:6px;margin:8px 0}
   <button class="pestana" title="Configurar para tu centro" role="tab" id="t-configurar" aria-controls="panel-configurar" data-panel="configurar">Configurar</button>
   <button class="pestana" title="Guías paso a paso" role="tab" id="t-guias" aria-controls="panel-guias" data-panel="guias">Guías</button>
   <button class="pestana" title="Crea la tuya con IA" role="tab" id="t-ia" aria-controls="panel-ia" data-panel="ia">Crear con IA</button>
+  <button class="pestana" role="tab" id="t-gemini" aria-controls="panel-gemini" data-panel="gemini">Gemini</button>
   <button class="pestana" title="Taller de errores" role="tab" id="t-taller" aria-controls="panel-taller" data-panel="taller">Taller</button>
   <button class="pestana" role="tab" id="t-galeria" aria-controls="panel-galeria" data-panel="galeria">Galería</button>
   <button class="pestana" role="tab" id="t-recursos" aria-controls="panel-recursos" data-panel="recursos">Recursos</button>
@@ -593,7 +641,7 @@ details.activar ol{padding-left:22px;display:grid;gap:6px;margin:8px 0}
       </div>
     </div>
 
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="Repartir: quien quiera llevarse una app, al configurador; quien quiera crear, al taller de errores y al Gem. Recordar la galería.">
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="Repartir: quien quiera llevarse una app, al configurador; quien quiera crear, a la pestaña Gemini (De la ficha al juego). Al final, recreativa en la galería.">
       <h2>Manos a la obra</h2>
       <p class="lead">Empieza por ver las apps en marcha, elige una y conéctala con tu centro siguiendo los pasos.</p>
       <div class="fila" style="margin-top:30px">
@@ -601,6 +649,7 @@ details.activar ol{padding-left:22px;display:grid;gap:6px;margin:8px 0}
         <button class="btn linea" data-ir="configurar">Ir al configurador</button>
         <button class="btn linea" data-ir="ia">Crear con IA</button>
         <button class="btn linea" data-ir="taller">Taller de errores</button>
+        <button class="btn linea" data-ir="gemini">Gemini y Canvas</button>
         <button class="btn linea" data-ir="galeria">Galería del claustro</button>
       </div>
     </div>
@@ -1030,6 +1079,59 @@ details.activar ol{padding-left:22px;display:grid;gap:6px;margin:8px 0}
   </div>
 </section>
 
+<!-- ═════════════════════ GEMINI ═════════════════════ -->
+<section class="panel" id="panel-gemini" role="tabpanel" aria-labelledby="t-gemini">
+  <div class="intro">
+    <h2>Gemini, herramienta a herramienta</h2>
+    <p>Pulsa el <strong>+</strong> de la barra de Gemini y aparece este menú. Recórrelo aquí una opción cada vez: qué hace, para qué sirve en el cole y un prompt para probarla.</p>
+  </div>
+  <div class="gem-dos">
+    <div>
+      <div class="gem-menu" id="gemMenu" role="tablist" aria-label="Menú de Gemini"></div>
+      <div class="gem-progreso"><div class="progreso"><i id="gemBarra"></i></div><span id="gemCuenta"></span></div>
+    </div>
+    <div class="gem-ficha tarjeta" id="gemFicha" aria-live="polite"></div>
+  </div>
+
+  <h3 class="bloque">Actividades con Canvas</h3>
+  <div class="actividades">
+    <article class="actividad" style="--c:#E8612C">
+      <small>Actividad · 30 min</small>
+      <h4>De la ficha al juego</h4>
+      <p>Cada docente trae una ficha de papel de su aula y sale con un juego para la pizarra digital.</p>
+      <ol>
+        <li>Haz una foto a la ficha con el móvil.</li>
+        <li>En Gemini: <b>+</b> → <b>Canvas</b>, y adjunta la foto con <b>Subir archivos</b>.</li>
+        <li>Pega el prompt y envíalo. El juego aparece a la derecha.</li>
+        <li>Juega y pide cambios: «más grande», «más lento», «con sonido».</li>
+        <li>Pulsa <b>Compartir</b> y copia el enlace.</li>
+      </ol>
+      <div class="caja-codigo"><button class="btn suave copiar" data-copiar="promptFicha">Copiar prompt</button><pre class="codigo" id="promptFicha" style="white-space:pre-wrap">Te adjunto una foto de una ficha de [curso]. Conviértela en un juego interactivo para la pizarra digital:
+- las mismas actividades de la ficha, una en cada pantalla;
+- botones grandes y letra grande;
+- al acertar, una animación y un sonido suave; al fallar, una pista, nunca la palabra «error»;
+- colores claros y alegres;
+- al final, una pantalla de «¡Conseguido!» con los aciertos.
+Que funcione también en el móvil.</pre></div>
+    </article>
+    <article class="actividad" style="--c:#7C3AED">
+      <small>Actividad · 15 min</small>
+      <h4>Recreativa del claustro</h4>
+      <p>Cada juego se sube a la galería y se proyecta como una sala de máquinas. Todo el mundo juega desde el móvil a los juegos de los demás y vota su favorito.</p>
+      <ol>
+        <li>Copia el enlace de <b>Compartir</b> de tu juego de Canvas.</li>
+        <li>Ve a <b>Galería</b> → <b>Añadir mi app</b> y pega el enlace.</li>
+        <li>El ponente abre la <b>Recreativa</b> en la pantalla grande.</li>
+        <li>Escanea los códigos, juega y vota con ♥.</li>
+      </ol>
+      <div class="fila" style="margin-top:14px">
+        <button class="btn azul" data-ir="galeria">Ir a la galería</button>
+        <button class="btn linea" data-recreativa>Abrir la recreativa</button>
+      </div>
+    </article>
+  </div>
+</section>
+
 <!-- ═════════════════════ TALLER DE ERRORES ═════════════════════ -->
 <section class="panel" id="panel-taller" role="tabpanel" aria-labelledby="t-taller">
   <div class="intro">
@@ -1075,6 +1177,7 @@ details.activar ol{padding-left:22px;display:grid;gap:6px;margin:8px 0}
   </div>
   <div class="galeria-barra">
     <button class="btn azul" id="galAnadir">Añadir mi app</button>
+    <button class="btn linea" data-recreativa>🕹️ Recreativa</button>
     <select id="galOrden" aria-label="Ordenar la galería"><option value="recientes">Más recientes</option><option value="votos">Más votadas</option></select>
     <input type="text" id="galBuscar" placeholder="Buscar…" aria-label="Buscar en la galería" style="max-width:240px">
     <span class="modo-chip" id="galChip"></span>
@@ -1083,7 +1186,7 @@ details.activar ol{padding-left:22px;display:grid;gap:6px;margin:8px 0}
     <h3>Tu app</h3>
     <div class="rejilla2" style="margin-top:12px">
       <label class="campo"><span>Título</span><input type="text" id="gTitulo" maxlength="80" placeholder="Préstamos de la biblioteca de aula"></label>
-      <label class="campo"><span>Enlace</span><input type="text" id="gEnlace" maxlength="300" placeholder="https://usuario.github.io/prestamos/"></label>
+      <label class="campo"><span>Enlace (el de «Compartir» de Canvas o tu web)</span><input type="text" id="gEnlace" maxlength="300" placeholder="https://usuario.github.io/prestamos/"></label>
       <label class="campo"><span>Centro</span><input type="text" id="gCentro" maxlength="80"></label>
       <label class="campo"><span>Tu nombre (opcional)</span><input type="text" id="gNombre" maxlength="60"></label>
     </div>
@@ -1306,6 +1409,47 @@ const HISTORIA = {
       prompt: '', dato: 'Un archivo · Firebase · GitHub Pages', imagen: '' }
   ]
 };
+
+/* ── Herramientas de Gemini (pestaña Gemini) ───────────────────── */
+const GEMINI = [
+  { id: 'subir', nombre: 'Subir archivos', ico: 'clip',
+    que: 'Adjuntas un PDF, una foto, un Word o una hoja de cálculo y Gemini trabaja sobre ese documento.',
+    usos: ['Resumir una circular o una instrucción larga.', 'Adaptar una ficha a lectura fácil.', 'Sacar preguntas de comprensión de un texto.'],
+    prompt: 'Te adjunto una ficha de 3.º. Hazme una versión adaptada para un alumno con dificultades lectoras: frases cortas, letra grande, una actividad por página y apoyos visuales.',
+    aviso: 'Nunca subas documentos con nombres o datos del alumnado.' },
+  { id: 'drive', nombre: 'Añadir desde Drive', ico: 'nube',
+    que: 'Usa directamente documentos de tu Google Drive, sin descargarlos ni volver a subirlos.',
+    usos: ['Trabajar con el Plan de Centro o una programación.', 'Comparar dos versiones de un documento.', 'Preparar el orden del día a partir de un acta anterior.'],
+    prompt: 'Con el documento adjunto, resume en 10 puntos lo más importante y señala lo que haya que revisar este curso.' },
+  { id: 'mas-subidas', nombre: 'Más subidas', ico: 'puntos',
+    que: 'Otras formas de añadir contenido. Las opciones cambian según el dispositivo: en el móvil, por ejemplo, puedes usar la cámara.',
+    usos: ['Fotografiar la pizarra al terminar una sesión.', 'Hacer una foto a un cuaderno o a un cartel del pasillo.'],
+    prompt: 'Te adjunto una foto de la pizarra. Pásala a limpio como esquema y proponme tres preguntas para repasar mañana.' },
+  { sep: true },
+  { id: 'imagen', nombre: 'Crear imagen', ico: 'imagen',
+    que: 'Genera ilustraciones a partir de una descripción. También puede modificar una imagen que le subas.',
+    usos: ['Láminas de vocabulario.', 'Portadas de proyectos y carteles.', 'Personajes para un cuento de clase.'],
+    prompt: 'Ilustración sencilla y luminosa, estilo libro infantil, de un huerto escolar con niñas y niños regando. Sin texto.',
+    aviso: 'Revisa que no haya estereotipos y no subas fotos del alumnado.' },
+  { id: 'musica', nombre: 'Crear música', ico: 'musica',
+    que: 'Crea una pieza musical breve a partir de una descripción del estilo, el ritmo y el momento en que se va a usar.',
+    usos: ['La sintonía de la radio escolar.', 'Una canción para rutinas: recoger, lavarse las manos, la fila.', 'El fondo musical de un vídeo del centro.'],
+    prompt: 'Música alegre de unos 30 segundos para el momento de recoger la clase, ritmo de marcha, apta para Infantil.' },
+  { id: 'canvas', nombre: 'Canvas', ico: 'canvas',
+    que: 'Crea apps y juegos a partir de una petición. Aparecen a la derecha funcionando, puedes pedir cambios en el chat y compartirlos con un enlace.',
+    usos: ['Juegos de repaso para la pizarra digital.', 'Convertir una ficha de papel en un juego.', 'Pequeñas herramientas: un sorteo de grupos, un temporizador de rincones.'],
+    prompt: 'Crea un juego de sumas para 2.º de Primaria: un cohete sube un poco con cada acierto y llega a la Luna con 10 aciertos. Botones grandes, colores claros y sonido suave.',
+    extra: 'Mira abajo las actividades «De la ficha al juego» y «Recreativa del claustro».' },
+  { id: 'research', nombre: 'Deep Research', ico: 'research',
+    que: 'Investiga en muchas páginas web y te entrega un informe con sus fuentes. Tarda unos minutos. Después puedes convertirlo en una web, una infografía, un cuestionario o un resumen de audio.',
+    usos: ['Preparar una propuesta para el claustro.', 'Buscar experiencias de otros centros sobre un tema.', 'Documentar un proyecto antes de empezarlo.'],
+    prompt: 'Investiga estrategias con evidencia para mejorar la comprensión lectora en 3.º y 4.º de Primaria en centros con alumnado vulnerable. Quiero ejemplos concretos de aula.',
+    aviso: 'Abre y comprueba las fuentes, sobre todo si cita normativa.' },
+  { id: 'guiado', nombre: 'Aprendizaje guiado', ico: 'libro', sub: true, donde: '+ → Más herramientas → Aprendizaje guiado',
+    que: 'En lugar de darte la respuesta, te guía paso a paso con preguntas, como haría un buen maestro.',
+    usos: ['Aprender tú algo nuevo: Firebase, una hoja de cálculo, un tema del currículo.', 'Ver un modelo de cómo preguntar para que el alumnado piense.'],
+    prompt: 'Quiero entender cómo se publica una web en GitHub Pages. No me des la respuesta de golpe: guíame paso a paso con preguntas.' }
+];
 
 /* ── Textos de los Gems y encargos ─────────────────────────────── */
 const GEM_CONSTRUCTOR = `Eres «Constructor de apps del cole», un asistente que ayuda a docentes sin conocimientos de programación a crear pequeñas aplicaciones web para su centro educativo.
@@ -2329,7 +2473,7 @@ $('respEnviar').onclick = async () => {
 /* ── Mando (móvil) y ventana de ponente ── */
 const mando = $('mando');
 const M = { inicio: Date.now(), reloj: null };
-const TITULOS_PANEL = { inicio: 'Presentación', directo: 'En directo', apps: 'Las apps', ia: 'Crea con IA', taller: 'Taller', galeria: 'Galería' };
+const TITULOS_PANEL = { inicio: 'Presentación', directo: 'En directo', apps: 'Las apps', ia: 'Crea con IA', gemini: 'Gemini', taller: 'Taller', galeria: 'Galería' };
 function tituloDiapo(i) { const d = diapos[i]; if (!d) return ''; const h = d.querySelector('h2'); return h ? h.textContent.trim() : 'Diapositiva ' + (i + 1); }
 function mmss(ms) { const s = Math.floor(ms / 1000); return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); }
 function pintarMando() {
@@ -2761,6 +2905,7 @@ async function iniciarGaleria() {
 }
 function pintarGaleria() {
   if (!G.iniciada || !$('galeria')) return;
+  pintarRecreativa();
   const chip = $('galChip');
   chip.className = 'modo-chip ' + (G.fuente === 'firebase' ? 'vivo' : G.fuente === 'hoja' ? 'hoja' : 'ensayo');
   chip.textContent = G.fuente === 'firebase' ? 'En directo' : G.fuente === 'hoja' ? 'Formulario de Google' : G.fuente === 'error' ? (FB.error || 'Sin conexión') : 'Ejemplo · activa Firebase o un formulario';
@@ -2817,6 +2962,103 @@ $('gEnviar').onclick = async () => {
 };
 $('gCentro').value = leer('galCentro', ''); $('gNombre').value = leer('galNombre', '');
 document.addEventListener('panel', e => { if (e.detail === 'galeria') iniciarGaleria(); });
+
+
+/* ════════════════ PESTAÑA GEMINI ════════════════ */
+const ICONOS_GEM = {
+  clip: '<path d="M21 11.5l-8.5 8.5a5 5 0 0 1-7-7L14 4.5a3.3 3.3 0 0 1 4.7 4.7l-8.5 8.5a1.7 1.7 0 0 1-2.4-2.4l7.8-7.8"/>',
+  nube: '<path d="M7 18h10a4 4 0 0 0 .5-8 6 6 0 0 0-11.5 1.5A3.3 3.3 0 0 0 7 18z"/>',
+  puntos: '<circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/>',
+  imagen: '<rect x="3" y="3" width="18" height="18" rx="5"/><path d="M7 16c2-4 4-5 6-3s3 1 4-1"/>',
+  musica: '<path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/>',
+  canvas: '<rect x="7" y="7" width="14" height="14" rx="3"/><path d="M17 3H6a3 3 0 0 0-3 3v11M14 11v6M11 14h6"/>',
+  research: '<ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(45 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(-45 12 12)"/>',
+  libro: '<path d="M4 6c3-1.5 5.5-1.5 8 0 2.5-1.5 5-1.5 8 0v12c-3-1.5-5.5-1.5-8 0-2.5-1.5-5-1.5-8 0z"/><path d="M12 6v12"/>'
+};
+const GEM_OPS = GEMINI.filter(g => !g.sep);
+let gemVistas = leer('gemVistas', []);
+let gemActual = 0;
+function pintarGemMenu() {
+  let n = -1;
+  $('gemMenu').innerHTML = GEMINI.map(g => {
+    if (g.sep) return '<hr>';
+    n++;
+    return (g.sub ? '<div class="gem-op" style="cursor:default;color:var(--tinta-suave)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">' + ICONOS_GEM.puntos + '</svg>Más herramientas ›</div>' : '') +
+      '<button class="gem-op' + (g.sub ? ' sub' : '') + (gemVistas.includes(g.id) ? ' hecha' : '') + '" role="tab" data-gem="' + n + '" aria-selected="' + (n === gemActual) + '">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + (ICONOS_GEM[g.ico] || '') + '</svg>' +
+      esc(g.nombre) + '<span class="visto" aria-label="vista">✓</span></button>';
+  }).join('');
+  const v = GEM_OPS.filter(g => gemVistas.includes(g.id)).length;
+  $('gemBarra').style.width = Math.round(v * 100 / GEM_OPS.length) + '%';
+  $('gemCuenta').textContent = v + ' de ' + GEM_OPS.length + ' vistas';
+}
+function verGem(i) {
+  gemActual = Math.max(0, Math.min(GEM_OPS.length - 1, i));
+  const g = GEM_OPS[gemActual];
+  if (!gemVistas.includes(g.id)) { gemVistas.push(g.id); guardar('gemVistas', gemVistas); }
+  const f = $('gemFicha');
+  f.style.animation = 'none'; void f.offsetWidth; f.style.animation = '';
+  f.innerHTML = '<div class="donde">' + esc(g.donde || '+ → ' + g.nombre) + '</div><h3>' + esc(g.nombre) + '</h3>' +
+    '<p class="que">' + esc(g.que) + '</p>' +
+    '<h4>En el cole</h4><ul>' + g.usos.map(u => '<li>' + esc(u) + '</li>').join('') + '</ul>' +
+    '<h4>Pruébalo</h4><div class="caja-codigo"><button class="btn suave copiar" data-copiar="gemPrompt">Copiar</button><pre class="codigo" id="gemPrompt" style="white-space:pre-wrap">' + esc(g.prompt) + '</pre></div>' +
+    (g.aviso ? '<p class="alerta">' + esc(g.aviso) + '</p>' : '') +
+    (g.extra ? '<p class="consejo">' + esc(g.extra) + '</p>' : '') +
+    '<div class="gem-nav"><button class="btn linea" data-gemnav="-1"' + (gemActual === 0 ? ' disabled' : '') + '>‹ Anterior</button>' +
+    '<a class="btn azul" href="https://gemini.google.com" target="_blank" rel="noopener">Abrir Gemini</a>' +
+    '<button class="btn linea" data-gemnav="1"' + (gemActual === GEM_OPS.length - 1 ? ' disabled' : '') + '>Siguiente ›</button></div>';
+  pintarGemMenu();
+}
+$('gemMenu').addEventListener('click', e => { const b = e.target.closest('[data-gem]'); if (b) verGem(+b.dataset.gem); });
+$('gemFicha').addEventListener('click', e => { const b = e.target.closest('[data-gemnav]'); if (b) verGem(gemActual + Number(b.dataset.gemnav)); });
+verGem(0);
+
+/* ── Recreativa: la galería proyectada como sala de máquinas ── */
+const recre = document.createElement('div');
+recre.className = 'recreativa'; recre.id = 'recreativa'; recre.setAttribute('role', 'dialog'); recre.setAttribute('aria-label', 'Recreativa del claustro');
+document.body.appendChild(recre);
+let recreFirma = '';
+function pintarRecreativa(forzar) {
+  if (!recre.classList.contains('ver')) return;
+  const lista = G.obras.slice().sort((a, b) => b.votos - a.votos || a.t - b.t);
+  const firma = lista.map(o => o.id + ':' + o.votos).join('|');
+  if (!forzar && firma === recreFirma) return;
+  const nuevaLista = lista.map(o => o.id).join('|') !== recreFirma.split('|').map(x => x.split(':')[0]).join('|');
+  recreFirma = firma;
+  const maxV = lista.length ? lista[0].votos : 0;
+  if (nuevaLista || forzar) {
+    recre.innerHTML = '<div class="recreativa-cab"><div><h2>🕹️ Recreativa del claustro</h2><p>Escanea un código, juega desde el móvil y vota tu favorito en la galería.</p></div>' +
+      '<div class="fila"><button class="btn linea" data-recre="pantalla">Pantalla completa</button><button class="btn azul" data-recre="cerrar">Cerrar</button></div></div>' +
+      (lista.length ? '<div class="maquinas">' + lista.map(o =>
+        '<div class="maquina" data-maq="' + esc(o.id) + '" style="--c:' + colorDe(o.titulo) + '"><h3>' + esc(o.titulo) + '</h3>' +
+        '<div class="quien">' + esc([o.nombre, o.centro].filter(Boolean).join(' · ')) + '</div>' +
+        '<div class="qr" data-qrmaq="' + esc(o.id) + '"></div><div class="votos"></div></div>').join('') + '</div>'
+        : '<div class="vacio">Todavía no hay juegos en la galería.</div>');
+    lista.forEach(o => { const c = recre.querySelector('[data-qrmaq="' + CSS.escape(o.id) + '"]'); if (c) pintarQR(c, o.enlace, 150); });
+  }
+  lista.forEach(o => {
+    const m = recre.querySelector('[data-maq="' + CSS.escape(o.id) + '"]'); if (!m) return;
+    m.querySelector('.votos').textContent = G.fuente === 'firebase' ? '♥ ' + o.votos : '';
+    m.classList.toggle('top', maxV > 0 && o.votos === maxV);
+  });
+}
+async function abrirRecreativa() {
+  await iniciarGaleria();
+  recre.classList.add('ver'); document.body.style.overflow = 'hidden';
+  pintarRecreativa(true);
+}
+function cerrarRecreativa() {
+  recre.classList.remove('ver'); document.body.style.overflow = '';
+  if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+}
+recre.addEventListener('click', e => {
+  const b = e.target.closest('[data-recre]'); if (!b) return;
+  if (b.dataset.recre === 'cerrar') cerrarRecreativa();
+  else if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+  else if (recre.requestFullscreen) recre.requestFullscreen().catch(() => {});
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && recre.classList.contains('ver') && !document.fullscreenElement) cerrarRecreativa(); });
+document.addEventListener('click', e => { if (e.target.closest('[data-recreativa]')) abrirRecreativa(); });
 
 /* ════════════════ ARRANQUE ════════════════ */
 $('reglasDirecto').textContent = "{\n  \"rules\": {\n    \".read\": false,\n    \".write\": false,\n    \"admins\": {\n      \"$uid\": { \".read\": \"auth != null && auth.uid === $uid\" }\n    },\n    \"salas\": {\n      \"$s\": {\n        \".read\": true,\n        \".write\": \"auth != null && data.child('dueno').val() === auth.uid && !newData.exists()\",\n        \"dueno\": {\n          \".write\": \"auth != null && !data.exists() && newData.val() === auth.uid\"\n        },\n        \"estado\": {\n          \".write\": \"auth != null && (root.child('salas/' + $s + '/dueno').val() === auth.uid || root.child('salas/' + $s + '/mandos/' + auth.uid).val() === true)\"\n        },\n        \"mandos\": {\n          \"$uid\": {\n            \".write\": \"auth != null && root.child('salas/' + $s + '/dueno').val() === auth.uid\"\n          }\n        },\n        \"solicitudes\": {\n          \"$uid\": {\n            \".write\": \"auth != null && (auth.uid === $uid || root.child('salas/' + $s + '/dueno').val() === auth.uid)\",\n            \".validate\": \"newData.isString() && newData.val().length <= 40 && root.child('salas/' + $s + '/dueno').exists()\"\n          }\n        },\n        \"respuestas\": {\n          \".write\": \"auth != null && root.child('salas/' + $s + '/dueno').val() === auth.uid\",\n          \"$uid\": {\n            \".write\": \"auth != null && auth.uid === $uid\",\n            \".validate\": \"newData.hasChildren(['texto', 't']) && newData.child('texto').isString() && newData.child('texto').val().length > 0 && newData.child('texto').val().length <= 200 && root.child('salas/' + $s + '/dueno').exists()\"\n          }\n        }\n      }\n    },\n    \"galeria\": {\n      \".read\": true,\n      \"$id\": {\n        \".write\": \"auth != null && ((!data.exists() && newData.child('uid').val() === auth.uid) || data.child('uid').val() === auth.uid || root.child('admins/' + auth.uid).val() === true)\",\n        \".validate\": \"newData.hasChildren(['titulo', 'enlace', 'uid', 't']) && newData.child('titulo').isString() && newData.child('titulo').val().length > 0 && newData.child('titulo').val().length <= 80 && newData.child('enlace').isString() && newData.child('enlace').val().beginsWith('https://') && newData.child('enlace').val().length <= 300 && (!newData.child('problema').exists() || newData.child('problema').val().length <= 200) && (!newData.child('prompt').exists() || newData.child('prompt').val().length <= 2000)\",\n        \"votos\": {\n          \"$uid\": {\n            \".write\": \"auth != null && auth.uid === $uid\",\n            \".validate\": \"newData.val() === true\"\n          }\n        }\n      }\n    }\n  }\n}";
