@@ -58,6 +58,11 @@ nav.pestanas::-webkit-scrollbar{display:none}
 .pestana:hover{background:#fff;color:var(--tinta)}
 .pestana[aria-selected="true"]{background:#fff;color:var(--tinta);padding-bottom:11.5px;
   box-shadow:inset 0 3px 0 var(--rojo)}
+@media (min-width:641px){
+  nav.pestanas{flex-wrap:wrap;overflow:visible;row-gap:6px}
+  .pestana{padding:10px 15px 9px}
+  .pestana[aria-selected="true"]{padding-bottom:10.5px}
+}
 
 main{max-width:1160px;margin:0 auto;padding:34px 24px 80px}
 section.panel{display:none}
@@ -309,6 +314,26 @@ footer{border-top:1.5px solid var(--linea);color:var(--tinta-suave);font-size:.8
 .ensayo-caja input{flex:1}
 
 /* Sala y mando */
+.inicio-directo{display:flex;gap:20px;align-items:flex-start;border:2px solid var(--azul);background:var(--azul-claro)}
+.paso-num{flex:none;width:52px;height:52px;border-radius:50%;background:var(--azul);color:#fff;display:grid;place-items:center;font:800 1.5rem var(--display)}
+.btn.grande{min-height:58px;font-size:1.1rem;padding:12px 28px;margin-top:16px}
+.barra-sesion{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.barra-sesion .modo-chip{font-size:1rem;padding:8px 16px}
+#directoSesion > .tarjeta{margin-bottom:18px}
+.qr-titulo{font-family:var(--display);font-weight:800;font-size:1.25rem;margin-bottom:8px}
+.qr-codigo{font:700 .95rem var(--mono);color:var(--azul-hover);margin-top:8px;letter-spacing:.1em}
+.pregunta-fila{display:flex;gap:12px;align-items:flex-start;justify-content:space-between;margin-bottom:10px}
+.pregunta-fila p{margin:0}
+.ayuda-radio{font-size:.86rem;color:var(--tinta-suave);margin-top:8px}
+.mando-tarjeta{display:grid;grid-template-columns:170px 1fr;gap:20px;align-items:start}
+.mando-tarjeta .qr{display:flex;justify-content:center;align-items:center;min-height:170px;border:1.5px solid var(--linea);border-radius:var(--r-m);padding:8px;background:#fff}
+.enlace{background:none;border:0;padding:0;color:var(--azul);font:inherit;font-weight:700;text-decoration:underline;cursor:pointer}
+details.mini{margin-top:12px;font-size:.88rem;color:var(--tinta-suave)}
+details.mini summary{cursor:pointer;font-weight:700}
+#avisosMando{position:fixed;right:16px;bottom:16px;z-index:65;display:grid;gap:8px;max-width:440px}
+#avisosMando .solicitud{margin:0;box-shadow:0 10px 30px rgba(27,42,78,.2);border:1.5px solid #F1D48A}
+.qr .btn{white-space:normal}
+@media (max-width:640px){ .mando-tarjeta{grid-template-columns:1fr} .inicio-directo{flex-direction:column} }
 .sala-dos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:14px}
 .sala-dos .qr{display:flex;justify-content:center;padding:10px;background:#fff;border:1.5px solid var(--linea);border-radius:var(--r-m);min-height:190px;align-items:center}
 .codigo-sala{font:800 2.2rem var(--mono);letter-spacing:.18em;color:var(--azul-hover)}
@@ -480,11 +505,11 @@ details.activar ol{padding-left:22px;display:grid;gap:6px;margin:8px 0}
 <nav class="pestanas" role="tablist" aria-label="Secciones de la formación">
   <button class="pestana" role="tab" id="t-inicio" aria-controls="panel-inicio" data-panel="inicio">Presentación</button>
   <button class="pestana" role="tab" id="t-directo" aria-controls="panel-directo" data-panel="directo">En directo</button>
-  <button class="pestana" role="tab" id="t-apps" aria-controls="panel-apps" data-panel="apps">Las apps</button>
-  <button class="pestana" role="tab" id="t-configurar" aria-controls="panel-configurar" data-panel="configurar">Configurar para tu centro</button>
-  <button class="pestana" role="tab" id="t-guias" aria-controls="panel-guias" data-panel="guias">Guías paso a paso</button>
-  <button class="pestana" role="tab" id="t-ia" aria-controls="panel-ia" data-panel="ia">Crea la tuya con IA</button>
-  <button class="pestana" role="tab" id="t-taller" aria-controls="panel-taller" data-panel="taller">Taller de errores</button>
+  <button class="pestana" title="Las apps" role="tab" id="t-apps" aria-controls="panel-apps" data-panel="apps">Apps</button>
+  <button class="pestana" title="Configurar para tu centro" role="tab" id="t-configurar" aria-controls="panel-configurar" data-panel="configurar">Configurar</button>
+  <button class="pestana" title="Guías paso a paso" role="tab" id="t-guias" aria-controls="panel-guias" data-panel="guias">Guías</button>
+  <button class="pestana" title="Crea la tuya con IA" role="tab" id="t-ia" aria-controls="panel-ia" data-panel="ia">Crear con IA</button>
+  <button class="pestana" title="Taller de errores" role="tab" id="t-taller" aria-controls="panel-taller" data-panel="taller">Taller</button>
   <button class="pestana" role="tab" id="t-galeria" aria-controls="panel-galeria" data-panel="galeria">Galería</button>
   <button class="pestana" role="tab" id="t-recursos" aria-controls="panel-recursos" data-panel="recursos">Recursos</button>
 </nav>
@@ -502,7 +527,7 @@ details.activar ol{padding-left:22px;display:grid;gap:6px;margin:8px 0}
       <p class="firma" id="firmaDiapo"></p>
     </div>
 
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="Pedir que escaneen el QR y respondan en una frase. Mientras llegan, comentar qué temas suben. El reto de la tarde saldrá de aquí." data-actividad="radiografia">
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="Si el QR no aparece, pulsa «Empezar sesión en directo». Que escaneen y respondan en una frase; mientras llegan, comentar qué temas suben. El reto de la tarde saldrá de aquí." data-actividad="radiografia">
       <p class="num">Antes de empezar</p>
       <h2 class="medio" data-pregunta-diapo></h2>
       <div class="radio-diapo">
@@ -597,44 +622,79 @@ details.activar ol{padding-left:22px;display:grid;gap:6px;margin:8px 0}
 <section class="panel" id="panel-directo" role="tabpanel" aria-labelledby="t-directo">
   <div class="intro">
     <h2>En directo</h2>
-    <p>La radiografía del claustro y el modo ponente. Proyecta esta pestaña mientras llegan las respuestas.</p>
+    <p>El claustro responde desde el móvil y tú lo proyectas aquí.</p>
   </div>
-  <p><span class="modo-chip" id="modoChip">Comprobando…</span></p>
 
-  <div class="tarjeta" style="margin-top:16px">
-    <div class="radio" id="radio">
-      <div class="radio-qr">
-        <div class="qr" id="radioQR"></div>
-        <p id="radioURL" style="font-size:.82rem;color:var(--tinta-suave);margin-top:8px;word-break:break-all"></p>
-        <div class="cuenta"><span id="radioCuenta">0</span><small>respuestas</small></div>
-      </div>
-      <div>
-        <label class="campo no-proyectar" id="campoPregunta"><span>Pregunta</span><input type="text" id="radioPreguntaIn" maxlength="120"></label>
-        <p><span class="radio-pregunta" id="radioPregunta"></span></p>
-        <div class="temas" id="radioTemas"></div>
-        <div class="nube" id="radioNube" aria-label="Palabras más repetidas"></div>
-        <div class="respuestas" id="radioResps"></div>
-        <div class="ensayo-caja no-proyectar" id="radioEnsayo">
-          <input type="text" id="radioEnsayoIn" maxlength="200" placeholder="Respuesta de prueba (modo ensayo)">
-          <button class="btn linea" id="radioEnsayoBtn">Añadir</button>
-          <button class="btn linea" id="radioEjemplos">Cargar ejemplos</button>
-        </div>
-        <div class="radio-acciones no-proyectar">
-          <button class="btn azul" id="radioReto">Convertir en encargo para la IA</button>
-          <button class="btn linea" id="radioAbrir">Abrir preguntas en los móviles</button>
-          <button class="btn linea" id="radioPantalla">Proyectar</button>
-          <button class="btn linea" id="radioVaciar">Vaciar</button>
-        </div>
-        <p style="font-size:.86rem;color:var(--tinta-suave);margin-top:8px" class="no-proyectar">Toca las respuestas o un tema para elegir de qué sale el encargo. Sin elegir nada, se usan todas.</p>
-        <div class="estado" id="radioEstado"></div>
-      </div>
+  <div class="tarjeta inicio-directo" id="directoInicio">
+    <div class="paso-num" aria-hidden="true">▶</div>
+    <div>
+      <h3>Empieza la sesión</h3>
+      <p>Aparecerá un código QR. Quien lo escanee podrá responder a la pregunta y seguir la presentación en su móvil.</p>
+      <button class="btn azul grande" id="btnAbrirSala">Empezar sesión en directo</button>
+      <div class="estado" id="salaError"></div>
     </div>
   </div>
 
-  <h3 class="bloque">Modo ponente</h3>
-  <div class="tarjeta" id="salaCuerpo"></div>
+  <div id="directoSesion">
+    <div class="barra-sesion">
+      <span class="modo-chip" id="modoChip">Comprobando…</span>
+      <button class="btn linea" id="btnCerrarSala">Terminar sesión</button>
+    </div>
 
-  <details class="activar">
+    <div class="tarjeta">
+      <div class="radio" id="radio">
+        <div class="radio-qr">
+          <p class="qr-titulo">Escanea y responde</p>
+          <div class="qr" id="radioQR"></div>
+          <p id="radioURL" class="qr-codigo"></p>
+          <div class="cuenta"><span id="radioCuenta">0</span><small>respuestas</small></div>
+        </div>
+        <div>
+          <div class="pregunta-fila">
+            <p><span class="radio-pregunta" id="radioPregunta"></span></p>
+            <button class="btn linea no-proyectar" id="btnEditarPregunta" style="flex:none;white-space:nowrap;min-height:38px;padding:5px 12px;font-size:.88rem">Cambiar pregunta</button>
+          </div>
+          <div class="ensayo-caja no-proyectar" id="campoPregunta" style="display:none">
+            <input type="text" id="radioPreguntaIn" maxlength="120" aria-label="Pregunta">
+            <button class="btn azul" id="btnGuardarPregunta">Guardar</button>
+          </div>
+          <div class="temas" id="radioTemas"></div>
+          <div class="nube" id="radioNube" aria-label="Palabras más repetidas"></div>
+          <div class="respuestas" id="radioResps"></div>
+          <div class="ensayo-caja no-proyectar" id="radioEnsayo">
+            <input type="text" id="radioEnsayoIn" maxlength="200" placeholder="Respuesta de prueba (modo ensayo)">
+            <button class="btn linea" id="radioEnsayoBtn">Añadir</button>
+            <button class="btn linea" id="radioEjemplos">Cargar ejemplos</button>
+          </div>
+          <div class="radio-acciones no-proyectar">
+            <button class="btn azul" id="radioReto">Convertir en encargo para la IA</button>
+            <button class="btn linea" id="radioPantalla">Pantalla completa</button>
+            <button class="btn linea" id="radioVaciar">Borrar respuestas</button>
+          </div>
+          <p class="no-proyectar ayuda-radio">Toca respuestas o un tema para elegir de qué sale el encargo. Si no eliges nada, se usan todas.</p>
+          <div class="estado" id="radioEstado"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tarjeta mando-tarjeta" id="mandoTarjeta">
+      <div class="qr" id="qrMando"></div>
+      <div>
+        <h3>Tu móvil como mando (opcional)</h3>
+        <p>Escanea este código con <strong>tu</strong> móvil y pulsa «Autorizar» en el aviso que saldrá abajo a la derecha. Verás tus notas, la siguiente diapositiva y el reloj.</p>
+        <p style="margin-top:10px">¿Sin móvil? <button class="enlace" id="btnVentana">Abre la ventana de ponente en este ordenador</button>.</p>
+        <details class="mini"><summary>Moderar la galería</summary><p id="uidLinea"></p></details>
+      </div>
+    </div>
+
+    <div class="tarjeta" id="ensayoVentana">
+      <h3>Ventana de ponente</h3>
+      <p>Notas, siguiente diapositiva y reloj en este mismo ordenador. Con la pantalla extendida, el proyector muestra las diapositivas y tu portátil, la ventana.</p>
+      <button class="btn linea" id="btnVentana2" style="margin-top:12px">Abrir ventana de ponente</button>
+    </div>
+  </div>
+
+  <details class="activar" id="activar">
     <summary>Cómo activar el directo</summary>
     <div>
       <p><strong>Opción A · Firebase (todo: sala, mando, radiografía y galería con votos)</strong></p>
@@ -1097,7 +1157,7 @@ details.activar ol{padding-left:22px;display:grid;gap:6px;margin:8px 0}
     <p class="radio-pregunta" id="respTitulo"></p>
     <textarea class="resp-texto" id="respTexto" maxlength="200" style="margin-top:16px" aria-label="Tu respuesta"></textarea>
     <p style="margin:8px 0 16px">Es anónimo. Una frase basta, sin nombres de alumnado.</p>
-    <div class="fila"><button class="btn azul" id="respEnviar">Enviar</button><button class="btn linea" id="respCerrar">Ahora no</button></div>
+    <div class="fila"><button class="btn azul" id="respEnviar">Enviar</button><button class="btn linea" id="respCerrar">Cerrar</button></div>
   </div>
 </div>
 <script>
@@ -2126,7 +2186,7 @@ const LETRAS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 const nuevoCodigo = () => Array.from({ length: 4 }, () => LETRAS[Math.floor(Math.random() * LETRAS.length)]).join('');
 async function abrirSala(soloRetomar) {
   S.errorSala = '';
-  if (!await iniciarFirebase()) { S.errorSala = FB.error; pintarSala(); return; }
+  if (!await iniciarFirebase()) { S.errorSala = FB.error; pintarSala(); ultimoQRDiapo = ultimoQR = null; pintarRadio(); tostada(FB.error); return; }
   let cod = leer('salaPropia', '');
   if (cod) {
     try { if ((await ref('salas/' + cod + '/dueno').get()).val() !== FB.uid) cod = ''; } catch (e) { cod = ''; }
@@ -2136,7 +2196,7 @@ async function abrirSala(soloRetomar) {
     const c = nuevoCodigo();
     try { await ref('salas/' + c + '/dueno').set(FB.uid); cod = c; } catch (e) { /* ocupado o sin permiso */ }
   }
-  if (!cod) { S.errorSala = 'No se pudo crear la sala. Revisa que las reglas estén publicadas.'; pintarSala(); return; }
+  if (!cod) { S.errorSala = 'No se pudo empezar la sesión. Revisa que las reglas estén publicadas y el acceso Anónimo activado.'; pintarSala(); ultimoQRDiapo = ultimoQR = null; pintarRadio(); tostada(S.errorSala); return; }
   guardar('salaPropia', cod);
   S.rol = 'dueno'; S.sala = cod;
   Object.assign(S.estado, { panel: panelActual(), diapo: dActual, pregunta: preguntaActual() });
@@ -2145,13 +2205,14 @@ async function abrirSala(soloRetomar) {
   ref('salas/' + cod + '/solicitudes').on('value', sn => { S.solicitudes = sn.val() || {}; pintarSala(); });
   try { S.admin = (await ref('admins/' + FB.uid).get()).val() === true; } catch (e) { S.admin = false; }
   conectarRespuestas(); pintarSala(); pintarModo(); pintarRadio(); pintarGaleria();
+  if (!soloRetomar) tostada('Sesión ' + cod + ' en directo');
 }
 async function cerrarSala() {
   if (!confirm('¿Cerrar la sala ' + S.sala + '? Se borran sus respuestas y los móviles dejan de seguirte.')) return;
   try { await ref('salas/' + S.sala).remove(); } catch (e) {}
   ref('salas/' + S.sala).off(); ['estado', 'solicitudes', 'respuestas'].forEach(n => ref('salas/' + S.sala + '/' + n).off());
   guardar('salaPropia', ''); S.rol = 'local'; S.sala = ''; S.estado.actividad = '';
-  R.lista = []; conectarRespuestas(); pintarSala(); pintarModo(); pintarRadio();
+  R.lista = []; ultimoQR = ultimoQRDiapo = null; conectarRespuestas(); pintarSala(); pintarModo(); pintarRadio();
 }
 async function autorizar(uid, si) {
   try {
@@ -2165,39 +2226,37 @@ function abrirVentanaPonente() {
   if (!w) tostada('El navegador ha bloqueado la ventana: permite ventanas emergentes');
 }
 
+const avisos = document.createElement('div'); avisos.id = 'avisosMando'; avisos.setAttribute('aria-live', 'polite');
+document.body.appendChild(avisos);
+let ultimoQRMando = null;
 function pintarSala() {
-  const c = $('salaCuerpo'); if (!c) return;
-  const btnVentana = '<button class="btn linea" id="btnVentana">Abrir ventana de ponente</button>';
-  if (S.rol === 'dueno') {
-    const sol = Object.entries(S.solicitudes).map(([uid, et]) =>
-      '<div class="solicitud">📱 ' + esc(et || 'Un móvil') + ' quiere ser tu mando<span class="fila">' +
-      '<button class="btn azul" data-autorizar="' + esc(uid) + '">Autorizar</button>' +
-      '<button class="btn linea" data-rechazar="' + esc(uid) + '">Rechazar</button></span></div>').join('');
-    c.innerHTML =
-      '<div class="fila" style="justify-content:space-between"><div><p style="color:var(--tinta-suave);font-size:.9rem">Sala abierta</p>' +
-      '<div class="codigo-sala">' + esc(S.sala) + '</div></div><div class="fila">' + btnVentana +
-      '<button class="btn linea" id="btnCerrarSala">Cerrar sala</button></div></div>' + sol +
-      '<div class="sala-dos"><div><h3>Para el claustro</h3><p style="color:var(--tinta-suave);font-size:.9rem;margin-bottom:8px">Siguen la presentación en su móvil y responden a la radiografía.</p><div class="qr" id="qrSala"></div></div>' +
-      '<div><h3>Tu móvil como mando</h3><p style="color:var(--tinta-suave);font-size:.9rem;margin-bottom:8px">Escanéalo tú y autorízalo aquí. Verás tus notas y el reloj.</p><div class="qr" id="qrMando"></div></div></div>' +
-      '<p style="font-size:.82rem;color:var(--tinta-suave);margin-top:14px">Tu identificador: <code>' + esc(FB.uid) + '</code> <button class="btn suave" style="min-height:32px;padding:3px 10px;font-size:.8rem" id="btnCopiarUid">Copiar</button>' +
-      (S.admin ? ' · <strong style="color:var(--ok)">Puedes moderar la galería</strong>' : ' · Añádelo en <code>admins</code> para moderar la galería') + '</p>';
-    pintarQR($('qrSala'), BASE + '#sala=' + S.sala, 180);
-    pintarQR($('qrMando'), BASE + '#mando=' + S.sala, 180);
-  } else if (hayFirebase()) {
-    c.innerHTML = '<p>Abre una sala para que el claustro siga la presentación en su móvil, responda a la radiografía y puedas usar tu móvil como mando.</p>' +
-      '<div class="fila" style="margin-top:12px"><button class="btn azul" id="btnAbrirSala">Abrir sala</button>' + btnVentana + '</div>' +
-      (S.errorSala ? '<div class="estado ver error"><b>✕</b><span>' + esc(S.errorSala) + '</span></div>' : '');
-  } else {
-    c.innerHTML = '<p>Sin Firebase, la <strong>ventana de ponente</strong> funciona en este mismo ordenador: notas, siguiente diapositiva, reloj y control de las pestañas. Con la pantalla extendida, el proyector muestra las diapositivas y tu portátil, la ventana.</p>' +
-      '<div class="fila" style="margin-top:12px">' + btnVentana + '</div>' +
-      '<p style="font-size:.88rem;color:var(--tinta-suave);margin-top:12px">Para usar el móvil como mando y que el claustro siga la sesión en el suyo, activa Firebase (abajo).</p>';
-  }
+  if (!$('directoInicio')) return;
+  const hay = hayFirebase(), sesion = S.rol === 'dueno', asis = S.rol === 'asistente';
+  $('directoInicio').style.display = hay && !sesion && !asis ? '' : 'none';
+  $('directoSesion').style.display = !hay || sesion || asis ? '' : 'none';
+  $('activar').style.display = hay ? 'none' : '';
+  $('btnCerrarSala').style.display = sesion ? '' : 'none';
+  $('mandoTarjeta').style.display = sesion ? '' : 'none';
+  $('ensayoVentana').style.display = !hay ? '' : 'none';
+  if (S.errorSala) estado('salaError', 'error', esc(S.errorSala)); else ocultarEstado('salaError');
+  const b = $('btnAbrirSala'); b.disabled = false; b.textContent = 'Empezar sesión en directo';
+  avisos.innerHTML = sesion ? Object.entries(S.solicitudes).map(([uid, et]) =>
+    '<div class="solicitud">📱 ' + esc(et || 'Un móvil') + ' pide ser tu mando<span class="fila">' +
+    '<button class="btn azul" data-autorizar="' + esc(uid) + '">Autorizar</button>' +
+    '<button class="btn linea" data-rechazar="' + esc(uid) + '">Rechazar</button></span></div>').join('') : '';
+  if (!sesion) return;
+  const dm = BASE + '#mando=' + S.sala;
+  if (dm !== ultimoQRMando) { ultimoQRMando = dm; pintarQR($('qrMando'), dm, 160); }
+  $('uidLinea').innerHTML = 'Tu identificador: <code>' + esc(FB.uid) + '</code> <button class="enlace" id="btnCopiarUid">Copiar</button>. ' +
+    (S.admin ? '<strong style="color:var(--ok)">Ya puedes borrar apps de la galería.</strong>' : 'Añádelo en la base de datos, en <code>admins</code> → tu identificador → <code>true</code>, para poder borrar apps de la galería.');
 }
 document.addEventListener('click', e => {
   const t = e.target.closest('button'); if (!t) return;
-  if (t.id === 'btnAbrirSala') { t.disabled = true; t.textContent = 'Abriendo…'; abrirSala(false); }
+  if (t.id === 'btnAbrirSala' || t.hasAttribute('data-empezar')) {
+    t.disabled = true; t.textContent = 'Empezando…'; abrirSala(false);
+  }
   else if (t.id === 'btnCerrarSala') cerrarSala();
-  else if (t.id === 'btnVentana') abrirVentanaPonente();
+  else if (t.id === 'btnVentana' || t.id === 'btnVentana2') abrirVentanaPonente();
   else if (t.id === 'btnCopiarUid') copiar(FB.uid).then(ok => tostada(ok ? 'Identificador copiado' : 'No se pudo copiar'));
   else if (t.dataset.autorizar) autorizar(t.dataset.autorizar, true);
   else if (t.dataset.rechazar) autorizar(t.dataset.rechazar, false);
@@ -2206,9 +2265,9 @@ document.addEventListener('click', e => {
 function pintarModo() {
   const chip = $('modoChip'); if (!chip) return;
   let clase = 'ensayo', txt = 'Modo ensayo · todo en este ordenador';
-  if (S.sala && FB.ok) { clase = 'vivo'; txt = (S.rol === 'asistente' ? 'Conectado a la sala ' : 'Sala ') + S.sala + ' en directo'; }
-  else if (hayFirebase()) { clase = FB.error ? 'ensayo' : 'hoja'; txt = FB.error ? FB.error : 'Firebase listo · abre una sala'; }
-  else if (DIRECTO.radiografia.hoja) { clase = 'hoja'; txt = 'Formulario de Google'; }
+  if (S.sala && FB.ok) { clase = 'vivo'; txt = (S.rol === 'asistente' ? 'Conectado a la sesión ' : 'Sesión ') + S.sala + ' en directo'; }
+  else if (hayFirebase() && FB.error) txt = FB.error;
+  else if (DIRECTO.radiografia.hoja) { clase = 'hoja'; txt = 'Respuestas desde el formulario de Google'; }
   chip.className = 'modo-chip ' + clase; chip.textContent = txt;
 }
 
@@ -2219,9 +2278,8 @@ document.body.insertBefore(banner, document.body.firstChild);
 function pintarBanner(txt) {
   if (S.rol !== 'asistente') { banner.classList.remove('ver'); return; }
   banner.classList.add('ver');
-  const abierta = S.estado.actividad === 'radiografia';
-  banner.innerHTML = '<span>' + esc(txt || (S.siguiendo ? 'Sigues la presentación · sala ' + S.sala : 'Vas por libre · sala ' + S.sala)) + '</span>' +
-    (abierta && !leer('resp:' + S.sala, false) ? '<button data-b="responder">Responder la pregunta</button>' : '') +
+  banner.innerHTML = '<span>' + esc(txt || (S.siguiendo ? 'Sigues la presentación · sesión ' + S.sala : 'Vas por libre · sesión ' + S.sala)) + '</span>' +
+    (txt ? '' : '<button data-b="responder">' + (leer(claveResp(), false) ? 'Cambiar mi respuesta' : 'Responder la pregunta') + '</button>') +
     (txt ? '' : '<button data-b="seguir">' + (S.siguiendo ? 'Ir por libre' : 'Volver a seguir') + '</button>') +
     '<button data-b="salir">Salir</button>';
 }
@@ -2239,28 +2297,32 @@ async function iniciarAsistente(sala) {
     if (!e) { pintarBanner('La sala ' + sala + ' no existe o ya ha terminado'); return; }
     aplicarEstado(e, S.siguiendo);
   });
-  conectarRespuestas(); pintarModo(); pintarRadio();
+  conectarRespuestas(); pintarModo(); pintarRadio(); pintarSala();
+  R.ultPregunta = null; setTimeout(revisarActividad, 900);
 }
 function abrirRespuesta() {
   $('respTitulo').textContent = preguntaActual();
-  $('respTexto').value = '';
+  $('respTexto').value = leer('respTxt:' + S.sala, '');
   $('veloResp').classList.add('ver'); $('respTexto').focus();
 }
+function claveResp() { return 'resp:' + S.sala + ':' + plano(preguntaActual()).slice(0, 60); }
 function revisarActividad() {
   pintarBanner();
-  const ya = leer('resp:' + S.sala, false);
-  if (S.estado.actividad === 'radiografia' && !ya && !R.descartado && !$('veloResp').classList.contains('ver')) abrirRespuesta();
-  if (S.estado.actividad !== 'radiografia') $('veloResp').classList.remove('ver');
+  if (!FB.ok) return;
+  const p = preguntaActual();
+  if ($('veloResp').classList.contains('ver')) $('respTitulo').textContent = p;
+  else if (p !== R.ultPregunta && !leer(claveResp(), false)) abrirRespuesta();
+  R.ultPregunta = p;
 }
-$('respCerrar').onclick = () => { R.descartado = true; $('veloResp').classList.remove('ver'); };
+$('respCerrar').onclick = () => $('veloResp').classList.remove('ver');
 $('respEnviar').onclick = async () => {
   const t = $('respTexto').value.trim().slice(0, 200);
   if (!t) { $('respTexto').focus(); return; }
   if (S.rol !== 'asistente' || !FB.ok) { $('veloResp').classList.remove('ver'); return; }
   try {
     await ref('salas/' + S.sala + '/respuestas/' + FB.uid).set({ texto: t, t: TS() });
-    guardar('resp:' + S.sala, true); $('veloResp').classList.remove('ver');
-    tostada('¡Gracias! Mira la pizarra');
+    guardar(claveResp(), true); guardar('respTxt:' + S.sala, t); $('veloResp').classList.remove('ver');
+    tostada('¡Gracias! Mira la pizarra'); pintarBanner();
   } catch (e) { tostada('No se pudo enviar'); }
 };
 
@@ -2291,7 +2353,6 @@ function pintarMando() {
     '<div class="mando-botones"><button class="ant" data-m="ant" aria-label="Anterior">‹</button><button class="sig" data-m="sig" aria-label="Siguiente">›</button></div>' +
     '<div class="mando-paneles">' + Object.keys(TITULOS_PANEL).map(p =>
       '<button data-m="panel" data-p="' + p + '" aria-current="' + (S.estado.panel === p) + '">' + TITULOS_PANEL[p] + '</button>').join('') + '</div>' +
-    (S.rol === 'mando' || hayFirebase() ? '<button class="btn ' + (abierta ? 'linea' : 'azul') + '" data-m="actividad" style="min-height:54px">' + (abierta ? 'Cerrar la pregunta en los móviles' : 'Abrir la pregunta en los móviles') + '</button>' : '') +
     '</div>';
 }
 mando.addEventListener('click', e => {
@@ -2303,7 +2364,6 @@ mando.addEventListener('click', e => {
     verDiapo(dActual + (m === 'sig' ? 1 : -1));
     if (navigator.vibrate) navigator.vibrate(15);
   } else if (m === 'panel') irA(b.dataset.p);
-  else if (m === 'actividad') emitir({ actividad: S.estado.actividad === 'radiografia' ? '' : 'radiografia' });
 });
 function arrancarReloj() { clearInterval(M.reloj); M.reloj = setInterval(() => { const r = $('mReloj'); if (r) r.textContent = mmss(Date.now() - M.inicio); }, 1000); }
 function etiquetaDispositivo() {
@@ -2405,7 +2465,7 @@ function destinoQR() {
 }
 function avisoQR() {
   if (S.rol === 'asistente') return 'Ya estás en la sala ' + S.sala + '. Responde desde el botón de arriba cuando se abra la pregunta.';
-  return hayFirebase() ? 'Abre una sala en «Modo ponente» y aquí aparecerá el código.' : 'Modo ensayo. Con Firebase o un formulario de Google, aquí aparecerá el código para los móviles.';
+  return hayFirebase() ? '<button class="btn azul" data-empezar>Empezar sesión en directo</button>' : 'Modo ensayo. Con Firebase o un formulario de Google, aquí aparecerá el código para los móviles.';
 }
 let ultimoQR = null;
 function pintarPregunta() {
@@ -2433,7 +2493,7 @@ function pintarRadio() {
   $('radioCuenta').textContent = lista.length;
   const destino = destinoQR();
   if (destino !== ultimoQR) { ultimoQR = destino; pintarQR($('radioQR'), destino, 230, avisoQR()); }
-  $('radioURL').textContent = destino && destino.includes('#sala=') ? 'Sala ' + S.sala : '';
+  $('radioURL').textContent = destino && destino.includes('#sala=') ? 'Código ' + S.sala : '';
   // temas
   const porTema = {};
   lista.forEach(r => { const t = temaDe(r.texto); porTema[t.id] = (porTema[t.id] || 0) + 1; });
@@ -2450,19 +2510,14 @@ function pintarRadio() {
     : '<p style="color:var(--tinta-suave);font-size:.93rem">Todavía no hay respuestas.</p>';
   // controles según el rol
   const puedeGestionar = S.rol === 'dueno' || R.fuente === 'ensayo';
-  $('campoPregunta').style.display = puedeGestionar ? '' : 'none';
+  $('btnEditarPregunta').style.display = puedeGestionar ? '' : 'none';
+  if (!puedeGestionar) $('campoPregunta').style.display = 'none';
   $('radioEnsayo').style.display = R.fuente === 'ensayo' ? '' : 'none';
-  $('radioAbrir').style.display = S.rol === 'dueno' ? '' : 'none';
   $('radioVaciar').style.display = puedeGestionar ? '' : 'none';
   if (R.error) estado('radioEstado', 'error', esc(R.error)); else ocultarEstado('radioEstado');
   pintarBotonActividad(); pintarDiapoRadio(); pintarModo();
 }
-function pintarBotonActividad() {
-  const b = $('radioAbrir'); if (!b) return;
-  const abierta = S.estado.actividad === 'radiografia';
-  b.textContent = abierta ? 'Cerrar la pregunta en los móviles' : 'Abrir la pregunta en los móviles';
-  b.className = 'btn ' + (abierta ? 'suave' : 'linea');
-}
+function pintarBotonActividad() {}
 let ultimoQRDiapo = null;
 function pintarDiapoRadio() {
   const q = $('diapoQR'); if (!q) return;
@@ -2502,7 +2557,9 @@ $('radioVaciar').onclick = async () => {
   if (R.fuente === 'sala') { try { await ref('salas/' + S.sala + '/respuestas').remove(); } catch (e) { tostada('No se pudo vaciar'); } }
   else { R.lista = []; guardar('ensayo', []); pintarRadio(); }
 };
-$('radioAbrir').onclick = () => emitir({ actividad: S.estado.actividad === 'radiografia' ? '' : 'radiografia' });
+$('btnEditarPregunta').onclick = () => { const c = $('campoPregunta'); c.style.display = c.style.display === 'none' ? '' : 'none'; if (c.style.display === '') { $('radioPreguntaIn').value = preguntaActual(); $('radioPreguntaIn').focus(); } };
+$('btnGuardarPregunta').onclick = () => { $('radioPreguntaIn').dispatchEvent(new Event('change')); $('campoPregunta').style.display = 'none'; tostada('Pregunta cambiada'); };
+$('radioPreguntaIn').addEventListener('keydown', e => { if (e.key === 'Enter') $('btnGuardarPregunta').click(); });
 $('radioPantalla').onclick = () => {
   const r = $('radio');
   if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
