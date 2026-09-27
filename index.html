@@ -261,6 +261,181 @@ ul.enlaces{list-style:none;display:flex;flex-wrap:wrap;gap:10px}
 
 footer{border-top:1.5px solid var(--linea);color:var(--tinta-suave);font-size:.88rem;text-align:center;padding:22px;background:rgba(255,255,255,.55)}
 
+
+/* ══════════ NUEVO: En directo · Mando · Historia · Taller · Galería ══════════ */
+.tarjeta{background:#fff;border:1.5px solid var(--linea);border-radius:var(--r-l);padding:22px}
+.tarjeta h3{font-family:var(--display);font-weight:600;font-size:1.25rem;margin-bottom:6px}
+.tarjeta > p{color:var(--tinta-suave);font-size:.95rem;max-width:70ch}
+.modo-chip{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.9rem;padding:6px 14px;border-radius:30px;background:#F1F4F8;color:var(--tinta-suave)}
+.modo-chip::before{content:"";width:10px;height:10px;border-radius:50%;background:#9AA6BA}
+.modo-chip.vivo{background:var(--ok-claro);color:var(--ok)}
+.modo-chip.vivo::before{background:var(--ok);animation:latido 1.6s ease-in-out infinite}
+.modo-chip.hoja{background:var(--azul-claro);color:var(--azul-hover)}
+.modo-chip.hoja::before{background:var(--azul)}
+.modo-chip.ensayo{background:var(--aviso-claro);color:var(--aviso)}
+.modo-chip.ensayo::before{background:#D69E2E}
+@keyframes latido{50%{transform:scale(1.5);opacity:.5}}
+
+/* Radiografía */
+.radio{display:grid;grid-template-columns:minmax(240px,300px) minmax(0,1fr);gap:22px;align-items:start}
+.radio-qr{text-align:center}
+.radio-qr .qr{display:flex;justify-content:center;align-items:center;min-height:230px;background:#fff;border:1.5px solid var(--linea);border-radius:var(--r-m);padding:12px}
+.radio-qr .qr img,.radio-qr .qr canvas{max-width:100%;height:auto}
+.radio-qr .qr-vacio{color:var(--tinta-suave);font-size:.9rem;padding:10px}
+.radio-qr .cuenta{font:800 3rem var(--display);line-height:1;margin-top:14px}
+.radio-qr .cuenta small{display:block;font:400 .9rem var(--texto);color:var(--tinta-suave);margin-top:4px}
+.radio-pregunta{font-family:var(--display);font-weight:800;font-size:clamp(1.4rem,2.6vw,2rem);line-height:1.15;margin-bottom:14px;
+  background:linear-gradient(transparent 62%,var(--subrayador) 62%);display:inline}
+.temas{display:grid;gap:8px;margin:20px 0 6px}
+.tema{display:grid;grid-template-columns:minmax(120px,190px) 1fr 34px;gap:10px;align-items:center;font-size:.93rem;cursor:pointer;
+  border-radius:8px;padding:3px 6px;border:0;background:none;text-align:left;font-family:inherit;color:inherit}
+.tema:hover,.tema[aria-pressed="true"]{background:#F3F6FB}
+.tema .barra{height:16px;background:#EEF2F7;border-radius:8px;overflow:hidden}
+.tema .barra i{display:block;height:100%;background:var(--c);border-radius:8px;transition:width .5s ease}
+.tema b{text-align:right}
+.nube{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;justify-content:center;padding:18px 10px;min-height:90px;
+  background:#FAFCFF;border:1.5px dashed #C9D6E8;border-radius:var(--r-m);margin:14px 0}
+.nube span{font-family:var(--display);font-weight:800;line-height:1.1;color:var(--tinta);animation:entra .4s ease}
+.respuestas{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;max-height:340px;overflow:auto;padding:2px}
+.resp{background:#FFFDF3;border:1.5px solid #F1E3A3;border-radius:10px;padding:10px 12px;font-size:.93rem;text-align:left;cursor:pointer;
+  font-family:inherit;color:inherit;line-height:1.45;transition:transform .1s,border-color .15s;animation:entra .35s ease}
+.resp:hover{border-color:#D9C25A}
+.resp[aria-pressed="true"]{border-color:var(--azul);background:var(--azul-claro);box-shadow:0 0 0 2px var(--azul) inset}
+.resp small{display:block;color:var(--tinta-suave);font-size:.78rem;margin-top:4px}
+.radio-acciones{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px}
+.radio.pantalla{position:fixed;inset:0;z-index:40;background:#fff;padding:36px;overflow:auto;grid-template-columns:minmax(260px,360px) 1fr}
+.radio.pantalla .radio-pregunta{font-size:2.4rem}
+.ensayo-caja{display:flex;gap:8px;margin-top:10px}
+.ensayo-caja input{flex:1}
+
+/* Sala y mando */
+.sala-dos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:14px}
+.sala-dos .qr{display:flex;justify-content:center;padding:10px;background:#fff;border:1.5px solid var(--linea);border-radius:var(--r-m);min-height:190px;align-items:center}
+.codigo-sala{font:800 2.2rem var(--mono);letter-spacing:.18em;color:var(--azul-hover)}
+.solicitud{display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:var(--aviso-claro);color:var(--aviso);padding:10px 14px;border-radius:var(--r-m);margin-top:10px;font-weight:700}
+.solicitud .fila{margin-left:auto}
+details.activar{margin-top:14px;border:1.5px solid var(--linea);border-radius:var(--r-m);background:#fff}
+details.activar summary{cursor:pointer;padding:12px 16px;font-weight:700}
+details.activar > div{padding:0 16px 16px}
+details.activar ol{padding-left:22px;display:grid;gap:6px;margin:8px 0}
+.siguiendo{position:sticky;top:0;z-index:30;display:none;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;
+  background:var(--tinta);color:#fff;padding:9px 16px;font-size:.93rem;font-weight:700}
+.siguiendo.ver{display:flex}
+.siguiendo button{background:#fff;color:var(--tinta);border:0;border-radius:20px;padding:5px 14px;font:700 .85rem var(--texto);cursor:pointer}
+.mando{position:fixed;inset:0;z-index:70;background:linear-gradient(160deg,#EAF2FF,#FFF4F2);display:none;flex-direction:column;overflow:auto}
+.mando.ver{display:flex}
+.mando-cab{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 18px;font-weight:700;color:var(--tinta-suave);font-size:.9rem}
+.mando-reloj{font:800 1.3rem var(--mono);color:var(--tinta)}
+.mando-cuerpo{flex:1;display:flex;flex-direction:column;gap:14px;padding:0 18px 18px;max-width:760px;width:100%;margin:0 auto}
+.mando-actual{background:#fff;border-radius:var(--r-l);padding:18px;border:1.5px solid var(--linea)}
+.mando-actual .n{color:var(--rojo);font-weight:700;font-size:.85rem}
+.mando-actual h2{font-family:var(--display);font-weight:800;font-size:1.6rem;line-height:1.15;margin:4px 0 8px}
+.mando-actual .notas{color:var(--tinta);font-size:1.02rem;white-space:pre-line}
+.mando-sig{font-size:.9rem;color:var(--tinta-suave)}
+.mando-botones{display:grid;grid-template-columns:1fr 1.6fr;gap:12px}
+.mando-botones button{min-height:110px;border-radius:var(--r-l);border:0;font:800 2.4rem var(--display);cursor:pointer;touch-action:manipulation}
+.mando-botones .ant{background:#fff;color:var(--tinta);border:2px solid var(--linea)}
+.mando-botones .sig{background:var(--azul);color:#fff;box-shadow:0 6px 0 var(--azul-hover)}
+.mando-botones .sig:active{transform:translateY(4px);box-shadow:0 2px 0 var(--azul-hover)}
+.mando-paneles{display:flex;flex-wrap:wrap;gap:8px}
+.mando-paneles button{flex:1 1 auto;min-height:44px;border-radius:var(--r-m);border:1.5px solid var(--linea);background:#fff;font:700 .92rem var(--texto);color:var(--tinta);cursor:pointer;padding:6px 12px}
+.mando-paneles button[aria-current="true"]{background:var(--tinta);color:#fff;border-color:var(--tinta)}
+.mando-espera{margin:auto;text-align:center;max-width:420px;padding:30px}
+.mando-espera h2{font-family:var(--display);font-size:1.6rem;margin-bottom:8px}
+
+/* Formulario del asistente */
+.velo .modal.ancho{max-width:520px;text-align:left}
+.modal textarea.resp-texto{font-family:var(--texto);font-size:1.05rem;min-height:120px}
+.modal .radio-pregunta{font-size:1.4rem}
+
+/* Historia de una app */
+.historia{background:#fff;border:1.5px solid var(--linea);border-radius:var(--r-l);padding:22px;margin-bottom:34px}
+.diapo .historia{background:rgba(255,255,255,.94);max-width:980px;padding:18px}
+.historia-linea{display:flex;align-items:flex-start;gap:0;overflow-x:auto;padding:8px 2px 14px;scrollbar-width:thin}
+.hito{flex:1 0 96px;display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:0;cursor:pointer;position:relative;
+  font:700 .8rem var(--texto);color:var(--tinta-suave);text-align:center;padding:0 4px}
+.hito::before{content:"";position:absolute;top:17px;left:-50%;width:100%;height:3px;background:#D8E1EC;z-index:0}
+.hito:first-child::before{display:none}
+.hito.hecho::before{background:var(--rojo)}
+.hito i{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#fff;border:3px solid #D8E1EC;font:800 .95rem var(--display);
+  font-style:normal;color:var(--tinta);position:relative;z-index:1;transition:transform .2s,background .2s,border-color .2s}
+.hito.hecho i{border-color:var(--rojo)}
+.hito[aria-current="true"] i{background:var(--subrayador);border-color:var(--tinta);transform:scale(1.2)}
+.hito[aria-current="true"]{color:var(--tinta)}
+.historia-ficha{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start;animation:entra .35s ease}
+.historia-ficha .fecha{color:var(--rojo);font-weight:700;font-size:.88rem}
+.historia-ficha h4{font-family:var(--display);font-weight:800;font-size:1.45rem;line-height:1.15;margin:2px 0 8px}
+.historia-ficha p{color:var(--tinta)}
+.historia-ficha .dato{display:inline-block;margin-top:10px;background:var(--subrayador);font-weight:700;padding:3px 10px;border-radius:6px;font-size:.9rem}
+.historia-ficha blockquote{font-family:var(--mono);font-size:.86rem;background:#F6F9FC;border:1.5px solid var(--linea);border-left:4px solid var(--azul);
+  border-radius:8px;padding:14px;white-space:pre-wrap;line-height:1.55;color:#243456}
+.historia-ficha blockquote::before{content:"Lo que se le pidió a la IA";display:block;font:700 .75rem var(--texto);color:var(--azul);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
+.historia-ficha img{max-width:100%;border-radius:8px;border:1.5px solid var(--linea);margin-top:10px}
+.historia-pie{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px;flex-wrap:wrap}
+.historia-moraleja{font-weight:700;color:var(--tinta-suave);font-size:.95rem}
+
+/* Taller de errores */
+.niveles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px}
+.nivel{background:#fff;border:1.5px solid var(--linea);border-radius:var(--r-l);padding:14px 16px;text-align:left;cursor:pointer;font-family:inherit;color:inherit;position:relative}
+.nivel:hover{border-color:#BFCDE0}
+.nivel[aria-pressed="true"]{border-color:var(--azul);box-shadow:0 0 0 2px var(--azul) inset}
+.nivel small{color:var(--rojo);font-weight:700;font-size:.8rem}
+.nivel b{display:block;font-family:var(--display);font-size:1.1rem;margin:2px 0}
+.nivel span{color:var(--tinta-suave);font-size:.88rem}
+.nivel.superado::after{content:"✓";position:absolute;top:10px;right:12px;width:28px;height:28px;border-radius:50%;background:var(--ok);color:#fff;display:grid;place-items:center;font-weight:800}
+.taller{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
+.mision{background:#FFFBE6;border-left:4px solid var(--subrayador);border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:14px}
+.mision b{display:block}
+.taller textarea.codigo-taller{min-height:380px;font-size:.8rem;white-space:pre;overflow:auto}
+.taller iframe{width:100%;height:330px;border:1.5px solid var(--linea);border-radius:var(--r-m);background:#fff}
+.consola{background:#FBFCFE;border:1.5px solid var(--linea);border-radius:var(--r-m);font:.82rem var(--mono);min-height:84px;max-height:180px;overflow:auto;margin-top:10px}
+.consola-cab{display:flex;justify-content:space-between;padding:6px 10px;border-bottom:1px solid var(--linea);font:700 .78rem var(--texto);color:var(--tinta-suave)}
+.consola div.l{padding:5px 10px;border-bottom:1px solid #EEF2F7;white-space:pre-wrap}
+.consola div.l.err{background:#FFF0F1;color:#B3261E}
+.consola div.l.err::before{content:"✕ ";font-weight:700}
+.consola div.vacia{padding:10px;color:var(--tinta-suave);font-family:var(--texto)}
+.veredicto{display:none;padding:12px 16px;border-radius:var(--r-m);font-weight:700;margin-top:10px}
+.veredicto.ok{display:block;background:var(--ok-claro);color:var(--ok);animation:correctPulse .6s ease}
+.veredicto.mal{display:block;background:var(--rojo-claro);color:var(--rojo)}
+@keyframes correctPulse{50%{transform:scale(1.03)}}
+.pista{display:none}
+.pista.ver{display:block}
+
+/* Galería */
+.galeria-barra{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.galeria-barra select{font:700 .95rem var(--texto);padding:10px 12px;border:2px solid var(--linea);border-radius:var(--r-m);background:#fff;color:var(--tinta)}
+.galeria{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+.obra{background:#fff;border:1.5px solid var(--linea);border-radius:var(--r-l);padding:18px;display:flex;flex-direction:column;gap:8px;position:relative;animation:entra .35s ease}
+.obra::before{content:"";position:absolute;left:18px;right:18px;top:-1.5px;height:4px;background:var(--c);border-radius:0 0 4px 4px}
+.obra h3{font-family:var(--display);font-weight:800;font-size:1.2rem;line-height:1.15}
+.obra .quien{font-size:.84rem;color:var(--tinta-suave)}
+.obra p{font-size:.95rem}
+.obra details summary{cursor:pointer;font-size:.88rem;font-weight:700;color:var(--azul)}
+.obra details pre{font:.78rem var(--mono);white-space:pre-wrap;background:#F6F9FC;border-radius:8px;padding:10px;margin-top:6px;max-height:180px;overflow:auto}
+.obra .acciones{display:flex;gap:8px;align-items:center;margin-top:auto;padding-top:6px}
+.voto{display:inline-flex;align-items:center;gap:6px;min-height:46px;padding:6px 14px;border-radius:var(--r-m);border:2px solid var(--linea);background:#fff;
+  font:700 .95rem var(--texto);color:var(--tinta);cursor:pointer;margin-left:auto}
+.voto[aria-pressed="true"]{background:var(--rojo-claro);border-color:var(--rojo);color:var(--rojo)}
+.obra .ejemplo{position:absolute;top:12px;right:14px;font-size:.72rem;font-weight:700;background:var(--aviso-claro);color:var(--aviso);padding:2px 8px;border-radius:10px}
+.form-galeria{display:none;margin-bottom:22px}
+.form-galeria.ver{display:block}
+.vacio{padding:30px;text-align:center;color:var(--tinta-suave);border:1.5px dashed #C9D6E8;border-radius:var(--r-l);background:#FAFCFF}
+
+@media (max-width:860px){
+  .radio,.radio.pantalla,.sala-dos,.historia-ficha,.taller,.niveles{grid-template-columns:1fr}
+  .taller textarea.codigo-taller{min-height:260px}
+}
+.radio:fullscreen{background:#fff;padding:36px;overflow:auto;grid-template-columns:minmax(260px,360px) 1fr}
+.radio:fullscreen .radio-pregunta{font-size:2.4rem}
+.radio:fullscreen .respuestas{max-height:none}
+.radio:fullscreen .no-proyectar{display:none !important}
+.radio-diapo{display:grid;grid-template-columns:250px minmax(0,1fr);gap:26px;align-items:start;max-width:980px}
+.radio-diapo .qr{display:flex;justify-content:center;align-items:center;min-height:240px;background:#fff;border:1.5px solid var(--linea);border-radius:var(--r-m);padding:10px;text-align:center;font-size:.9rem;color:var(--tinta-suave)}
+.radio-diapo .cuenta-diapo{font-size:1.1em;margin:10px 0 0}
+.radio-diapo .cuenta-diapo b{font:800 2.2em var(--display)}
+.modal.ancho p{word-break:normal}
+@media (max-width:860px){ .radio-diapo{grid-template-columns:1fr} }
+
 @media (max-width:860px){
   .flujo{grid-template-columns:1fr;gap:12px}
   .flujo div{margin-right:0}
@@ -304,10 +479,13 @@ footer{border-top:1.5px solid var(--linea);color:var(--tinta-suave);font-size:.8
 
 <nav class="pestanas" role="tablist" aria-label="Secciones de la formación">
   <button class="pestana" role="tab" id="t-inicio" aria-controls="panel-inicio" data-panel="inicio">Presentación</button>
+  <button class="pestana" role="tab" id="t-directo" aria-controls="panel-directo" data-panel="directo">En directo</button>
   <button class="pestana" role="tab" id="t-apps" aria-controls="panel-apps" data-panel="apps">Las apps</button>
   <button class="pestana" role="tab" id="t-configurar" aria-controls="panel-configurar" data-panel="configurar">Configurar para tu centro</button>
   <button class="pestana" role="tab" id="t-guias" aria-controls="panel-guias" data-panel="guias">Guías paso a paso</button>
   <button class="pestana" role="tab" id="t-ia" aria-controls="panel-ia" data-panel="ia">Crea la tuya con IA</button>
+  <button class="pestana" role="tab" id="t-taller" aria-controls="panel-taller" data-panel="taller">Taller de errores</button>
+  <button class="pestana" role="tab" id="t-galeria" aria-controls="panel-galeria" data-panel="galeria">Galería</button>
   <button class="pestana" role="tab" id="t-recursos" aria-controls="panel-recursos" data-panel="recursos">Recursos</button>
 </nav>
 <div class="pestanas-borde"></div>
@@ -318,13 +496,27 @@ footer{border-top:1.5px solid var(--linea);color:var(--tinta-suave);font-size:.8
 <section class="panel" id="panel-inicio" role="tabpanel" aria-labelledby="t-inicio">
   <div class="diapos" id="diapos" tabindex="-1" aria-roledescription="presentación">
 
-    <div class="diapo" aria-roledescription="diapositiva">
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="Bienvenida. Presentarse en 30 segundos: director y maestro de PT, no programador. Hoy todo el mundo sale con al menos una app funcionando.">
       <h2>IA en el cole</h2>
       <p class="lead">Herramientas hechas con inteligencia artificial para planificar, evaluar, convivir y reunirnos. Hoy verás cómo funcionan, cómo llevarlas a tu centro y cómo crear las tuyas.</p>
       <p class="firma" id="firmaDiapo"></p>
     </div>
 
-    <div class="diapo" aria-roledescription="diapositiva">
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="Pedir que escaneen el QR y respondan en una frase. Mientras llegan, comentar qué temas suben. El reto de la tarde saldrá de aquí." data-actividad="radiografia">
+      <p class="num">Antes de empezar</p>
+      <h2 class="medio" data-pregunta-diapo></h2>
+      <div class="radio-diapo">
+        <div class="qr" id="diapoQR"></div>
+        <div>
+          <p class="lead">Escanea el código y respóndelo en una frase. Es anónimo.</p>
+          <p class="cuenta-diapo"><b id="diapoCuenta">0</b> respuestas</p>
+          <div class="nube" id="diapoNube"></div>
+          <button class="btn azul" data-ir="directo">Ver la pizarra completa</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="Cuatro bloques. Todo queda en esta web para después: no hace falta apuntar nada.">
       <h2 class="medio">Lo que vamos a hacer hoy</h2>
       <ol class="agenda">
         <li><div><strong>Conocer las apps</strong><span>Qué problema resuelve cada una y cómo se usa en el día a día.</span></div></li>
@@ -334,13 +526,13 @@ footer{border-top:1.5px solid var(--linea);color:var(--tinta-suave);font-size:.8
       </ol>
     </div>
 
-    <div class="diapo" aria-roledescription="diapositiva">
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="Cada app nació de un problema concreto del centro. Preguntar: ¿cuál os suena más?">
       <h2 class="medio">Diez apps, un mismo patrón</h2>
       <div class="nube-apps" id="nubeApps"></div>
       <p class="lead" style="margin-top:26px">Todas nacieron de una necesidad concreta del centro y todas son un único archivo HTML. Unas guardan en el navegador y otras en Firebase para compartir datos. Si entiendes una, entiendes todas.</p>
     </div>
 
-    <div class="diapo" aria-roledescription="diapositiva">
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="La clave es la conversación. El código lo escribe la IA; la persona decide qué quiere y prueba.">
       <h2 class="medio">Cómo se hace una app así</h2>
       <div class="flujo">
         <div><b>Necesidad</b><small>Algo que hoy haces con papel, correos o una hoja de cálculo.</small></div>
@@ -352,7 +544,12 @@ footer{border-top:1.5px solid var(--linea);color:var(--tinta-suave);font-size:.8
       <p class="lead" style="margin-top:26px">No hace falta saber programar. Hace falta saber qué quieres y tener paciencia para probar.</p>
     </div>
 
-    <div class="diapo" aria-roledescription="diapositiva">
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="Recorrer los hitos con los botones de la línea. Mensaje: cada mejora fue una conversación, no un curso de programación.">
+      <h2 class="medio">Así nació <span data-historia-app></span></h2>
+      <div class="historia" data-historia></div>
+    </div>
+
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="Insistir en la cuenta del centro, no la personal: si alguien cambia de destino, la app sigue.">
       <h2 class="medio">Qué necesitas para llevártelas</h2>
       <div class="tres">
         <div style="--c:var(--azul)"><b>Una cuenta de Google del centro</b><p>Para crear el proyecto de Firebase. Mejor del centro que personal: si cambias de destino, la app sigue.</p></div>
@@ -362,7 +559,7 @@ footer{border-top:1.5px solid var(--linea);color:var(--tinta-suave);font-size:.8
       <p class="lead" style="margin-top:26px">Coste: el plan gratuito de Firebase suele bastar para el uso normal de un centro.</p>
     </div>
 
-    <div class="diapo" aria-roledescription="diapositiva">
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="La primera regla es la que más se olvida: ningún dato personal dentro del código.">
       <h2 class="medio">Tres reglas antes de empezar</h2>
       <div class="tres">
         <div style="--c:var(--rojo)"><b>Ningún dato personal en el código</b><p>La web es pública. Nombres, usuarios y notas van en la base de datos, nunca dentro del HTML.</p></div>
@@ -371,20 +568,22 @@ footer{border-top:1.5px solid var(--linea);color:var(--tinta-suave);font-size:.8
       </div>
     </div>
 
-    <div class="diapo" aria-roledescription="diapositiva">
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="Repartir: quien quiera llevarse una app, al configurador; quien quiera crear, al taller de errores y al Gem. Recordar la galería.">
       <h2>Manos a la obra</h2>
       <p class="lead">Empieza por ver las apps en marcha, elige una y conéctala con tu centro siguiendo los pasos.</p>
       <div class="fila" style="margin-top:30px">
         <button class="btn azul" data-ir="apps">Ver las apps</button>
         <button class="btn linea" data-ir="configurar">Ir al configurador</button>
         <button class="btn linea" data-ir="ia">Crear con IA</button>
+        <button class="btn linea" data-ir="taller">Taller de errores</button>
+        <button class="btn linea" data-ir="galeria">Galería del claustro</button>
       </div>
     </div>
 
     <div class="controles no-imprimir">
       <div class="fila">
         <button class="btn icono" id="dAnt" aria-label="Diapositiva anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <span class="contador" id="dCont" aria-live="polite">1 / 7</span>
+        <span class="contador" id="dCont" aria-live="polite">1 / 9</span>
         <button class="btn icono" id="dSig" aria-label="Diapositiva siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
       </div>
       <div class="puntos" id="dPuntos"></div>
@@ -392,6 +591,73 @@ footer{border-top:1.5px solid var(--linea);color:var(--tinta-suave);font-size:.8
     </div>
   </div>
   <p style="margin-top:12px;font-size:.9rem;color:var(--tinta-suave)">Usa las flechas del teclado para avanzar y la tecla F para pantalla completa.</p>
+</section>
+
+<!-- ═════════════════════ EN DIRECTO ═════════════════════ -->
+<section class="panel" id="panel-directo" role="tabpanel" aria-labelledby="t-directo">
+  <div class="intro">
+    <h2>En directo</h2>
+    <p>La radiografía del claustro y el modo ponente. Proyecta esta pestaña mientras llegan las respuestas.</p>
+  </div>
+  <p><span class="modo-chip" id="modoChip">Comprobando…</span></p>
+
+  <div class="tarjeta" style="margin-top:16px">
+    <div class="radio" id="radio">
+      <div class="radio-qr">
+        <div class="qr" id="radioQR"></div>
+        <p id="radioURL" style="font-size:.82rem;color:var(--tinta-suave);margin-top:8px;word-break:break-all"></p>
+        <div class="cuenta"><span id="radioCuenta">0</span><small>respuestas</small></div>
+      </div>
+      <div>
+        <label class="campo no-proyectar" id="campoPregunta"><span>Pregunta</span><input type="text" id="radioPreguntaIn" maxlength="120"></label>
+        <p><span class="radio-pregunta" id="radioPregunta"></span></p>
+        <div class="temas" id="radioTemas"></div>
+        <div class="nube" id="radioNube" aria-label="Palabras más repetidas"></div>
+        <div class="respuestas" id="radioResps"></div>
+        <div class="ensayo-caja no-proyectar" id="radioEnsayo">
+          <input type="text" id="radioEnsayoIn" maxlength="200" placeholder="Respuesta de prueba (modo ensayo)">
+          <button class="btn linea" id="radioEnsayoBtn">Añadir</button>
+          <button class="btn linea" id="radioEjemplos">Cargar ejemplos</button>
+        </div>
+        <div class="radio-acciones no-proyectar">
+          <button class="btn azul" id="radioReto">Convertir en encargo para la IA</button>
+          <button class="btn linea" id="radioAbrir">Abrir preguntas en los móviles</button>
+          <button class="btn linea" id="radioPantalla">Proyectar</button>
+          <button class="btn linea" id="radioVaciar">Vaciar</button>
+        </div>
+        <p style="font-size:.86rem;color:var(--tinta-suave);margin-top:8px" class="no-proyectar">Toca las respuestas o un tema para elegir de qué sale el encargo. Sin elegir nada, se usan todas.</p>
+        <div class="estado" id="radioEstado"></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="bloque">Modo ponente</h3>
+  <div class="tarjeta" id="salaCuerpo"></div>
+
+  <details class="activar">
+    <summary>Cómo activar el directo</summary>
+    <div>
+      <p><strong>Opción A · Firebase (todo: sala, mando, radiografía y galería con votos)</strong></p>
+      <ol>
+        <li>Crea un proyecto de Firebase y activa Realtime Database en Bélgica (guías 1 y 2).</li>
+        <li><code>Authentication</code> → <code>Sign-in method</code> → <code>Anónimo</code> → activar.</li>
+        <li>Pega estas reglas en <code>Realtime Database</code> → <code>Reglas</code> y pulsa <code>Publicar</code>.</li>
+        <li>Registra una app web, copia el objeto <code>firebaseConfig</code> y pégalo en <code>DIRECTO.firebase</code>, en el bloque «EDITA AQUÍ» de este index.html.</li>
+        <li>Sube el index.html a GitHub.</li>
+      </ol>
+      <div class="caja-codigo"><button class="btn suave copiar" data-copiar="reglasDirecto">Copiar reglas</button><pre class="codigo" id="reglasDirecto"></pre></div>
+      <p class="consejo">Para poder borrar apps de la galería desde aquí, añade en la base de datos el nodo <code>admins</code> → <code>tu identificador</code> → <code>true</code>. El identificador aparece en «Modo ponente» cuando abres una sala.</p>
+      <p style="margin-top:18px"><strong>Opción B · Formulario de Google (solo radiografía y galería)</strong></p>
+      <ol>
+        <li>Crea un formulario con una pregunta de tipo párrafo. En Configuración, que <strong>no</strong> recopile correos.</li>
+        <li><code>Respuestas</code> → <code>Vincular con Hojas de cálculo</code>.</li>
+        <li>En la hoja: <code>Compartir</code> → <code>Cualquier persona con el enlace</code> → <code>Lector</code>.</li>
+        <li>Pega el enlace del formulario y el de la hoja en <code>DIRECTO.radiografia</code>.</li>
+        <li>Para la galería, otro formulario con estas preguntas: Título, Enlace, Centro, Tu nombre, Qué problema resuelve, Prompt. Sus enlaces van en <code>DIRECTO.galeria</code>.</li>
+      </ol>
+      <p class="alerta">La hoja queda visible para quien tenga el enlace. Las respuestas son anónimas, pero pide que nadie escriba nombres de alumnado.</p>
+    </div>
+  </details>
 </section>
 
 <!-- ═════════════════════ APPS ═════════════════════ -->
@@ -647,6 +913,9 @@ footer{border-top:1.5px solid var(--linea);color:var(--tinta-suave);font-size:.8
     <p>Así nacieron estas apps: conversando. Aquí tienes el método, dos Gems de Gemini listos para montar y los encargos que mejor funcionan.</p>
   </div>
 
+  <h3 class="bloque" style="margin-top:0">Así nació <span data-historia-app></span></h3>
+  <div class="historia" data-historia></div>
+
   <div class="dos-col">
     <div>
       <h3 class="bloque" style="margin-top:0">El método</h3>
@@ -699,6 +968,72 @@ footer{border-top:1.5px solid var(--linea);color:var(--tinta-suave);font-size:.8
     <div class="reto"><b>Semáforo del ruido</b><p>Usa el micrófono del ordenador y cambia de verde a rojo cuando el aula pasa de cierto nivel.</p></div>
     <div class="reto"><b>Préstamos de la biblioteca de aula</b><p>Quién tiene qué libro y desde cuándo. Exporta e importa un archivo para no perder nada.</p></div>
   </div>
+</section>
+
+<!-- ═════════════════════ TALLER DE ERRORES ═════════════════════ -->
+<section class="panel" id="panel-taller" role="tabpanel" aria-labelledby="t-taller">
+  <div class="intro">
+    <h2>Taller de errores</h2>
+    <p>Tres apps rotas a propósito. Pulsa <strong>Probar</strong>, copia el fallo para la IA, pega aquí su respuesta y vuelve a probar. Es lo mismo que harás en casa con tus apps.</p>
+  </div>
+  <div class="niveles" id="niveles"></div>
+  <div class="taller">
+    <div>
+      <div class="mision" id="mision"></div>
+      <label class="campo"><span>Código de la app (index.html)</span>
+        <textarea class="codigo-taller" id="tallerCodigo" spellcheck="false"></textarea>
+        <small>Pega la respuesta entera de la IA, aunque traiga texto alrededor: el taller se queda solo con el código.</small>
+      </label>
+      <div class="fila">
+        <button class="btn azul" id="tallerProbar">▶ Probar</button>
+        <button class="btn suave" id="tallerCopiar">Copiar para la IA</button>
+        <a class="btn linea" href="https://gemini.google.com" target="_blank" rel="noopener">Abrir Gemini</a>
+      </div>
+      <div class="fila" style="margin-top:10px">
+        <button class="btn linea" id="tallerPista">Pista</button>
+        <button class="btn linea" id="tallerSolucion">Solución</button>
+        <button class="btn linea" id="tallerRestaurar">Volver al original</button>
+      </div>
+      <div class="consejo pista" id="tallerPistaTxt"></div>
+    </div>
+    <div>
+      <iframe id="tallerMarco" sandbox="allow-scripts allow-modals" title="Vista de la app del taller"></iframe>
+      <div class="consola">
+        <div class="consola-cab"><span>Consola · lo que verías con F12</span><span id="consolaN"></span></div>
+        <div id="consola"><div class="vacia">Pulsa Probar para ejecutar la app.</div></div>
+      </div>
+      <div class="veredicto" id="veredicto" role="status" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════ GALERÍA ═════════════════════ -->
+<section class="panel" id="panel-galeria" role="tabpanel" aria-labelledby="t-galeria">
+  <div class="intro">
+    <h2>Galería del claustro</h2>
+    <p>Lo que se ha creado en «IA en el cole». Sube la tuya cuando esté publicada: el prompt con el que empezaste es lo que más ayuda a los demás.</p>
+  </div>
+  <div class="galeria-barra">
+    <button class="btn azul" id="galAnadir">Añadir mi app</button>
+    <select id="galOrden" aria-label="Ordenar la galería"><option value="recientes">Más recientes</option><option value="votos">Más votadas</option></select>
+    <input type="text" id="galBuscar" placeholder="Buscar…" aria-label="Buscar en la galería" style="max-width:240px">
+    <span class="modo-chip" id="galChip"></span>
+  </div>
+  <div class="tarjeta form-galeria" id="galForm">
+    <h3>Tu app</h3>
+    <div class="rejilla2" style="margin-top:12px">
+      <label class="campo"><span>Título</span><input type="text" id="gTitulo" maxlength="80" placeholder="Préstamos de la biblioteca de aula"></label>
+      <label class="campo"><span>Enlace</span><input type="text" id="gEnlace" maxlength="300" placeholder="https://usuario.github.io/prestamos/"></label>
+      <label class="campo"><span>Centro</span><input type="text" id="gCentro" maxlength="80"></label>
+      <label class="campo"><span>Tu nombre (opcional)</span><input type="text" id="gNombre" maxlength="60"></label>
+    </div>
+    <label class="campo"><span>Qué problema resuelve</span><input type="text" id="gProblema" maxlength="200"></label>
+    <label class="campo"><span>El prompt con el que empezaste (opcional)</span><textarea id="gPrompt" maxlength="2000" style="min-height:110px;font-family:var(--texto)"></textarea>
+      <small>La galería es pública: nada de nombres de alumnado ni datos personales.</small></label>
+    <div class="fila"><button class="btn azul" id="gEnviar">Publicar en la galería</button><button class="btn linea" id="gCancelar">Cancelar</button></div>
+    <div class="estado" id="gEstado"></div>
+  </div>
+  <div class="galeria" id="galeria"></div>
 </section>
 
 <!-- ═════════════════════ RECURSOS ═════════════════════ -->
@@ -756,6 +1091,29 @@ footer{border-top:1.5px solid var(--linea);color:var(--tinta-suave);font-size:.8
   </div>
 </div>
 <div class="tostada" id="tostada" role="status" aria-live="polite"></div>
+<div class="mando" id="mando" aria-live="polite"></div>
+<div class="velo" id="veloResp" role="dialog" aria-modal="true" aria-labelledby="respTitulo">
+  <div class="modal ancho">
+    <p class="radio-pregunta" id="respTitulo"></p>
+    <textarea class="resp-texto" id="respTexto" maxlength="200" style="margin-top:16px" aria-label="Tu respuesta"></textarea>
+    <p style="margin:8px 0 16px">Es anónimo. Una frase basta, sin nombres de alumnado.</p>
+    <div class="fila"><button class="btn azul" id="respEnviar">Enviar</button><button class="btn linea" id="respCerrar">Ahora no</button></div>
+  </div>
+</div>
+<script>
+/* Enlaces especiales: #sala=CODIGO (seguir la sesión), #mando=CODIGO (móvil como mando), #ponente (ventana del ponente) */
+window.MODO_URL = (function () {
+  var h = location.hash, m = h.match(/^#(sala|mando)=([A-Za-z0-9]{4,8})$/), r = null;
+  if (m) r = { tipo: m[1], sala: m[2].toUpperCase() };
+  else if (h === '#ponente') r = { tipo: 'ponente' };
+  try {
+    if (r) sessionStorage.setItem('ia-cole-modo', JSON.stringify(r));
+    else r = JSON.parse(sessionStorage.getItem('ia-cole-modo') || 'null');
+  } catch (e) {}
+  if (m || h === '#ponente') history.replaceState(null, '', location.pathname + location.search);
+  return r;
+})();
+</script>
 
 <script>
 /* ════════════════════════════════════════════════════════════════
@@ -827,6 +1185,67 @@ const APPS = [
     usa: 'Sin base de datos · Lista para usar', url: 'https://vunisal706-droid.github.io/pdfaword/', descarga: 'descargas/pdfaword.zip'
   }
 ];
+
+
+/* ── En directo: radiografía, modo ponente y galería ───────────────
+   firebase:  pega aquí tu firebaseConfig (el objeto entre llaves) para
+              activar la sala, el móvil como mando y la galería con votos.
+              null = modo ensayo (todo funciona en este ordenador).
+   Sin Firebase, la radiografía y la galería pueden ir con un formulario
+   de Google: enlace del formulario + enlace de la hoja de respuestas
+   (compartida como «Cualquier persona con el enlace · Lector»).
+   ──────────────────────────────────────────────────────────────── */
+const DIRECTO = {
+  firebase: {
+    apiKey: "AIzaSyBBiz1lopWjFBDJwYKiuiB3KMprCVzcYMg",
+    authDomain: "formacion-edc5b.firebaseapp.com",
+    databaseURL: "https://formacion-edc5b-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "formacion-edc5b",
+    storageBucket: "formacion-edc5b.firebasestorage.app",
+    messagingSenderId: "911989204356",
+    appId: "1:911989204356:web:f959a73e73c9fd4bb2a9d1"
+  },
+  radiografia: {
+    pregunta: '¿Qué tarea te quita más tiempo en el cole?',
+    formulario: '',
+    hoja: ''
+  },
+  galeria: {
+    formulario: '',
+    hoja: ''
+  }
+};
+
+/* ── La historia real de una app (línea del tiempo) ──────────────
+   fecha e imagen son opcionales (imagen: ruta de una captura en el repo).
+   ──────────────────────────────────────────────────────────────── */
+const HISTORIA = {
+  app: 'Teletrabajo',
+  moraleja: 'Cada hito fue una conversación. Ninguno exigió saber programar: exigió saber qué necesitaba el centro.',
+  hitos: [
+    { corto: 'La necesidad', fecha: '', titulo: 'Reunirse en línea sin perder el acta',
+      texto: 'Los órganos colegiados se reúnen en línea y el acta hay que redactarla después, a mano, con lo que cada cual recuerda.',
+      prompt: '', dato: 'Punto de partida: un problema, no una app', imagen: '' },
+    { corto: 'Primera versión', fecha: '', titulo: 'Orden del día, asistencia y votaciones',
+      texto: 'Una sola página: el coordinador abre la reunión y todo el mundo ve el orden del día, registra su asistencia y vota en directo.',
+      prompt: 'Quiero una app para las reuniones telemáticas del claustro y del consejo escolar: orden del día, asistencia, aportaciones y votaciones en directo.', dato: '', imagen: '' },
+    { corto: 'Acta con IA', fecha: '', titulo: 'La app no redacta: prepara el encargo',
+      texto: 'Con los datos de la reunión, la app genera un prompt para que el Gem del colegio redacte el acta oficial.',
+      prompt: 'Genera un prompt con todos los datos de la reunión para que Gemini redacte el acta. Sus instrucciones deben prevalecer sobre las del Gem.', dato: '', imagen: '' },
+    { corto: 'Formato', fecha: '', titulo: 'Que parezca un acta de verdad',
+      texto: 'Primer choque con la realidad: el acta tenía que seguir el formato formal del centro.',
+      prompt: 'Orden del día numerado después de los asistentes, luego el desarrollo, y la tabla de funciones del órgano según el Decreto 328/2010, compacta.', dato: '', imagen: '' },
+    { corto: 'En Word', fecha: '', titulo: 'En Word, no en PDF',
+      texto: 'Un acta hay que poder corregirla antes de firmarla.',
+      prompt: 'Quiero el acta en Word, no en PDF, para poder corregirla, y con el logo del colegio.', dato: '', imagen: '' },
+    { corto: 'Asistentes', fecha: '', titulo: 'El detalle que nadie ve',
+      texto: 'Los asistentes del acta no son quienes están conectados, sino quienes registra el coordinador. Y sin bloque de firmas: se firma digitalmente.',
+      prompt: 'Los asistentes deben salir del registro de asistencia, no de los conectados. Si falta, avisa antes de generar el acta.', dato: '', imagen: '' },
+    { corto: 'Hoy', fecha: '', titulo: 'Lista para otros centros',
+      texto: 'El coordinador puede quitar a cualquiera del listado, y la plantilla se adapta al Firebase de cualquier centro desde esta web.',
+      prompt: '', dato: 'Un archivo · Firebase · GitHub Pages', imagen: '' }
+  ]
+};
 
 /* ── Textos de los Gems y encargos ─────────────────────────────── */
 const GEM_CONSTRUCTOR = `Eres «Constructor de apps del cole», un asistente que ayuda a docentes sin conocimientos de programación a crear pequeñas aplicaciones web para su centro educativo.
@@ -1143,6 +1562,7 @@ function irA(id, foco) {
     if (on && foco) p.focus();
   });
   document.querySelectorAll('section.panel').forEach(s => s.classList.toggle('activo', s.id === 'panel-' + id));
+  document.dispatchEvent(new CustomEvent('panel', { detail: id }));
   if (location.hash.slice(1) !== id) history.replaceState(null, '', '#' + id);
 }
 pestanas.forEach((p, i) => {
@@ -1179,6 +1599,7 @@ function verDiapo(n) {
   $('dCont').textContent = (dActual + 1) + ' / ' + diapos.length;
   $('dAnt').disabled = dActual === 0;
   $('dSig').disabled = dActual === diapos.length - 1;
+  document.dispatchEvent(new CustomEvent('diapo', { detail: dActual }));
 }
 $('dAnt').onclick = () => verDiapo(dActual - 1);
 $('dSig').onclick = () => verDiapo(dActual + 1);
@@ -1551,6 +1972,806 @@ $('btnDescargar').addEventListener('click', () => {
 });
 
 validar();
+</script>
+<script>
+/* ════════════════ NUEVO: En directo · Modo ponente · Historia · Taller · Galería ════════════════ */
+(function () {
+'use strict';
+const BASE = location.origin + location.pathname;
+const MODO = window.MODO_URL || null;
+const $$ = (s, r) => [...(r || document).querySelectorAll(s)];
+const plano = s => String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+const panelActual = () => { const p = document.querySelector('section.panel.activo'); return p ? p.id.replace('panel-', '') : 'inicio'; };
+const TS = () => firebase.database.ServerValue.TIMESTAMP;
+
+function cargarScript(src) {
+  return new Promise((ok, ko) => {
+    const s = document.createElement('script'); s.src = src; s.onload = ok;
+    s.onerror = () => ko(new Error('No se pudo cargar ' + src)); document.head.appendChild(s);
+  });
+}
+function pintarQR(caja, texto, tam, vacio) {
+  caja.innerHTML = '';
+  if (!texto) { caja.innerHTML = '<span class="qr-vacio">' + (vacio || '') + '</span>'; return; }
+  const hacer = () => {
+    caja.innerHTML = '';
+    if (window.QRCode) new QRCode(caja, { text: texto, width: tam || 220, height: tam || 220, colorDark: '#1B2A4E', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M });
+    else caja.textContent = texto;
+  };
+  if (window.QRCode) hacer(); else window.addEventListener('load', hacer, { once: true });
+}
+
+/* ── Firebase (solo se carga si está configurado) ── */
+const FB = { ok: false, db: null, uid: null, error: '', promesa: null };
+const hayFirebase = () => !!(DIRECTO.firebase && DIRECTO.firebase.apiKey && DIRECTO.firebase.databaseURL);
+function iniciarFirebase() {
+  if (!hayFirebase()) return Promise.resolve(false);
+  if (FB.promesa) return FB.promesa;
+  FB.promesa = (async () => {
+    try {
+      const v = 'https://www.gstatic.com/firebasejs/10.12.2/';
+      await cargarScript(v + 'firebase-app-compat.js');
+      await cargarScript(v + 'firebase-auth-compat.js');
+      await cargarScript(v + 'firebase-database-compat.js');
+      if (!firebase.apps.length) firebase.initializeApp(DIRECTO.firebase);
+      const c = await firebase.auth().signInAnonymously();
+      FB.uid = c.user.uid; FB.db = firebase.database(); FB.ok = true;
+      return true;
+    } catch (e) {
+      FB.error = e && e.code === 'auth/operation-not-allowed'
+        ? 'Falta activar el acceso «Anónimo» en Authentication.'
+        : 'No se pudo conectar con Firebase (' + ((e && (e.code || e.message)) || 'error') + ').';
+      return false;
+    }
+  })();
+  return FB.promesa;
+}
+const ref = p => FB.db.ref(p);
+
+/* ── Hojas de Google (formulario → hoja compartida) ── */
+function idHoja(u) {
+  const m = String(u || '').match(/\/d\/([a-zA-Z0-9_-]{20,})/);
+  return m ? m[1] : (/^[a-zA-Z0-9_-]{20,}$/.test(u || '') ? u : '');
+}
+function leerHoja(url) {
+  return new Promise((ok, ko) => {
+    const id = idHoja(url); if (!id) return ko(new Error('enlace'));
+    const cb = '__hoja_' + Math.random().toString(36).slice(2);
+    const s = document.createElement('script');
+    const fin = () => { clearTimeout(t); delete window[cb]; s.remove(); };
+    const t = setTimeout(() => { fin(); ko(new Error('tiempo')); }, 12000);
+    window[cb] = d => {
+      fin();
+      if (!d || d.status === 'error' || !d.table) return ko(new Error('hoja'));
+      const cols = d.table.cols.map(c => (c.label || '').trim());
+      ok(d.table.rows.map(r => {
+        const o = {};
+        cols.forEach((c, i) => { const x = r.c && r.c[i]; o[c || ('col' + i)] = x ? (x.f != null ? x.f : x.v) : ''; });
+        return o;
+      }));
+    };
+    s.src = 'https://docs.google.com/spreadsheets/d/' + id + '/gviz/tq?tqx=out:json;responseHandler:' + cb + '&headers=1&t=' + Date.now();
+    s.onerror = () => { fin(); ko(new Error('red')); };
+    document.head.appendChild(s);
+  });
+}
+const esMarca = c => /marca temporal|timestamp/.test(plano(c));
+function columna(fila, claves) {
+  const k = Object.keys(fila).find(c => !esMarca(c) && claves.some(x => plano(c).includes(x)));
+  return k ? String(fila[k] == null ? '' : fila[k]).trim() : '';
+}
+
+/* ════════════════ SALA · ESTADO COMPARTIDO ════════════════ */
+const S = {
+  rol: 'local',        // local · dueno · asistente · mando · ponenteLocal
+  sala: '', aplicando: false, siguiendo: true, autorizado: false,
+  estado: { panel: 'inicio', diapo: 0, actividad: '', pregunta: '' },
+  solicitudes: {}, errorSala: '', admin: false
+};
+const canal = ('BroadcastChannel' in window) ? new BroadcastChannel('ia-en-el-cole') : null;
+
+function aplicarEstado(e, navegar) {
+  if (!e) return;
+  const antes = S.estado.actividad;
+  S.aplicando = true;
+  try {
+    if (navegar) {
+      if (e.panel && e.panel !== panelActual()) irA(e.panel);
+      if (typeof e.diapo === 'number' && e.diapo !== dActual) verDiapo(e.diapo);
+    }
+  } finally { S.aplicando = false; }
+  S.estado.panel = e.panel || S.estado.panel;
+  if (typeof e.diapo === 'number') S.estado.diapo = e.diapo;
+  S.estado.actividad = e.actividad || '';
+  if (e.pregunta && e.pregunta !== S.estado.pregunta) { S.estado.pregunta = e.pregunta; pintarPregunta(); }
+  if (antes !== S.estado.actividad) R.descartado = false;
+  pintarMando(); pintarBotonActividad(); pintarBanner();
+  if (S.rol === 'asistente') revisarActividad();
+}
+function escribirFB() {
+  if (!FB.ok || !S.sala) return;
+  if (S.rol === 'dueno' || (S.rol === 'mando' && S.autorizado))
+    ref('salas/' + S.sala + '/estado').set(Object.assign({}, S.estado, { t: TS() })).catch(() => tostada('No se pudo sincronizar'));
+}
+function emitir(cambios) {
+  Object.assign(S.estado, cambios);
+  pintarMando(); pintarBotonActividad();
+  escribirFB();
+  if (canal && S.rol !== 'asistente' && S.rol !== 'mando') canal.postMessage({ tipo: 'estado', de: S.rol, estado: S.estado });
+}
+if (canal) canal.onmessage = ev => {
+  const m = ev.data || {};
+  if (S.rol === 'asistente' || S.rol === 'mando') return;
+  if (m.tipo === 'hola' && S.rol !== 'ponenteLocal') canal.postMessage({ tipo: 'estado', de: S.rol, estado: S.estado });
+  if (m.tipo === 'estado' && m.de === 'ponenteLocal' && S.rol !== 'ponenteLocal') { aplicarEstado(m.estado, true); if (S.rol === 'dueno') escribirFB(); }
+};
+
+document.addEventListener('panel', e => {
+  if (S.aplicando) return;
+  if (S.rol === 'asistente') { if (S.siguiendo) { S.siguiendo = false; pintarBanner(); } return; }
+  emitir({ panel: e.detail });
+});
+document.addEventListener('diapo', e => {
+  pintarDiapoRadio();
+  if (S.aplicando) return;
+  if (S.rol === 'asistente') { if (S.siguiendo) { S.siguiendo = false; pintarBanner(); } return; }
+  const c = { diapo: e.detail };
+  const d = diapos[e.detail];
+  if (d && d.dataset.actividad && (S.rol === 'dueno' || S.rol === 'mando')) c.actividad = d.dataset.actividad;
+  emitir(c);
+});
+
+/* ── Dueño: abrir, retomar y cerrar sala ── */
+const LETRAS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+const nuevoCodigo = () => Array.from({ length: 4 }, () => LETRAS[Math.floor(Math.random() * LETRAS.length)]).join('');
+async function abrirSala(soloRetomar) {
+  S.errorSala = '';
+  if (!await iniciarFirebase()) { S.errorSala = FB.error; pintarSala(); return; }
+  let cod = leer('salaPropia', '');
+  if (cod) {
+    try { if ((await ref('salas/' + cod + '/dueno').get()).val() !== FB.uid) cod = ''; } catch (e) { cod = ''; }
+  }
+  if (!cod && soloRetomar) { guardar('salaPropia', ''); pintarSala(); return; }
+  for (let i = 0; i < 6 && !cod; i++) {
+    const c = nuevoCodigo();
+    try { await ref('salas/' + c + '/dueno').set(FB.uid); cod = c; } catch (e) { /* ocupado o sin permiso */ }
+  }
+  if (!cod) { S.errorSala = 'No se pudo crear la sala. Revisa que las reglas estén publicadas.'; pintarSala(); return; }
+  guardar('salaPropia', cod);
+  S.rol = 'dueno'; S.sala = cod;
+  Object.assign(S.estado, { panel: panelActual(), diapo: dActual, pregunta: preguntaActual() });
+  escribirFB();
+  ref('salas/' + cod + '/estado').on('value', sn => { const e = sn.val(); if (e) aplicarEstado(e, true); });
+  ref('salas/' + cod + '/solicitudes').on('value', sn => { S.solicitudes = sn.val() || {}; pintarSala(); });
+  try { S.admin = (await ref('admins/' + FB.uid).get()).val() === true; } catch (e) { S.admin = false; }
+  conectarRespuestas(); pintarSala(); pintarModo(); pintarRadio(); pintarGaleria();
+}
+async function cerrarSala() {
+  if (!confirm('¿Cerrar la sala ' + S.sala + '? Se borran sus respuestas y los móviles dejan de seguirte.')) return;
+  try { await ref('salas/' + S.sala).remove(); } catch (e) {}
+  ref('salas/' + S.sala).off(); ['estado', 'solicitudes', 'respuestas'].forEach(n => ref('salas/' + S.sala + '/' + n).off());
+  guardar('salaPropia', ''); S.rol = 'local'; S.sala = ''; S.estado.actividad = '';
+  R.lista = []; conectarRespuestas(); pintarSala(); pintarModo(); pintarRadio();
+}
+async function autorizar(uid, si) {
+  try {
+    if (si) await ref('salas/' + S.sala + '/mandos/' + uid).set(true);
+    await ref('salas/' + S.sala + '/solicitudes/' + uid).remove();
+    tostada(si ? 'Mando autorizado' : 'Solicitud rechazada');
+  } catch (e) { tostada('No se pudo: revisa las reglas'); }
+}
+function abrirVentanaPonente() {
+  const w = window.open(BASE + '#ponente', 'ponente-ia-en-el-cole', 'width=520,height=860');
+  if (!w) tostada('El navegador ha bloqueado la ventana: permite ventanas emergentes');
+}
+
+function pintarSala() {
+  const c = $('salaCuerpo'); if (!c) return;
+  const btnVentana = '<button class="btn linea" id="btnVentana">Abrir ventana de ponente</button>';
+  if (S.rol === 'dueno') {
+    const sol = Object.entries(S.solicitudes).map(([uid, et]) =>
+      '<div class="solicitud">📱 ' + esc(et || 'Un móvil') + ' quiere ser tu mando<span class="fila">' +
+      '<button class="btn azul" data-autorizar="' + esc(uid) + '">Autorizar</button>' +
+      '<button class="btn linea" data-rechazar="' + esc(uid) + '">Rechazar</button></span></div>').join('');
+    c.innerHTML =
+      '<div class="fila" style="justify-content:space-between"><div><p style="color:var(--tinta-suave);font-size:.9rem">Sala abierta</p>' +
+      '<div class="codigo-sala">' + esc(S.sala) + '</div></div><div class="fila">' + btnVentana +
+      '<button class="btn linea" id="btnCerrarSala">Cerrar sala</button></div></div>' + sol +
+      '<div class="sala-dos"><div><h3>Para el claustro</h3><p style="color:var(--tinta-suave);font-size:.9rem;margin-bottom:8px">Siguen la presentación en su móvil y responden a la radiografía.</p><div class="qr" id="qrSala"></div></div>' +
+      '<div><h3>Tu móvil como mando</h3><p style="color:var(--tinta-suave);font-size:.9rem;margin-bottom:8px">Escanéalo tú y autorízalo aquí. Verás tus notas y el reloj.</p><div class="qr" id="qrMando"></div></div></div>' +
+      '<p style="font-size:.82rem;color:var(--tinta-suave);margin-top:14px">Tu identificador: <code>' + esc(FB.uid) + '</code> <button class="btn suave" style="min-height:32px;padding:3px 10px;font-size:.8rem" id="btnCopiarUid">Copiar</button>' +
+      (S.admin ? ' · <strong style="color:var(--ok)">Puedes moderar la galería</strong>' : ' · Añádelo en <code>admins</code> para moderar la galería') + '</p>';
+    pintarQR($('qrSala'), BASE + '#sala=' + S.sala, 180);
+    pintarQR($('qrMando'), BASE + '#mando=' + S.sala, 180);
+  } else if (hayFirebase()) {
+    c.innerHTML = '<p>Abre una sala para que el claustro siga la presentación en su móvil, responda a la radiografía y puedas usar tu móvil como mando.</p>' +
+      '<div class="fila" style="margin-top:12px"><button class="btn azul" id="btnAbrirSala">Abrir sala</button>' + btnVentana + '</div>' +
+      (S.errorSala ? '<div class="estado ver error"><b>✕</b><span>' + esc(S.errorSala) + '</span></div>' : '');
+  } else {
+    c.innerHTML = '<p>Sin Firebase, la <strong>ventana de ponente</strong> funciona en este mismo ordenador: notas, siguiente diapositiva, reloj y control de las pestañas. Con la pantalla extendida, el proyector muestra las diapositivas y tu portátil, la ventana.</p>' +
+      '<div class="fila" style="margin-top:12px">' + btnVentana + '</div>' +
+      '<p style="font-size:.88rem;color:var(--tinta-suave);margin-top:12px">Para usar el móvil como mando y que el claustro siga la sesión en el suyo, activa Firebase (abajo).</p>';
+  }
+}
+document.addEventListener('click', e => {
+  const t = e.target.closest('button'); if (!t) return;
+  if (t.id === 'btnAbrirSala') { t.disabled = true; t.textContent = 'Abriendo…'; abrirSala(false); }
+  else if (t.id === 'btnCerrarSala') cerrarSala();
+  else if (t.id === 'btnVentana') abrirVentanaPonente();
+  else if (t.id === 'btnCopiarUid') copiar(FB.uid).then(ok => tostada(ok ? 'Identificador copiado' : 'No se pudo copiar'));
+  else if (t.dataset.autorizar) autorizar(t.dataset.autorizar, true);
+  else if (t.dataset.rechazar) autorizar(t.dataset.rechazar, false);
+});
+
+function pintarModo() {
+  const chip = $('modoChip'); if (!chip) return;
+  let clase = 'ensayo', txt = 'Modo ensayo · todo en este ordenador';
+  if (S.sala && FB.ok) { clase = 'vivo'; txt = (S.rol === 'asistente' ? 'Conectado a la sala ' : 'Sala ') + S.sala + ' en directo'; }
+  else if (hayFirebase()) { clase = FB.error ? 'ensayo' : 'hoja'; txt = FB.error ? FB.error : 'Firebase listo · abre una sala'; }
+  else if (DIRECTO.radiografia.hoja) { clase = 'hoja'; txt = 'Formulario de Google'; }
+  chip.className = 'modo-chip ' + clase; chip.textContent = txt;
+}
+
+/* ── Asistente: seguir la sesión ── */
+const banner = document.createElement('div');
+banner.className = 'siguiendo'; banner.id = 'siguiendo';
+document.body.insertBefore(banner, document.body.firstChild);
+function pintarBanner(txt) {
+  if (S.rol !== 'asistente') { banner.classList.remove('ver'); return; }
+  banner.classList.add('ver');
+  const abierta = S.estado.actividad === 'radiografia';
+  banner.innerHTML = '<span>' + esc(txt || (S.siguiendo ? 'Sigues la presentación · sala ' + S.sala : 'Vas por libre · sala ' + S.sala)) + '</span>' +
+    (abierta && !leer('resp:' + S.sala, false) ? '<button data-b="responder">Responder la pregunta</button>' : '') +
+    (txt ? '' : '<button data-b="seguir">' + (S.siguiendo ? 'Ir por libre' : 'Volver a seguir') + '</button>') +
+    '<button data-b="salir">Salir</button>';
+}
+banner.addEventListener('click', e => {
+  const b = e.target.closest('[data-b]'); if (!b) return;
+  if (b.dataset.b === 'responder') abrirRespuesta();
+  if (b.dataset.b === 'seguir') { S.siguiendo = !S.siguiendo; if (S.siguiendo) aplicarEstado(S.estado, true); pintarBanner(); }
+  if (b.dataset.b === 'salir') { try { sessionStorage.removeItem('ia-cole-modo'); } catch (x) {} location.replace(BASE); }
+});
+async function iniciarAsistente(sala) {
+  S.rol = 'asistente'; S.sala = sala; pintarBanner('Conectando con la sala ' + sala + '…');
+  if (!await iniciarFirebase()) { pintarBanner(hayFirebase() ? FB.error : 'Esta formación no tiene sala en directo'); return; }
+  ref('salas/' + sala + '/estado').on('value', sn => {
+    const e = sn.val();
+    if (!e) { pintarBanner('La sala ' + sala + ' no existe o ya ha terminado'); return; }
+    aplicarEstado(e, S.siguiendo);
+  });
+  conectarRespuestas(); pintarModo(); pintarRadio();
+}
+function abrirRespuesta() {
+  $('respTitulo').textContent = preguntaActual();
+  $('respTexto').value = '';
+  $('veloResp').classList.add('ver'); $('respTexto').focus();
+}
+function revisarActividad() {
+  pintarBanner();
+  const ya = leer('resp:' + S.sala, false);
+  if (S.estado.actividad === 'radiografia' && !ya && !R.descartado && !$('veloResp').classList.contains('ver')) abrirRespuesta();
+  if (S.estado.actividad !== 'radiografia') $('veloResp').classList.remove('ver');
+}
+$('respCerrar').onclick = () => { R.descartado = true; $('veloResp').classList.remove('ver'); };
+$('respEnviar').onclick = async () => {
+  const t = $('respTexto').value.trim().slice(0, 200);
+  if (!t) { $('respTexto').focus(); return; }
+  if (S.rol !== 'asistente' || !FB.ok) { $('veloResp').classList.remove('ver'); return; }
+  try {
+    await ref('salas/' + S.sala + '/respuestas/' + FB.uid).set({ texto: t, t: TS() });
+    guardar('resp:' + S.sala, true); $('veloResp').classList.remove('ver');
+    tostada('¡Gracias! Mira la pizarra');
+  } catch (e) { tostada('No se pudo enviar'); }
+};
+
+/* ── Mando (móvil) y ventana de ponente ── */
+const mando = $('mando');
+const M = { inicio: Date.now(), reloj: null };
+const TITULOS_PANEL = { inicio: 'Presentación', directo: 'En directo', apps: 'Las apps', ia: 'Crea con IA', taller: 'Taller', galeria: 'Galería' };
+function tituloDiapo(i) { const d = diapos[i]; if (!d) return ''; const h = d.querySelector('h2'); return h ? h.textContent.trim() : 'Diapositiva ' + (i + 1); }
+function mmss(ms) { const s = Math.floor(ms / 1000); return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); }
+function pintarMando() {
+  if (S.rol !== 'mando' && S.rol !== 'ponenteLocal') return;
+  mando.classList.add('ver'); document.body.style.overflow = 'hidden';
+  const cab = '<div class="mando-cab"><span>' + (S.rol === 'mando' ? 'Mando · sala ' + esc(S.sala) : 'Ventana de ponente') + '</span>' +
+    '<button class="mando-reloj" id="mReloj" title="Toca para poner a cero" style="background:none;border:0;cursor:pointer">' + mmss(Date.now() - M.inicio) + '</button></div>';
+  if (S.rol === 'mando' && !S.autorizado) {
+    mando.innerHTML = cab + '<div class="mando-espera"><h2>' + (S.errorSala ? 'No se puede conectar' : 'Casi listo') + '</h2><p>' +
+      esc(S.errorSala || 'Autoriza este móvil en el ordenador del ponente, en la pestaña En directo.') + '</p></div>';
+    return;
+  }
+  const i = dActual, enDiapos = S.estado.panel === 'inicio';
+  const notas = diapos[i] && diapos[i].dataset.notas || 'Sin notas para esta diapositiva.';
+  const abierta = S.estado.actividad === 'radiografia';
+  mando.innerHTML = cab + '<div class="mando-cuerpo">' +
+    '<div class="mando-actual"><div class="n">' + (enDiapos ? 'Diapositiva ' + (i + 1) + ' de ' + diapos.length : 'Pestaña: ' + esc(TITULOS_PANEL[S.estado.panel] || S.estado.panel)) + '</div>' +
+    '<h2>' + esc(enDiapos ? tituloDiapo(i) : TITULOS_PANEL[S.estado.panel] || '') + '</h2>' +
+    (enDiapos ? '<div class="notas">' + esc(notas) + '</div>' : '') + '</div>' +
+    (enDiapos && i < diapos.length - 1 ? '<div class="mando-sig">Siguiente: ' + esc(tituloDiapo(i + 1)) + '</div>' : '') +
+    '<div class="mando-botones"><button class="ant" data-m="ant" aria-label="Anterior">‹</button><button class="sig" data-m="sig" aria-label="Siguiente">›</button></div>' +
+    '<div class="mando-paneles">' + Object.keys(TITULOS_PANEL).map(p =>
+      '<button data-m="panel" data-p="' + p + '" aria-current="' + (S.estado.panel === p) + '">' + TITULOS_PANEL[p] + '</button>').join('') + '</div>' +
+    (S.rol === 'mando' || hayFirebase() ? '<button class="btn ' + (abierta ? 'linea' : 'azul') + '" data-m="actividad" style="min-height:54px">' + (abierta ? 'Cerrar la pregunta en los móviles' : 'Abrir la pregunta en los móviles') + '</button>' : '') +
+    '</div>';
+}
+mando.addEventListener('click', e => {
+  const b = e.target.closest('[data-m],#mReloj'); if (!b) return;
+  if (b.id === 'mReloj') { M.inicio = Date.now(); pintarMando(); return; }
+  const m = b.dataset.m;
+  if (m === 'ant' || m === 'sig') {
+    if (panelActual() !== 'inicio') irA('inicio');
+    verDiapo(dActual + (m === 'sig' ? 1 : -1));
+    if (navigator.vibrate) navigator.vibrate(15);
+  } else if (m === 'panel') irA(b.dataset.p);
+  else if (m === 'actividad') emitir({ actividad: S.estado.actividad === 'radiografia' ? '' : 'radiografia' });
+});
+function arrancarReloj() { clearInterval(M.reloj); M.reloj = setInterval(() => { const r = $('mReloj'); if (r) r.textContent = mmss(Date.now() - M.inicio); }, 1000); }
+function etiquetaDispositivo() {
+  const u = navigator.userAgent;
+  return /iPhone/.test(u) ? 'iPhone' : /iPad/.test(u) ? 'iPad' : /Android/.test(u) ? 'Móvil Android' : 'Otro dispositivo';
+}
+async function iniciarMando(sala) {
+  S.rol = 'mando'; S.sala = sala; arrancarReloj(); pintarMando();
+  if (!await iniciarFirebase()) { S.errorSala = hayFirebase() ? FB.error : 'Esta formación no tiene Firebase configurado.'; pintarMando(); return; }
+  try {
+    const dueno = (await ref('salas/' + sala + '/dueno').get()).val();
+    if (!dueno) { S.errorSala = 'La sala ' + sala + ' no existe o ya se ha cerrado.'; pintarMando(); return; }
+    if ((await ref('salas/' + sala + '/mandos/' + FB.uid).get()).val() !== true)
+      await ref('salas/' + sala + '/solicitudes/' + FB.uid).set(etiquetaDispositivo());
+  } catch (e) { S.errorSala = 'No se pudo pedir acceso. Revisa las reglas.'; pintarMando(); return; }
+  ref('salas/' + sala + '/mandos/' + FB.uid).on('value', sn => { S.autorizado = sn.val() === true; pintarMando(); });
+  ref('salas/' + sala + '/estado').on('value', sn => { const e = sn.val(); if (e) aplicarEstado(e, true); });
+}
+function iniciarPonenteLocal() {
+  S.rol = 'ponenteLocal'; S.autorizado = true; arrancarReloj(); pintarMando();
+  if (canal) { canal.postMessage({ tipo: 'hola' }); canal.onmessage = ev => { const m = ev.data || {}; if (m.tipo === 'estado' && m.de !== 'ponenteLocal') aplicarEstado(m.estado, true); }; }
+  else mando.innerHTML = '<div class="mando-espera"><h2>Navegador sin soporte</h2><p>Usa Chrome o Edge para la ventana de ponente.</p></div>';
+}
+
+/* ════════════════ RADIOGRAFÍA DEL CLAUSTRO ════════════════ */
+const TEMAS = [
+  { id: 'papeleo', nombre: 'Papeleo y documentos', c: '#2459C7', claves: ['acta', 'informe', 'document', 'papel', 'firma', 'memoria', 'programacion', 'burocracia', 'rellenar', 'plantilla', 'certificad', 'justificant'] },
+  { id: 'comunicacion', nombre: 'Comunicación', c: '#D23B4A', claves: ['correo', 'email', 'mail', 'familia', 'whatsapp', 'mensaje', 'circular', 'aviso', 'autorizacion', 'pasen', 'llamad', 'tutoria'] },
+  { id: 'evaluacion', nombre: 'Evaluación', c: '#177A4C', claves: ['nota', 'evalua', 'calific', 'corregir', 'correcc', 'examen', 'examenes', 'rubrica', 'criterio', 'competencia', 'boletin', 'prueba'] },
+  { id: 'organizacion', nombre: 'Organización y horarios', c: '#B7791F', claves: ['horario', 'guardia', 'sustitu', 'reunion', 'calendario', 'claustro', 'coordina', 'agenda', 'excursion', 'salida', 'cuadrar', 'planific'] },
+  { id: 'convivencia', nombre: 'Convivencia', c: '#7C3AED', claves: ['parte', 'conflict', 'conducta', 'convivencia', 'recreo', 'incidencia', 'acoso', 'mediacion', 'normas'] },
+  { id: 'datos', nombre: 'Listas y hojas de cálculo', c: '#0E7490', claves: ['excel', 'hoja', 'lista', 'datos', 'tabla', 'inventario', 'prestamo', 'registr', 'seneca', 'contar', 'recuento', 'copiar'] },
+  { id: 'aula', nombre: 'Preparar clase', c: '#E8612C', claves: ['material', 'ficha', 'actividad', 'preparar', 'adapta', 'diversidad', 'ejercicio', 'situacion', 'sda', 'lectura', 'recurso', 'unidad'] }
+];
+const OTROS = { id: 'otros', nombre: 'Otros', c: '#8792A8' };
+const VACIAS = new Set(('para como pero porque cuando todo todos todas mucho mucha muchos muchas tiempo cole colegio tengo tener hacer hago hace entre sobre desde hasta donde esto esta estas estos este esos esas eso muy mas menos cada otra otro otros otras sus tus mis nuestro nuestra que los las del con una unos unas por sin son hay ser les nos tambien siempre veces dia dias vez algo quita quitan tarea tareas estan alguien sitio llevar poder quiero falta').split(' '));
+const EJEMPLOS = [
+  'Pasar las notas del cuaderno a Séneca y hacer los informes',
+  'Contestar correos de familias y recoger autorizaciones de excursiones',
+  'Organizar las guardias cuando falta alguien',
+  'Preparar fichas adaptadas para el alumnado de PT',
+  'Las actas de ciclo y de equipo docente',
+  'Copiar en hojas de cálculo datos que ya están en otro sitio',
+  'Corregir y calificar por criterios',
+  'Llevar la lista de préstamos de la biblioteca de aula'
+];
+const R = { lista: [], sel: new Set(), tema: '', descartado: false, fuente: 'ensayo', hojaTimer: null, error: '' };
+
+function preguntaActual() { return S.estado.pregunta || leer('pregunta', '') || DIRECTO.radiografia.pregunta; }
+function temaDe(texto) {
+  const pal = plano(texto).split(/[^a-z0-9ñ]+/);
+  let mejor = OTROS, max = 0;
+  TEMAS.forEach(t => {
+    const n = pal.filter(p => t.claves.some(k => p.startsWith(k))).length;
+    if (n > max) { max = n; mejor = t; }
+  });
+  return mejor;
+}
+function fuenteRadio() {
+  if (S.sala && FB.ok && (S.rol === 'dueno' || S.rol === 'asistente')) return 'sala';
+  if (DIRECTO.radiografia.hoja) return 'hoja';
+  return 'ensayo';
+}
+let refResp = null;
+function conectarRespuestas() {
+  if (refResp) { refResp.off(); refResp = null; }
+  clearInterval(R.hojaTimer);
+  R.fuente = fuenteRadio(); R.error = '';
+  if (R.fuente === 'sala') {
+    refResp = ref('salas/' + S.sala + '/respuestas');
+    refResp.on('value', sn => {
+      const v = sn.val() || {};
+      R.lista = Object.entries(v).map(([id, r]) => ({ id, texto: r.texto, t: r.t || 0 })).sort((a, b) => b.t - a.t);
+      pintarRadio();
+    });
+  } else if (R.fuente === 'hoja') {
+    const tirar = () => {
+      if (document.visibilityState !== 'visible') return;
+      leerHoja(DIRECTO.radiografia.hoja).then(filas => {
+        R.error = '';
+        R.lista = filas.map((f, i) => {
+          const k = Object.keys(f).find(c => !esMarca(c));
+          return { id: 'h' + i, texto: String(f[k] || '').trim(), t: i };
+        }).filter(r => r.texto).reverse();
+        pintarRadio();
+      }).catch(() => { R.error = 'No se puede leer la hoja. Comprueba que está compartida como «Cualquier persona con el enlace».'; pintarRadio(); });
+    };
+    tirar(); R.hojaTimer = setInterval(tirar, 8000);
+  } else {
+    R.lista = leer('ensayo', []);
+  }
+  pintarRadio();
+}
+function destinoQR() {
+  if (S.rol === 'asistente') return '';
+  if (S.sala && S.rol === 'dueno') return BASE + '#sala=' + S.sala;
+  if (!hayFirebase() && DIRECTO.radiografia.formulario) return DIRECTO.radiografia.formulario;
+  return '';
+}
+function avisoQR() {
+  if (S.rol === 'asistente') return 'Ya estás en la sala ' + S.sala + '. Responde desde el botón de arriba cuando se abra la pregunta.';
+  return hayFirebase() ? 'Abre una sala en «Modo ponente» y aquí aparecerá el código.' : 'Modo ensayo. Con Firebase o un formulario de Google, aquí aparecerá el código para los móviles.';
+}
+let ultimoQR = null;
+function pintarPregunta() {
+  const p = preguntaActual();
+  if ($('radioPregunta')) $('radioPregunta').textContent = p;
+  if ($('radioPreguntaIn') && document.activeElement !== $('radioPreguntaIn')) $('radioPreguntaIn').value = p;
+  const dq = document.querySelector('[data-pregunta-diapo]'); if (dq) dq.textContent = p;
+}
+function nubeHTML(lista, max, escala) {
+  const cuenta = {};
+  lista.forEach(r => plano(r.texto).split(/[^a-z0-9ñ]+/).forEach(p => { if (p.length > 3 && !VACIAS.has(p)) cuenta[p] = (cuenta[p] || 0) + 1; }));
+  const top = Object.entries(cuenta).sort((a, b) => b[1] - a[1]).slice(0, max);
+  if (!top.length) return '<span style="font:400 .9rem var(--texto);color:var(--tinta-suave)">Aquí aparecerán las palabras que más se repiten.</span>';
+  const tope = Math.max(3, top[0][1]);
+  return top.sort((a, b) => a[0].localeCompare(b[0])).map(([p, n]) => {
+    const tam = (0.95 + 1.6 * (n / tope)) * (escala || 1);
+    const t = temaDe(p);
+    return '<span style="font-size:' + tam.toFixed(2) + 'rem;color:' + (t === OTROS ? 'var(--tinta)' : t.c) + '">' + esc(p) + '</span>';
+  }).join('');
+}
+function pintarRadio() {
+  if (!$('radio')) return;
+  pintarPregunta();
+  const lista = R.lista;
+  $('radioCuenta').textContent = lista.length;
+  const destino = destinoQR();
+  if (destino !== ultimoQR) { ultimoQR = destino; pintarQR($('radioQR'), destino, 230, avisoQR()); }
+  $('radioURL').textContent = destino && destino.includes('#sala=') ? 'Sala ' + S.sala : '';
+  // temas
+  const porTema = {};
+  lista.forEach(r => { const t = temaDe(r.texto); porTema[t.id] = (porTema[t.id] || 0) + 1; });
+  const temas = [...TEMAS, OTROS].filter(t => porTema[t.id]).sort((a, b) => porTema[b.id] - porTema[a.id]);
+  const max = Math.max(1, ...Object.values(porTema));
+  $('radioTemas').innerHTML = temas.map(t =>
+    '<button class="tema" data-tema="' + t.id + '" aria-pressed="' + (R.tema === t.id) + '" style="--c:' + t.c + '"><span>' + esc(t.nombre) + '</span>' +
+    '<span class="barra"><i style="width:' + Math.round(porTema[t.id] * 100 / max) + '%"></i></span><b>' + porTema[t.id] + '</b></button>').join('');
+  $('radioNube').innerHTML = nubeHTML(lista, 30);
+  const vis = R.tema ? lista.filter(r => temaDe(r.texto).id === R.tema) : lista;
+  $('radioResps').innerHTML = vis.length ? vis.map(r =>
+    '<button class="resp" data-resp="' + esc(r.id) + '" aria-pressed="' + R.sel.has(r.id) + '">' + esc(r.texto) +
+    '<small>' + esc(temaDe(r.texto).nombre) + '</small></button>').join('')
+    : '<p style="color:var(--tinta-suave);font-size:.93rem">Todavía no hay respuestas.</p>';
+  // controles según el rol
+  const puedeGestionar = S.rol === 'dueno' || R.fuente === 'ensayo';
+  $('campoPregunta').style.display = puedeGestionar ? '' : 'none';
+  $('radioEnsayo').style.display = R.fuente === 'ensayo' ? '' : 'none';
+  $('radioAbrir').style.display = S.rol === 'dueno' ? '' : 'none';
+  $('radioVaciar').style.display = puedeGestionar ? '' : 'none';
+  if (R.error) estado('radioEstado', 'error', esc(R.error)); else ocultarEstado('radioEstado');
+  pintarBotonActividad(); pintarDiapoRadio(); pintarModo();
+}
+function pintarBotonActividad() {
+  const b = $('radioAbrir'); if (!b) return;
+  const abierta = S.estado.actividad === 'radiografia';
+  b.textContent = abierta ? 'Cerrar la pregunta en los móviles' : 'Abrir la pregunta en los móviles';
+  b.className = 'btn ' + (abierta ? 'suave' : 'linea');
+}
+let ultimoQRDiapo = null;
+function pintarDiapoRadio() {
+  const q = $('diapoQR'); if (!q) return;
+  const destino = destinoQR();
+  if (destino !== ultimoQRDiapo) { ultimoQRDiapo = destino; pintarQR(q, destino, 220, avisoQR()); }
+  $('diapoCuenta').textContent = R.lista.length;
+  $('diapoNube').innerHTML = nubeHTML(R.lista, 14, 0.9);
+}
+$('radioTemas').addEventListener('click', e => {
+  const b = e.target.closest('[data-tema]'); if (!b) return;
+  R.tema = R.tema === b.dataset.tema ? '' : b.dataset.tema; pintarRadio();
+});
+$('radioResps').addEventListener('click', e => {
+  const b = e.target.closest('[data-resp]'); if (!b) return;
+  const id = b.dataset.resp; R.sel.has(id) ? R.sel.delete(id) : R.sel.add(id);
+  b.setAttribute('aria-pressed', R.sel.has(id));
+});
+$('radioPreguntaIn').addEventListener('change', e => {
+  const v = e.target.value.trim() || DIRECTO.radiografia.pregunta;
+  guardar('pregunta', v); S.estado.pregunta = v; pintarPregunta();
+  if (S.rol === 'dueno') escribirFB();
+});
+function anadirEnsayo(t) {
+  t = String(t || '').trim().slice(0, 200); if (!t) return;
+  R.lista.unshift({ id: 'e' + Date.now() + Math.random().toString(36).slice(2, 5), texto: t, t: Date.now() });
+  guardar('ensayo', R.lista); pintarRadio();
+}
+$('radioEnsayoBtn').onclick = () => { anadirEnsayo($('radioEnsayoIn').value); $('radioEnsayoIn').value = ''; $('radioEnsayoIn').focus(); };
+$('radioEnsayoIn').addEventListener('keydown', e => { if (e.key === 'Enter') $('radioEnsayoBtn').click(); });
+$('radioEjemplos').onclick = () => {
+  let i = 0; const paso = () => { if (i < EJEMPLOS.length) { anadirEnsayo(EJEMPLOS[i++]); setTimeout(paso, 350); } };
+  paso();
+};
+$('radioVaciar').onclick = async () => {
+  if (!confirm('¿Borrar todas las respuestas?')) return;
+  R.sel.clear(); R.tema = '';
+  if (R.fuente === 'sala') { try { await ref('salas/' + S.sala + '/respuestas').remove(); } catch (e) { tostada('No se pudo vaciar'); } }
+  else { R.lista = []; guardar('ensayo', []); pintarRadio(); }
+};
+$('radioAbrir').onclick = () => emitir({ actividad: S.estado.actividad === 'radiografia' ? '' : 'radiografia' });
+$('radioPantalla').onclick = () => {
+  const r = $('radio');
+  if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+  else if (r.requestFullscreen) r.requestFullscreen().catch(() => {});
+};
+$('radioReto').onclick = async () => {
+  let elegidas = R.lista.filter(r => R.sel.has(r.id));
+  if (!elegidas.length && R.tema) elegidas = R.lista.filter(r => temaDe(r.texto).id === R.tema);
+  if (!elegidas.length) elegidas = R.lista;
+  if (!elegidas.length) { tostada('Todavía no hay respuestas'); return; }
+  const lineas = elegidas.slice(0, 12).map(r => '- «' + r.texto + '»').join('\n');
+  const texto = 'Soy docente en un centro de Primaria de Andalucía y no sé programar. En mi claustro, a la pregunta «' + preguntaActual() + '», se ha respondido:\n\n' + lineas +
+    '\n\nElige el problema que mejor pueda resolver una app pequeña. Antes de escribir código, hazme como máximo 5 preguntas para entender quién la usará, qué datos maneja y si hace falta compartirlos.\n\n' +
+    'Después, propón una app de un solo archivo index.html (HTML, CSS y JavaScript juntos), clara y luminosa, que funcione en el móvil y en la pizarra digital. Si no hace falta compartir datos, que guarde en el navegador y permita exportar e importar un archivo. Entrégame siempre el archivo completo, sin recortes.';
+  const ok = await copiar(texto);
+  tostada(ok ? 'Encargo copiado · pégalo en el Gem Constructor' : 'No se pudo copiar');
+};
+
+/* ════════════════ HISTORIA DE UNA APP ════════════════ */
+function montarHistoria(caja) {
+  const H = HISTORIA.hitos || []; if (!H.length) { caja.remove(); return; }
+  let i = 0;
+  caja.innerHTML = '<div class="historia-linea" role="tablist" aria-label="Hitos de ' + esc(HISTORIA.app) + '">' +
+    H.map((h, k) => '<button class="hito" role="tab" data-k="' + k + '"><i>' + (k + 1) + '</i>' + esc(h.corto || h.titulo) + '</button>').join('') +
+    '</div><div class="historia-ficha" aria-live="polite"></div>' +
+    '<div class="historia-pie"><span class="historia-moraleja"></span><span class="fila">' +
+    '<button class="btn icono" data-h="-1" aria-label="Hito anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>' +
+    '<button class="btn icono" data-h="1" aria-label="Hito siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button></span></div>';
+  const ficha = caja.querySelector('.historia-ficha'), mor = caja.querySelector('.historia-moraleja');
+  function ver(k) {
+    i = Math.max(0, Math.min(H.length - 1, k));
+    const h = H[i];
+    caja.querySelectorAll('.hito').forEach((b, n) => { b.classList.toggle('hecho', n <= i); b.setAttribute('aria-current', n === i); b.setAttribute('aria-selected', n === i); });
+    ficha.style.animation = 'none'; void ficha.offsetWidth; ficha.style.animation = '';
+    ficha.innerHTML = '<div>' + (h.fecha ? '<div class="fecha">' + esc(h.fecha) + '</div>' : '') +
+      '<h4>' + esc(h.titulo) + '</h4><p>' + esc(h.texto) + '</p>' + (h.dato ? '<span class="dato">' + esc(h.dato) + '</span>' : '') + '</div>' +
+      '<div>' + (h.prompt ? '<blockquote>' + esc(h.prompt) + '</blockquote>' : '') +
+      (h.imagen ? '<img src="' + esc(h.imagen) + '" alt="Captura: ' + esc(h.titulo) + '" loading="lazy">' : '') + '</div>';
+    mor.textContent = i === H.length - 1 ? HISTORIA.moraleja : 'Hito ' + (i + 1) + ' de ' + H.length;
+    caja.querySelector('[data-h="-1"]').disabled = i === 0;
+    caja.querySelector('[data-h="1"]').disabled = i === H.length - 1;
+  }
+  caja.addEventListener('click', e => {
+    const b = e.target.closest('.hito'); if (b) { ver(+b.dataset.k); return; }
+    const h = e.target.closest('[data-h]'); if (h) ver(i + Number(h.dataset.h));
+  });
+  ver(0);
+}
+$$('[data-historia-app]').forEach(n => n.textContent = HISTORIA.app);
+$$('[data-historia]').forEach(montarHistoria);
+
+/* ════════════════ TALLER DE ERRORES ════════════════ */
+const ESTILO = '<style>body{font-family:system-ui,sans-serif;padding:18px;color:#1B2A4E;background:#fff}h1{font-size:22px;margin:0 0 6px}p{margin:0 0 12px;color:#56627C}input{font-size:17px;padding:7px 9px;max-width:100%;margin:3px;border:2px solid #D8E1EC;border-radius:8px}button{font-size:17px;padding:8px 16px;margin-top:8px;border:0;border-radius:8px;background:#2459C7;color:#fff;cursor:pointer}.res{font-size:26px;font-weight:bold;margin-top:14px}li{font-size:17px;margin:4px 0}input[type=number]{width:90px}</style>';
+const NIVELES = [
+  {
+    corto: 'Nivel 1', titulo: 'Se escapó una letra', sub: 'Un error en rojo que dice exactamente qué pasa.',
+    mision: 'Esta app calcula la media de tres notas. Con 5, 7 y 9 debería salir «Media: 7.0», pero no hace nada.',
+    esperado: 'Al escribir 5, 7 y 9 y pulsar Calcular, debe aparecer «Media: 7.0».',
+    codigo: '<!DOCTYPE html>\n<html lang="es">\n<head>\n<meta charset="utf-8">\n<title>Media de notas</title>\n' + ESTILO + '\n</head>\n<body>\n<h1>Media de notas</h1>\n<p>Escribe tres notas y pulsa Calcular.</p>\n<input id="n1" type="number" value="5">\n<input id="n2" type="number" value="7">\n<input id="n3" type="number" value="9">\n<br><button id="calcular">Calcular</button>\n<div class="res" id="resultado">—</div>\n<script>\ndocument.getElementById(\'calcular\').addEventListener(\'click\', function () {\n  const a = Number(document.getElementById(\'n1\').value);\n  const b = Number(document.getElementById(\'n2\').value);\n  const c = Number(docment.getElementById(\'n3\').value);\n  const media = (a + b + c) / 3;\n  document.getElementById(\'resultado\').textContent = \'Media: \' + media.toFixed(1);\n});\n<\/script>\n</body>\n</html>\n',
+    test: function () { var d = document; d.getElementById('n1').value = '5'; d.getElementById('n2').value = '7'; d.getElementById('n3').value = '9'; d.getElementById('calcular').click(); var t = d.getElementById('resultado').textContent.trim(); return { ok: /(^|[^0-9])7([.,]0+)?([^0-9]|$)/.test(t) && t !== '—', visto: 'Con 5, 7 y 9 aparece: «' + t + '».' }; },
+    pista: 'Lee el error despacio: te dice qué palabra no reconoce el navegador y en qué línea está. Búscala con Ctrl+F.',
+    solucion: 'En la línea del tercer número pone «docment» en lugar de «document». Una sola letra basta para que una app deje de funcionar.'
+  },
+  {
+    corto: 'Nivel 2', titulo: 'La lista que no existía', sub: 'Un error en rojo más críptico: «undefined».',
+    mision: 'Préstamos de la biblioteca de aula. Al escribir un título y pulsar Añadir, debería aparecer en la lista. No aparece nada.',
+    esperado: 'Al añadir «El Principito», la lista debe mostrar ese libro.',
+    codigo: '<!DOCTYPE html>\n<html lang="es">\n<head>\n<meta charset="utf-8">\n<title>Préstamos</title>\n' + ESTILO + '\n</head>\n<body>\n<h1>Biblioteca de aula</h1>\n<p>Apunta los libros prestados.</p>\n<input id="titulo" type="text" placeholder="Título del libro">\n<button id="anadir">Añadir</button>\n<ul id="lista"></ul>\n<script>\nlet libros;\n\nfunction pintar() {\n  document.getElementById(\'lista\').innerHTML =\n    libros.map(l => \'<li>📕 \' + l + \'</li>\').join(\'\');\n}\n\ndocument.getElementById(\'anadir\').addEventListener(\'click\', function () {\n  const t = document.getElementById(\'titulo\').value.trim();\n  if (!t) return;\n  libros.push(t);\n  document.getElementById(\'titulo\').value = \'\';\n  pintar();\n});\n<\/script>\n</body>\n</html>\n',
+    test: function () { var d = document; d.getElementById('titulo').value = 'El Principito'; d.getElementById('anadir').click(); var li = d.querySelectorAll('#lista li'); var ok = li.length === 1 && li[0].textContent.indexOf('El Principito') > -1; return { ok: ok, visto: 'Tras añadir «El Principito», la lista tiene ' + li.length + ' libro(s).' }; },
+    pista: '«undefined» significa «todavía no tiene valor». ¿Con qué valor empieza la variable de los libros?',
+    solucion: 'La variable se declara vacía («let libros;»). Tiene que empezar como una lista: «let libros = [];».'
+  },
+  {
+    corto: 'Nivel 3', titulo: 'Nada en rojo, pero mal', sub: 'El más traicionero: la consola está limpia.',
+    mision: 'Recuento de asistencia al claustro: presencial más en línea. Con 12 y 13 debería salir 25.',
+    esperado: 'Con 12 personas presenciales y 13 en línea, el total debe ser 25.',
+    codigo: '<!DOCTYPE html>\n<html lang="es">\n<head>\n<meta charset="utf-8">\n<title>Asistencia</title>\n' + ESTILO + '\n</head>\n<body>\n<h1>Asistencia al claustro</h1>\n<p>Presencial y en línea.</p>\n<input id="presencial" type="number" value="12">\n<input id="enlinea" type="number" value="13">\n<br><button id="contar">Contar</button>\n<div class="res" id="total">—</div>\n<script>\ndocument.getElementById(\'contar\').addEventListener(\'click\', function () {\n  const p = document.getElementById(\'presencial\').value;\n  const l = document.getElementById(\'enlinea\').value;\n  document.getElementById(\'total\').textContent = \'Total: \' + (p + l);\n});\n<\/script>\n</body>\n</html>\n',
+    test: function () { var d = document; d.getElementById('presencial').value = '12'; d.getElementById('enlinea').value = '13'; d.getElementById('contar').click(); var t = d.getElementById('total').textContent.trim(); return { ok: /(^|[^0-9])25([^0-9]|$)/.test(t), visto: 'Con 12 y 13 aparece: «' + t + '».' }; },
+    pista: 'Cuando no sale nada en rojo, la IA no puede adivinar el fallo: dile qué esperabas y qué ha salido. Fíjate bien en el número.',
+    solucion: 'Los valores de las casillas son texto: "12" + "13" da "1213". Hay que convertirlos en números con Number() antes de sumar.'
+  }
+];
+const T = { n: leer('tallerNivel', 0), errores: [], visto: '', ok: null, superados: leer('tallerOk', []) };
+function pintarNiveles() {
+  $('niveles').innerHTML = NIVELES.map((v, k) =>
+    '<button class="nivel' + (T.superados.includes(k) ? ' superado' : '') + '" data-nivel="' + k + '" aria-pressed="' + (T.n === k) + '">' +
+    '<small>' + esc(v.corto) + '</small><b>' + esc(v.titulo) + '</b><span>' + esc(v.sub) + '</span></button>').join('');
+}
+function cargarNivel(k, original) {
+  T.n = Math.max(0, Math.min(NIVELES.length - 1, k)); guardar('tallerNivel', T.n);
+  const v = NIVELES[T.n];
+  $('mision').innerHTML = '<b>La misión</b>' + esc(v.mision);
+  const guardado = leer('taller' + T.n, '');
+  $('tallerCodigo').value = (!original && guardado) || v.codigo;
+  $('tallerPistaTxt').classList.remove('ver');
+  T.errores = []; T.visto = ''; T.ok = null;
+  $('consola').innerHTML = '<div class="vacia">Pulsa Probar para ejecutar la app.</div>'; $('consolaN').textContent = '';
+  $('veredicto').className = 'veredicto'; $('tallerMarco').srcdoc = '';
+  pintarNiveles();
+}
+function extraerCodigo(t) {
+  const f = t.match(/```(?:html)?\s*\n([\s\S]*?)```/i);
+  if (f && /<html|<!doctype/i.test(f[1])) t = f[1];
+  const a = t.search(/<!doctype html|<html/i), b = t.toLowerCase().lastIndexOf('</html>');
+  return (a >= 0 && b > a) ? t.slice(a, b + 7) : t.trim();
+}
+function prepararCodigo(codigo, test) {
+  const prueba = String(test).replace(/\s*\n\s*/g, ' ');
+  const h = '<script>(function(){var P=function(m){m.__taller=1;parent.postMessage(m,"*")};' +
+    'window.addEventListener("error",function(e){P({tipo:"error",texto:String(e.message||"Error").replace(/^Uncaught /,""),linea:e.lineno||0})});' +
+    'var ce=console.error;console.error=function(){P({tipo:"error",texto:[].map.call(arguments,String).join(" ")});ce.apply(console,arguments)};' +
+    'var cl=console.log;console.log=function(){P({tipo:"log",texto:[].map.call(arguments,String).join(" ")});cl.apply(console,arguments)};' +
+    'window.addEventListener("load",function(){setTimeout(function(){var r;try{r=(' + prueba + ')()}catch(x){r={ok:false,visto:"La prueba no ha encontrado lo que buscaba ("+x.message+"). ¿Ha cambiado algún id?"}}P({tipo:"test",ok:!!r.ok,visto:r.visto})},250)})})();<\/script>';
+  return /<head[^>]*>/i.test(codigo) ? codigo.replace(/<head[^>]*>/i, m => m + h) : h + codigo;
+}
+function pintarConsola() {
+  $('consola').innerHTML = T.errores.length
+    ? T.errores.map(e => '<div class="l' + (e.tipo === 'error' ? ' err' : '') + '">' + esc(e.texto) + (e.linea ? '   (línea ' + e.linea + ')' : '') + '</div>').join('')
+    : '<div class="vacia">Sin errores en rojo.</div>';
+  const n = T.errores.filter(e => e.tipo === 'error').length;
+  $('consolaN').textContent = n ? n + ' error' + (n > 1 ? 'es' : '') : '';
+}
+$('tallerProbar').onclick = () => {
+  const limpio = extraerCodigo($('tallerCodigo').value);
+  $('tallerCodigo').value = limpio; guardar('taller' + T.n, limpio);
+  T.errores = []; T.visto = ''; T.ok = null;
+  $('consola').innerHTML = '<div class="vacia">Ejecutando…</div>'; $('veredicto').className = 'veredicto';
+  $('tallerMarco').srcdoc = prepararCodigo(limpio, NIVELES[T.n].test);
+};
+window.addEventListener('message', e => {
+  if (e.source !== $('tallerMarco').contentWindow || !e.data || !e.data.__taller) return;
+  const m = e.data;
+  if (m.tipo === 'test') {
+    T.visto = m.visto || ''; T.ok = m.ok; pintarConsola();
+    const v = $('veredicto');
+    if (m.ok) {
+      v.className = 'veredicto ok'; v.textContent = '✓ ¡Arreglada! ' + T.visto + ' Así se depura cualquier app.';
+      if (!T.superados.includes(T.n)) { T.superados.push(T.n); guardar('tallerOk', T.superados); pintarNiveles(); }
+    } else { v.className = 'veredicto mal'; v.textContent = '✕ Todavía no. ' + T.visto; }
+  } else { T.errores.push(m); pintarConsola(); }
+});
+$('tallerCopiar').onclick = async () => {
+  if (T.ok === null) { tostada('Pulsa Probar primero'); return; }
+  const v = NIVELES[T.n];
+  const errs = T.errores.filter(x => x.tipo === 'error').map(x => x.texto + (x.linea ? ' (línea ' + x.linea + ')' : '')).join('\n');
+  const texto = 'Esta app de un solo archivo no funciona bien.\n\nLo que debería hacer: ' + v.esperado + '\nLo que pasa: ' + T.visto +
+    '\nErrores de la consola (F12): ' + (errs || 'no aparece ningún error en rojo.') + '\n\nEste es el código completo:\n\n' + $('tallerCodigo').value +
+    '\n\nCorrígelo sin cambiar los id de los elementos. Devuélveme el index.html completo, sin recortes, y explícame en una sola frase qué fallaba.';
+  const ok = await copiar(texto);
+  tostada(ok ? 'Copiado · pégalo en Gemini y trae aquí su respuesta' : 'No se pudo copiar');
+};
+$('tallerPista').onclick = () => { const p = $('tallerPistaTxt'); p.textContent = NIVELES[T.n].pista; p.classList.add('ver'); };
+$('tallerSolucion').onclick = () => { const p = $('tallerPistaTxt'); p.textContent = 'Solución: ' + NIVELES[T.n].solucion; p.classList.add('ver'); };
+$('tallerRestaurar').onclick = () => { guardar('taller' + T.n, ''); cargarNivel(T.n, true); };
+$('niveles').addEventListener('click', e => { const b = e.target.closest('[data-nivel]'); if (b) cargarNivel(+b.dataset.nivel); });
+cargarNivel(T.n);
+
+/* ════════════════ GALERÍA DEL CLAUSTRO ════════════════ */
+const G = { fuente: '', obras: [], iniciada: false, timer: null };
+const colorDe = s => { let h = 0; for (const c of String(s)) h = (h * 31 + c.charCodeAt(0)) >>> 0; return 'hsl(' + (h % 360) + ' 62% 44%)'; };
+const httpsOk = u => { try { const x = new URL(u); return x.protocol === 'https:'; } catch (e) { return false; } };
+async function iniciarGaleria() {
+  if (G.iniciada) return; G.iniciada = true;
+  if (hayFirebase()) {
+    $('galeria').innerHTML = '<div class="vacio">Cargando la galería…</div>';
+    if (await iniciarFirebase()) {
+      G.fuente = 'firebase';
+      if (!S.admin) { try { S.admin = (await ref('admins/' + FB.uid).get()).val() === true; } catch (e) {} }
+      ref('galeria').limitToLast(300).on('value', sn => {
+        const v = sn.val() || {};
+        G.obras = Object.entries(v).map(([id, o]) => ({
+          id, titulo: o.titulo, enlace: o.enlace, centro: o.centro || '', nombre: o.nombre || '', problema: o.problema || '', prompt: o.prompt || '',
+          uid: o.uid, t: o.t || 0, votos: o.votos ? Object.keys(o.votos).length : 0, yo: !!(o.votos && o.votos[FB.uid])
+        }));
+        pintarGaleria();
+      }, () => { $('galeria').innerHTML = '<div class="vacio">No se puede leer la galería. Revisa las reglas.</div>'; });
+      pintarGaleria(); return;
+    }
+    G.fuente = 'error';
+  } else if (DIRECTO.galeria.hoja) {
+    G.fuente = 'hoja';
+    const tirar = () => leerHoja(DIRECTO.galeria.hoja).then(filas => {
+      G.obras = filas.map((f, i) => ({
+        id: 'h' + i, titulo: columna(f, ['titulo', 'nombre de la app']), enlace: columna(f, ['enlace', 'url', 'direccion']),
+        centro: columna(f, ['centro']), nombre: columna(f, ['tu nombre', 'autor', 'docente']),
+        problema: columna(f, ['problema', 'resuelve']), prompt: columna(f, ['prompt']), t: i, votos: 0
+      })).filter(o => o.titulo && httpsOk(o.enlace));
+      pintarGaleria();
+    }).catch(() => { $('galeria').innerHTML = '<div class="vacio">No se puede leer la hoja de la galería. Comprueba que está compartida con el enlace.</div>'; });
+    tirar(); G.timer = setInterval(() => { if (panelActual() === 'galeria' && document.visibilityState === 'visible') tirar(); }, 60000);
+  } else {
+    G.fuente = 'ensayo';
+    G.obras = APPS.filter(a => a.url && (a.id === 'teletrabajo' || a.id === 'registro')).map((a, i) => ({
+      id: 'ej' + i, titulo: a.nombre, enlace: a.url, centro: FORMACION.centro, nombre: FORMACION.ponente, problema: a.desc,
+      prompt: '', t: i, votos: 0, ejemplo: true
+    }));
+  }
+  pintarGaleria();
+}
+function pintarGaleria() {
+  if (!G.iniciada || !$('galeria')) return;
+  const chip = $('galChip');
+  chip.className = 'modo-chip ' + (G.fuente === 'firebase' ? 'vivo' : G.fuente === 'hoja' ? 'hoja' : 'ensayo');
+  chip.textContent = G.fuente === 'firebase' ? 'En directo' : G.fuente === 'hoja' ? 'Formulario de Google' : G.fuente === 'error' ? (FB.error || 'Sin conexión') : 'Ejemplo · activa Firebase o un formulario';
+  const q = plano($('galBuscar').value);
+  let lista = G.obras.filter(o => !q || plano([o.titulo, o.centro, o.nombre, o.problema].join(' ')).includes(q));
+  lista.sort($('galOrden').value === 'votos' ? (a, b) => b.votos - a.votos || b.t - a.t : (a, b) => b.t - a.t);
+  if (!lista.length) { $('galeria').innerHTML = '<div class="vacio">' + (q ? 'Nada coincide con la búsqueda.' : 'Todavía no hay apps. ¡Sé la primera persona en subir la suya!') + '</div>'; return; }
+  $('galeria').innerHTML = lista.map(o => {
+    const mia = G.fuente === 'firebase' && (o.uid === FB.uid || S.admin);
+    return '<article class="obra" style="--c:' + colorDe(o.titulo) + '">' + (o.ejemplo ? '<span class="ejemplo">Ejemplo</span>' : '') +
+      '<h3>' + esc(o.titulo) + '</h3><div class="quien">' + esc([o.centro, o.nombre].filter(Boolean).join(' · ')) + '</div>' +
+      (o.problema ? '<p>' + esc(o.problema) + '</p>' : '') +
+      (o.prompt ? '<details><summary>El prompt con el que empezó</summary><pre>' + esc(o.prompt) + '</pre></details>' : '') +
+      '<div class="acciones"><a class="btn azul" href="' + esc(o.enlace) + '" target="_blank" rel="noopener">Abrir</a>' +
+      '<button class="btn icono" data-galqr="' + esc(o.id) + '" aria-label="Código QR de ' + esc(o.titulo) + '">' + ICO.qr + '</button>' +
+      (mia ? '<button class="btn linea" data-galborrar="' + esc(o.id) + '" style="min-height:46px">Borrar</button>' : '') +
+      (G.fuente === 'firebase' ? '<button class="voto" data-galvoto="' + esc(o.id) + '" aria-pressed="' + o.yo + '" aria-label="Me gusta">♥ ' + o.votos + '</button>' : '') +
+      '</div></article>';
+  }).join('');
+}
+$('galeria').addEventListener('click', async e => {
+  const qr = e.target.closest('[data-galqr]'), voto = e.target.closest('[data-galvoto]'), borrar = e.target.closest('[data-galborrar]');
+  if (qr) { const o = G.obras.find(x => x.id === qr.dataset.galqr); if (o) abrirQR({ nombre: o.titulo, url: o.enlace }); }
+  if (voto) {
+    const o = G.obras.find(x => x.id === voto.dataset.galvoto); if (!o) return;
+    try { const r = ref('galeria/' + o.id + '/votos/' + FB.uid); o.yo ? await r.remove() : await r.set(true); } catch (x) { tostada('No se pudo votar'); }
+  }
+  if (borrar && confirm('¿Borrar esta app de la galería?')) {
+    try { await ref('galeria/' + borrar.dataset.galborrar).remove(); tostada('Borrada'); } catch (x) { tostada('No se pudo borrar'); }
+  }
+});
+$('galOrden').onchange = pintarGaleria;
+$('galBuscar').addEventListener('input', pintarGaleria);
+$('galAnadir').onclick = () => {
+  if (G.fuente === 'firebase') { $('galForm').classList.toggle('ver'); if ($('galForm').classList.contains('ver')) $('gTitulo').focus(); }
+  else if (DIRECTO.galeria.formulario) window.open(DIRECTO.galeria.formulario, '_blank', 'noopener');
+  else tostada('Para subir apps, activa Firebase o un formulario (pestaña En directo)');
+};
+$('gCancelar').onclick = () => { $('galForm').classList.remove('ver'); ocultarEstado('gEstado'); };
+$('gEnviar').onclick = async () => {
+  const v = id => $(id).value.trim();
+  const obra = { titulo: v('gTitulo').slice(0, 80), enlace: v('gEnlace').slice(0, 300), centro: v('gCentro').slice(0, 80), nombre: v('gNombre').slice(0, 60),
+    problema: v('gProblema').slice(0, 200), prompt: $('gPrompt').value.trim().slice(0, 2000) };
+  $('gTitulo').classList.toggle('mal', !obra.titulo); $('gEnlace').classList.toggle('mal', !httpsOk(obra.enlace));
+  if (!obra.titulo || !httpsOk(obra.enlace)) { estado('gEstado', 'error', 'Falta el título o el enlace no empieza por <code>https://</code>.'); return; }
+  const b = $('gEnviar'); b.disabled = true; b.textContent = 'Publicando…';
+  try {
+    await ref('galeria').push(Object.assign(obra, { uid: FB.uid, t: TS() }));
+    ['gTitulo', 'gEnlace', 'gProblema', 'gPrompt'].forEach(id => $(id).value = '');
+    guardar('galCentro', obra.centro); guardar('galNombre', obra.nombre);
+    $('galForm').classList.remove('ver'); ocultarEstado('gEstado'); tostada('¡Publicada en la galería!');
+  } catch (x) { estado('gEstado', 'error', 'No se pudo publicar. Revisa la conexión o las reglas.'); }
+  finally { b.disabled = false; b.textContent = 'Publicar en la galería'; }
+};
+$('gCentro').value = leer('galCentro', ''); $('gNombre').value = leer('galNombre', '');
+document.addEventListener('panel', e => { if (e.detail === 'galeria') iniciarGaleria(); });
+
+/* ════════════════ ARRANQUE ════════════════ */
+$('reglasDirecto').textContent = "{\n  \"rules\": {\n    \".read\": false,\n    \".write\": false,\n    \"admins\": {\n      \"$uid\": { \".read\": \"auth != null && auth.uid === $uid\" }\n    },\n    \"salas\": {\n      \"$s\": {\n        \".read\": true,\n        \".write\": \"auth != null && data.child('dueno').val() === auth.uid && !newData.exists()\",\n        \"dueno\": {\n          \".write\": \"auth != null && !data.exists() && newData.val() === auth.uid\"\n        },\n        \"estado\": {\n          \".write\": \"auth != null && (root.child('salas/' + $s + '/dueno').val() === auth.uid || root.child('salas/' + $s + '/mandos/' + auth.uid).val() === true)\"\n        },\n        \"mandos\": {\n          \"$uid\": {\n            \".write\": \"auth != null && root.child('salas/' + $s + '/dueno').val() === auth.uid\"\n          }\n        },\n        \"solicitudes\": {\n          \"$uid\": {\n            \".write\": \"auth != null && (auth.uid === $uid || root.child('salas/' + $s + '/dueno').val() === auth.uid)\",\n            \".validate\": \"newData.isString() && newData.val().length <= 40 && root.child('salas/' + $s + '/dueno').exists()\"\n          }\n        },\n        \"respuestas\": {\n          \".write\": \"auth != null && root.child('salas/' + $s + '/dueno').val() === auth.uid\",\n          \"$uid\": {\n            \".write\": \"auth != null && auth.uid === $uid\",\n            \".validate\": \"newData.hasChildren(['texto', 't']) && newData.child('texto').isString() && newData.child('texto').val().length > 0 && newData.child('texto').val().length <= 200 && root.child('salas/' + $s + '/dueno').exists()\"\n          }\n        }\n      }\n    },\n    \"galeria\": {\n      \".read\": true,\n      \"$id\": {\n        \".write\": \"auth != null && ((!data.exists() && newData.child('uid').val() === auth.uid) || data.child('uid').val() === auth.uid || root.child('admins/' + auth.uid).val() === true)\",\n        \".validate\": \"newData.hasChildren(['titulo', 'enlace', 'uid', 't']) && newData.child('titulo').isString() && newData.child('titulo').val().length > 0 && newData.child('titulo').val().length <= 80 && newData.child('enlace').isString() && newData.child('enlace').val().beginsWith('https://') && newData.child('enlace').val().length <= 300 && (!newData.child('problema').exists() || newData.child('problema').val().length <= 200) && (!newData.child('prompt').exists() || newData.child('prompt').val().length <= 2000)\",\n        \"votos\": {\n          \"$uid\": {\n            \".write\": \"auth != null && auth.uid === $uid\",\n            \".validate\": \"newData.val() === true\"\n          }\n        }\n      }\n    }\n  }\n}";
+S.estado.pregunta = preguntaActual();
+S.estado.panel = panelActual(); S.estado.diapo = dActual;
+pintarSala(); conectarRespuestas();
+if (panelActual() === 'galeria') iniciarGaleria();
+if (MODO && MODO.tipo === 'sala') iniciarAsistente(MODO.sala);
+else if (MODO && MODO.tipo === 'mando') iniciarMando(MODO.sala);
+else if (MODO && MODO.tipo === 'ponente') iniciarPonenteLocal();
+else if (leer('salaPropia', '') && hayFirebase()) abrirSala(true);
+})();
 </script>
 </body>
 </html>
