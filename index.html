@@ -201,6 +201,23 @@ pre.codigo{font-family:var(--mono);font-size:.82rem;background:#F6F9FC;border:1.
 ol.pasos-lista{padding-left:22px;display:grid;gap:6px}
 ol.pasos-lista li::marker{font-weight:700;color:var(--rojo)}
 
+
+/* ── Sesiones ───────────────────────────────────────── */
+.ses-mapa{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:22px}
+.ses-tarjeta{font:inherit;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:4px;background:#fff;border:1.5px solid var(--linea);border-radius:var(--r-l);padding:16px 18px;text-decoration:none;color:var(--tinta)}
+.ses-tarjeta:hover{border-color:var(--azul)}
+.ses-tarjeta b{font-family:var(--display);font-weight:600;font-size:1.1rem;line-height:1.25}
+.ses-tarjeta small{color:var(--tinta-suave);font-size:.9rem}
+.ses-num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--azul);color:#fff;font-weight:700;font-family:var(--display);margin-bottom:6px}
+.ses-cuerpo{max-width:none}
+.ses-cuerpo h4{font-family:var(--display);font-weight:600;font-size:1.05rem;margin:20px 0 8px}
+.ses-lleva{background:var(--ok-claro);border-left:4px solid var(--ok);padding:10px 14px;border-radius:0 8px 8px 0}
+.ses-tabla{width:100%;border-collapse:collapse;margin:14px 0 6px;font-size:.95rem}
+.ses-tabla th{background:var(--tinta);color:#fff;text-align:left;padding:8px 10px;font-weight:600}
+.ses-tabla td{border-bottom:1px solid var(--linea);padding:8px 10px;vertical-align:top;background:#fff}
+.ses-tabla td:first-child{font-weight:700;color:var(--rojo);white-space:nowrap}
+@media (max-width:640px){.ses-tabla{font-size:.88rem}.ses-tabla td,.ses-tabla th{padding:6px}}
+
 /* ── Guías (acordeón) ────────────────────────────────── */
 .guias{display:grid;gap:12px;max-width:900px}
 details.guia{background:#fff;border:1.5px solid var(--linea);border-radius:var(--r-l)}
@@ -551,6 +568,7 @@ details.activar ol{padding-left:22px;display:grid;gap:6px;margin:8px 0}
 
 <nav class="pestanas" role="tablist" aria-label="Secciones de la formación">
   <button class="pestana" role="tab" id="t-inicio" aria-controls="panel-inicio" data-panel="inicio">Presentación</button>
+  <button class="pestana" role="tab" id="t-sesiones" aria-controls="panel-sesiones" data-panel="sesiones">Sesiones</button>
   <button class="pestana" role="tab" id="t-directo" aria-controls="panel-directo" data-panel="directo">En directo</button>
   <button class="pestana" title="Las apps" role="tab" id="t-apps" aria-controls="panel-apps" data-panel="apps">Apps</button>
   <button class="pestana" title="Configurar para tu centro" role="tab" id="t-configurar" aria-controls="panel-configurar" data-panel="configurar">Configurar</button>
@@ -665,6 +683,150 @@ details.activar ol{padding-left:22px;display:grid;gap:6px;margin:8px 0}
     </div>
   </div>
   <p style="margin-top:12px;font-size:.9rem;color:var(--tinta-suave)">Usa las flechas del teclado para avanzar y la tecla F para pantalla completa.</p>
+</section>
+
+<!-- ═════════════════════ SESIONES ═════════════════════ -->
+<section class="panel" id="panel-sesiones" role="tabpanel" aria-labelledby="t-sesiones">
+  <div class="intro">
+    <h2>Las cuatro sesiones</h2>
+    <p>Cuatro sesiones de dos horas, una al mes. En cada una, al menos hora y media es práctica, y cada asistente sale con algo funcionando. Entre sesión y sesión hay un reto pequeño para usar en clase lo aprendido.</p>
+  </div>
+
+  <div class="ses-mapa">
+    <button type="button" class="ses-tarjeta" data-ses="ses1"><span class="ses-num">1</span><b>Tu primera app</b><small>Te llevas: tu primera herramienta y tu asistente</small></button>
+    <button type="button" class="ses-tarjeta" data-ses="ses2"><span class="ses-num">2</span><b>Que salga de tu ordenador</b><small>Te llevas: tu app publicada e instalada en el móvil</small></button>
+    <button type="button" class="ses-tarjeta" data-ses="ses3"><span class="ses-num">3</span><b>Apps con datos</b><small>Te llevas: una app del centro con tu propia base de datos</small></button>
+    <button type="button" class="ses-tarjeta" data-ses="ses4"><span class="ses-num">4</span><b>Tu proyecto y el claustro</b><small>Te llevas: un proyecto propio terminado y presentado</small></button>
+  </div>
+
+  <div class="guias" style="max-width:none">
+
+    <!-- SESIÓN 1 -->
+    <details class="guia ses" id="ses1" open>
+      <summary><div><b>Sesión 1 · Tu primera app</b><small>Mes 1 · Libro: capítulos 1 a 5</small></div></summary>
+      <div class="guia-cuerpo ses-cuerpo">
+        <p class="ses-lleva"><strong>Te llevas:</strong> la rueda de participación hecha y personalizada, una herramienta propia para tu clase y tu asistente «Constructor de apps del cole» creado.</p>
+        <p><strong>Antes de venir:</strong> entra en <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> con tu cuenta y comprueba que funciona. Trae pensada una tarea de clase que repitas cada semana.</p>
+        <table class="ses-tabla">
+          <tr><th>Tiempo</th><th>Qué hacemos</th><th>Dónde</th></tr>
+          <tr><td>0:00</td><td>Bienvenida y radiografía del grupo: qué te gustaría resolver con una app</td><td><a href="#directo" data-ir="directo">En directo</a></td></tr>
+          <tr><td>0:10</td><td>La rueda de participación, todos a la vez, paso a paso</td><td>Prompt 1</td></tr>
+          <tr><td>0:35</td><td>Hazla tuya: colores del cole, sonido y lista de los que han salido</td><td>Prompt 2</td></tr>
+          <tr><td>0:50</td><td>Por qué ha funcionado: las cinco partes de un buen encargo</td><td><a href="#ia" data-ir="ia">Crear con IA</a></td></tr>
+          <tr><td>1:05</td><td>Creas tu asistente y haces con él tu herramienta propia, con Canvas</td><td><a href="#ia" data-ir="ia">Crear con IA</a> · <a href="#gemini" data-ir="gemini">Gemini</a></td></tr>
+          <tr><td>1:40</td><td>Taller de errores: encuentra el fallo con F12 y arréglalo con la IA</td><td><a href="#taller" data-ir="taller">Taller</a></td></tr>
+          <tr><td>1:55</td><td>Reto del mes y dudas</td><td></td></tr>
+        </table>
+        <h4>Prompt 1 · La rueda</h4>
+        <div class="caja-codigo"><pre class="codigo" id="sesP1" style="white-space:pre-wrap">Hazme una rueda de participación para usar en la pizarra digital de mi clase.
+
+Qué tiene que hacer:
+- Mostrar los números del 1 al 25, que son los números de lista de mis alumnos.
+- Tener un botón grande que ponga «Girar».
+- Al pulsarlo, la rueda gira unos segundos y se para en un número al azar.
+- El número elegido aparece en grande en el centro de la pantalla.
+- No puede repetir ningún número hasta que hayan salido todos.
+
+Cómo lo quiero:
+- Todo en un único archivo HTML, sin nada que instalar.
+- Que los números se lean desde el fondo de la clase.
+- Colores alegres, pero sin agobiar.
+
+Dame el archivo completo, de principio a fin.</pre><button class="btn suave copiar" data-copiar="sesP1">Copiar</button></div>
+        <h4>Prompt 2 · Hazla tuya (de uno en uno)</h4>
+        <div class="caja-codigo"><pre class="codigo" id="sesP2" style="white-space:pre-wrap">Cambia los colores por [los de tu colegio]. Dame el archivo completo.
+
+Añade un sonido corto cuando la rueda se pare, con un botón para silenciarlo. Dame el archivo completo.
+
+Pon debajo de la rueda una lista pequeña con los números que ya han salido. Dame el archivo completo.</pre><button class="btn suave copiar" data-copiar="sesP2">Copiar</button></div>
+        <p class="consejo"><strong>Reto del mes:</strong> haz uno de los miniproyectos (el semáforo de las rutinas, el sorteo de grupos o el marcador por equipos) y úsalo en clase al menos una semana. En la sesión 2 lo enseñamos.</p>
+        <p class="alerta">Desde el primer día: nunca nombres de alumnos en una conversación con la IA. Números de lista o datos inventados.</p>
+      </div>
+    </details>
+
+    <!-- SESIÓN 2 -->
+    <details class="guia ses" id="ses2">
+      <summary><div><b>Sesión 2 · Que salga de tu ordenador</b><small>Mes 2 · Libro: capítulos 6, 7, 10 y 11</small></div></summary>
+      <div class="guia-cuerpo ses-cuerpo">
+        <p class="ses-lleva"><strong>Te llevas:</strong> tu app publicada en internet con su dirección y su código QR, instalada en el móvil con su icono y con el estilo del centro.</p>
+        <p><strong>Antes de venir:</strong> crea tu cuenta en <a href="https://github.com" target="_blank" rel="noopener">github.com</a> (gratuita) y trae el archivo de tu reto del mes.</p>
+        <table class="ses-tabla">
+          <tr><th>Tiempo</th><th>Qué hacemos</th><th>Dónde</th></tr>
+          <tr><td>0:00</td><td>Galería del reto: tres o cuatro personas enseñan su miniproyecto</td><td><a href="#galeria" data-ir="galeria">Galería</a></td></tr>
+          <tr><td>0:15</td><td>GitHub desde cero: repositorio, subir el archivo como index.html y activar Pages</td><td><a href="#guias" data-ir="guias">Guías</a></td></tr>
+          <tr><td>0:50</td><td>De web a app: manifiesto, service worker e icono; instalarla en el móvil</td><td>Prompt 3</td></tr>
+          <tr><td>1:15</td><td>Que se vea bien: guía de estilo del centro y revisión de accesibilidad</td><td>Prompt 4</td></tr>
+          <tr><td>1:40</td><td>Código QR y aviso de novedades; probarla en el móvil de un compañero</td><td></td></tr>
+          <tr><td>1:55</td><td>Reto del mes y dudas</td><td></td></tr>
+        </table>
+        <h4>Prompt 3 · Convertirla en app instalable</h4>
+        <div class="caja-codigo"><pre class="codigo" id="sesP3" style="white-space:pre-wrap">Esta es una app web que tengo publicada en GitHub Pages. Te pego el archivo completo.
+
+Conviértela en una PWA que se pueda instalar en el móvil:
+- Con un manifest.json: nombre «[nombre de tu app]», color principal [color].
+- Con un service worker que guarde la app para que funcione sin conexión.
+- Muy importante: cuando suba una versión nueva, la app tiene que actualizarse sola.
+- Los iconos se llamarán icon-192.png e icon-512.png.
+
+Dame cada archivo completo por separado, con su nombre exacto.</pre><button class="btn suave copiar" data-copiar="sesP3">Copiar</button></div>
+        <h4>Prompt 4 · El estilo del centro</h4>
+        <div class="caja-codigo"><pre class="codigo" id="sesP4" style="white-space:pre-wrap">Aplica este estilo a la app sin cambiar lo que hace:
+- Fondo blanco. Texto en [color oscuro].
+- Color de acento [color] para el botón principal.
+- Letra sencilla de Google Fonts, texto a 18 px y títulos a 28 px.
+- Botones grandes y redondeados, mucho espacio entre elementos.
+- Sin degradados ni sombras fuertes.
+
+Después revisa la accesibilidad: buen contraste, que nada dependa solo del color y sonidos desactivables. Dame el archivo completo y la lista de cambios.</pre><button class="btn suave copiar" data-copiar="sesP4">Copiar</button></div>
+        <p class="consejo"><strong>Reto del mes:</strong> publica un segundo miniproyecto (la cuenta atrás, el concurso de preguntas o las votaciones) y compártelo por QR con un compañero o con tus familias.</p>
+      </div>
+    </details>
+
+    <!-- SESIÓN 3 -->
+    <details class="guia ses" id="ses3">
+      <summary><div><b>Sesión 3 · Apps con datos</b><small>Mes 3 · Libro: capítulos 8 y 9</small></div></summary>
+      <div class="guia-cuerpo ses-cuerpo">
+        <p class="ses-lleva"><strong>Te llevas:</strong> una de las apps del centro funcionando con tu propia base de datos de Firebase, con inicio de sesión y reglas de seguridad, y la lista de comprobación de datos del alumnado.</p>
+        <p><strong>Antes de venir:</strong> decide qué app quieres llevarte de la pestaña <a href="#apps" data-ir="apps">Apps</a>. Trae tu cuenta de Google del centro.</p>
+        <table class="ses-tabla">
+          <tr><th>Tiempo</th><th>Qué hacemos</th><th>Dónde</th></tr>
+          <tr><td>0:00</td><td>Dos sitios para guardar: en el aparato o en la nube. Cuándo cada uno</td><td></td></tr>
+          <tr><td>0:10</td><td>Datos del alumnado: los cuatro principios, siglas y lo que no se sube nunca. Casos para debatir en parejas</td><td>Prompt 5</td></tr>
+          <tr><td>0:35</td><td>Firebase paso a paso: proyecto, base de datos en Europa e inicio de sesión</td><td><a href="#guias" data-ir="guias">Guías</a></td></tr>
+          <tr><td>1:10</td><td>Descargas la app, la pasas por el configurador, publicas las reglas y la subes a GitHub</td><td><a href="#apps" data-ir="apps">Apps</a> · <a href="#configurar" data-ir="configurar">Configurar</a></td></tr>
+          <tr><td>1:40</td><td>Prueba de la cerradura: un compañero no autorizado intenta entrar y no puede</td><td></td></tr>
+          <tr><td>1:55</td><td>Reto del mes y dudas</td><td><a href="#recursos" data-ir="recursos">Recursos</a></td></tr>
+        </table>
+        <h4>Prompt 5 · Siglas en lugar de nombres</h4>
+        <div class="caja-codigo"><pre class="codigo" id="sesP5" style="white-space:pre-wrap">El alumnado debe aparecer solo con sus siglas: inicial del nombre, del primer apellido y del segundo. Si importo una lista con nombres completos en formato «Apellido1 Apellido2, Nombre», convierte cada alumno en siglas y no guardes el nombre en ningún sitio. Si dos coinciden, añade un número al segundo. Ordena la lista por el primer apellido. Dame el archivo completo.</pre><button class="btn suave copiar" data-copiar="sesP5">Copiar</button></div>
+        <p class="alerta">Nunca el «modo de prueba» de Firebase ni reglas que dejen leer y escribir a cualquiera, aunque sea un rato. Con datos de un colegio, la base de datos empieza cerrada.</p>
+        <p class="consejo"><strong>Reto del mes:</strong> pasa la lista de comprobación de la pestaña <a href="#recursos" data-ir="recursos">Recursos</a> a tu app y háblalo con el equipo directivo antes de meter datos reales. Piensa qué proyecto propio harás en la sesión 4.</p>
+      </div>
+    </details>
+
+    <!-- SESIÓN 4 -->
+    <details class="guia ses" id="ses4">
+      <summary><div><b>Sesión 4 · Tu proyecto y el claustro</b><small>Mes 4 · Libro: capítulos 12 a 18</small></div></summary>
+      <div class="guia-cuerpo ses-cuerpo">
+        <p class="ses-lleva"><strong>Te llevas:</strong> un proyecto propio terminado, revisado y presentado al grupo, y un plan para que siga funcionando en tu centro.</p>
+        <p><strong>Antes de venir:</strong> trae tu idea en una ficha: para quién es, qué tiene que hacer, qué no y qué datos guarda. Si no tienes idea, elige una del banco de ideas del libro.</p>
+        <table class="ses-tabla">
+          <tr><th>Tiempo</th><th>Qué hacemos</th><th>Dónde</th></tr>
+          <tr><td>0:00</td><td>De la idea a la ficha: lo que tiene que hacer, lo que no y qué datos guarda</td><td>Prompt 6</td></tr>
+          <tr><td>0:15</td><td>Construcción por parejas o por especialidad, con tu asistente. Quien quiera, de la ficha de papel al juego</td><td><a href="#gemini" data-ir="gemini">Gemini</a></td></tr>
+          <tr><td>1:20</td><td>Segunda opinión: otra IA revisa tu app; repaso con la lista de comprobación</td><td>Prompt 7</td></tr>
+          <tr><td>1:35</td><td>Galería final: cada proyecto en la pizarra, con su QR</td><td><a href="#galeria" data-ir="galeria">Galería</a></td></tr>
+          <tr><td>1:55</td><td>Cómo seguir: quién mantiene cada app, cuentas del centro y una carpeta común para el claustro</td><td></td></tr>
+        </table>
+        <h4>Prompt 6 · Que me pregunte antes de programar</h4>
+        <div class="caja-codigo"><pre class="codigo" id="sesP6" style="white-space:pre-wrap">Quiero hacer una app para [lo que necesitas] en [dónde se usa]. Antes de escribir código, hazme las preguntas que necesites para entender bien lo que quiero. Cuando las conteste, hazme primero solo lo imprescindible para que funcione.</pre><button class="btn suave copiar" data-copiar="sesP6">Copiar</button></div>
+        <h4>Prompt 7 · La segunda opinión</h4>
+        <div class="caja-codigo"><pre class="codigo" id="sesP7" style="white-space:pre-wrap">Esta app la va a usar el profesorado de un colegio. Revísala como lo haría un programador con experiencia: dime qué errores ves, qué podría fallar en el móvil y qué riesgos tiene para los datos. No la reescribas todavía; solo dame la lista.</pre><button class="btn suave copiar" data-copiar="sesP7">Copiar</button></div>
+        <p class="consejo"><strong>Para después:</strong> un grupo para dudas donde cada uno comparta las apps que vaya haciendo, y una segunda persona con acceso de administración a cada app que use el claustro.</p>
+      </div>
+    </details>
+
+  </div>
 </section>
 
 <!-- ═════════════════════ EN DIRECTO ═════════════════════ -->
@@ -3070,6 +3232,27 @@ if (MODO && MODO.tipo === 'sala') iniciarAsistente(MODO.sala);
 else if (MODO && MODO.tipo === 'mando') iniciarMando(MODO.sala);
 else if (MODO && MODO.tipo === 'ponente') iniciarPonenteLocal();
 else if (leer('salaPropia', '') && hayFirebase()) abrirSala(true);
+})();
+
+// ── Sesiones: abrir la sesión elegida ──
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-ses]'); if (!b) return;
+  const d = document.getElementById(b.dataset.ses); if (!d) return;
+  d.open = true; d.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+// ── Aviso de novedades (una sola vez en cada dispositivo) ──
+(function () {
+  const ID = 'formacion-novedades-2026-10-22';
+  try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
+  const d = document.createElement('div');
+  d.setAttribute('role', 'dialog'); d.setAttribute('aria-label', 'Novedades');
+  d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
+  d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
+    + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
+    + '<p style="margin-bottom:14px">Nueva pestaña <b>Sesiones</b>: la formación en cuatro sesiones de dos horas, una al mes, con el guion de cada una, los prompts para copiar y el reto para hacer entre sesiones.</p>'
+    + '<button class="btn azul" style="width:100%">Entendido</button></div>';
+  d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
+  document.body.appendChild(d);
 })();
 </script>
 </body>
