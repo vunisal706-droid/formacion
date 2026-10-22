@@ -210,6 +210,8 @@ ol.pasos-lista li::marker{font-weight:700;color:var(--rojo)}
 .ses-tarjeta small{color:var(--tinta-suave);font-size:.9rem}
 .ses-num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--azul);color:#fff;font-weight:700;font-family:var(--display);margin-bottom:6px}
 .ses-cuerpo{max-width:none}
+.ses-etq{font-weight:700;color:var(--rojo);text-transform:uppercase;letter-spacing:.06em;font-size:.85rem;margin-bottom:4px}
+h4.ses-h4{font-family:var(--display);font-weight:600;font-size:1.05rem;margin:20px 0 8px}
 .ses-cuerpo h4{font-family:var(--display);font-weight:600;font-size:1.05rem;margin:20px 0 8px}
 .ses-lleva{background:var(--ok-claro);border-left:4px solid var(--ok);padding:10px 14px;border-radius:0 8px 8px 0}
 .ses-tabla{width:100%;border-collapse:collapse;margin:14px 0 6px;font-size:.95rem}
@@ -568,16 +570,10 @@ details.activar ol{padding-left:22px;display:grid;gap:6px;margin:8px 0}
 
 <nav class="pestanas" role="tablist" aria-label="Secciones de la formación">
   <button class="pestana" role="tab" id="t-inicio" aria-controls="panel-inicio" data-panel="inicio">Presentación</button>
-  <button class="pestana" role="tab" id="t-sesiones" aria-controls="panel-sesiones" data-panel="sesiones">Sesiones</button>
-  <button class="pestana" role="tab" id="t-directo" aria-controls="panel-directo" data-panel="directo">En directo</button>
-  <button class="pestana" title="Las apps" role="tab" id="t-apps" aria-controls="panel-apps" data-panel="apps">Apps</button>
-  <button class="pestana" title="Configurar para tu centro" role="tab" id="t-configurar" aria-controls="panel-configurar" data-panel="configurar">Configurar</button>
-  <button class="pestana" title="Guías paso a paso" role="tab" id="t-guias" aria-controls="panel-guias" data-panel="guias">Guías</button>
-  <button class="pestana" title="Crea la tuya con IA" role="tab" id="t-ia" aria-controls="panel-ia" data-panel="ia">Crear con IA</button>
-  <button class="pestana" role="tab" id="t-gemini" aria-controls="panel-gemini" data-panel="gemini">Gemini</button>
-  <button class="pestana" title="Taller de errores" role="tab" id="t-taller" aria-controls="panel-taller" data-panel="taller">Taller</button>
-  <button class="pestana" role="tab" id="t-galeria" aria-controls="panel-galeria" data-panel="galeria">Galería</button>
-  <button class="pestana" role="tab" id="t-recursos" aria-controls="panel-recursos" data-panel="recursos">Recursos</button>
+  <button class="pestana" role="tab" id="t-s1" aria-controls="panel-s1" data-panel="s1">1 · Tu primera app</button>
+  <button class="pestana" role="tab" id="t-s2" aria-controls="panel-s2" data-panel="s2">2 · Que salga de tu ordenador</button>
+  <button class="pestana" role="tab" id="t-s3" aria-controls="panel-s3" data-panel="s3">3 · Apps con datos</button>
+  <button class="pestana" role="tab" id="t-s4" aria-controls="panel-s4" data-panel="s4">4 · Tu proyecto</button>
 </nav>
 <div class="pestanas-borde"></div>
 
@@ -587,9 +583,9 @@ details.activar ol{padding-left:22px;display:grid;gap:6px;margin:8px 0}
 <section class="panel" id="panel-inicio" role="tabpanel" aria-labelledby="t-inicio">
   <div class="diapos" id="diapos" tabindex="-1" aria-roledescription="presentación">
 
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="Bienvenida. Presentarse en 30 segundos: director y maestro de PT, no programador. Hoy todo el mundo sale con al menos una app funcionando.">
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="Bienvenida. Presentarse en 30 segundos: director y maestro de PT, no programador. Cuatro sesiones, una al mes, y en todas se sale con algo funcionando.">
       <h2>IA en el cole</h2>
-      <p class="lead">Herramientas hechas con inteligencia artificial para planificar, evaluar, convivir y reunirnos. Hoy verás cómo funcionan, cómo llevarlas a tu centro y cómo crear las tuyas.</p>
+      <p class="lead">Una formación de cuatro sesiones para crear herramientas para tu aula y tu centro con inteligencia artificial, sin saber programar. En cada sesión, más de hora y media de práctica, y te vas con algo funcionando.</p>
       <p class="firma" id="firmaDiapo"></p>
     </div>
 
@@ -607,13 +603,22 @@ details.activar ol{padding-left:22px;display:grid;gap:6px;margin:8px 0}
       </div>
     </div>
 
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="Cuatro bloques. Todo queda en esta web para después: no hace falta apuntar nada.">
-      <h2 class="medio">Lo que vamos a hacer hoy</h2>
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="Insistir: hoy nadie se va sin una app. La teoría justa, después de haber hecho algo.">
+      <h2 class="medio">Cómo vamos a trabajar</h2>
+      <div class="tres">
+        <div style="--c:var(--azul)"><b>Primero hacer</b><p>A los veinte minutos de cada sesión, todo el mundo tiene algo funcionando en su pantalla. La explicación viene después.</p></div>
+        <div style="--c:var(--ok)"><b>Salir con algo hecho</b><p>Cada sesión termina con una herramienta tuya: una app, una app publicada, una app con datos, un proyecto propio.</p></div>
+        <div style="--c:var(--rojo)"><b>Un reto al mes</b><p>Entre sesión y sesión, algo pequeño para usar en tu clase. Lo enseñamos al empezar la siguiente.</p></div>
+      </div>
+    </div>
+
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="Recorrer las cuatro. Todo queda en las pestañas de cada sesión: no hace falta apuntar nada.">
+      <h2 class="medio">Las cuatro sesiones</h2>
       <ol class="agenda">
-        <li><div><strong>Conocer las apps</strong><span>Qué problema resuelve cada una y cómo se usa en el día a día.</span></div></li>
-        <li><div><strong>Entender cómo están hechas</strong><span>Un archivo, una base de datos gratuita y una web pública.</span></div></li>
-        <li><div><strong>Llevarlas a tu centro</strong><span>Descargar, conectar con el Firebase del centro y publicar.</span></div></li>
-        <li><div><strong>Crear la tuya con IA</strong><span>Un Gem de Gemini que te acompaña desde la idea hasta la app.</span></div></li>
+        <li><div><strong>Tu primera app</strong><span>Una rueda de participación y una herramienta propia para tu clase, hechas con tu Gem de Gemini.</span></div></li>
+        <li><div><strong>Que salga de tu ordenador</strong><span>Tu app publicada en internet, con su QR, instalada en el móvil y con el estilo del centro.</span></div></li>
+        <li><div><strong>Apps con datos</strong><span>Una de las apps del centro funcionando con tu propia base de datos, de forma segura.</span></div></li>
+        <li><div><strong>Tu proyecto y el claustro</strong><span>Una app tuya terminada, revisada y presentada en la galería.</span></div></li>
       </ol>
     </div>
 
@@ -640,42 +645,39 @@ details.activar ol{padding-left:22px;display:grid;gap:6px;margin:8px 0}
       <div class="historia" data-historia></div>
     </div>
 
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="Insistir en la cuenta del centro, no la personal: si alguien cambia de destino, la app sigue.">
-      <h2 class="medio">Qué necesitas para llevártelas</h2>
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="Recordar qué traer a cada sesión. La cuenta de Google del centro solo hace falta en la tercera.">
+      <h2 class="medio">Qué necesitas en cada sesión</h2>
       <div class="tres">
-        <div style="--c:var(--azul)"><b>Una cuenta de Google del centro</b><p>Para crear el proyecto de Firebase. Mejor del centro que personal: si cambias de destino, la app sigue.</p></div>
-        <div style="--c:var(--ok)"><b>Una cuenta de GitHub</b><p>Gratuita. Es donde se publica la app para abrirla desde cualquier dispositivo.</p></div>
-        <div style="--c:var(--rojo)"><b>Una tarde tranquila</b><p>Para la primera app con base de datos. Las que guardan en el navegador funcionan nada más descargarlas.</p></div>
+        <div style="--c:var(--azul)"><b>Sesiones 1 y 4</b><p>Un ordenador y tu cuenta de Gemini funcionando. En la cuarta, tu idea pensada en una ficha.</p></div>
+        <div style="--c:var(--ok)"><b>Sesión 2</b><p>Una cuenta gratuita de GitHub, creada antes de venir, y el archivo de tu reto del mes.</p></div>
+        <div style="--c:var(--rojo)"><b>Sesión 3</b><p>La cuenta de Google del centro, mejor que la personal: si cambias de destino, la app sigue.</p></div>
       </div>
-      <p class="lead" style="margin-top:26px">Coste: el plan gratuito de Firebase suele bastar para el uso normal de un centro.</p>
     </div>
 
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="La primera regla es la que más se olvida: ningún dato personal dentro del código.">
-      <h2 class="medio">Tres reglas antes de empezar</h2>
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="La primera regla es la que más se olvida: ningún dato del alumnado, ni en la conversación con la IA ni en el código.">
+      <h2 class="medio">Tres reglas desde el primer día</h2>
       <div class="tres">
-        <div style="--c:var(--rojo)"><b>Ningún dato personal en el código</b><p>La web es pública. Nombres, usuarios y notas van en la base de datos, nunca dentro del HTML.</p></div>
-        <div style="--c:var(--rojo)"><b>Reglas de seguridad siempre</b><p>Cada app trae sus reglas. Una base de datos sin reglas está abierta a cualquiera.</p></div>
+        <div style="--c:var(--rojo)"><b>Ningún dato del alumnado</b><p>Ni en la conversación con la IA ni dentro del código, que es público. Números de lista o datos inventados.</p></div>
+        <div style="--c:var(--rojo)"><b>Reglas de seguridad siempre</b><p>Una base de datos sin reglas está abierta a cualquiera. La veremos en la sesión 3.</p></div>
         <div style="--c:var(--rojo)"><b>No sustituyen a Séneca</b><p>Ayudan a organizar y analizar. Lo oficial se sigue registrando donde corresponde.</p></div>
       </div>
     </div>
 
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="Repartir: quien quiera llevarse una app, al configurador; quien quiera crear, a la pestaña Gemini (De la ficha al juego). Al final, recreativa en la galería.">
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="Abrir la pestaña de la sesión de hoy y seguir su guion.">
       <h2>Manos a la obra</h2>
-      <p class="lead">Empieza por ver las apps en marcha, elige una y conéctala con tu centro siguiendo los pasos.</p>
+      <p class="lead">Abre la pestaña de la sesión de hoy y sigue el guion paso a paso.</p>
       <div class="fila" style="margin-top:30px">
-        <button class="btn azul" data-ir="apps">Ver las apps</button>
-        <button class="btn linea" data-ir="configurar">Ir al configurador</button>
-        <button class="btn linea" data-ir="ia">Crear con IA</button>
-        <button class="btn linea" data-ir="taller">Taller de errores</button>
-        <button class="btn linea" data-ir="gemini">Gemini y Canvas</button>
-        <button class="btn linea" data-ir="galeria">Galería del claustro</button>
+        <button class="btn azul" data-ir="s1">Sesión 1</button>
+        <button class="btn linea" data-ir="s2">Sesión 2</button>
+        <button class="btn linea" data-ir="s3">Sesión 3</button>
+        <button class="btn linea" data-ir="s4">Sesión 4</button>
       </div>
     </div>
 
     <div class="controles no-imprimir">
       <div class="fila">
         <button class="btn icono" id="dAnt" aria-label="Diapositiva anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <span class="contador" id="dCont" aria-live="polite">1 / 9</span>
+        <span class="contador" id="dCont" aria-live="polite">1 / 10</span>
         <button class="btn icono" id="dSig" aria-label="Diapositiva siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
       </div>
       <div class="puntos" id="dPuntos"></div>
@@ -683,158 +685,10 @@ details.activar ol{padding-left:22px;display:grid;gap:6px;margin:8px 0}
     </div>
   </div>
   <p style="margin-top:12px;font-size:.9rem;color:var(--tinta-suave)">Usa las flechas del teclado para avanzar y la tecla F para pantalla completa.</p>
-</section>
 
-<!-- ═════════════════════ SESIONES ═════════════════════ -->
-<section class="panel" id="panel-sesiones" role="tabpanel" aria-labelledby="t-sesiones">
-  <div class="intro">
-    <h2>Las cuatro sesiones</h2>
-    <p>Cuatro sesiones de dos horas, una al mes. En cada una, al menos hora y media es práctica, y cada asistente sale con algo funcionando. Entre sesión y sesión hay un reto pequeño para usar en clase lo aprendido.</p>
-  </div>
-
-  <div class="ses-mapa">
-    <button type="button" class="ses-tarjeta" data-ses="ses1"><span class="ses-num">1</span><b>Tu primera app</b><small>Te llevas: tu primera herramienta y tu asistente</small></button>
-    <button type="button" class="ses-tarjeta" data-ses="ses2"><span class="ses-num">2</span><b>Que salga de tu ordenador</b><small>Te llevas: tu app publicada e instalada en el móvil</small></button>
-    <button type="button" class="ses-tarjeta" data-ses="ses3"><span class="ses-num">3</span><b>Apps con datos</b><small>Te llevas: una app del centro con tu propia base de datos</small></button>
-    <button type="button" class="ses-tarjeta" data-ses="ses4"><span class="ses-num">4</span><b>Tu proyecto y el claustro</b><small>Te llevas: un proyecto propio terminado y presentado</small></button>
-  </div>
-
-  <div class="guias" style="max-width:none">
-
-    <!-- SESIÓN 1 -->
-    <details class="guia ses" id="ses1" open>
-      <summary><div><b>Sesión 1 · Tu primera app</b><small>Mes 1 · Libro: capítulos 1 a 5</small></div></summary>
-      <div class="guia-cuerpo ses-cuerpo">
-        <p class="ses-lleva"><strong>Te llevas:</strong> la rueda de participación hecha y personalizada, una herramienta propia para tu clase y tu asistente «Constructor de apps del cole» creado.</p>
-        <p><strong>Antes de venir:</strong> entra en <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> con tu cuenta y comprueba que funciona. Trae pensada una tarea de clase que repitas cada semana.</p>
-        <table class="ses-tabla">
-          <tr><th>Tiempo</th><th>Qué hacemos</th><th>Dónde</th></tr>
-          <tr><td>0:00</td><td>Bienvenida y radiografía del grupo: qué te gustaría resolver con una app</td><td><a href="#directo" data-ir="directo">En directo</a></td></tr>
-          <tr><td>0:10</td><td>La rueda de participación, todos a la vez, paso a paso</td><td>Prompt 1</td></tr>
-          <tr><td>0:35</td><td>Hazla tuya: colores del cole, sonido y lista de los que han salido</td><td>Prompt 2</td></tr>
-          <tr><td>0:50</td><td>Por qué ha funcionado: las cinco partes de un buen encargo</td><td><a href="#ia" data-ir="ia">Crear con IA</a></td></tr>
-          <tr><td>1:05</td><td>Creas tu asistente y haces con él tu herramienta propia, con Canvas</td><td><a href="#ia" data-ir="ia">Crear con IA</a> · <a href="#gemini" data-ir="gemini">Gemini</a></td></tr>
-          <tr><td>1:40</td><td>Taller de errores: encuentra el fallo con F12 y arréglalo con la IA</td><td><a href="#taller" data-ir="taller">Taller</a></td></tr>
-          <tr><td>1:55</td><td>Reto del mes y dudas</td><td></td></tr>
-        </table>
-        <h4>Prompt 1 · La rueda</h4>
-        <div class="caja-codigo"><pre class="codigo" id="sesP1" style="white-space:pre-wrap">Hazme una rueda de participación para usar en la pizarra digital de mi clase.
-
-Qué tiene que hacer:
-- Mostrar los números del 1 al 25, que son los números de lista de mis alumnos.
-- Tener un botón grande que ponga «Girar».
-- Al pulsarlo, la rueda gira unos segundos y se para en un número al azar.
-- El número elegido aparece en grande en el centro de la pantalla.
-- No puede repetir ningún número hasta que hayan salido todos.
-
-Cómo lo quiero:
-- Todo en un único archivo HTML, sin nada que instalar.
-- Que los números se lean desde el fondo de la clase.
-- Colores alegres, pero sin agobiar.
-
-Dame el archivo completo, de principio a fin.</pre><button class="btn suave copiar" data-copiar="sesP1">Copiar</button></div>
-        <h4>Prompt 2 · Hazla tuya (de uno en uno)</h4>
-        <div class="caja-codigo"><pre class="codigo" id="sesP2" style="white-space:pre-wrap">Cambia los colores por [los de tu colegio]. Dame el archivo completo.
-
-Añade un sonido corto cuando la rueda se pare, con un botón para silenciarlo. Dame el archivo completo.
-
-Pon debajo de la rueda una lista pequeña con los números que ya han salido. Dame el archivo completo.</pre><button class="btn suave copiar" data-copiar="sesP2">Copiar</button></div>
-        <p class="consejo"><strong>Reto del mes:</strong> haz uno de los miniproyectos (el semáforo de las rutinas, el sorteo de grupos o el marcador por equipos) y úsalo en clase al menos una semana. En la sesión 2 lo enseñamos.</p>
-        <p class="alerta">Desde el primer día: nunca nombres de alumnos en una conversación con la IA. Números de lista o datos inventados.</p>
-      </div>
-    </details>
-
-    <!-- SESIÓN 2 -->
-    <details class="guia ses" id="ses2">
-      <summary><div><b>Sesión 2 · Que salga de tu ordenador</b><small>Mes 2 · Libro: capítulos 6, 7, 10 y 11</small></div></summary>
-      <div class="guia-cuerpo ses-cuerpo">
-        <p class="ses-lleva"><strong>Te llevas:</strong> tu app publicada en internet con su dirección y su código QR, instalada en el móvil con su icono y con el estilo del centro.</p>
-        <p><strong>Antes de venir:</strong> crea tu cuenta en <a href="https://github.com" target="_blank" rel="noopener">github.com</a> (gratuita) y trae el archivo de tu reto del mes.</p>
-        <table class="ses-tabla">
-          <tr><th>Tiempo</th><th>Qué hacemos</th><th>Dónde</th></tr>
-          <tr><td>0:00</td><td>Galería del reto: tres o cuatro personas enseñan su miniproyecto</td><td><a href="#galeria" data-ir="galeria">Galería</a></td></tr>
-          <tr><td>0:15</td><td>GitHub desde cero: repositorio, subir el archivo como index.html y activar Pages</td><td><a href="#guias" data-ir="guias">Guías</a></td></tr>
-          <tr><td>0:50</td><td>De web a app: manifiesto, service worker e icono; instalarla en el móvil</td><td>Prompt 3</td></tr>
-          <tr><td>1:15</td><td>Que se vea bien: guía de estilo del centro y revisión de accesibilidad</td><td>Prompt 4</td></tr>
-          <tr><td>1:40</td><td>Código QR y aviso de novedades; probarla en el móvil de un compañero</td><td></td></tr>
-          <tr><td>1:55</td><td>Reto del mes y dudas</td><td></td></tr>
-        </table>
-        <h4>Prompt 3 · Convertirla en app instalable</h4>
-        <div class="caja-codigo"><pre class="codigo" id="sesP3" style="white-space:pre-wrap">Esta es una app web que tengo publicada en GitHub Pages. Te pego el archivo completo.
-
-Conviértela en una PWA que se pueda instalar en el móvil:
-- Con un manifest.json: nombre «[nombre de tu app]», color principal [color].
-- Con un service worker que guarde la app para que funcione sin conexión.
-- Muy importante: cuando suba una versión nueva, la app tiene que actualizarse sola.
-- Los iconos se llamarán icon-192.png e icon-512.png.
-
-Dame cada archivo completo por separado, con su nombre exacto.</pre><button class="btn suave copiar" data-copiar="sesP3">Copiar</button></div>
-        <h4>Prompt 4 · El estilo del centro</h4>
-        <div class="caja-codigo"><pre class="codigo" id="sesP4" style="white-space:pre-wrap">Aplica este estilo a la app sin cambiar lo que hace:
-- Fondo blanco. Texto en [color oscuro].
-- Color de acento [color] para el botón principal.
-- Letra sencilla de Google Fonts, texto a 18 px y títulos a 28 px.
-- Botones grandes y redondeados, mucho espacio entre elementos.
-- Sin degradados ni sombras fuertes.
-
-Después revisa la accesibilidad: buen contraste, que nada dependa solo del color y sonidos desactivables. Dame el archivo completo y la lista de cambios.</pre><button class="btn suave copiar" data-copiar="sesP4">Copiar</button></div>
-        <p class="consejo"><strong>Reto del mes:</strong> publica un segundo miniproyecto (la cuenta atrás, el concurso de preguntas o las votaciones) y compártelo por QR con un compañero o con tus familias.</p>
-      </div>
-    </details>
-
-    <!-- SESIÓN 3 -->
-    <details class="guia ses" id="ses3">
-      <summary><div><b>Sesión 3 · Apps con datos</b><small>Mes 3 · Libro: capítulos 8 y 9</small></div></summary>
-      <div class="guia-cuerpo ses-cuerpo">
-        <p class="ses-lleva"><strong>Te llevas:</strong> una de las apps del centro funcionando con tu propia base de datos de Firebase, con inicio de sesión y reglas de seguridad, y la lista de comprobación de datos del alumnado.</p>
-        <p><strong>Antes de venir:</strong> decide qué app quieres llevarte de la pestaña <a href="#apps" data-ir="apps">Apps</a>. Trae tu cuenta de Google del centro.</p>
-        <table class="ses-tabla">
-          <tr><th>Tiempo</th><th>Qué hacemos</th><th>Dónde</th></tr>
-          <tr><td>0:00</td><td>Dos sitios para guardar: en el aparato o en la nube. Cuándo cada uno</td><td></td></tr>
-          <tr><td>0:10</td><td>Datos del alumnado: los cuatro principios, siglas y lo que no se sube nunca. Casos para debatir en parejas</td><td>Prompt 5</td></tr>
-          <tr><td>0:35</td><td>Firebase paso a paso: proyecto, base de datos en Europa e inicio de sesión</td><td><a href="#guias" data-ir="guias">Guías</a></td></tr>
-          <tr><td>1:10</td><td>Descargas la app, la pasas por el configurador, publicas las reglas y la subes a GitHub</td><td><a href="#apps" data-ir="apps">Apps</a> · <a href="#configurar" data-ir="configurar">Configurar</a></td></tr>
-          <tr><td>1:40</td><td>Prueba de la cerradura: un compañero no autorizado intenta entrar y no puede</td><td></td></tr>
-          <tr><td>1:55</td><td>Reto del mes y dudas</td><td><a href="#recursos" data-ir="recursos">Recursos</a></td></tr>
-        </table>
-        <h4>Prompt 5 · Siglas en lugar de nombres</h4>
-        <div class="caja-codigo"><pre class="codigo" id="sesP5" style="white-space:pre-wrap">El alumnado debe aparecer solo con sus siglas: inicial del nombre, del primer apellido y del segundo. Si importo una lista con nombres completos en formato «Apellido1 Apellido2, Nombre», convierte cada alumno en siglas y no guardes el nombre en ningún sitio. Si dos coinciden, añade un número al segundo. Ordena la lista por el primer apellido. Dame el archivo completo.</pre><button class="btn suave copiar" data-copiar="sesP5">Copiar</button></div>
-        <p class="alerta">Nunca el «modo de prueba» de Firebase ni reglas que dejen leer y escribir a cualquiera, aunque sea un rato. Con datos de un colegio, la base de datos empieza cerrada.</p>
-        <p class="consejo"><strong>Reto del mes:</strong> pasa la lista de comprobación de la pestaña <a href="#recursos" data-ir="recursos">Recursos</a> a tu app y háblalo con el equipo directivo antes de meter datos reales. Piensa qué proyecto propio harás en la sesión 4.</p>
-      </div>
-    </details>
-
-    <!-- SESIÓN 4 -->
-    <details class="guia ses" id="ses4">
-      <summary><div><b>Sesión 4 · Tu proyecto y el claustro</b><small>Mes 4 · Libro: capítulos 12 a 18</small></div></summary>
-      <div class="guia-cuerpo ses-cuerpo">
-        <p class="ses-lleva"><strong>Te llevas:</strong> un proyecto propio terminado, revisado y presentado al grupo, y un plan para que siga funcionando en tu centro.</p>
-        <p><strong>Antes de venir:</strong> trae tu idea en una ficha: para quién es, qué tiene que hacer, qué no y qué datos guarda. Si no tienes idea, elige una del banco de ideas del libro.</p>
-        <table class="ses-tabla">
-          <tr><th>Tiempo</th><th>Qué hacemos</th><th>Dónde</th></tr>
-          <tr><td>0:00</td><td>De la idea a la ficha: lo que tiene que hacer, lo que no y qué datos guarda</td><td>Prompt 6</td></tr>
-          <tr><td>0:15</td><td>Construcción por parejas o por especialidad, con tu asistente. Quien quiera, de la ficha de papel al juego</td><td><a href="#gemini" data-ir="gemini">Gemini</a></td></tr>
-          <tr><td>1:20</td><td>Segunda opinión: otra IA revisa tu app; repaso con la lista de comprobación</td><td>Prompt 7</td></tr>
-          <tr><td>1:35</td><td>Galería final: cada proyecto en la pizarra, con su QR</td><td><a href="#galeria" data-ir="galeria">Galería</a></td></tr>
-          <tr><td>1:55</td><td>Cómo seguir: quién mantiene cada app, cuentas del centro y una carpeta común para el claustro</td><td></td></tr>
-        </table>
-        <h4>Prompt 6 · Que me pregunte antes de programar</h4>
-        <div class="caja-codigo"><pre class="codigo" id="sesP6" style="white-space:pre-wrap">Quiero hacer una app para [lo que necesitas] en [dónde se usa]. Antes de escribir código, hazme las preguntas que necesites para entender bien lo que quiero. Cuando las conteste, hazme primero solo lo imprescindible para que funcione.</pre><button class="btn suave copiar" data-copiar="sesP6">Copiar</button></div>
-        <h4>Prompt 7 · La segunda opinión</h4>
-        <div class="caja-codigo"><pre class="codigo" id="sesP7" style="white-space:pre-wrap">Esta app la va a usar el profesorado de un colegio. Revísala como lo haría un programador con experiencia: dime qué errores ves, qué podría fallar en el móvil y qué riesgos tiene para los datos. No la reescribas todavía; solo dame la lista.</pre><button class="btn suave copiar" data-copiar="sesP7">Copiar</button></div>
-        <p class="consejo"><strong>Para después:</strong> un grupo para dudas donde cada uno comparta las apps que vaya haciendo, y una segunda persona con acceso de administración a cada app que use el claustro.</p>
-      </div>
-    </details>
-
-  </div>
-</section>
-
-<!-- ═════════════════════ EN DIRECTO ═════════════════════ -->
-<section class="panel" id="panel-directo" role="tabpanel" aria-labelledby="t-directo">
-  <div class="intro">
-    <h2>En directo</h2>
-    <p>El claustro responde desde el móvil y tú lo proyectas aquí.</p>
-  </div>
+  <h3 class="bloque" id="bloqueDirecto">En directo: radiografía, mando y ventana de ponente</h3>
+  <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Para quien presenta. El grupo responde desde el móvil, tú lo proyectas, y puedes llevar las diapositivas con tu móvil como mando.</p>
+  
 
   <div class="tarjeta inicio-directo" id="directoInicio">
     <div class="paso-num" aria-hidden="true">▶</div>
@@ -929,24 +783,325 @@ Después revisa la accesibilidad: buen contraste, que nada dependa solo del colo
       <p class="alerta">La hoja queda visible para quien tenga el enlace. Las respuestas son anónimas, pero pide que nadie escriba nombres de alumnado.</p>
     </div>
   </details>
+
 </section>
 
-<!-- ═════════════════════ APPS ═════════════════════ -->
-<section class="panel" id="panel-apps" role="tabpanel" aria-labelledby="t-apps">
+<!-- ═════════════════════ SESIÓN 1 ═════════════════════ -->
+<section class="panel" id="panel-s1" role="tabpanel" aria-labelledby="t-s1">
   <div class="intro">
-    <h2>Las apps</h2>
-    <p>Pulsa <strong>Ver</strong> para abrir la versión de demostración. <strong>Descargar</strong> te da la plantilla limpia, sin datos de ningún centro. Las que no usan base de datos funcionan nada más descomprimirlas; las demás se conectan con el Firebase de tu centro en la pestaña Configurar. El botón del código QR sirve para abrirla en el móvil durante la sesión.</p>
+    <p class="ses-etq">Sesión 1 de 4 · Mes 1 · Libro, capítulos 1 a 5</p>
+    <h2>Tu primera app</h2>
   </div>
+  <p class="ses-lleva"><strong>Te llevas:</strong> la rueda de participación hecha y personalizada, una herramienta propia para tu clase y tu asistente «Constructor de apps del cole» creado.</p>
+  <p><strong>Antes de venir:</strong> entra en <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> con tu cuenta y comprueba que funciona. Trae pensada una tarea de clase que repitas cada semana.</p>
+  <h3 class="bloque" style="margin-top:26px">El guion de la sesión</h3>
+  <table class="ses-tabla">
+          <tr><th>Tiempo</th><th>Qué hacemos</th><th>Dónde</th></tr>
+          <tr><td>0:00</td><td>Bienvenida y radiografía del grupo: qué te gustaría resolver con una app</td><td><a href="#directo" data-ir="directo">En directo</a></td></tr>
+          <tr><td>0:10</td><td>La rueda de participación, todos a la vez, paso a paso</td><td>Prompt 1</td></tr>
+          <tr><td>0:35</td><td>Hazla tuya: colores del cole, sonido y lista de los que han salido</td><td>Prompt 2</td></tr>
+          <tr><td>0:50</td><td>Por qué ha funcionado: las cinco partes de un buen encargo</td><td><a href="#ia" data-ir="ia">Crear con IA</a></td></tr>
+          <tr><td>1:05</td><td>Creas tu asistente y haces con él tu herramienta propia, con Canvas</td><td><a href="#ia" data-ir="ia">Crear con IA</a> · <a href="#gemini" data-ir="gemini">Gemini</a></td></tr>
+          <tr><td>1:40</td><td>Taller de errores: encuentra el fallo con F12 y arréglalo con la IA</td><td><a href="#taller" data-ir="taller">Taller</a></td></tr>
+          <tr><td>1:55</td><td>Reto del mes y dudas</td><td></td></tr>
+        </table>
+
+  <h3 class="bloque">1. La rueda de participación</h3>
+  <p style="max-width:70ch">Todo el grupo a la vez: copias el encargo, lo pegas en Gemini con Canvas y en unos minutos la rueda funciona. Después, la haces tuya pidiendo cambios de uno en uno.</p>
+  <h4 class="ses-h4">Prompt 1 · La rueda</h4>
+        <div class="caja-codigo"><pre class="codigo" id="sesP1" style="white-space:pre-wrap">Hazme una rueda de participación para usar en la pizarra digital de mi clase.
+
+Qué tiene que hacer:
+- Mostrar los números del 1 al 25, que son los números de lista de mis alumnos.
+- Tener un botón grande que ponga «Girar».
+- Al pulsarlo, la rueda gira unos segundos y se para en un número al azar.
+- El número elegido aparece en grande en el centro de la pantalla.
+- No puede repetir ningún número hasta que hayan salido todos.
+
+Cómo lo quiero:
+- Todo en un único archivo HTML, sin nada que instalar.
+- Que los números se lean desde el fondo de la clase.
+- Colores alegres, pero sin agobiar.
+
+Dame el archivo completo, de principio a fin.</pre><button class="btn suave copiar" data-copiar="sesP1">Copiar</button></div>
+<h4 class="ses-h4">Prompt 2 · Hazla tuya (de uno en uno)</h4>
+        <div class="caja-codigo"><pre class="codigo" id="sesP2" style="white-space:pre-wrap">Cambia los colores por [los de tu colegio]. Dame el archivo completo.
+
+Añade un sonido corto cuando la rueda se pare, con un botón para silenciarlo. Dame el archivo completo.
+
+Pon debajo de la rueda una lista pequeña con los números que ya han salido. Dame el archivo completo.</pre><button class="btn suave copiar" data-copiar="sesP2">Copiar</button></div>
+
+  <h3 class="bloque" id="bloqueMetodo">2. Por qué ha funcionado: el método</h3>
+  <ol class="metodo">
+        <li><b>Describe el problema, no la app</b><span>"Perdemos las autorizaciones de salida" funciona mejor que "hazme un formulario".</span></li>
+        <li><b>Deja que la IA pregunte</b><span>Pídele que te haga preguntas antes de programar. Ahorra muchas vueltas.</span></li>
+        <li><b>Un único archivo</b><span>Exige siempre el index.html completo. Nada de fragmentos sueltos.</span></li>
+        <li><b>Prueba, copia el error y pégalo</b><span>Tecla F12 → Consola. Lo que salga en rojo, a la conversación.</span></li>
+        <li><b>Primero sin base de datos</b><span>Cuando todo funcione, conéctala con Firebase.</span></li>
+        <li><b>Publica y comparte</b><span>GitHub Pages y un código QR para el claustro.</span></li>
+      </ol>
+  <h3 class="bloque">3. Tu asistente: el Gem «Constructor de apps del cole»</h3>
+  <div class="dos-col"><div><ol class="pasos-lista" style="margin-bottom:14px">
+        <li>Abre <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> y, en el menú lateral, entra en <strong>Gems</strong>.</li>
+        <li>Pulsa <strong>Nueva Gem</strong>. Nombre: <em>Constructor de apps del cole</em>.</li>
+        <li>Pega las instrucciones de abajo en el cuadro <strong>Instrucciones</strong>.</li>
+        <li>Si te deja elegir herramienta predeterminada, elige <strong>Canvas</strong>: verás la app funcionando junto a la conversación.</li>
+        <li>En <strong>Conocimiento</strong>, sube como ejemplo el <code>index.html</code> del Troglodita o de Mis Lecturas: son apps completas en un solo archivo.</li>
+        <li>Guarda y compártela con el claustro.</li>
+      </ol>
+      <div class="caja-codigo">
+        <pre class="codigo" id="gemConstructor" style="white-space:pre-wrap;max-height:300px"></pre>
+        <button class="btn suave copiar" data-copiar="gemConstructor">Copiar instrucciones</button>
+      </div>
+      <p class="consejo">Las apps que salgan de este Gem usan el mismo bloque de configuración que las plantillas, así que también podrás pasarlas por el configurador.</p>
+    </div></div>
+  <h3 class="bloque">Encargos que funcionan</h3>
+  <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Cambia lo que está entre corchetes. Sirven igual con Gemini, ChatGPT o Claude.</p>
+  <div class="prompts" id="prompts"></div>
+
+  
+  <h3 class="bloque">Reto de 15 minutos</h3>
+  <p style="color:var(--tinta-suave);margin:-6px 0 16px">Elige uno y constrúyelo con el Gem durante la sesión. Ninguno necesita base de datos.</p>
+  <div class="retos">
+    <div class="reto"><b>Temporizador de rincones</b><p>Grupos que rotan cada X minutos, con aviso sonoro y el nombre del rincón en grande para la pizarra digital.</p></div>
+    <div class="reto"><b>Semáforo del ruido</b><p>Usa el micrófono del ordenador y cambia de verde a rojo cuando el aula pasa de cierto nivel.</p></div>
+    <div class="reto"><b>Préstamos de la biblioteca de aula</b><p>Quién tiene qué libro y desde cuándo. Exporta e importa un archivo para no perder nada.</p></div>
+  </div>
+
+  <h3 class="bloque" id="bloqueGemini">Gemini, herramienta a herramienta</h3>
+  <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Para consultar cuando quieras: qué hace cada opción del menú <strong>+</strong> de Gemini y un encargo para probarla.</p>
+  <div class="gem-dos">
+    <div>
+      <div class="gem-menu" id="gemMenu" role="tablist" aria-label="Menú de Gemini"></div>
+      <div class="gem-progreso"><div class="progreso"><i id="gemBarra"></i></div><span id="gemCuenta"></span></div>
+    </div>
+    <div class="gem-ficha tarjeta" id="gemFicha" aria-live="polite"></div>
+  </div>
+
+  
+  <h3 class="bloque" id="bloqueTaller">4. Taller de errores</h3>
+  <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Tres apps rotas a propósito. Pulsa <strong>Probar</strong>, copia el fallo para la IA, pega aquí su respuesta y vuelve a probar. Es lo mismo que harás con tus apps.</p>
+  <div class="niveles" id="niveles"></div>
+  <div class="taller">
+    <div>
+      <div class="mision" id="mision"></div>
+      <label class="campo"><span>Código de la app (index.html)</span>
+        <textarea class="codigo-taller" id="tallerCodigo" spellcheck="false"></textarea>
+        <small>Pega la respuesta entera de la IA, aunque traiga texto alrededor: el taller se queda solo con el código.</small>
+      </label>
+      <div class="fila">
+        <button class="btn azul" id="tallerProbar">▶ Probar</button>
+        <button class="btn suave" id="tallerCopiar">Copiar para la IA</button>
+        <a class="btn linea" href="https://gemini.google.com" target="_blank" rel="noopener">Abrir Gemini</a>
+      </div>
+      <div class="fila" style="margin-top:10px">
+        <button class="btn linea" id="tallerPista">Pista</button>
+        <button class="btn linea" id="tallerSolucion">Solución</button>
+        <button class="btn linea" id="tallerRestaurar">Volver al original</button>
+      </div>
+      <div class="consejo pista" id="tallerPistaTxt"></div>
+    </div>
+    <div>
+      <iframe id="tallerMarco" sandbox="allow-scripts allow-modals" title="Vista de la app del taller"></iframe>
+      <div class="consola">
+        <div class="consola-cab"><span>Consola · lo que verías con F12</span><span id="consolaN"></span></div>
+        <div id="consola"><div class="vacia">Pulsa Probar para ejecutar la app.</div></div>
+      </div>
+      <div class="veredicto" id="veredicto" role="status" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <p class="consejo"><strong>Reto del mes:</strong> haz uno de los miniproyectos (el semáforo de las rutinas, el sorteo de grupos o el marcador por equipos) y úsalo en clase al menos una semana. En la sesión 2 lo enseñamos.</p>
+  <p class="alerta">Desde el primer día: nunca nombres de alumnos en una conversación con la IA. Números de lista o datos inventados.</p>
+</section>
+
+<!-- ═════════════════════ SESIÓN 2 ═════════════════════ -->
+<section class="panel" id="panel-s2" role="tabpanel" aria-labelledby="t-s2">
+  <div class="intro">
+    <p class="ses-etq">Sesión 2 de 4 · Mes 2 · Libro, capítulos 6, 7, 10 y 11</p>
+    <h2>Que salga de tu ordenador</h2>
+  </div>
+  <p class="ses-lleva"><strong>Te llevas:</strong> tu app publicada en internet con su dirección y su código QR, instalada en el móvil con su icono y con el estilo del centro.</p>
+  <p><strong>Antes de venir:</strong> crea tu cuenta en <a href="https://github.com" target="_blank" rel="noopener">github.com</a> (gratuita) y trae el archivo de tu reto del mes.</p>
+  <h3 class="bloque" style="margin-top:26px">El guion de la sesión</h3>
+  <table class="ses-tabla">
+          <tr><th>Tiempo</th><th>Qué hacemos</th><th>Dónde</th></tr>
+          <tr><td>0:00</td><td>Galería del reto: tres o cuatro personas enseñan su miniproyecto</td><td><a href="#galeria" data-ir="galeria">Galería</a></td></tr>
+          <tr><td>0:15</td><td>GitHub desde cero: repositorio, subir el archivo como index.html y activar Pages</td><td><a href="#guias" data-ir="guias">Guías</a></td></tr>
+          <tr><td>0:50</td><td>De web a app: manifiesto, service worker e icono; instalarla en el móvil</td><td>Prompt 3</td></tr>
+          <tr><td>1:15</td><td>Que se vea bien: guía de estilo del centro y revisión de accesibilidad</td><td>Prompt 4</td></tr>
+          <tr><td>1:40</td><td>Código QR y aviso de novedades; probarla en el móvil de un compañero</td><td></td></tr>
+          <tr><td>1:55</td><td>Reto del mes y dudas</td><td></td></tr>
+        </table>
+
+  <h3 class="bloque">1. Publicar en GitHub Pages</h3>
+  <div class="guias"><details class="guia">
+      <summary><div><b>5. Publicar en GitHub Pages</b><small>Tu app con dirección web gratuita</small></div></summary>
+      <div class="guia-cuerpo">
+        <ol>
+          <li>Crea una cuenta en <a href="https://github.com" target="_blank" rel="noopener">github.com</a>. Tu nombre de usuario formará parte de la dirección: <code>usuario.github.io</code>.</li>
+          <li>Pulsa <strong>New repository</strong>. Nombre corto y sin espacios (por ejemplo <code>teletrabajo</code>), marca <strong>Public</strong> y crea el repositorio.</li>
+          <li>Pulsa <strong>uploading an existing file</strong> y arrastra <em>el contenido</em> de la carpeta: <code>index.html</code>, <code>sw.js</code>, <code>manifest.json</code> y los iconos. Después, <strong>Commit changes</strong>.</li>
+          <li>Ve a <code>Settings</code> → <code>Pages</code>. En <em>Branch</em> elige <code>main</code> y la carpeta <code>/ (root)</code>. Guarda.</li>
+          <li>En uno o dos minutos la app estará en <code>https://usuario.github.io/teletrabajo/</code>.</li>
+        </ol>
+        <p class="consejo">El repositorio es público: cualquiera puede ver el código. Por eso no lleva datos personales. La <code>apiKey</code> que se ve no es una contraseña; lo que protege los datos son las reglas y el acceso con usuario.</p>
+      </div>
+    </details></div>
+  <h3 class="bloque">2. De web a app instalable</h3>
+  <h4 class="ses-h4">Prompt 3 · Convertirla en app instalable</h4>
+        <div class="caja-codigo"><pre class="codigo" id="sesP3" style="white-space:pre-wrap">Esta es una app web que tengo publicada en GitHub Pages. Te pego el archivo completo.
+
+Conviértela en una PWA que se pueda instalar en el móvil:
+- Con un manifest.json: nombre «[nombre de tu app]», color principal [color].
+- Con un service worker que guarde la app para que funcione sin conexión.
+- Muy importante: cuando suba una versión nueva, la app tiene que actualizarse sola.
+- Los iconos se llamarán icon-192.png e icon-512.png.
+
+Dame cada archivo completo por separado, con su nombre exacto.</pre><button class="btn suave copiar" data-copiar="sesP3">Copiar</button></div>
+
+  <div class="guias" style="margin-top:14px"><details class="guia">
+      <summary><div><b>7. Instalar la app en móvil y ordenador</b><small>Para abrirla como una app más</small></div></summary>
+      <div class="guia-cuerpo">
+        <ol>
+          <li><strong>Android (Chrome):</strong> menú <code>⋮</code> → <em>Instalar aplicación</em> o <em>Añadir a pantalla de inicio</em>.</li>
+          <li><strong>iPhone o iPad (Safari):</strong> botón <em>Compartir</em> → <em>Añadir a pantalla de inicio</em>.</li>
+          <li><strong>Ordenador (Chrome o Edge):</strong> icono de instalar en la barra de direcciones.</li>
+        </ol>
+      </div>
+    </details></div>
+  <h3 class="bloque">3. Que se vea bien</h3>
+  <h4 class="ses-h4">Prompt 4 · El estilo del centro</h4>
+        <div class="caja-codigo"><pre class="codigo" id="sesP4" style="white-space:pre-wrap">Aplica este estilo a la app sin cambiar lo que hace:
+- Fondo blanco. Texto en [color oscuro].
+- Color de acento [color] para el botón principal.
+- Letra sencilla de Google Fonts, texto a 18 px y títulos a 28 px.
+- Botones grandes y redondeados, mucho espacio entre elementos.
+- Sin degradados ni sombras fuertes.
+
+Después revisa la accesibilidad: buen contraste, que nada dependa solo del color y sonidos desactivables. Dame el archivo completo y la lista de cambios.</pre><button class="btn suave copiar" data-copiar="sesP4">Copiar</button></div>
+
+  <h3 class="bloque">4. Actualizar sin perder nada</h3>
+  <div class="guias"><details class="guia">
+      <summary><div><b>8. Actualizar una app ya publicada</b><small>Cuando salga una versión nueva de la plantilla</small></div></summary>
+      <div class="guia-cuerpo">
+        <ol>
+          <li>Descarga la plantilla nueva y pásala por el configurador. Tus datos del centro seguirán guardados en el navegador.</li>
+          <li>Pega de nuevo tu firebaseConfig: es el mismo de siempre.</li>
+          <li>En GitHub, entra en el repositorio, sube el nuevo <code>index.html</code> y confirma con <strong>Commit changes</strong>.</li>
+          <li>Si las reglas han cambiado, vuelve a publicarlas.</li>
+        </ol>
+        <p class="consejo">Los datos no se pierden al actualizar: viven en Firebase, no en el archivo.</p>
+      </div>
+    </details><details class="guia">
+      <summary><div><b>He subido cambios y sigo viendo la versión antigua</b></div></summary>
+      <div class="guia-cuerpo"><p>GitHub Pages tarda uno o dos minutos en publicar. Después, recarga forzando la actualización (<code>Ctrl + F5</code> en el ordenador) o cierra y abre la app instalada. Si la app muestra un aviso de nueva versión, púlsalo.</p></div>
+    </details></div>
+  <p class="consejo"><strong>Reto del mes:</strong> publica un segundo miniproyecto (la cuenta atrás, el concurso de preguntas o las votaciones) y compártelo por QR con un compañero o con tus familias.</p>
+</section>
+
+<!-- ═════════════════════ SESIÓN 3 ═════════════════════ -->
+<section class="panel" id="panel-s3" role="tabpanel" aria-labelledby="t-s3">
+  <div class="intro">
+    <p class="ses-etq">Sesión 3 de 4 · Mes 3 · Libro, capítulos 8 y 9</p>
+    <h2>Apps con datos</h2>
+  </div>
+  <p class="ses-lleva"><strong>Te llevas:</strong> una de las apps del centro funcionando con tu propia base de datos de Firebase, con inicio de sesión y reglas de seguridad, y la lista de comprobación de datos del alumnado.</p>
+  <p><strong>Antes de venir:</strong> decide qué app quieres llevarte de la pestaña <a href="#apps" data-ir="apps">Apps</a>. Trae tu cuenta de Google del centro.</p>
+  <h3 class="bloque" style="margin-top:26px">El guion de la sesión</h3>
+  <table class="ses-tabla">
+          <tr><th>Tiempo</th><th>Qué hacemos</th><th>Dónde</th></tr>
+          <tr><td>0:00</td><td>Dos sitios para guardar: en el aparato o en la nube. Cuándo cada uno</td><td></td></tr>
+          <tr><td>0:10</td><td>Datos del alumnado: los cuatro principios, siglas y lo que no se sube nunca. Casos para debatir en parejas</td><td>Prompt 5</td></tr>
+          <tr><td>0:35</td><td>Firebase paso a paso: proyecto, base de datos en Europa e inicio de sesión</td><td><a href="#guias" data-ir="guias">Guías</a></td></tr>
+          <tr><td>1:10</td><td>Descargas la app, la pasas por el configurador, publicas las reglas y la subes a GitHub</td><td><a href="#apps" data-ir="apps">Apps</a> · <a href="#configurar" data-ir="configurar">Configurar</a></td></tr>
+          <tr><td>1:40</td><td>Prueba de la cerradura: un compañero no autorizado intenta entrar y no puede</td><td></td></tr>
+          <tr><td>1:55</td><td>Reto del mes y dudas</td><td><a href="#recursos" data-ir="recursos">Recursos</a></td></tr>
+        </table>
+
+  <h3 class="bloque">1. Datos del alumnado: lo que hay que hacer bien</h3>
+  <div class="guias"><details class="guia">
+      <summary><div><b>Lo mínimo imprescindible</b><small>Antes de meter datos de alumnado o familias</small></div></summary>
+      <div class="guia-cuerpo">
+        <ol>
+          <li>Nada de nombres, usuarios ni notas escritos dentro del código: el repositorio es público.</li>
+          <li>Proyecto de Firebase creado con la cuenta del centro y base de datos en Bélgica (europe-west1).</li>
+          <li>Reglas publicadas siempre, y cuentas individuales para quien tenga que escribir.</li>
+          <li>Guarda solo lo que la app necesita. Si un dato no se usa, no se pide.</li>
+          <li>Si la app va a tratar datos del alumnado, coméntalo con dirección y consulta a la persona delegada de protección de datos de tu administración educativa.</li>
+        </ol>
+      </div>
+    </details></div>
+  <h4 class="ses-h4">Prompt 5 · Siglas en lugar de nombres</h4>
+        <div class="caja-codigo"><pre class="codigo" id="sesP5" style="white-space:pre-wrap">El alumnado debe aparecer solo con sus siglas: inicial del nombre, del primer apellido y del segundo. Si importo una lista con nombres completos en formato «Apellido1 Apellido2, Nombre», convierte cada alumno en siglas y no guardes el nombre en ningún sitio. Si dos coinciden, añade un número al segundo. Ordena la lista por el primer apellido. Dame el archivo completo.</pre><button class="btn suave copiar" data-copiar="sesP5">Copiar</button></div>
+
+  <p class="alerta">Nunca el «modo de prueba» de Firebase ni reglas que dejen leer y escribir a cualquiera, aunque sea un rato. Con datos de un colegio, la base de datos empieza cerrada.</p>
+  <h3 class="bloque" id="bloqueApps">2. Las apps del centro</h3>
+  <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Pulsa <strong>Ver</strong> para abrir la demostración. <strong>Descargar</strong> te da la plantilla limpia, sin datos de ningún centro. Elige la que te vas a llevar hoy.</p>
   <div class="fichas" id="fichas"></div>
-</section>
-
-<!-- ═════════════════════ CONFIGURADOR ═════════════════════ -->
-<section class="panel" id="panel-configurar" role="tabpanel" aria-labelledby="t-configurar">
-  <div class="intro">
-    <h2>Configurar una app para tu centro</h2>
-    <p>Todo ocurre en tu navegador: el archivo no se sube a ningún sitio. Las apps con base de datos necesitan además el bloque de configuración de tu proyecto de Firebase (lo tienes explicado en <a href="#guias" data-ir="guias">Guías paso a paso</a>). Cuadra Horarios, Mis Lecturas, PDF a Markdown y Word y el Troglodita no necesitan configuración.</p>
-  </div>
-
+  <h3 class="bloque" id="bloqueFirebase">3. Firebase paso a paso</h3>
+  <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Casi todas las apps guardan en <strong>Realtime Database</strong>; Convivencia+ usa <strong>Firestore</strong>. Las dos son de Firebase y la ficha de cada app dice cuál necesita.</p>
+  <div class="guias"><details class="guia">
+      <summary><div><b>1. Crear el proyecto de Firebase</b><small>Solo para Evaluaciones, ConVive y Teletrabajo</small></div></summary>
+      <div class="guia-cuerpo">
+        <ol>
+          <li>Entra en <a href="https://console.firebase.google.com" target="_blank" rel="noopener">console.firebase.google.com</a> con la cuenta de Google del centro.</li>
+          <li>Pulsa <strong>Crear un proyecto</strong> y ponle un nombre claro, por ejemplo <code>teletrabajo-losolivos</code>. Google Analytics no hace falta: puedes desactivarlo.</li>
+          <li>Ya dentro del proyecto, activa primero la base de datos (guía 2, o 2 bis para ConVive). Así el bloque de configuración traerá la dirección de la base de datos.</li>
+          <li>En la portada del proyecto pulsa el icono web <code>&lt;/&gt;</code> para registrar una app. Ponle un apodo y <strong>no</strong> marques Firebase Hosting.</li>
+          <li>Copia el bloque <code>const firebaseConfig = {…}</code>. Es lo que pegarás en el configurador. Siempre puedes volver a verlo en <code>⚙ Configuración del proyecto</code> → <code>Tus apps</code>.</li>
+        </ol>
+        <p class="consejo"><strong>Un proyecto por app.</strong> Cada proyecto tiene sus propias reglas de seguridad; si mezclas dos apps en uno, las reglas de una pueden romper la otra.</p>
+      </div>
+    </details><details class="guia">
+      <summary><div><b>2. Activar Realtime Database</b><small>Donde se guardan los datos</small></div></summary>
+      <div class="guia-cuerpo">
+        <ol>
+          <li>Menú lateral: <code>Compilación</code> → <code>Realtime Database</code> → <strong>Crear base de datos</strong>.</li>
+          <li>Ubicación: <strong>Bélgica (europe-west1)</strong>, para que los datos queden en la Unión Europea.</li>
+          <li>Elige <strong>modo bloqueado</strong>. Las reglas de verdad las pegarás después.</li>
+          <li>Arriba verás una dirección que termina en <code>firebasedatabase.app</code>. Si tu firebaseConfig no la trae, añádela como <code>databaseURL</code>.</li>
+          <li>Pestaña <code>Reglas</code>: pega las reglas que te da el configurador y pulsa <strong>Publicar</strong>.</li>
+        </ol>
+        <p class="alerta">Si alguna vez lees <code>".read": true, ".write": true</code> para toda la base de datos, no lo publiques: cualquiera con la dirección podría leer y borrar todo.</p>
+      </div>
+    </details><details class="guia">
+      <summary><div><b>2 bis. Activar Firestore</b><small>Solo para ConVive</small></div></summary>
+      <div class="guia-cuerpo">
+        <ol>
+          <li>Menú lateral: <code>Compilación</code> → <code>Firestore Database</code> → <strong>Crear base de datos</strong>.</li>
+          <li>Ubicación en Europa (por ejemplo <strong>eur3</strong> o <strong>europe-west1</strong>). No se puede cambiar después.</li>
+          <li>Elige <strong>modo de producción</strong>.</li>
+          <li>Pestaña <code>Reglas</code>: pega las reglas que te da el configurador y pulsa <strong>Publicar</strong>.</li>
+        </ol>
+        <p class="consejo">ConVive no necesita <code>databaseURL</code>: con el firebaseConfig normal es suficiente.</p>
+      </div>
+    </details><details class="guia">
+      <summary><div><b>3. Activar el acceso con usuario</b><small>Authentication, para apps con entrada por IdEA</small></div></summary>
+      <div class="guia-cuerpo">
+        <ol>
+          <li><code>Compilación</code> → <code>Authentication</code> → <strong>Comenzar</strong>.</li>
+          <li>Pestaña <code>Sign-in method</code> → <strong>Correo electrónico/contraseña</strong> → activa solo el primer interruptor → <strong>Guardar</strong>.</li>
+          <li>No hace falta crear usuarios a mano: cada app los crea desde su panel (Teletrabajo en <em>Personal</em>, Evaluaciones en <em>Ajustes → Gestionar profesorado</em>, ConVive en <em>Configuración</em>).</li>
+        </ol>
+        <p class="consejo">Los "correos" del tipo <code>usuario@micentro.local</code> no existen ni reciben nada: son solo el identificador interno que Firebase necesita.</p>
+      </div>
+    </details></div>
+  <h3 class="bloque" id="bloqueConfig">4. Configurar la app para tu centro</h3>
+  <div class="guias" style="margin-bottom:18px"><details class="guia">
+      <summary><div><b>4. Configurar la app</b><small>Con el configurador, justo debajo</small></div></summary>
+      <div class="guia-cuerpo">
+        <ol>
+          <li>Descarga la plantilla desde el apartado <em>Las apps del centro</em> y descomprímela.</li>
+          <li>Abre el configurador y sube el <code>index.html</code>.</li>
+          <li>Si la app usa Firebase, pega el firebaseConfig. Después rellena los datos del centro.</li>
+          <li>Descarga el <code>index.html</code> configurado y sustituye con él al de la carpeta.</li>
+          <li>Copia las reglas y publícalas en Firebase (guía 2, último paso).</li>
+        </ol>
+        <p class="consejo">Cuadra Horarios, Mis Lecturas, PDF a Markdown y Word y el Troglodita no llevan configuración: úsalos tal cual. ¿Prefieres configurar a mano las demás? Abre el <code>index.html</code> con el Bloc de notas: al principio verás el bloque <code>CONFIGURACIÓN DEL CENTRO</code>. Cambia solo lo que hay entre comillas.</p>
+      </div>
+    </details></div>
+  <p style="color:var(--tinta-suave);margin:0 0 16px;max-width:70ch">Todo ocurre en tu navegador: el archivo no se sube a ningún sitio. Cuadra Horarios, Mis Lecturas, PDF a Markdown y Word y el Troglodita no necesitan configuración.</p>
   <div class="config">
     <div class="paso" data-n="1" id="paso1">
       <h3>Sube la plantilla</h3>
@@ -1003,100 +1158,10 @@ Después revisa la accesibilidad: buen contraste, que nada dependa solo del colo
       <div id="siguientes" style="margin-top:20px"></div>
     </div>
   </div>
-</section>
 
-<!-- ═════════════════════ GUÍAS ═════════════════════ -->
-<section class="panel" id="panel-guias" role="tabpanel" aria-labelledby="t-guias">
-  <div class="intro">
-    <h2>Guías paso a paso</h2>
-    <p>En orden, de la cuenta vacía a la app publicada. Los nombres de los menús pueden variar un poco según el idioma de tu consola.</p>
-  </div>
-
-  <div class="guias">
-    <p class="etiqueta-grupo">Poner una app en marcha</p>
-
-    <details class="guia">
-      <summary><div><b>1. Crear el proyecto de Firebase</b><small>Solo para Evaluaciones, ConVive y Teletrabajo</small></div></summary>
-      <div class="guia-cuerpo">
-        <ol>
-          <li>Entra en <a href="https://console.firebase.google.com" target="_blank" rel="noopener">console.firebase.google.com</a> con la cuenta de Google del centro.</li>
-          <li>Pulsa <strong>Crear un proyecto</strong> y ponle un nombre claro, por ejemplo <code>teletrabajo-losolivos</code>. Google Analytics no hace falta: puedes desactivarlo.</li>
-          <li>Ya dentro del proyecto, activa primero la base de datos (guía 2, o 2 bis para ConVive). Así el bloque de configuración traerá la dirección de la base de datos.</li>
-          <li>En la portada del proyecto pulsa el icono web <code>&lt;/&gt;</code> para registrar una app. Ponle un apodo y <strong>no</strong> marques Firebase Hosting.</li>
-          <li>Copia el bloque <code>const firebaseConfig = {…}</code>. Es lo que pegarás en el configurador. Siempre puedes volver a verlo en <code>⚙ Configuración del proyecto</code> → <code>Tus apps</code>.</li>
-        </ol>
-        <p class="consejo"><strong>Un proyecto por app.</strong> Cada proyecto tiene sus propias reglas de seguridad; si mezclas dos apps en uno, las reglas de una pueden romper la otra.</p>
-      </div>
-    </details>
-
-    <details class="guia">
-      <summary><div><b>2. Activar Realtime Database</b><small>Donde se guardan los datos</small></div></summary>
-      <div class="guia-cuerpo">
-        <ol>
-          <li>Menú lateral: <code>Compilación</code> → <code>Realtime Database</code> → <strong>Crear base de datos</strong>.</li>
-          <li>Ubicación: <strong>Bélgica (europe-west1)</strong>, para que los datos queden en la Unión Europea.</li>
-          <li>Elige <strong>modo bloqueado</strong>. Las reglas de verdad las pegarás después.</li>
-          <li>Arriba verás una dirección que termina en <code>firebasedatabase.app</code>. Si tu firebaseConfig no la trae, añádela como <code>databaseURL</code>.</li>
-          <li>Pestaña <code>Reglas</code>: pega las reglas que te da el configurador y pulsa <strong>Publicar</strong>.</li>
-        </ol>
-        <p class="alerta">Si alguna vez lees <code>".read": true, ".write": true</code> para toda la base de datos, no lo publiques: cualquiera con la dirección podría leer y borrar todo.</p>
-      </div>
-    </details>
-
-    <details class="guia">
-      <summary><div><b>2 bis. Activar Firestore</b><small>Solo para ConVive</small></div></summary>
-      <div class="guia-cuerpo">
-        <ol>
-          <li>Menú lateral: <code>Compilación</code> → <code>Firestore Database</code> → <strong>Crear base de datos</strong>.</li>
-          <li>Ubicación en Europa (por ejemplo <strong>eur3</strong> o <strong>europe-west1</strong>). No se puede cambiar después.</li>
-          <li>Elige <strong>modo de producción</strong>.</li>
-          <li>Pestaña <code>Reglas</code>: pega las reglas que te da el configurador y pulsa <strong>Publicar</strong>.</li>
-        </ol>
-        <p class="consejo">ConVive no necesita <code>databaseURL</code>: con el firebaseConfig normal es suficiente.</p>
-      </div>
-    </details>
-
-    <details class="guia">
-      <summary><div><b>3. Activar el acceso con usuario</b><small>Authentication, para apps con entrada por IdEA</small></div></summary>
-      <div class="guia-cuerpo">
-        <ol>
-          <li><code>Compilación</code> → <code>Authentication</code> → <strong>Comenzar</strong>.</li>
-          <li>Pestaña <code>Sign-in method</code> → <strong>Correo electrónico/contraseña</strong> → activa solo el primer interruptor → <strong>Guardar</strong>.</li>
-          <li>No hace falta crear usuarios a mano: cada app los crea desde su panel (Teletrabajo en <em>Personal</em>, Evaluaciones en <em>Ajustes → Gestionar profesorado</em>, ConVive en <em>Configuración</em>).</li>
-        </ol>
-        <p class="consejo">Los "correos" del tipo <code>usuario@micentro.local</code> no existen ni reciben nada: son solo el identificador interno que Firebase necesita.</p>
-      </div>
-    </details>
-
-    <details class="guia">
-      <summary><div><b>4. Configurar la app</b><small>Con la pestaña "Configurar para tu centro"</small></div></summary>
-      <div class="guia-cuerpo">
-        <ol>
-          <li>Descarga la plantilla desde <a href="#apps" data-ir="apps">Las apps</a> y descomprímela.</li>
-          <li>Abre <a href="#configurar" data-ir="configurar">Configurar para tu centro</a> y sube el <code>index.html</code>.</li>
-          <li>Si la app usa Firebase, pega el firebaseConfig. Después rellena los datos del centro.</li>
-          <li>Descarga el <code>index.html</code> configurado y sustituye con él al de la carpeta.</li>
-          <li>Copia las reglas y publícalas en Firebase (guía 2, último paso).</li>
-        </ol>
-        <p class="consejo">Cuadra Horarios, Mis Lecturas, PDF a Markdown y Word y el Troglodita no llevan configuración: úsalos tal cual. ¿Prefieres configurar a mano las demás? Abre el <code>index.html</code> con el Bloc de notas: al principio verás el bloque <code>CONFIGURACIÓN DEL CENTRO</code>. Cambia solo lo que hay entre comillas.</p>
-      </div>
-    </details>
-
-    <details class="guia">
-      <summary><div><b>5. Publicar en GitHub Pages</b><small>Tu app con dirección web gratuita</small></div></summary>
-      <div class="guia-cuerpo">
-        <ol>
-          <li>Crea una cuenta en <a href="https://github.com" target="_blank" rel="noopener">github.com</a>. Tu nombre de usuario formará parte de la dirección: <code>usuario.github.io</code>.</li>
-          <li>Pulsa <strong>New repository</strong>. Nombre corto y sin espacios (por ejemplo <code>teletrabajo</code>), marca <strong>Public</strong> y crea el repositorio.</li>
-          <li>Pulsa <strong>uploading an existing file</strong> y arrastra <em>el contenido</em> de la carpeta: <code>index.html</code>, <code>sw.js</code>, <code>manifest.json</code> y los iconos. Después, <strong>Commit changes</strong>.</li>
-          <li>Ve a <code>Settings</code> → <code>Pages</code>. En <em>Branch</em> elige <code>main</code> y la carpeta <code>/ (root)</code>. Guarda.</li>
-          <li>En uno o dos minutos la app estará en <code>https://usuario.github.io/teletrabajo/</code>.</li>
-        </ol>
-        <p class="consejo">El repositorio es público: cualquiera puede ver el código. Por eso no lleva datos personales. La <code>apiKey</code> que se ve no es una contraseña; lo que protege los datos son las reglas y el acceso con usuario.</p>
-      </div>
-    </details>
-
-    <details class="guia">
+  <h3 class="bloque">5. Publicar y dar de alta al claustro</h3>
+  <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Se publica igual que en la sesión 2. Después, la primera entrada y el alta de cada docente:</p>
+  <div class="guias"><details class="guia">
       <summary><div><b>6. Primera entrada y alta del claustro</b><small>Para apps con acceso por usuario IdEA</small></div></summary>
       <div class="guia-cuerpo">
         <ol>
@@ -1107,117 +1172,35 @@ Después revisa la accesibilidad: buen contraste, que nada dependa solo del colo
         </ol>
         <p class="consejo">El usuario IdEA se usa como clave para que nadie tenga que recordar otra contraseña. Es cómodo, pero no es secreto: úsalo para la gestión interna del claustro, no para información sensible.</p>
       </div>
-    </details>
-
-    <details class="guia">
-      <summary><div><b>7. Instalar la app en móvil y ordenador</b><small>Para abrirla como una app más</small></div></summary>
-      <div class="guia-cuerpo">
-        <ol>
-          <li><strong>Android (Chrome):</strong> menú <code>⋮</code> → <em>Instalar aplicación</em> o <em>Añadir a pantalla de inicio</em>.</li>
-          <li><strong>iPhone o iPad (Safari):</strong> botón <em>Compartir</em> → <em>Añadir a pantalla de inicio</em>.</li>
-          <li><strong>Ordenador (Chrome o Edge):</strong> icono de instalar en la barra de direcciones.</li>
-        </ol>
-      </div>
-    </details>
-
-    <details class="guia">
-      <summary><div><b>8. Actualizar una app ya publicada</b><small>Cuando salga una versión nueva de la plantilla</small></div></summary>
-      <div class="guia-cuerpo">
-        <ol>
-          <li>Descarga la plantilla nueva y pásala por el configurador. Tus datos del centro seguirán guardados en el navegador.</li>
-          <li>Pega de nuevo tu firebaseConfig: es el mismo de siempre.</li>
-          <li>En GitHub, entra en el repositorio, sube el nuevo <code>index.html</code> y confirma con <strong>Commit changes</strong>.</li>
-          <li>Si las reglas han cambiado, vuelve a publicarlas.</li>
-        </ol>
-        <p class="consejo">Los datos no se pierden al actualizar: viven en Firebase, no en el archivo.</p>
-      </div>
-    </details>
-
-    <p class="etiqueta-grupo">Cuando algo no funciona</p>
-
-    <details class="guia">
+    </details></div>
+  <h3 class="bloque">Cuando algo no funciona</h3>
+  <div class="guias"><details class="guia">
       <summary><div><b>Sale "Esta app aún no está configurada"</b></div></summary>
       <div class="guia-cuerpo"><p>Falta algún dato imprescindible en el bloque de configuración: normalmente la <code>apiKey</code>, la <code>databaseURL</code> o el usuario IdEA de la persona administradora. Vuelve a pasar el archivo por el configurador y comprueba que todos los indicadores están en verde.</p></div>
-    </details>
-    <details class="guia">
+    </details><details class="guia">
       <summary><div><b>No guarda o aparece "PERMISSION_DENIED"</b></div></summary>
       <div class="guia-cuerpo"><p>Casi siempre son las reglas: no se han publicado, se pegaron las de otra app o se publicaron con un IdEA de administración distinto. Copia de nuevo las del configurador, sustituye todo el contenido de la pestaña <code>Reglas</code> y pulsa <strong>Publicar</strong>.</p></div>
-    </details>
-    <details class="guia">
+    </details><details class="guia">
       <summary><div><b>Error "auth/operation-not-allowed"</b></div></summary>
       <div class="guia-cuerpo"><p>No está activado el método <strong>Correo electrónico/contraseña</strong> en Authentication (guía 3).</p></div>
-    </details>
-    <details class="guia">
+    </details><details class="guia">
       <summary><div><b>"La contraseña debe tener al menos 6 caracteres"</b></div></summary>
       <div class="guia-cuerpo"><p>Firebase no acepta claves de menos de 6 caracteres. Si algún usuario IdEA es más corto, esa persona necesitará una cuenta creada a mano desde la consola, en <code>Authentication</code> → <code>Users</code>.</p></div>
-    </details>
-    <details class="guia">
-      <summary><div><b>He subido cambios y sigo viendo la versión antigua</b></div></summary>
-      <div class="guia-cuerpo"><p>GitHub Pages tarda uno o dos minutos en publicar. Después, recarga forzando la actualización (<code>Ctrl + F5</code> en el ordenador) o cierra y abre la app instalada. Si la app muestra un aviso de nueva versión, púlsalo.</p></div>
-    </details>
-    <details class="guia">
+    </details><details class="guia">
       <summary><div><b>Con la cuenta educativa no me deja entrar en Firebase o Gemini</b></div></summary>
       <div class="guia-cuerpo"><p>En las cuentas corporativas o educativas, la administración puede tener bloqueados algunos servicios de Google. Crea una cuenta de Google para el centro y úsala solo para esto.</p></div>
-    </details>
-
-    <p class="etiqueta-grupo">Datos personales</p>
-
-    <details class="guia">
-      <summary><div><b>Lo mínimo imprescindible</b><small>Antes de meter datos de alumnado o familias</small></div></summary>
-      <div class="guia-cuerpo">
-        <ol>
-          <li>Nada de nombres, usuarios ni notas escritos dentro del código: el repositorio es público.</li>
-          <li>Proyecto de Firebase creado con la cuenta del centro y base de datos en Bélgica (europe-west1).</li>
-          <li>Reglas publicadas siempre, y cuentas individuales para quien tenga que escribir.</li>
-          <li>Guarda solo lo que la app necesita. Si un dato no se usa, no se pide.</li>
-          <li>Si la app va a tratar datos del alumnado, coméntalo con dirección y consulta a la persona delegada de protección de datos de tu administración educativa.</li>
-        </ol>
-      </div>
-    </details>
-  </div>
-</section>
-
-<!-- ═════════════════════ IA ═════════════════════ -->
-<section class="panel" id="panel-ia" role="tabpanel" aria-labelledby="t-ia">
-  <div class="intro">
-    <h2>Crea la tuya con IA</h2>
-    <p>Así nacieron estas apps: conversando. Aquí tienes el método, dos Gems de Gemini listos para montar y los encargos que mejor funcionan.</p>
+    </details></div>
+  <h3 class="bloque" id="bloqueLista">Lista de comprobación</h3>
+  <div class="progreso" aria-hidden="true"><i id="barraLista"></i></div>
+  <p id="textoLista" style="font-size:.92rem;color:var(--tinta-suave);margin-bottom:8px" aria-live="polite"></p>
+  <ul class="lista-control" id="listaControl"></ul>
+  <div class="fila no-imprimir" style="margin-top:14px">
+    <button class="btn linea" id="btnImprimir">Imprimir la lista</button>
+    <button class="btn linea" id="btnVaciarLista">Desmarcar todo</button>
   </div>
 
-  <h3 class="bloque" style="margin-top:0">Así nació <span data-historia-app></span></h3>
-  <div class="historia" data-historia></div>
-
-  <div class="dos-col">
-    <div>
-      <h3 class="bloque" style="margin-top:0">El método</h3>
-      <ol class="metodo">
-        <li><b>Describe el problema, no la app</b><span>"Perdemos las autorizaciones de salida" funciona mejor que "hazme un formulario".</span></li>
-        <li><b>Deja que la IA pregunte</b><span>Pídele que te haga preguntas antes de programar. Ahorra muchas vueltas.</span></li>
-        <li><b>Un único archivo</b><span>Exige siempre el index.html completo. Nada de fragmentos sueltos.</span></li>
-        <li><b>Prueba, copia el error y pégalo</b><span>Tecla F12 → Consola. Lo que salga en rojo, a la conversación.</span></li>
-        <li><b>Primero sin base de datos</b><span>Cuando todo funcione, conéctala con Firebase.</span></li>
-        <li><b>Publica y comparte</b><span>GitHub Pages y un código QR para el claustro.</span></li>
-      </ol>
-    </div>
-    <div>
-      <h3 class="bloque" style="margin-top:0">Gem 1: Constructor de apps del cole</h3>
-      <ol class="pasos-lista" style="margin-bottom:14px">
-        <li>Abre <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> y, en el menú lateral, entra en <strong>Gems</strong>.</li>
-        <li>Pulsa <strong>Nueva Gem</strong>. Nombre: <em>Constructor de apps del cole</em>.</li>
-        <li>Pega las instrucciones de abajo en el cuadro <strong>Instrucciones</strong>.</li>
-        <li>Si te deja elegir herramienta predeterminada, elige <strong>Canvas</strong>: verás la app funcionando junto a la conversación.</li>
-        <li>En <strong>Conocimiento</strong>, sube como ejemplo el <code>index.html</code> del Troglodita o de Mis Lecturas: son apps completas en un solo archivo.</li>
-        <li>Guarda y compártela con el claustro.</li>
-      </ol>
-      <div class="caja-codigo">
-        <pre class="codigo" id="gemConstructor" style="white-space:pre-wrap;max-height:300px"></pre>
-        <button class="btn suave copiar" data-copiar="gemConstructor">Copiar instrucciones</button>
-      </div>
-      <p class="consejo">Las apps que salgan de este Gem usan el mismo bloque de configuración que las plantillas, así que también podrás pasarlas por el configurador.</p>
-    </div>
-  </div>
-
-  <h3 class="bloque">Gem 2: Soporte de instalación</h3>
+  
+  <h3 class="bloque">Para después: el Gem «Soporte de instalación»</h3>
   <div class="dos-col">
     <div>
       <p style="color:var(--tinta-suave)">Un ayudante para después de la formación: responde dudas sobre Firebase, GitHub y los errores más comunes. Créalo igual que el anterior y sube como conocimiento el <code>LEEME.txt</code> de cada app. Así nadie se queda atascado un martes por la tarde.</p>
@@ -1228,34 +1211,33 @@ Después revisa la accesibilidad: buen contraste, que nada dependa solo del colo
     </div>
   </div>
 
-  <h3 class="bloque">Encargos que funcionan</h3>
-  <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Cambia lo que está entre corchetes. Sirven igual con Gemini, ChatGPT o Claude.</p>
-  <div class="prompts" id="prompts"></div>
-
-  <h3 class="bloque">Reto de 15 minutos</h3>
-  <p style="color:var(--tinta-suave);margin:-6px 0 16px">Elige uno y constrúyelo con el Gem durante la sesión. Ninguno necesita base de datos.</p>
-  <div class="retos">
-    <div class="reto"><b>Temporizador de rincones</b><p>Grupos que rotan cada X minutos, con aviso sonoro y el nombre del rincón en grande para la pizarra digital.</p></div>
-    <div class="reto"><b>Semáforo del ruido</b><p>Usa el micrófono del ordenador y cambia de verde a rojo cuando el aula pasa de cierto nivel.</p></div>
-    <div class="reto"><b>Préstamos de la biblioteca de aula</b><p>Quién tiene qué libro y desde cuándo. Exporta e importa un archivo para no perder nada.</p></div>
-  </div>
+  
+  <p class="consejo"><strong>Reto del mes:</strong> pasa la lista de comprobación de la pestaña <a href="#recursos" data-ir="recursos">Recursos</a> a tu app y háblalo con el equipo directivo antes de meter datos reales. Piensa qué proyecto propio harás en la sesión 4.</p>
 </section>
 
-<!-- ═════════════════════ GEMINI ═════════════════════ -->
-<section class="panel" id="panel-gemini" role="tabpanel" aria-labelledby="t-gemini">
+<!-- ═════════════════════ SESIÓN 4 ═════════════════════ -->
+<section class="panel" id="panel-s4" role="tabpanel" aria-labelledby="t-s4">
   <div class="intro">
-    <h2>Gemini, herramienta a herramienta</h2>
-    <p>Pulsa el <strong>+</strong> de la barra de Gemini y aparece este menú. Recórrelo aquí una opción cada vez: qué hace, para qué sirve en el cole y un prompt para probarla.</p>
+    <p class="ses-etq">Sesión 4 de 4 · Mes 4 · Libro, capítulos 12 a 18</p>
+    <h2>Tu proyecto y el claustro</h2>
   </div>
-  <div class="gem-dos">
-    <div>
-      <div class="gem-menu" id="gemMenu" role="tablist" aria-label="Menú de Gemini"></div>
-      <div class="gem-progreso"><div class="progreso"><i id="gemBarra"></i></div><span id="gemCuenta"></span></div>
-    </div>
-    <div class="gem-ficha tarjeta" id="gemFicha" aria-live="polite"></div>
-  </div>
+  <p class="ses-lleva"><strong>Te llevas:</strong> un proyecto propio terminado, revisado y presentado al grupo, y un plan para que siga funcionando en tu centro.</p>
+  <p><strong>Antes de venir:</strong> trae tu idea en una ficha: para quién es, qué tiene que hacer, qué no y qué datos guarda. Si no tienes idea, elige una del banco de ideas del libro.</p>
+  <h3 class="bloque" style="margin-top:26px">El guion de la sesión</h3>
+  <table class="ses-tabla">
+          <tr><th>Tiempo</th><th>Qué hacemos</th><th>Dónde</th></tr>
+          <tr><td>0:00</td><td>De la idea a la ficha: lo que tiene que hacer, lo que no y qué datos guarda</td><td>Prompt 6</td></tr>
+          <tr><td>0:15</td><td>Construcción por parejas o por especialidad, con tu asistente. Quien quiera, de la ficha de papel al juego</td><td><a href="#gemini" data-ir="gemini">Gemini</a></td></tr>
+          <tr><td>1:20</td><td>Segunda opinión: otra IA revisa tu app; repaso con la lista de comprobación</td><td>Prompt 7</td></tr>
+          <tr><td>1:35</td><td>Galería final: cada proyecto en la pizarra, con su QR</td><td><a href="#galeria" data-ir="galeria">Galería</a></td></tr>
+          <tr><td>1:55</td><td>Cómo seguir: quién mantiene cada app, cuentas del centro y una carpeta común para el claustro</td><td></td></tr>
+        </table>
 
-  <h3 class="bloque">Actividades con Canvas</h3>
+  <h3 class="bloque">1. De la idea a la app</h3>
+  <h4 class="ses-h4">Prompt 6 · Que me pregunte antes de programar</h4>
+        <div class="caja-codigo"><pre class="codigo" id="sesP6" style="white-space:pre-wrap">Quiero hacer una app para [lo que necesitas] en [dónde se usa]. Antes de escribir código, hazme las preguntas que necesites para entender bien lo que quiero. Cuando las conteste, hazme primero solo lo imprescindible para que funcione.</pre><button class="btn suave copiar" data-copiar="sesP6">Copiar</button></div>
+
+  <h3 class="bloque">2. Si te atascas con la idea: de la ficha al juego</h3>
   <div class="actividades">
     <article class="actividad" style="--c:#E8612C">
       <small>Actividad · 30 min</small>
@@ -1292,51 +1274,13 @@ Que funcione también en el móvil.</pre></div>
       </div>
     </article>
   </div>
-</section>
 
-<!-- ═════════════════════ TALLER DE ERRORES ═════════════════════ -->
-<section class="panel" id="panel-taller" role="tabpanel" aria-labelledby="t-taller">
-  <div class="intro">
-    <h2>Taller de errores</h2>
-    <p>Tres apps rotas a propósito. Pulsa <strong>Probar</strong>, copia el fallo para la IA, pega aquí su respuesta y vuelve a probar. Es lo mismo que harás en casa con tus apps.</p>
-  </div>
-  <div class="niveles" id="niveles"></div>
-  <div class="taller">
-    <div>
-      <div class="mision" id="mision"></div>
-      <label class="campo"><span>Código de la app (index.html)</span>
-        <textarea class="codigo-taller" id="tallerCodigo" spellcheck="false"></textarea>
-        <small>Pega la respuesta entera de la IA, aunque traiga texto alrededor: el taller se queda solo con el código.</small>
-      </label>
-      <div class="fila">
-        <button class="btn azul" id="tallerProbar">▶ Probar</button>
-        <button class="btn suave" id="tallerCopiar">Copiar para la IA</button>
-        <a class="btn linea" href="https://gemini.google.com" target="_blank" rel="noopener">Abrir Gemini</a>
-      </div>
-      <div class="fila" style="margin-top:10px">
-        <button class="btn linea" id="tallerPista">Pista</button>
-        <button class="btn linea" id="tallerSolucion">Solución</button>
-        <button class="btn linea" id="tallerRestaurar">Volver al original</button>
-      </div>
-      <div class="consejo pista" id="tallerPistaTxt"></div>
-    </div>
-    <div>
-      <iframe id="tallerMarco" sandbox="allow-scripts allow-modals" title="Vista de la app del taller"></iframe>
-      <div class="consola">
-        <div class="consola-cab"><span>Consola · lo que verías con F12</span><span id="consolaN"></span></div>
-        <div id="consola"><div class="vacia">Pulsa Probar para ejecutar la app.</div></div>
-      </div>
-      <div class="veredicto" id="veredicto" role="status" aria-live="polite"></div>
-    </div>
-  </div>
-</section>
+  <h3 class="bloque">3. La segunda opinión</h3>
+  <h4 class="ses-h4">Prompt 7 · La segunda opinión</h4>
+        <div class="caja-codigo"><pre class="codigo" id="sesP7" style="white-space:pre-wrap">Esta app la va a usar el profesorado de un colegio. Revísala como lo haría un programador con experiencia: dime qué errores ves, qué podría fallar en el móvil y qué riesgos tiene para los datos. No la reescribas todavía; solo dame la lista.</pre><button class="btn suave copiar" data-copiar="sesP7">Copiar</button></div>
 
-<!-- ═════════════════════ GALERÍA ═════════════════════ -->
-<section class="panel" id="panel-galeria" role="tabpanel" aria-labelledby="t-galeria">
-  <div class="intro">
-    <h2>Galería del claustro</h2>
-    <p>Lo que se ha creado en «IA en el cole». Sube la tuya cuando esté publicada: el prompt con el que empezaste es lo que más ayuda a los demás.</p>
-  </div>
+  <h3 class="bloque" id="bloqueGaleria">4. Galería del claustro</h3>
+  <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Sube tu app cuando esté publicada: el prompt con el que empezaste es lo que más ayuda a los demás.</p>
   <div class="galeria-barra">
     <button class="btn azul" id="galAnadir">Añadir mi app</button>
     <button class="btn linea" data-recreativa>🕹️ Recreativa</button>
@@ -1359,24 +1303,9 @@ Que funcione también en el móvil.</pre></div>
     <div class="estado" id="gEstado"></div>
   </div>
   <div class="galeria" id="galeria"></div>
-</section>
 
-<!-- ═════════════════════ RECURSOS ═════════════════════ -->
-<section class="panel" id="panel-recursos" role="tabpanel" aria-labelledby="t-recursos">
-  <div class="intro">
-    <h2>Recursos</h2>
-    <p>La lista de comprobación para dejar una app funcionando en tu centro, el vocabulario de la sesión y los enlaces que vas a necesitar.</p>
-  </div>
-
-  <h3 class="bloque" style="margin-top:0">Lista de comprobación</h3>
-  <div class="progreso" aria-hidden="true"><i id="barraLista"></i></div>
-  <p id="textoLista" style="font-size:.92rem;color:var(--tinta-suave);margin-bottom:8px" aria-live="polite"></p>
-  <ul class="lista-control" id="listaControl"></ul>
-  <div class="fila no-imprimir" style="margin-top:14px">
-    <button class="btn linea" id="btnImprimir">Imprimir la lista</button>
-    <button class="btn linea" id="btnVaciarLista">Desmarcar todo</button>
-  </div>
-
+  <h3 class="bloque">Para seguir</h3>
+  <p class="consejo"><strong>Para después:</strong> un grupo para dudas donde cada uno comparta las apps que vaya haciendo, y una segunda persona con acceso de administración a cada app que use el claustro.</p>
   <h3 class="bloque">Vocabulario</h3>
   <dl class="glosario">
     <dt>Firebase</dt><dd>Servicio de Google que pone la base de datos y el acceso con usuario. Tiene un plan gratuito.</dd>
@@ -1394,6 +1323,7 @@ Que funcione también en el móvil.</pre></div>
     <dt>Canvas</dt><dd>Espacio de Gemini donde se ve y se prueba el código mientras se conversa.</dd>
   </dl>
 
+  
   <h3 class="bloque">Enlaces</h3>
   <ul class="enlaces">
     <li><a class="btn linea" href="https://console.firebase.google.com" target="_blank" rel="noopener">Consola de Firebase</a></li>
@@ -1401,6 +1331,7 @@ Que funcione también en el móvil.</pre></div>
     <li><a class="btn linea" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></li>
     <li><a class="btn linea" href="https://notebooklm.google.com" target="_blank" rel="noopener">NotebookLM</a></li>
   </ul>
+
 </section>
 
 </main>
@@ -1920,7 +1851,10 @@ $('pie').textContent = FORMACION.titulo + ' · ' + FORMACION.centro;
 
 /* ── Pestañas ─────────────────────────────────────────── */
 const pestanas = [...document.querySelectorAll('.pestana')];
+// Pestañas antiguas → sesión y apartado donde viven ahora
+const ALIAS = { directo: ['inicio', 'bloqueDirecto'], sesiones: ['s1', null], apps: ['s3', 'bloqueApps'], configurar: ['s3', 'bloqueConfig'], guias: ['s3', 'bloqueFirebase'], ia: ['s1', 'bloqueMetodo'], gemini: ['s1', 'bloqueGemini'], taller: ['s1', 'bloqueTaller'], galeria: ['s4', 'bloqueGaleria'], recursos: ['s3', 'bloqueLista'] };
 function irA(id, foco) {
+  if (ALIAS[id]) { const [p, a] = ALIAS[id]; irA(p, foco); if (a) setTimeout(() => { const el = document.getElementById(a); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60); return; }
   if (!pestanas.some(p => p.dataset.panel === id)) id = 'inicio';
   pestanas.forEach(p => {
     const on = p.dataset.panel === id;
@@ -2635,7 +2569,7 @@ $('respEnviar').onclick = async () => {
 /* ── Mando (móvil) y ventana de ponente ── */
 const mando = $('mando');
 const M = { inicio: Date.now(), reloj: null };
-const TITULOS_PANEL = { inicio: 'Presentación', directo: 'En directo', apps: 'Las apps', ia: 'Crea con IA', gemini: 'Gemini', taller: 'Taller', galeria: 'Galería' };
+const TITULOS_PANEL = { inicio: 'Presentación', s1: 'Sesión 1', s2: 'Sesión 2', s3: 'Sesión 3', s4: 'Sesión 4' };
 function tituloDiapo(i) { const d = diapos[i]; if (!d) return ''; const h = d.querySelector('h2'); return h ? h.textContent.trim() : 'Diapositiva ' + (i + 1); }
 function mmss(ms) { const s = Math.floor(ms / 1000); return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); }
 function pintarMando() {
@@ -3055,7 +2989,7 @@ async function iniciarGaleria() {
       })).filter(o => o.titulo && httpsOk(o.enlace));
       pintarGaleria();
     }).catch(() => { $('galeria').innerHTML = '<div class="vacio">No se puede leer la hoja de la galería. Comprueba que está compartida con el enlace.</div>'; });
-    tirar(); G.timer = setInterval(() => { if (panelActual() === 'galeria' && document.visibilityState === 'visible') tirar(); }, 60000);
+    tirar(); G.timer = setInterval(() => { if (panelActual() === 's4' && document.visibilityState === 'visible') tirar(); }, 60000);
   } else {
     G.fuente = 'ensayo';
     G.obras = APPS.filter(a => a.url && (a.id === 'teletrabajo' || a.id === 'registro')).map((a, i) => ({
@@ -3123,7 +3057,7 @@ $('gEnviar').onclick = async () => {
   finally { b.disabled = false; b.textContent = 'Publicar en la galería'; }
 };
 $('gCentro').value = leer('galCentro', ''); $('gNombre').value = leer('galNombre', '');
-document.addEventListener('panel', e => { if (e.detail === 'galeria') iniciarGaleria(); });
+document.addEventListener('panel', e => { if (e.detail === 's4') iniciarGaleria(); });
 
 
 /* ════════════════ PESTAÑA GEMINI ════════════════ */
@@ -3227,7 +3161,7 @@ $('reglasDirecto').textContent = "{\n  \"rules\": {\n    \".read\": false,\n    
 S.estado.pregunta = preguntaActual();
 S.estado.panel = panelActual(); S.estado.diapo = dActual;
 pintarSala(); conectarRespuestas();
-if (panelActual() === 'galeria') iniciarGaleria();
+if (panelActual() === 's4') iniciarGaleria();
 if (MODO && MODO.tipo === 'sala') iniciarAsistente(MODO.sala);
 else if (MODO && MODO.tipo === 'mando') iniciarMando(MODO.sala);
 else if (MODO && MODO.tipo === 'ponente') iniciarPonenteLocal();
@@ -3242,14 +3176,14 @@ document.addEventListener('click', e => {
 });
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-10-22';
+  const ID = 'formacion-novedades-2026-10-22b';
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
   d.setAttribute('role', 'dialog'); d.setAttribute('aria-label', 'Novedades');
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">Nueva pestaña <b>Sesiones</b>: la formación en cuatro sesiones de dos horas, una al mes, con el guion de cada una, los prompts para copiar y el reto para hacer entre sesiones.</p>'
+    + '<p style="margin-bottom:14px">La web se organiza ahora <b>por sesiones</b>: Presentación y una pestaña para cada una de las cuatro sesiones, con su guion, sus prompts, las guías y las herramientas que se usan ese día.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
