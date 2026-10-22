@@ -1042,12 +1042,12 @@ Después revisa la accesibilidad: buen contraste, que nada dependa solo del colo
   <h3 class="bloque" id="bloqueFirebase">3. Firebase paso a paso</h3>
   <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Casi todas las apps guardan en <strong>Realtime Database</strong>; Convivencia+ usa <strong>Firestore</strong>. Las dos son de Firebase y la ficha de cada app dice cuál necesita.</p>
   <div class="guias"><details class="guia">
-      <summary><div><b>1. Crear el proyecto de Firebase</b><small>Solo para Evaluaciones, ConVive y Teletrabajo</small></div></summary>
+      <summary><div><b>1. Crear el proyecto de Firebase</b><small>Solo para Evaluaciones, Convivencia+ y Teletrabajo</small></div></summary>
       <div class="guia-cuerpo">
         <ol>
           <li>Entra en <a href="https://console.firebase.google.com" target="_blank" rel="noopener">console.firebase.google.com</a> con la cuenta de Google del centro.</li>
           <li>Pulsa <strong>Crear un proyecto</strong> y ponle un nombre claro, por ejemplo <code>teletrabajo-losolivos</code>. Google Analytics no hace falta: puedes desactivarlo.</li>
-          <li>Ya dentro del proyecto, activa primero la base de datos (guía 2, o 2 bis para ConVive). Así el bloque de configuración traerá la dirección de la base de datos.</li>
+          <li>Ya dentro del proyecto, activa primero la base de datos (guía 2, o 2 bis para Convivencia+). Así el bloque de configuración traerá la dirección de la base de datos.</li>
           <li>En la portada del proyecto pulsa el icono web <code>&lt;/&gt;</code> para registrar una app. Ponle un apodo y <strong>no</strong> marques Firebase Hosting.</li>
           <li>Copia el bloque <code>const firebaseConfig = {…}</code>. Es lo que pegarás en el configurador. Siempre puedes volver a verlo en <code>⚙ Configuración del proyecto</code> → <code>Tus apps</code>.</li>
         </ol>
@@ -1066,7 +1066,7 @@ Después revisa la accesibilidad: buen contraste, que nada dependa solo del colo
         <p class="alerta">Si alguna vez lees <code>".read": true, ".write": true</code> para toda la base de datos, no lo publiques: cualquiera con la dirección podría leer y borrar todo.</p>
       </div>
     </details><details class="guia">
-      <summary><div><b>2 bis. Activar Firestore</b><small>Solo para ConVive</small></div></summary>
+      <summary><div><b>2 bis. Activar Firestore</b><small>Solo para Convivencia+</small></div></summary>
       <div class="guia-cuerpo">
         <ol>
           <li>Menú lateral: <code>Compilación</code> → <code>Firestore Database</code> → <strong>Crear base de datos</strong>.</li>
@@ -1074,7 +1074,7 @@ Después revisa la accesibilidad: buen contraste, que nada dependa solo del colo
           <li>Elige <strong>modo de producción</strong>.</li>
           <li>Pestaña <code>Reglas</code>: pega las reglas que te da el configurador y pulsa <strong>Publicar</strong>.</li>
         </ol>
-        <p class="consejo">ConVive no necesita <code>databaseURL</code>: con el firebaseConfig normal es suficiente.</p>
+        <p class="consejo">Convivencia+ no necesita <code>databaseURL</code>: con el firebaseConfig normal es suficiente.</p>
       </div>
     </details><details class="guia">
       <summary><div><b>3. Activar el acceso con usuario</b><small>Authentication, para apps con entrada por IdEA</small></div></summary>
@@ -1082,7 +1082,7 @@ Después revisa la accesibilidad: buen contraste, que nada dependa solo del colo
         <ol>
           <li><code>Compilación</code> → <code>Authentication</code> → <strong>Comenzar</strong>.</li>
           <li>Pestaña <code>Sign-in method</code> → <strong>Correo electrónico/contraseña</strong> → activa solo el primer interruptor → <strong>Guardar</strong>.</li>
-          <li>No hace falta crear usuarios a mano: cada app los crea desde su panel (Teletrabajo en <em>Personal</em>, Evaluaciones en <em>Ajustes → Gestionar profesorado</em>, ConVive en <em>Configuración</em>).</li>
+          <li>No hace falta crear usuarios a mano: cada app los crea desde su panel (Teletrabajo en <em>Personal</em>, Evaluaciones en <em>Ajustes → Gestionar profesorado</em>, Convivencia+ en <em>Configuración</em>).</li>
         </ol>
         <p class="consejo">Los "correos" del tipo <code>usuario@micentro.local</code> no existen ni reciben nada: son solo el identificador interno que Firebase necesita.</p>
       </div>
@@ -1400,13 +1400,13 @@ const APPS = [
     url: 'https://vunisal706-droid.github.io/gestorevalu/', descarga: 'descargas/evaluaciones.zip'
   },
   {
-    id: 'convive', nombre: 'ConVive', color: '#D2503B',
+    id: 'convive', nombre: 'Convivencia+', color: '#D2503B',
     desc: 'Sociometría del grupo: cuestionario al alumnado, sociograma, índices de cohesión y rechazo, agrupamientos y prompts para el informe de convivencia.',
     usa: 'Firestore · Acceso con usuario', url: 'https://vunisal706-droid.github.io/convivencia/', descarga: 'descargas/convive.zip'
   },
   {
     id: 'convivemas', nombre: 'Convive+', color: '#2563EB',
-    desc: 'Partes de convivencia según el Decreto 328/2010: conductas contrarias y graves, correcciones, alumnado implicado, parte oficial en PDF y gráficas. Es el registro de incidencias, distinto del sociograma de ConVive.',
+    desc: 'Partes de convivencia según el Decreto 328/2010: conductas contrarias y graves, correcciones, alumnado implicado, parte oficial en PDF y gráficas. Es el registro de incidencias, distinto del sociograma de Convivencia+.',
     usa: 'Realtime Database · Acceso con usuario', url: 'https://vunisal706-droid.github.io/parteconvivencia/', descarga: 'descargas/convivemas.zip'
   },
   {
@@ -1735,7 +1735,7 @@ Entrégame el index.html completo, sin recortes ni «el resto sigue igual». Ant
 
   convive: `Actúa como desarrollador web experto en aplicaciones educativas. Crea una aplicación web COMPLETA en un ÚNICO archivo index.html (HTML, CSS y JavaScript juntos, sin frameworks). En español de España, diseño claro y luminoso (nunca modo oscuro), letra de 16px mínimo, accesible y responsive.
 
-QUÉ HACE LA APP («ConVive», análisis sociométrico — no confundir con un registro de partes de convivencia):
+QUÉ HACE LA APP («Convivencia+», análisis sociométrico — no confundir con un registro de partes de convivencia):
 - El maestro o maestra, ya identificado, pasa a su grupo un cuestionario sociométrico (preguntas de elección y rechazo entre compañeros: con quién trabajarían, con quién no, a quién invitarían, etc.).
 - A partir de las respuestas, genera el sociograma del grupo (grafo de relaciones), índices de cohesión, popularidad y rechazo, y detecta alumnado aislado o rechazado y líderes positivos.
 - Propone agrupamientos y una distribución del aula.
@@ -1743,7 +1743,7 @@ QUÉ HACE LA APP («ConVive», análisis sociométrico — no confundir con un r
 
 ACCESO: Firebase Authentication con Correo electrónico/contraseña. Cada docente entra con su usuario de Séneca (IdEA); internamente se usa <idea>@<dominio del centro>. La primera vez, solo la persona administradora indicada en la configuración entra y su cuenta se crea sola; después da de alta al claustro. No escribas el IdEA en el código.
 
-DATOS: Firebase Firestore (SDK 10.x como módulos desde gstatic.com), con colecciones para el acceso de docentes, las clases, las respuestas del alumnado y la configuración. ConVive NO necesita databaseURL. Añade en un <script type="application/json" id="reglas-firebase" data-tipo="firestore"> unas reglas de seguridad de Firestore que solo permitan acceso a docentes con sesión y reserven la gestión a la persona administradora; explica en lenguaje llano qué permiten. Nunca dejes Firestore en modo de prueba abierto.
+DATOS: Firebase Firestore (SDK 10.x como módulos desde gstatic.com), con colecciones para el acceso de docentes, las clases, las respuestas del alumnado y la configuración. Convivencia+ NO necesita databaseURL. Añade en un <script type="application/json" id="reglas-firebase" data-tipo="firestore"> unas reglas de seguridad de Firestore que solo permitan acceso a docentes con sesión y reserven la gestión a la persona administradora; explica en lenguaje llano qué permiten. Nunca dejes Firestore en modo de prueba abierto.
 
 CONFIGURACIÓN DEL CENTRO: al principio del archivo incluye este bloque, lee de él la configuración y muestra un aviso si falta algo en lugar de fallar:
 <script id="config-centro">
