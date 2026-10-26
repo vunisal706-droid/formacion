@@ -947,21 +947,39 @@ p,li,dd{text-wrap:pretty}
     <p class="ses-etq">Sesión 1 de 4 · Mes 1 · Libro, capítulos 1 a 5</p>
     <h2>Tu primera app</h2>
   </div>
-  <p class="ses-lleva"><strong>Te llevas:</strong> la rueda de participación hecha y personalizada, una herramienta propia para tu clase y tu asistente «Constructor de apps del cole» creado.</p>
-  <p><strong>Antes de venir:</strong> entra en <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> con tu cuenta y comprueba que funciona. Trae pensada una tarea de clase que repitas cada semana.</p>
+  <p class="ses-lleva"><strong>Te llevas:</strong> la rueda de participación hecha y personalizada, una herramienta propia para tu clase, tu asistente «Constructor de apps del cole» creado y un cuaderno de NotebookLM con documentos de tu centro.</p>
+  <p><strong>Antes de venir:</strong> entra en <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> con tu cuenta y comprueba que funciona. Trae pensada una tarea de clase que repitas cada semana y 2 o 3 documentos del centro sin datos personales (Plan de Convivencia, ROF, una unidad) para NotebookLM.</p>
   <h3 class="bloque" style="margin-top:26px">El guion de la sesión</h3>
   <table class="ses-tabla">
           <tr><th>Tiempo</th><th>Qué hacemos</th><th>Dónde</th></tr>
-          <tr><td>0:00</td><td>Bienvenida y radiografía del grupo: qué te gustaría resolver con una app</td><td><a href="#directo" data-ir="directo">En directo</a></td></tr>
-          <tr><td>0:10</td><td>La rueda de participación, todos a la vez, paso a paso</td><td>Prompt 1</td></tr>
-          <tr><td>0:35</td><td>Hazla tuya: colores del cole, sonido y lista de los que han salido</td><td>Prompt 2</td></tr>
-          <tr><td>0:50</td><td>Por qué ha funcionado: las cinco partes de un buen encargo</td><td><a href="#ia" data-ir="ia">Crear con IA</a></td></tr>
-          <tr><td>1:05</td><td>Creas tu asistente y haces con él tu herramienta propia, con Canvas</td><td><a href="#ia" data-ir="ia">Crear con IA</a> · <a href="#gemini" data-ir="gemini">Gemini</a></td></tr>
-          <tr><td>1:40</td><td>Taller de errores: encuentra el fallo con F12 y arréglalo con la IA</td><td><a href="#taller" data-ir="taller">Taller</a></td></tr>
-          <tr><td>1:55</td><td>Reto del mes y dudas</td><td></td></tr>
+          <tr><td>0:00</td><td>Bienvenida y radiografía del grupo: qué te gustaría resolver con una app</td><td><a href="#bloqueBienvenida" data-ses="bloqueBienvenida">1. Bienvenida</a></td></tr>
+          <tr><td>0:10</td><td>Gemini por dentro: el menú + herramienta a herramienta</td><td><a href="#bloqueGemini" data-ses="bloqueGemini">2. Gemini</a></td></tr>
+          <tr><td>0:20</td><td>La rueda de participación, todos a la vez, y hazla tuya: colores, sonido y lista</td><td><a href="#bloqueRueda" data-ses="bloqueRueda">3. La rueda · Prompts 1 y 2</a></td></tr>
+          <tr><td>0:45</td><td>Por qué ha funcionado: el método</td><td><a href="#bloqueMetodo" data-ses="bloqueMetodo">4. El método</a></td></tr>
+          <tr><td>0:55</td><td>Creas tu asistente y haces con él tu herramienta propia, con Canvas</td><td><a href="#bloqueAsistente" data-ses="bloqueAsistente">5. Tu asistente</a></td></tr>
+          <tr><td>1:20</td><td>Taller de errores: encuentra el fallo con F12 y arréglalo con la IA</td><td><a href="#bloqueTaller" data-ses="bloqueTaller">6. Taller de errores</a></td></tr>
+          <tr><td>1:30</td><td>NotebookLM: tu centro en un cuaderno</td><td><a href="#bloqueNotebook" data-ses="bloqueNotebook">7. NotebookLM</a></td></tr>
+          <tr><td>1:55</td><td>Reto del mes y dudas</td><td><a href="#bloqueReto1" data-ses="bloqueReto1">8. Reto del mes</a></td></tr>
         </table>
 
-  <h3 class="bloque">1. La rueda de participación</h3>
+
+
+  <h3 class="bloque" id="bloqueBienvenida">1. Bienvenida y radiografía del grupo</h3>
+  <p style="max-width:70ch">Cada persona responde desde su móvil qué le gustaría resolver con una app. Las respuestas salen en la pantalla al momento y sirven para orientar la sesión.</p>
+  <p class="fila" style="margin-top:12px"><button class="btn azul" data-ir="directo">Abrir «En directo»</button></p>
+  <p class="alerta">Desde el primer día: nunca nombres de alumnos en una conversación con la IA. Números de lista o datos inventados.</p>
+  
+  <h3 class="bloque" id="bloqueGemini">2. Gemini, herramienta a herramienta</h3>
+  <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Visita rápida para empezar: qué hace cada opción del menú <strong>+</strong> de Gemini y un encargo para probarla. Hoy probamos dos o tres; el resto, para consultar cuando quieras.</p>
+  <div class="gem-dos">
+    <div>
+      <div class="gem-menu" id="gemMenu" role="tablist" aria-label="Menú de Gemini"></div>
+      <div class="gem-progreso"><div class="progreso"><i id="gemBarra"></i></div><span id="gemCuenta"></span></div>
+    </div>
+    <div class="gem-ficha tarjeta" id="gemFicha" aria-live="polite"></div>
+  </div>
+  
+  <h3 class="bloque" id="bloqueRueda">3. La rueda de participación</h3>
   <p style="max-width:70ch">Todo el grupo a la vez: copias el encargo, lo pegas en Gemini con Canvas y en unos minutos la rueda funciona. Después, la haces tuya pidiendo cambios de uno en uno.</p>
   <h4 class="ses-h4">Prompt 1 · La rueda</h4>
         <div class="caja-codigo"><pre class="codigo" id="sesP1" style="white-space:pre-wrap">Hazme una rueda de participación para usar en la pizarra digital de mi clase.
@@ -985,8 +1003,8 @@ Dame el archivo completo, de principio a fin.</pre><button class="btn suave copi
 Añade un sonido corto cuando la rueda se pare, con un botón para silenciarlo. Dame el archivo completo.
 
 Pon debajo de la rueda una lista pequeña con los números que ya han salido. Dame el archivo completo.</pre><button class="btn suave copiar" data-copiar="sesP2">Copiar</button></div>
-
-  <h3 class="bloque" id="bloqueMetodo">2. Por qué ha funcionado: el método</h3>
+  
+  <h3 class="bloque" id="bloqueMetodo">4. Por qué ha funcionado: el método</h3>
   <ol class="metodo">
         <li><b>Describe el problema, no la app</b><span>"Perdemos las autorizaciones de salida" funciona mejor que "hazme un formulario".</span></li>
         <li><b>Deja que la IA pregunte</b><span>Pídele que te haga preguntas antes de programar. Ahorra muchas vueltas.</span></li>
@@ -995,7 +1013,8 @@ Pon debajo de la rueda una lista pequeña con los números que ya han salido. Da
         <li><b>Primero sin base de datos</b><span>Cuando todo funcione, conéctala con Firebase.</span></li>
         <li><b>Publica y comparte</b><span>GitHub Pages y un código QR para el claustro.</span></li>
       </ol>
-  <h3 class="bloque">3. Tu asistente: el Gem «Constructor de apps del cole»</h3>
+  
+  <h3 class="bloque" id="bloqueAsistente">5. Tu asistente y tu herramienta propia</h3>
   <div class="dos-col"><div><ol class="pasos-lista" style="margin-bottom:14px">
         <li>Abre <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> y, en el menú lateral, entra en <strong>Gems</strong>.</li>
         <li>Pulsa <strong>Nueva Gem</strong>. Nombre: <em>Constructor de apps del cole</em>.</li>
@@ -1010,32 +1029,19 @@ Pon debajo de la rueda una lista pequeña con los números que ya han salido. Da
       </div>
       <p class="consejo">Las apps que salgan de este Gem usan el mismo bloque de configuración que las plantillas, así que también podrás pasarlas por el configurador.</p>
     </div></div>
-  <h3 class="bloque">Encargos que funcionan</h3>
+  <h4 class="ses-h4">Más encargos que funcionan</h4>
   <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Cambia lo que está entre corchetes. Sirven igual con Gemini, ChatGPT o Claude.</p>
   <div class="prompts" id="prompts"></div>
-
-  
-  <h3 class="bloque">Reto de 15 minutos</h3>
+  <h4 class="ses-h4">Tu herramienta propia: elige un reto</h4>
   <p style="color:var(--tinta-suave);margin:-6px 0 16px">Elige uno y constrúyelo con el Gem durante la sesión. Ninguno necesita base de datos.</p>
   <div class="retos">
     <div class="reto"><b>Temporizador de rincones</b><p>Grupos que rotan cada X minutos, con aviso sonoro y el nombre del rincón en grande para la pizarra digital.</p></div>
     <div class="reto"><b>Semáforo del ruido</b><p>Usa el micrófono del ordenador y cambia de verde a rojo cuando el aula pasa de cierto nivel.</p></div>
     <div class="reto"><b>Préstamos de la biblioteca de aula</b><p>Quién tiene qué libro y desde cuándo. Exporta e importa un archivo para no perder nada.</p></div>
   </div>
-
-  <h3 class="bloque" id="bloqueGemini">Gemini, herramienta a herramienta</h3>
-  <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Para consultar cuando quieras: qué hace cada opción del menú <strong>+</strong> de Gemini y un encargo para probarla.</p>
-  <div class="gem-dos">
-    <div>
-      <div class="gem-menu" id="gemMenu" role="tablist" aria-label="Menú de Gemini"></div>
-      <div class="gem-progreso"><div class="progreso"><i id="gemBarra"></i></div><span id="gemCuenta"></span></div>
-    </div>
-    <div class="gem-ficha tarjeta" id="gemFicha" aria-live="polite"></div>
-  </div>
-
   
-  <h3 class="bloque" id="bloqueTaller">4. Taller de errores</h3>
-  <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Tres apps rotas a propósito. Pulsa <strong>Probar</strong>, copia el fallo para la IA, pega aquí su respuesta y vuelve a probar. Es lo mismo que harás con tus apps.</p>
+  <h3 class="bloque" id="bloqueTaller">6. Taller de errores</h3>
+  <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Tres apps rotas a propósito. Pulsa <strong>Probar</strong>, copia el fallo para la IA, pega aquí su respuesta y vuelve a probar. Es lo mismo que harás con tus apps. En la sesión hacemos juntos el primer nivel; los otros dos, en casa.</p>
   <div class="niveles" id="niveles"></div>
   <div class="taller">
     <div>
@@ -1065,9 +1071,39 @@ Pon debajo de la rueda una lista pequeña con los números que ya han salido. Da
       <div class="veredicto" id="veredicto" role="status" aria-live="polite"></div>
     </div>
   </div>
-
+  
+  <h3 class="bloque" id="bloqueNotebook">7. NotebookLM: tu centro en un cuaderno</h3>
+  <p style="max-width:70ch">Subes tus documentos (Plan de Convivencia, ROF, una unidad didáctica…) y la IA responde <strong>solo con lo que hay en ellos</strong>, diciendo de dónde lo saca. Además, con un clic los convierte en un audio tipo pódcast, un mapa mental o un cuestionario.</p>
+  <p class="consejo" style="margin-top:0;margin-bottom:16px"><strong>25 minutos.</strong> <strong>Te llevas:</strong> un cuaderno con documentos de tu centro y un audio para familias.</p>
+  <div class="dos-col"><div>
+    <h4 class="ses-h4" style="margin-top:0">Paso a paso</h4>
+    <ol class="pasos-lista">
+      <li>Entra en <a href="https://notebooklm.google.com" target="_blank" rel="noopener">notebooklm.google.com</a> con tu cuenta y pulsa <strong>Crear cuaderno</strong> (o <em>Nuevo cuaderno</em>).</li>
+      <li>Añade 2 o 3 fuentes: sube PDF o Word, elige de <strong>Drive</strong> o pega un enlace o un texto.</li>
+      <li>La pantalla tiene tres columnas: <strong>Fuentes</strong> a la izquierda, <strong>Chat</strong> en el centro y <strong>Studio</strong> a la derecha.</li>
+      <li>Pregunta en el chat (prompt A). Fíjate en los números de cada respuesta: al pulsarlos te lleva al trozo del documento.</li>
+      <li>En <strong>Studio</strong>, pulsa el lápiz de <strong>Resumen de audio</strong> para personalizarlo (prompt B) y genéralo. Tarda unos minutos.</li>
+      <li>Prueba también <strong>Mapa mental</strong> y <strong>Cuestionario</strong> (prompt C).</li>
+      <li>Botón <strong>Compartir</strong>: invita al claustro solo a ver o también a editar.</li>
+    </ol>
+  </div><div>
+    <h4 class="ses-h4" style="margin-top:0">Prompt A · Preguntar a tus documentos</h4>
+    <div class="caja-codigo"><pre class="codigo" id="nbP1" style="white-space:pre-wrap">Según estos documentos, ¿qué tiene que hacer un maestro o maestra si [un alumno se pone enfermo durante el recreo]? Responde con los pasos en orden y di en qué documento y apartado aparece cada uno. Si no aparece en los documentos, dímelo.</pre><button class="btn suave copiar" data-copiar="nbP1">Copiar</button></div>
+    <h4 class="ses-h4">Prompt B · Audio para familias</h4>
+    <div class="caja-codigo"><pre class="codigo" id="nbP2" style="white-space:pre-wrap">Explica a las familias del centro, en lenguaje muy sencillo y en unos 5 minutos, [las normas de convivencia más importantes y el horario de entradas y salidas]. Tono cercano y positivo. Sin tecnicismos ni siglas. Termina con tres ideas clave para recordar.</pre><button class="btn suave copiar" data-copiar="nbP2">Copiar</button></div>
+    <h4 class="ses-h4">Prompt C · Cuestionario para el alumnado</h4>
+    <div class="caja-codigo"><pre class="codigo" id="nbP3" style="white-space:pre-wrap">Haz un cuestionario de 10 preguntas sobre [esta unidad] para alumnado de [4.º de Primaria]. Nivel sencillo: frases cortas, vocabulario de clase y tres opciones por pregunta. Al final, las respuestas correctas con una explicación breve.</pre><button class="btn suave copiar" data-copiar="nbP3">Copiar</button></div>
+  </div></div>
+  <h4 class="ses-h4">Ideas para tu centro</h4>
+  <div class="retos">
+    <div class="reto"><b>El cuaderno del claustro</b><p>Plan de Centro, ROF y protocolos en un cuaderno compartido. Las dudas de cualquier tarde se resuelven con la fuente delante.</p></div>
+    <div class="reto"><b>Acogida al profesorado nuevo</b><p>Un audio de 10 minutos con lo que hay que saber el primer día: horarios, espacios, guardias y protocolos.</p></div>
+    <div class="reto"><b>La unidad en audio</b><p>Sube los apuntes de una unidad y genera un repaso en audio y unas tarjetas para el alumnado.</p></div>
+  </div>
+  <p class="alerta">Solo documentos del centro sin datos personales: nada de actas con nombres, informes del alumnado ni listados. Y aunque se ciña a tus fuentes, también puede equivocarse: revisa siempre antes de compartir.</p>
+  
+  <h3 class="bloque" id="bloqueReto1">8. Reto del mes y dudas</h3>
   <p class="consejo"><strong>Reto del mes:</strong> haz uno de los miniproyectos (el semáforo de las rutinas, el sorteo de grupos o el marcador por equipos) y úsalo en clase al menos una semana. En la sesión 2 lo enseñamos.</p>
-  <p class="alerta">Desde el primer día: nunca nombres de alumnos en una conversación con la IA. Números de lista o datos inventados.</p>
 </section>
 
 <!-- ═════════════════════ SESIÓN 2 ═════════════════════ -->
@@ -1076,20 +1112,27 @@ Pon debajo de la rueda una lista pequeña con los números que ya han salido. Da
     <p class="ses-etq">Sesión 2 de 4 · Mes 2 · Libro, capítulos 6, 7, 10 y 11</p>
     <h2>Que salga de tu ordenador</h2>
   </div>
-  <p class="ses-lleva"><strong>Te llevas:</strong> tu app publicada en internet con su dirección y su código QR, instalada en el móvil con su icono y con el estilo del centro.</p>
-  <p><strong>Antes de venir:</strong> crea tu cuenta en <a href="https://github.com" target="_blank" rel="noopener">github.com</a> (gratuita) y trae el archivo de tu reto del mes.</p>
+  <p class="ses-lleva"><strong>Te llevas:</strong> tu app publicada en internet con su dirección y su código QR, instalada en el móvil con su icono y con el estilo del centro, y una canción para tu clase hecha con IA.</p>
+  <p><strong>Antes de venir:</strong> crea tu cuenta en <a href="https://github.com" target="_blank" rel="noopener">github.com</a> (gratuita) y trae el archivo de tu reto del mes. Para la música, piensa el tema de la canción de tu clase.</p>
   <h3 class="bloque" style="margin-top:26px">El guion de la sesión</h3>
   <table class="ses-tabla">
           <tr><th>Tiempo</th><th>Qué hacemos</th><th>Dónde</th></tr>
-          <tr><td>0:00</td><td>Galería del reto: tres o cuatro personas enseñan su miniproyecto</td><td><a href="#galeria" data-ir="galeria">Galería</a></td></tr>
-          <tr><td>0:15</td><td>GitHub desde cero: repositorio, subir el archivo como index.html y activar Pages</td><td><a href="https://vunisal706-droid.github.io/IAparadocentes/#firebase" target="_blank" rel="noopener">Guías</a></td></tr>
-          <tr><td>0:50</td><td>De web a app: manifiesto, service worker e icono; instalarla en el móvil</td><td>Prompt 3</td></tr>
-          <tr><td>1:15</td><td>Que se vea bien: guía de estilo del centro y revisión de accesibilidad</td><td>Prompt 4</td></tr>
-          <tr><td>1:40</td><td>Código QR y aviso de novedades; probarla en el móvil de un compañero</td><td></td></tr>
-          <tr><td>1:55</td><td>Reto del mes y dudas</td><td></td></tr>
+          <tr><td>0:00</td><td>Galería del reto: tres o cuatro personas enseñan su miniproyecto</td><td><a href="#bloqueGaleriaReto" data-ses="bloqueGaleriaReto">1. Galería del reto</a></td></tr>
+          <tr><td>0:10</td><td>GitHub desde cero: repositorio, subir el archivo como index.html y activar Pages</td><td><a href="#bloquePublicar" data-ses="bloquePublicar">2. Publicar</a></td></tr>
+          <tr><td>0:40</td><td>De web a app: manifiesto, service worker e icono; instalarla en el móvil</td><td><a href="#bloquePWA" data-ses="bloquePWA">3. App instalable · Prompt 3</a></td></tr>
+          <tr><td>1:00</td><td>Que se vea bien: guía de estilo del centro y revisión de accesibilidad</td><td><a href="#bloqueEstilo" data-ses="bloqueEstilo">4. Estilo · Prompt 4</a></td></tr>
+          <tr><td>1:15</td><td>Compartir y mantenerla al día: código QR, aviso de novedades y cómo actualizarla</td><td><a href="#bloqueCompartir" data-ses="bloqueCompartir">5. Compartir y actualizar</a></td></tr>
+          <tr><td>1:30</td><td>Música con IA: la canción de tu clase</td><td><a href="#bloqueMusica" data-ses="bloqueMusica">6. Música</a></td></tr>
+          <tr><td>1:55</td><td>Reto del mes y dudas</td><td><a href="#bloqueReto2" data-ses="bloqueReto2">7. Reto del mes</a></td></tr>
         </table>
 
-  <h3 class="bloque">1. Publicar en GitHub Pages</h3>
+
+
+  <h3 class="bloque" id="bloqueGaleriaReto">1. Galería del reto</h3>
+  <p style="max-width:70ch">Tres o cuatro personas enseñan en la pantalla grande el miniproyecto del reto del mes: qué problema resuelve, cómo lo pidieron y qué falló por el camino. Quien quiera, lo sube ya a la galería del claustro.</p>
+  <p class="fila" style="margin-top:12px"><button class="btn azul" data-ir="galeria">Abrir la galería</button></p>
+  
+  <h3 class="bloque" id="bloquePublicar">2. Publicar en GitHub Pages</h3>
   <div class="guias"><details class="guia">
       <summary><div><b>5. Publicar en GitHub Pages</b><small>Tu app con dirección web gratuita</small></div></summary>
       <div class="guia-cuerpo">
@@ -1103,7 +1146,8 @@ Pon debajo de la rueda una lista pequeña con los números que ya han salido. Da
         <p class="consejo">El repositorio es público: cualquiera puede ver el código. Por eso no lleva datos personales. La <code>apiKey</code> que se ve no es una contraseña; lo que protege los datos son las reglas y el acceso con usuario.</p>
       </div>
     </details></div>
-  <h3 class="bloque">2. De web a app instalable</h3>
+  
+  <h3 class="bloque" id="bloquePWA">3. De web a app instalable</h3>
   <h4 class="ses-h4">Prompt 3 · Convertirla en app instalable</h4>
         <div class="caja-codigo"><pre class="codigo" id="sesP3" style="white-space:pre-wrap">Esta es una app web que tengo publicada en GitHub Pages. Te pego el archivo completo.
 
@@ -1125,7 +1169,8 @@ Dame cada archivo completo por separado, con su nombre exacto.</pre><button clas
         </ol>
       </div>
     </details></div>
-  <h3 class="bloque">3. Que se vea bien</h3>
+  
+  <h3 class="bloque" id="bloqueEstilo">4. Que se vea bien</h3>
   <h4 class="ses-h4">Prompt 4 · El estilo del centro</h4>
         <div class="caja-codigo"><pre class="codigo" id="sesP4" style="white-space:pre-wrap">Aplica este estilo a la app sin cambiar lo que hace:
 - Fondo blanco. Texto en [color oscuro].
@@ -1135,23 +1180,80 @@ Dame cada archivo completo por separado, con su nombre exacto.</pre><button clas
 - Sin degradados ni sombras fuertes.
 
 Después revisa la accesibilidad: buen contraste, que nada dependa solo del color y sonidos desactivables. Dame el archivo completo y la lista de cambios.</pre><button class="btn suave copiar" data-copiar="sesP4">Copiar</button></div>
-
-  <h3 class="bloque">4. Actualizar sin perder nada</h3>
+  
+  <h3 class="bloque" id="bloqueCompartir">5. Compartir y mantenerla al día</h3>
+  <h4 class="ses-h4" style="margin-top:0">El código QR</h4>
+  <ol class="pasos-lista" style="max-width:70ch">
+    <li>Abre tu app publicada en Chrome, en el ordenador.</li>
+    <li>Menú <code>⋮</code> → <strong>Compartir</strong> → <strong>Crear código QR</strong> → <strong>Descargar</strong>.</li>
+    <li>Pruébalo: un compañero lo escanea con su móvil y abre tu app.</li>
+  </ol>
+  <h4 class="ses-h4">Prompt · Aviso de novedades</h4>
+        <div class="caja-codigo"><pre class="codigo" id="sesPnov" style="white-space:pre-wrap">Añade a mi app un aviso de novedades: una ventana pequeña que aparezca una sola vez en cada dispositivo cuando suba una versión nueva, con una lista corta de lo que ha cambiado y un botón «Entendido». Guarda en el navegador que ya se ha visto. Cuando te pida otro cambio, actualiza también el aviso. Dame el archivo completo.</pre><button class="btn suave copiar" data-copiar="sesPnov">Copiar</button></div>
+  <h4 class="ses-h4">Actualizar sin perder nada</h4>
   <div class="guias"><details class="guia">
-      <summary><div><b>8. Actualizar una app ya publicada</b><small>Cuando salga una versión nueva de la plantilla</small></div></summary>
+      <summary><div><b>8. Actualizar tu app ya publicada</b><small>Cuando le pidas cambios a la IA</small></div></summary>
       <div class="guia-cuerpo">
         <ol>
-          <li>Descarga la plantilla nueva y pásala por el configurador. Tus datos del centro seguirán guardados en el navegador.</li>
-          <li>Pega de nuevo tu firebaseConfig: es el mismo de siempre.</li>
-          <li>En GitHub, entra en el repositorio, sube el nuevo <code>index.html</code> y confirma con <strong>Commit changes</strong>.</li>
-          <li>Si las reglas han cambiado, vuelve a publicarlas.</li>
+          <li>Pide el cambio a la IA y guarda el archivo completo que te devuelva como <code>index.html</code>.</li>
+          <li>Pruébalo antes en tu ordenador: ábrelo con doble clic.</li>
+          <li>En GitHub, entra en el repositorio, pulsa <strong>Add file</strong> → <strong>Upload files</strong>, sube el nuevo <code>index.html</code> (sustituye al anterior) y confirma con <strong>Commit changes</strong>.</li>
+          <li>Espera uno o dos minutos y recarga. Si sigues viendo la versión antigua, mira la guía de abajo.</li>
         </ol>
-        <p class="consejo">Los datos no se pierden al actualizar: viven en Firebase, no en el archivo.</p>
+        <p class="consejo">Guarda siempre una copia de la versión anterior por si el cambio sale mal.</p>
       </div>
     </details><details class="guia">
       <summary><div><b>He subido cambios y sigo viendo la versión antigua</b></div></summary>
       <div class="guia-cuerpo"><p>GitHub Pages tarda uno o dos minutos en publicar. Después, recarga forzando la actualización (<code>Ctrl + F5</code> en el ordenador) o cierra y abre la app instalada. Si la app muestra un aviso de nueva versión, púlsalo.</p></div>
     </details></div>
+  
+  <h3 class="bloque" id="bloqueMusica">6. Música con IA: la canción de tu clase</h3>
+  <p style="max-width:70ch">La letra la escribís en clase (o con ayuda de Gemini) y la IA le pone música y voz. Dos herramientas: <strong>Gemini</strong>, que ya tienes con tu cuenta, para piezas cortas y sintonías; y <strong>Suno</strong>, para canciones completas con varias estrofas.</p>
+  <p class="consejo" style="margin-top:0;margin-bottom:16px"><strong>25 minutos.</strong> <strong>Te llevas:</strong> una canción para tu clase, descargada y lista para sonar.</p>
+  <div class="dos-col"><div>
+    <h4 class="ses-h4" style="margin-top:0">1. La letra</h4>
+    <ol class="pasos-lista">
+      <li>Decide el tema: el valor del mes, una rutina, las tablas, los días de la semana en inglés…</li>
+      <li>Escríbela con tu grupo o pídesela a Gemini con el prompt A y retócala.</li>
+    </ol>
+    <h4 class="ses-h4">2A. Con Gemini</h4>
+    <ol class="pasos-lista">
+      <li>Abre <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a>. En el menú de herramientas pulsa <strong>Crear música</strong> (o entra directamente en <a href="https://gemini.google.com/music" target="_blank" rel="noopener">gemini.google.com/music</a>).</li>
+      <li>Pega el prompt B con tu letra y envía.</li>
+      <li>Escúchala. Si no te convence, pide un cambio: «más lenta», «con voz de niña», «estilo rumba».</li>
+      <li>Descárgala con el botón de descarga del reproductor.</li>
+    </ol>
+    <h4 class="ses-h4">2B. Con Suno</h4>
+    <ol class="pasos-lista">
+      <li>Entra en <a href="https://suno.com" target="_blank" rel="noopener">suno.com</a> y crea una cuenta (puedes entrar con Google).</li>
+      <li>Pulsa <strong>Create</strong> y elige el modo <strong>Custom</strong> (personalizado) para poner tu propia letra.</li>
+      <li>En <strong>Lyrics</strong> pega la letra; en <strong>Style</strong>, el estilo del prompt C. Ponle título.</li>
+      <li>Pulsa <strong>Create</strong>: salen dos versiones. Quédate con la mejor y descárgala desde el menú <code>⋯</code>.</li>
+    </ol>
+  </div><div>
+    <h4 class="ses-h4" style="margin-top:0">Prompt A · La letra</h4>
+    <div class="caja-codigo"><pre class="codigo" id="musP1" style="white-space:pre-wrap">Escribe la letra de una canción para alumnado de [2.º de Primaria] sobre [el valor del mes: el respeto].
+Estructura: estrofa, estribillo, estrofa, estribillo.
+Frases cortas, palabras sencillas y rima fácil.
+Un estribillo de cuatro líneas que se aprenda en dos escuchas.
+Sin nombres propios.</pre><button class="btn suave copiar" data-copiar="musP1">Copiar</button></div>
+    <h4 class="ses-h4">Prompt B · La música en Gemini</h4>
+    <div class="caja-codigo"><pre class="codigo" id="musP2" style="white-space:pre-wrap">Crea una canción alegre de pop infantil, ritmo medio, con voz clara de [mujer adulta], ukelele y palmas, para cantar en clase con niños y niñas de [7 años].
+Usa esta letra:
+[pega aquí la letra]</pre><button class="btn suave copiar" data-copiar="musP2">Copiar</button></div>
+    <h4 class="ses-h4">Prompt C · El estilo en Suno</h4>
+    <div class="caja-codigo"><pre class="codigo" id="musP3" style="white-space:pre-wrap">pop infantil alegre, ukelele, palmas, voz clara, ritmo medio, estribillo pegadizo, en español</pre><button class="btn suave copiar" data-copiar="musP3">Copiar</button></div>
+    <p class="consejo">Si no sale como querías, cambia solo una cosa cada vez: el estilo, el ritmo o la voz.</p>
+  </div></div>
+  <h4 class="ses-h4">Ideas para tu centro</h4>
+  <div class="retos">
+    <div class="reto"><b>La canción del valor del mes</b><p>La letra la escribe la clase y suena en la entrada o en la asamblea durante todo el mes.</p></div>
+    <div class="reto"><b>Sintonías de rutinas</b><p>Una pieza corta para recoger, otra para la vuelta del recreo y otra para el final del día.</p></div>
+    <div class="reto"><b>Canciones para aprender</b><p>Tablas de multiplicar, los meses o vocabulario en inglés con un estribillo que se queda.</p></div>
+  </div>
+  <p class="alerta">La crea el docente, no el alumnado: la música de Gemini exige ser mayor de 18 años, y Suno también tiene edad mínima. Sin nombres del alumnado en la letra, sin imitar a artistas reales y sin usar letras de canciones conocidas. Revisa las condiciones de Suno: con el plan gratuito, las canciones no pueden tener uso comercial.</p>
+  
+  <h3 class="bloque" id="bloqueReto2">7. Reto del mes y dudas</h3>
   <p class="consejo"><strong>Reto del mes:</strong> publica un segundo miniproyecto (la cuenta atrás, el concurso de preguntas o las votaciones) y compártelo por QR con un compañero o con tus familias.</p>
 </section>
 
@@ -1161,20 +1263,30 @@ Después revisa la accesibilidad: buen contraste, que nada dependa solo del colo
     <p class="ses-etq">Sesión 3 de 4 · Mes 3 · Libro, capítulos 8 y 9</p>
     <h2>Apps con datos</h2>
   </div>
-  <p class="ses-lleva"><strong>Te llevas:</strong> una de las apps del centro funcionando con tu propia base de datos de Firebase, con inicio de sesión y reglas de seguridad, y la lista de comprobación de datos del alumnado.</p>
-  <p><strong>Antes de venir:</strong> decide qué app quieres llevarte de la pestaña <a href="https://vunisal706-droid.github.io/IAparadocentes/#apps" target="_blank" rel="noopener">Apps</a>. Trae tu cuenta de Google del centro.</p>
+  <p class="ses-lleva"><strong>Te llevas:</strong> una de las apps del centro funcionando con tu propia base de datos de Firebase, con inicio de sesión y reglas de seguridad, y un generador de fichas de cálculo hecho con Google AI Studio.</p>
+  <p><strong>Antes de venir:</strong> decide qué app quieres llevarte de la pestaña <a href="https://vunisal706-droid.github.io/IAparadocentes/#apps" target="_blank" rel="noopener">Apps</a>. Trae tu cuenta de Google del centro y comprueba que puedes entrar en <a href="https://aistudio.google.com" target="_blank" rel="noopener">aistudio.google.com</a>.</p>
   <h3 class="bloque" style="margin-top:26px">El guion de la sesión</h3>
   <table class="ses-tabla">
           <tr><th>Tiempo</th><th>Qué hacemos</th><th>Dónde</th></tr>
-          <tr><td>0:00</td><td>Dos sitios para guardar: en el aparato o en la nube. Cuándo cada uno</td><td></td></tr>
-          <tr><td>0:10</td><td>Datos del alumnado: los cuatro principios, siglas y lo que no se sube nunca. Casos para debatir en parejas</td><td>Prompt 5</td></tr>
-          <tr><td>0:35</td><td>Firebase paso a paso: proyecto, base de datos en Europa e inicio de sesión</td><td><a href="https://vunisal706-droid.github.io/IAparadocentes/#firebase" target="_blank" rel="noopener">Guías</a></td></tr>
-          <tr><td>1:10</td><td>Descargas la app, la pasas por el configurador, publicas las reglas y la subes a GitHub</td><td><a href="https://vunisal706-droid.github.io/IAparadocentes/#apps" target="_blank" rel="noopener">Apps</a> · <a href="https://vunisal706-droid.github.io/IAparadocentes/#configurar" target="_blank" rel="noopener">Configurador</a></td></tr>
-          <tr><td>1:40</td><td>Prueba de la cerradura: un compañero no autorizado intenta entrar y no puede</td><td></td></tr>
-          <tr><td>1:55</td><td>Reto del mes y dudas</td><td><a href="https://vunisal706-droid.github.io/IAparadocentes/#instalar" target="_blank" rel="noopener">página de apoyo</a></td></tr>
+          <tr><td>0:00</td><td>Dos sitios para guardar: en el aparato o en la nube. Cuándo cada uno</td><td><a href="#bloqueGuardar" data-ses="bloqueGuardar">1. Dos sitios para guardar</a></td></tr>
+          <tr><td>0:10</td><td>Datos del alumnado: lo que no se sube nunca, siglas en lugar de nombres y casos para debatir en parejas</td><td><a href="#bloqueDatos" data-ses="bloqueDatos">2. Datos · Prompt 5</a></td></tr>
+          <tr><td>0:25</td><td>Firebase paso a paso: proyecto, base de datos en Europa e inicio de sesión</td><td><a href="#bloqueFirebase" data-ses="bloqueFirebase">3. Firebase</a></td></tr>
+          <tr><td>0:50</td><td>Tu app del centro: la eliges, la pasas por el configurador, publicas las reglas y la subes a GitHub</td><td><a href="#bloqueTuApp" data-ses="bloqueTuApp">4. Tu app del centro</a></td></tr>
+          <tr><td>1:15</td><td>Prueba de la cerradura: un compañero no autorizado intenta entrar y no puede</td><td><a href="#bloqueCerradura" data-ses="bloqueCerradura">5. La cerradura</a></td></tr>
+          <tr><td>1:25</td><td>Google AI Studio: el generador de fichas de cálculo</td><td><a href="#bloqueAIStudio" data-ses="bloqueAIStudio">6. AI Studio</a></td></tr>
+          <tr><td>1:55</td><td>Reto del mes y dudas</td><td><a href="#bloqueReto3" data-ses="bloqueReto3">7. Reto del mes</a></td></tr>
         </table>
 
-  <h3 class="bloque">1. Datos del alumnado: lo que hay que hacer bien</h3>
+
+
+  <h3 class="bloque" id="bloqueGuardar">1. Dos sitios para guardar</h3>
+  <p style="max-width:70ch">Las apps de las sesiones 1 y 2 guardan todo en el propio aparato. Las del centro, en la nube. Antes de crear nada, conviene saber cuándo usar cada una.</p>
+  <div class="retos" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+    <div class="reto"><b>En el aparato (el navegador)</b><p>Sin cuentas ni configuración. Pero cada ordenador o móvil tiene sus propios datos, no se comparten y se pierden si se borra el navegador. Para herramientas de una sola persona: la rueda, un temporizador, un marcador.</p></div>
+    <div class="reto"><b>En la nube (Firebase)</b><p>Los datos se comparten con el claustro y no se pierden al cambiar de aparato. A cambio, hay que crear el proyecto, las cuentas y las reglas. Para todo lo que usen varias personas: evaluaciones, convivencia, reuniones.</p></div>
+  </div>
+  
+  <h3 class="bloque" id="bloqueDatos">2. Datos del alumnado: lo que hay que hacer bien</h3>
   <div class="guias"><details class="guia">
       <summary><div><b>Lo mínimo imprescindible</b><small>Antes de meter datos de alumnado o familias</small></div></summary>
       <div class="guia-cuerpo">
@@ -1189,37 +1301,116 @@ Después revisa la accesibilidad: buen contraste, que nada dependa solo del colo
     </details></div>
   <h4 class="ses-h4">Prompt 5 · Siglas en lugar de nombres</h4>
         <div class="caja-codigo"><pre class="codigo" id="sesP5" style="white-space:pre-wrap">El alumnado debe aparecer solo con sus siglas: inicial del nombre, del primer apellido y del segundo. Si importo una lista con nombres completos en formato «Apellido1 Apellido2, Nombre», convierte cada alumno en siglas y no guardes el nombre en ningún sitio. Si dos coinciden, añade un número al segundo. Ordena la lista por el primer apellido. Dame el archivo completo.</pre><button class="btn suave copiar" data-copiar="sesP5">Copiar</button></div>
-
-  <p class="alerta">Nunca el «modo de prueba» de Firebase ni reglas que dejen leer y escribir a cualquiera, aunque sea un rato. Con datos de un colegio, la base de datos empieza cerrada.</p>
-  <h3 class="bloque" id="bloqueApps">2. Las apps del libro</h3>
+  
+  <h3 class="bloque" id="bloqueFirebase">3. Firebase paso a paso</h3>
+  <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Crear el proyecto, la base de datos en Europa y el acceso con usuario. Lo hacemos juntos, antes de descargar la app, siguiendo las guías de la página de apoyo: son las del capítulo 8 del libro, con las pantallas de hoy.</p>
+  <div class="guias" style="margin-bottom:18px"><details class="guia" open>
+    <summary><div><b>Firebase paso a paso</b><small>Página de apoyo · pestaña «Firebase»</small></div></summary>
+    <div class="guia-cuerpo"><p>Guías 1 a 3: proyecto, Realtime Database en Bélgica, Firestore para Convivencia+ y el acceso con usuario IdEA.</p>
+    <p style="margin-top:12px"><a class="btn azul" href="https://vunisal706-droid.github.io/IAparadocentes/#firebase" target="_blank" rel="noopener">Abrir la página de apoyo</a></p></div>
+  </details></div>
+  
+  <h3 class="bloque" id="bloqueTuApp">4. Tu app del centro</h3>
+  <p style="max-width:70ch">Con Firebase creado, ya puedes llevarte una de las apps del centro. Son cuatro pasos seguidos.</p>
+  <h4 class="ses-h4" id="bloqueApps">Paso 1 · Elige y descarga la app</h4>
   <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Las apps y sus plantillas están en la <strong>página de apoyo del libro</strong>, junto con el configurador y las guías de Firebase. Elige allí la que te vas a llevar hoy.</p>
   <div class="guias" style="margin-bottom:18px"><details class="guia" open>
     <summary><div><b>Las apps, para descargar</b><small>Página de apoyo · pestaña «Las apps»</small></div></summary>
     <div class="guia-cuerpo"><p>Diez apps listas para descargar, cada una con su demostración, su código QR y el prompt con el que se hizo.</p>
     <p style="margin-top:12px"><a class="btn azul" href="https://vunisal706-droid.github.io/IAparadocentes/#apps" target="_blank" rel="noopener">Abrir la página de apoyo</a></p></div>
   </details></div>
-  <h3 class="bloque" id="bloqueFirebase">3. Firebase paso a paso</h3>
-  <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Crear el proyecto, la base de datos en Europa y el acceso con usuario. Lo hacemos juntos siguiendo las guías de la página de apoyo: son las del capítulo 8 del libro, con las pantallas de hoy.</p>
-  <div class="guias" style="margin-bottom:18px"><details class="guia" open>
-    <summary><div><b>Firebase paso a paso</b><small>Página de apoyo · pestaña «Firebase»</small></div></summary>
-    <div class="guia-cuerpo"><p>Guías 1 a 3: proyecto, Realtime Database en Bélgica, Firestore para Convivencia+ y el acceso con usuario IdEA.</p>
-    <p style="margin-top:12px"><a class="btn azul" href="https://vunisal706-droid.github.io/IAparadocentes/#firebase" target="_blank" rel="noopener">Abrir la página de apoyo</a></p></div>
-  </details></div>
-  <h3 class="bloque" id="bloqueConfig">4. Configurar la app para tu centro</h3>
+  <h4 class="ses-h4" id="bloqueConfig">Paso 2 · Pásala por el configurador</h4>
   <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Subes la plantilla, pegas tu firebaseConfig y los datos del centro, y te devuelve la app preparada y las reglas de seguridad. Todo ocurre en tu navegador.</p>
   <div class="guias" style="margin-bottom:18px"><details class="guia" open>
     <summary><div><b>El configurador</b><small>Página de apoyo · pestaña «Configurador»</small></div></summary>
     <div class="guia-cuerpo"><p>Deja la app lista para tu centro sin tocar el código.</p>
     <p style="margin-top:12px"><a class="btn azul" href="https://vunisal706-droid.github.io/IAparadocentes/#configurar" target="_blank" rel="noopener">Abrir la página de apoyo</a></p></div>
   </details></div>
-  <h3 class="bloque">5. Publicar y dar de alta al claustro</h3>
+  <h4 class="ses-h4">Pasos 3 y 4 · Publica las reglas, súbela y da de alta al claustro</h4>
   <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Se publica igual que en la sesión 2. La primera entrada, el alta de cada docente, los errores más frecuentes y la lista de comprobación están en la página de apoyo, con el Gem «Soporte de instalación» para las dudas de cualquier tarde.</p>
   <div class="guias" style="margin-bottom:18px"><details class="guia" open>
     <summary><div><b>Publicar, dar de alta y comprobar</b><small>Página de apoyo · pestaña «Publicar y resolver dudas»</small></div></summary>
     <div class="guia-cuerpo"><p>Primera entrada, alta del claustro, soluciones a los errores más comunes y lista de comprobación para imprimir.</p>
     <p style="margin-top:12px"><a class="btn azul" href="https://vunisal706-droid.github.io/IAparadocentes/#instalar" target="_blank" rel="noopener">Abrir la página de apoyo</a></p></div>
   </details></div>
+  <h4 class="ses-h4">Para más adelante · Actualizar la app</h4>
+  <div class="guias" style="margin-bottom:18px"><details class="guia">
+      <summary><div><b>Actualizar una app del centro ya publicada</b><small>Cuando salga una versión nueva de la plantilla</small></div></summary>
+      <div class="guia-cuerpo">
+        <ol>
+          <li>Descarga la plantilla nueva y pásala por el configurador. Tus datos del centro seguirán guardados en el navegador.</li>
+          <li>Pega de nuevo tu <code>firebaseConfig</code> (el bloque de datos de tu proyecto de Firebase que copiaste al crearlo): es el mismo de siempre.</li>
+          <li>En GitHub, entra en el repositorio, sube el nuevo <code>index.html</code> y confirma con <strong>Commit changes</strong>.</li>
+          <li>Si las reglas han cambiado, vuelve a publicarlas.</li>
+        </ol>
+        <p class="consejo">Los datos no se pierden al actualizar: viven en Firebase, no en el archivo.</p>
+      </div>
+    </details></div>
+  
+  <h3 class="bloque" id="bloqueCerradura">5. Prueba de la cerradura</h3>
+  <p style="max-width:70ch">La comprobación más importante del día: que quien no tiene permiso no ve nada.</p>
+  <ol class="pasos-lista" style="max-width:70ch">
+    <li>Entra en tu app publicada con tu usuario: tienes que ver tus datos.</li>
+    <li>Pasa el enlace (o el QR) a un compañero al que <strong>no</strong> hayas dado de alta.</li>
+    <li>Él solo debe ver la pantalla de acceso o un aviso de que no está autorizado. <strong>Ningún dato.</strong></li>
+    <li>Si ve datos, las reglas no están publicadas o están abiertas: vuelve al paso 3 del bloque anterior.</li>
+    <li>Dale de alta y comprueba que ahora sí entra.</li>
+  </ol>
+  <p class="alerta">Nunca el «modo de prueba» de Firebase ni reglas que dejen leer y escribir a cualquiera, aunque sea un rato. Con datos de un colegio, la base de datos empieza cerrada.</p>
+  
+  <h3 class="bloque" id="bloqueAIStudio">6. Google AI Studio: el generador de fichas de cálculo</h3>
+  <p style="max-width:70ch">AI Studio es el taller de Google para crear apps describiéndolas. Escribes lo que quieres y a la derecha ves la app funcionando. Esta práctica no necesita base de datos, ni claves, ni publicar nada: se usa desde el propio AI Studio.</p>
+  <p class="consejo" style="margin-top:0;margin-bottom:16px"><strong>30 minutos.</strong> <strong>Te llevas:</strong> un generador de fichas de cálculo con solucionario, para imprimir al día siguiente.</p>
+  <div class="dos-col"><div>
+    <h4 class="ses-h4" style="margin-top:0">Paso a paso</h4>
+    <ol class="pasos-lista">
+      <li>Entra en <a href="https://aistudio.google.com" target="_blank" rel="noopener">aistudio.google.com</a> con tu cuenta. Si te pide aceptar condiciones, acéptalas.</li>
+      <li>En el menú lateral pulsa <strong>Build</strong>. Si ves el botón <strong>+ New app</strong>, púlsalo.</li>
+      <li>Pega el prompt de la derecha en el cuadro de texto. Si aparece la opción <em>Build an Android app</em>, <strong>no la marques</strong>: queremos una app web.</li>
+      <li>Envía (botón <strong>Build</strong> o la flecha). Si te pide elegir un diseño, elige uno y continúa.</li>
+      <li>Espera uno o dos minutos. A la izquierda queda el chat; a la derecha, la app en la pestaña <strong>Preview</strong>. La pestaña <em>Code</em> es el código: no hace falta tocarla.</li>
+      <li>Pruébala: elige curso y operación, pulsa <em>Crear ficha</em>, luego <em>Otra ficha</em> e <em>Imprimir</em>.</li>
+      <li>Pide cambios en el chat, de uno en uno (prompt de cambios). Si algo falla, escribe qué ha pasado.</li>
+      <li>La app queda guardada en tu lista de apps de AI Studio. Para enseñarla a un compañero, usa <strong>Share</strong> (compartir).</li>
+    </ol>
+  </div><div>
+    <h4 class="ses-h4" style="margin-top:0">Prompt · El generador de fichas</h4>
+    <div class="caja-codigo"><pre class="codigo" id="aisP1" style="white-space:pre-wrap">Crea una app web en español para docentes de Primaria llamada "Generador de fichas de cálculo".
 
+Qué hace:
+- El docente elige: curso (1.º a 6.º), operación (sumas, restas, multiplicaciones, divisiones o mezcla), nivel (fácil, medio o difícil) y número de ejercicios (10, 20 o 30).
+- Por defecto, nivel fácil.
+- Al pulsar "Crear ficha" genera ejercicios al azar adecuados al curso (por ejemplo, 1.º sumas sin llevar hasta 20; 3.º multiplicaciones por una cifra; 6.º divisiones entre dos cifras).
+- Muestra la ficha con cabecera (Nombre, Fecha, Curso) y las operaciones en vertical, con espacio para resolver.
+- Botón "Imprimir ficha" y botón "Imprimir soluciones" (solucionario aparte).
+- Botón "Otra ficha" para generar ejercicios nuevos.
+
+Requisitos:
+- No uses IA, claves ni conexión a internet dentro de la app: todo se calcula en el navegador.
+- Diseño claro, colorido y con letra grande; al imprimir, solo en blanco y negro y sin botones.
+- Que funcione bien en ordenador y en tablet.</pre><button class="btn suave copiar" data-copiar="aisP1">Copiar</button></div>
+    <h4 class="ses-h4">Prompts de cambios (de uno en uno)</h4>
+    <div class="caja-codigo"><pre class="codigo" id="aisP2" style="white-space:pre-wrap">Añade una opción "Problemas" que cree problemas de una sola operación, con frases cortas y vocabulario sencillo.
+
+Añade un "Modo pizarra": un ejercicio en grande cada vez y un botón para ver la solución.
+
+Añade una opción para practicar una tabla de multiplicar concreta, del 1 al 10.</pre><button class="btn suave copiar" data-copiar="aisP2">Copiar</button></div>
+    <div class="guias" style="margin-top:14px"><details class="guia">
+      <summary><div><b>Si tu pantalla no se parece</b><small>AI Studio cambia de aspecto a menudo</small></div></summary>
+      <div class="guia-cuerpo">
+        <ol>
+          <li>Busca por el nombre del botón, no por su sitio: <strong>Build</strong>, <strong>New app</strong>, <strong>Preview</strong>, <strong>Share</strong>.</li>
+          <li>Si la ves en inglés, no pasa nada: el prompt va en español y la app saldrá en español.</li>
+          <li>Si te pide una clave API, una tarjeta o <em>Deploy</em>, para: esta práctica no lo necesita.</li>
+          <li>Si con la cuenta educativa no te deja entrar, usa una cuenta personal de Gmail. Sin datos del alumnado, no hay problema.</li>
+          <li>Si la vista previa se queda en blanco, escribe en el chat: «La vista previa sale en blanco, arréglalo».</li>
+        </ol>
+      </div>
+    </details></div>
+  </div></div>
+  <p class="consejo"><strong>¿AI Studio o Gemini Canvas?</strong> Canvas te da un único archivo que publicas en GitHub, como en la sesión 2. AI Studio construye proyectos más grandes y los prueba al momento, pero lo que descarga son varios archivos, no un index.html. Para empezar en clase, cualquiera de los dos sirve.</p>
+  
+  <h3 class="bloque" id="bloqueReto3">7. Reto del mes y dudas</h3>
   <p class="consejo"><strong>Reto del mes:</strong> pasa la lista de comprobación de la <a href="https://vunisal706-droid.github.io/IAparadocentes/#instalar" target="_blank" rel="noopener">página de apoyo</a> a tu app y háblalo con el equipo directivo antes de meter datos reales. Piensa qué proyecto propio harás en la sesión 4.</p>
 </section>
 
@@ -1234,18 +1425,21 @@ Después revisa la accesibilidad: buen contraste, que nada dependa solo del colo
   <h3 class="bloque" style="margin-top:26px">El guion de la sesión</h3>
   <table class="ses-tabla">
           <tr><th>Tiempo</th><th>Qué hacemos</th><th>Dónde</th></tr>
-          <tr><td>0:00</td><td>De la idea a la ficha: lo que tiene que hacer, lo que no y qué datos guarda</td><td>Prompt 6</td></tr>
-          <tr><td>0:15</td><td>Construcción por parejas o por especialidad, con tu asistente. Quien quiera, de la ficha de papel al juego</td><td><a href="#gemini" data-ir="gemini">Gemini</a></td></tr>
-          <tr><td>1:20</td><td>Segunda opinión: otra IA revisa tu app; repaso con la lista de comprobación</td><td>Prompt 7</td></tr>
-          <tr><td>1:35</td><td>Galería final: cada proyecto en la pizarra, con su QR</td><td><a href="#galeria" data-ir="galeria">Galería</a></td></tr>
-          <tr><td>1:55</td><td>Cómo seguir: quién mantiene cada app, cuentas del centro y una carpeta común para el claustro</td><td></td></tr>
+          <tr><td>0:00</td><td>De la idea a la ficha: lo que tiene que hacer, lo que no y qué datos guarda</td><td><a href="#bloqueIdea" data-ses="bloqueIdea">1. La idea · Prompt 6</a></td></tr>
+          <tr><td>0:15</td><td>Construcción por parejas o por especialidad, con tu asistente. Quien quiera, de la ficha de papel al juego</td><td><a href="#bloqueConstruir" data-ses="bloqueConstruir">2. Construye</a></td></tr>
+          <tr><td>1:20</td><td>Segunda opinión: otra IA revisa tu app; repaso con la lista de comprobación</td><td><a href="#bloqueSegunda" data-ses="bloqueSegunda">3. Segunda opinión · Prompt 7</a></td></tr>
+          <tr><td>1:35</td><td>Galería final: cada proyecto en la pizarra, con su QR, y la recreativa del claustro</td><td><a href="#bloqueGaleria" data-ses="bloqueGaleria">4. Galería</a></td></tr>
+          <tr><td>1:55</td><td>Cómo seguir: quién mantiene cada app, cuentas del centro y una carpeta común para el claustro</td><td><a href="#bloqueSeguir" data-ses="bloqueSeguir">5. Para seguir</a></td></tr>
         </table>
 
-  <h3 class="bloque">1. De la idea a la app</h3>
+
+
+  <h3 class="bloque" id="bloqueIdea">1. De la idea a la ficha</h3>
   <h4 class="ses-h4">Prompt 6 · Que me pregunte antes de programar</h4>
         <div class="caja-codigo"><pre class="codigo" id="sesP6" style="white-space:pre-wrap">Quiero hacer una app para [lo que necesitas] en [dónde se usa]. Antes de escribir código, hazme las preguntas que necesites para entender bien lo que quiero. Cuando las conteste, hazme primero solo lo imprescindible para que funcione.</pre><button class="btn suave copiar" data-copiar="sesP6">Copiar</button></div>
-
-  <h3 class="bloque">2. Si te atascas con la idea: de la ficha al juego</h3>
+  
+  <h3 class="bloque" id="bloqueConstruir">2. Construye tu proyecto</h3>
+  <p style="max-width:70ch">Por parejas o por especialidad, con tu asistente de la sesión 1 y la ficha que acabas de hacer. Si te atascas con la idea, haz la actividad «De la ficha al juego».</p>
   <div class="actividades">
     <article class="actividad" style="--c:#E8612C">
       <small>Actividad · 30 min</small>
@@ -1266,6 +1460,15 @@ Después revisa la accesibilidad: buen contraste, que nada dependa solo del colo
 - al final, una pantalla de «¡Conseguido!» con los aciertos.
 Que funcione también en el móvil.</pre></div>
     </article>
+  </div>
+  
+  <h3 class="bloque" id="bloqueSegunda">3. La segunda opinión</h3>
+  <h4 class="ses-h4">Prompt 7 · La segunda opinión</h4>
+        <div class="caja-codigo"><pre class="codigo" id="sesP7" style="white-space:pre-wrap">Esta app la va a usar el profesorado de un colegio. Revísala como lo haría un programador con experiencia: dime qué errores ves, qué podría fallar en el móvil y qué riesgos tiene para los datos. No la reescribas todavía; solo dame la lista.</pre><button class="btn suave copiar" data-copiar="sesP7">Copiar</button></div>
+  <p class="consejo">Después, repasa tu app con la lista de comprobación de la <a href="https://vunisal706-droid.github.io/IAparadocentes/#instalar" target="_blank" rel="noopener">página de apoyo</a>.</p>
+  
+  <h3 class="bloque" id="bloqueGaleria">4. Galería final y recreativa del claustro</h3>
+  <div class="actividades" style="margin-bottom:18px">
     <article class="actividad" style="--c:#7C3AED">
       <small>Actividad · 15 min</small>
       <h4>Recreativa del claustro</h4>
@@ -1279,15 +1482,7 @@ Que funcione también en el móvil.</pre></div>
       <div class="fila" style="margin-top:14px">
         <button class="btn azul" data-ir="galeria">Ir a la galería</button>
         <button class="btn linea" data-recreativa>Abrir la recreativa</button>
-      </div>
-    </article>
   </div>
-
-  <h3 class="bloque">3. La segunda opinión</h3>
-  <h4 class="ses-h4">Prompt 7 · La segunda opinión</h4>
-        <div class="caja-codigo"><pre class="codigo" id="sesP7" style="white-space:pre-wrap">Esta app la va a usar el profesorado de un colegio. Revísala como lo haría un programador con experiencia: dime qué errores ves, qué podría fallar en el móvil y qué riesgos tiene para los datos. No la reescribas todavía; solo dame la lista.</pre><button class="btn suave copiar" data-copiar="sesP7">Copiar</button></div>
-
-  <h3 class="bloque" id="bloqueGaleria">4. Galería del claustro</h3>
   <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Sube tu app cuando esté publicada: el prompt con el que empezaste es lo que más ayuda a los demás.</p>
   <div class="galeria-barra">
     <button class="btn azul" id="galAnadir">Añadir mi app</button>
@@ -1311,10 +1506,16 @@ Que funcione también en el móvil.</pre></div>
     <div class="estado" id="gEstado"></div>
   </div>
   <div class="galeria" id="galeria"></div>
-
-  <h3 class="bloque">Para seguir</h3>
-  <p class="consejo"><strong>Para después:</strong> un grupo para dudas donde cada uno comparta las apps que vaya haciendo, y una segunda persona con acceso de administración a cada app que use el claustro.</p>
-  <h3 class="bloque">Vocabulario</h3>
+  
+  <h3 class="bloque" id="bloqueSeguir">5. Cómo seguir</h3>
+  <ul class="pasos-lista" style="max-width:70ch;list-style:disc">
+    <li><strong>Quién mantiene cada app:</strong> una persona responsable y una segunda con acceso de administración, por si la primera cambia de destino.</li>
+    <li><strong>Cuentas del centro:</strong> Firebase, GitHub y los Gems, con la cuenta del centro y no con la personal.</li>
+    <li><strong>Una carpeta común para el claustro:</strong> en Drive, con los enlaces, los QR, los prompts con los que se hizo cada app y las copias de cada versión.</li>
+  </ul>
+  <p class="consejo"><strong>Para después:</strong> un grupo para dudas donde cada uno comparta las apps que vaya haciendo.</p>
+  
+  <h3 class="bloque">Para consultar: vocabulario</h3>
   <dl class="glosario">
     <dt>Firebase</dt><dd>Servicio de Google que pone la base de datos y el acceso con usuario. Tiene un plan gratuito.</dd>
     <dt>Realtime Database</dt><dd>La base de datos que usan casi todas estas apps. Los cambios llegan al instante a todos los dispositivos.</dd>
@@ -1328,19 +1529,22 @@ Que funcione también en el móvil.</pre></div>
     <dt>Service worker</dt><dd>El archivo <code>sw.js</code>: permite instalar la app y abrirla aunque falle la conexión.</dd>
     <dt>Usuario IdEA</dt><dd>El usuario de Séneca de cada docente. Estas apps lo usan para identificar a cada persona; nunca se pide la contraseña de Séneca.</dd>
     <dt>Gem</dt><dd>Asistente de Gemini con instrucciones guardadas, para no repetirlas en cada conversación.</dd>
+    <dt>NotebookLM</dt><dd>Herramienta de Google que responde solo con los documentos que le subes y los convierte en audios, mapas mentales o cuestionarios.</dd>
+    <dt>Google AI Studio</dt><dd>Taller de Google para crear apps describiéndolas, con la app funcionando al lado del chat.</dd>
     <dt>Canvas</dt><dd>Espacio de Gemini donde se ve y se prueba el código mientras se conversa.</dd>
   </dl>
 
   
-  <h3 class="bloque">Enlaces</h3>
+  <h3 class="bloque">Para consultar: enlaces</h3>
   <ul class="enlaces">
     <li><a class="btn azul" href="https://vunisal706-droid.github.io/IAparadocentes/" target="_blank" rel="noopener">Página de apoyo del libro</a></li>
     <li><a class="btn linea" href="https://console.firebase.google.com" target="_blank" rel="noopener">Consola de Firebase</a></li>
     <li><a class="btn linea" href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
     <li><a class="btn linea" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></li>
     <li><a class="btn linea" href="https://notebooklm.google.com" target="_blank" rel="noopener">NotebookLM</a></li>
+    <li><a class="btn linea" href="https://aistudio.google.com" target="_blank" rel="noopener">Google AI Studio</a></li>
+    <li><a class="btn linea" href="https://suno.com" target="_blank" rel="noopener">Suno</a></li>
   </ul>
-
 </section>
 
 </main>
@@ -2662,20 +2866,20 @@ else if (leer('salaPropia', '') && hayFirebase()) abrirSala(true);
 
 // ── Sesiones: abrir la sesión elegida ──
 document.addEventListener('click', e => {
-  const b = e.target.closest('[data-ses]'); if (!b) return;
+  const b = e.target.closest('[data-ses]'); if (!b) return; e.preventDefault();
   const d = document.getElementById(b.dataset.ses); if (!d) return;
   d.open = true; d.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-10-24';
+  const ID = 'formacion-novedades-2026-10-26d';
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
   d.setAttribute('role', 'dialog'); d.setAttribute('aria-label', 'Novedades');
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">La web estrena aspecto: <b>cada sesión tiene su color</b>, las pestañas se quedan arriba al bajar y en la portada está el <b>índice de las cuatro sesiones</b> con lo que te llevas de cada una. Los contenidos siguen en el mismo sitio.</p>'
+    + '<p style="margin-bottom:14px">Las cuatro sesiones están <b>reordenadas</b>: cada fila del guion lleva a su apartado, en el mismo orden y con el mismo número. Novedades: <b>NotebookLM</b> en la sesión 1, <b>música con IA</b> en la 2 y <b>Google AI Studio</b> en la 3. Además hay apartados nuevos para el QR y el aviso de novedades (sesión 2) y para la prueba de la cerradura (sesión 3).</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
