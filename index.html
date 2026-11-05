@@ -565,6 +565,19 @@ details.activar ol{padding-left:22px;display:grid;gap:6px;margin:8px 0}
   --sombra-2:0 2px 6px rgba(27,42,78,.07),0 18px 44px rgba(27,42,78,.11);
   --r-xl:20px; --ease:cubic-bezier(.2,.7,.2,1);
 }
+#panel-datos{--ses:#6D28D9} .pestana[data-panel="datos"]{--ses:#6D28D9}
+.dt-regla{background:#fff;border:1.5px solid #DDD6FE;border-left:6px solid #6D28D9;border-radius:16px;padding:16px 20px;box-shadow:var(--sombra-1);max-width:80ch;font-size:1.05rem}
+.dt-sem{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}@media(max-width:820px){.dt-sem{grid-template-columns:1fr}}
+.dt-sem>div{background:#fff;border-radius:16px;padding:16px 18px;border:1px solid var(--borde);box-shadow:var(--sombra-1);border-top:8px solid}
+.dt-sem .v{border-top-color:#16a34a}.dt-sem .a{border-top-color:#f59e0b}.dt-sem .r{border-top-color:#dc2626}
+.dt-sem h4{font-family:var(--display);font-size:1.1rem;margin:0 0 8px}.dt-sem ul,.dt-dos ul{margin:0;padding-left:20px;line-height:1.5}.dt-sem li,.dt-dos li{margin-bottom:6px}
+.dt-dos{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:820px){.dt-dos{grid-template-columns:1fr}}
+.dt-dos>div{background:#fff;border-radius:16px;padding:16px 18px;border:1px solid var(--borde);box-shadow:var(--sombra-1)}
+.dt-si h4{color:#15803d}.dt-no h4{color:#b91c1c}.dt-dos h4{font-family:var(--display);font-size:1.1rem;margin:0 0 8px}
+.dt-caso{background:#fff;border:1px solid var(--borde);border-radius:14px;padding:12px 14px;margin:8px 0;box-shadow:var(--sombra-1)}
+.dt-caso p{margin:0 0 8px;font-weight:600}.dt-caso .bts{display:flex;gap:8px;flex-wrap:wrap}.dt-caso .bts button{min-height:38px;padding:6px 14px;border-radius:999px;border:1.5px solid var(--borde);background:#fff;font-weight:700;cursor:pointer}
+.dt-caso .res{display:none;margin-top:8px;padding:8px 12px;border-radius:10px;font-size:.95rem}.dt-caso.ok .res{display:block;background:#E2F4EA}.dt-caso.mal .res{display:block;background:#FDECEE}
+.dt-fuente{font-size:.85rem;color:var(--tinta-suave);margin-top:30px}
 #panel-inicio{--ses:var(--rojo)} #panel-s1{--ses:var(--s1)} #panel-s2{--ses:var(--s2)} #panel-s3{--ses:var(--s3)} #panel-s4{--ses:var(--s4)}
 .pestana[data-panel="inicio"]{--ses:var(--rojo)} .pestana[data-panel="s1"]{--ses:var(--s1)} .pestana[data-panel="s2"]{--ses:var(--s2)} .pestana[data-panel="s3"]{--ses:var(--s3)} .pestana[data-panel="s4"]{--ses:var(--s4)}
 
@@ -729,6 +742,7 @@ p,li,dd{text-wrap:pretty}
   <button class="pestana" role="tab" id="t-s2" aria-controls="panel-s2" data-panel="s2">2 · Que salga de tu ordenador</button>
   <button class="pestana" role="tab" id="t-s3" aria-controls="panel-s3" data-panel="s3">3 · Apps con datos</button>
   <button class="pestana" role="tab" id="t-s4" aria-controls="panel-s4" data-panel="s4">4 · Tu proyecto</button>
+  <button class="pestana" role="tab" id="t-datos" aria-controls="panel-datos" data-panel="datos">🔒 Privacidad y datos</button>
 </nav>
 <div class="pestanas-borde"></div>
 
@@ -1547,6 +1561,89 @@ Que funcione también en el móvil.</pre></div>
   </ul>
 </section>
 
+<!-- ═════════════════════ PRIVACIDAD Y DATOS ═════════════════════ -->
+<section class="panel" id="panel-datos" role="tabpanel" aria-labelledby="t-datos">
+  <div class="intro">
+    <p class="ses-etq">Para todas las sesiones · Guía de la Consejería (convenio con Google, v08, octubre de 2026)</p>
+    <h2>Privacidad y datos: qué sí, qué no</h2>
+    <p>Lo que tienes que saber antes de usar la IA o de crear una app con datos del cole. Corto, práctico y con ejemplos de aquí.</p>
+  </div>
+
+  <div class="dt-regla">🔑 <b>La regla de oro:</b> a una IA nunca le das datos que identifiquen a nadie (nombre, apellidos, fotos, correo…), y <b>jamás</b> datos de salud, religión, origen u orientación. Usa <b>siglas, números o cargos</b>, y describe las necesidades con <b>palabras pedagógicas</b>.</div>
+
+  <h3 class="bloque" id="bloqueSemaforo">1. El semáforo de los datos</h3>
+  <div class="dt-sem">
+    <div class="v"><h4>🟢 Puedes</h4><ul>
+      <li>Preparar clases, SdA, rúbricas, actividades y materiales.</li>
+      <li>Resumir normativa o el Plan de Centro.</li>
+      <li>Hablar del alumnado con <b>siglas o número de lista</b> («Alumno 15», «MRG, 3.º»).</li>
+      <li>Describir necesidades en clave pedagógica: «necesita apoyo visual», «lee sílaba a sílaba».</li>
+    </ul></div>
+    <div class="a"><h4>🟡 Con cuidado</h4><ul>
+      <li>Listas, notas o trabajos con nombre en Drive o Classroom: solo lo imprescindible y compartido <b>solo con quien toque</b>.</li>
+      <li>Actas y documentos internos: mejor sin nombres en la IA. Pon cargos o iniciales y completa tú después.</li>
+      <li>Herramientas fuera del convenio (Claude, ChatGPT…): ningún dato del alumnado.</li>
+    </ul></div>
+    <div class="r"><h4>🔴 Nunca</h4><ul>
+      <li><b>Diagnósticos y salud</b> (TEA, TDAH, dislexia, medicación, alergias…), religión, origen, opiniones políticas, orientación sexual.</li>
+      <li>Fotos, vídeos o <b>voces</b> del alumnado o del profesorado subidos a Drive, Classroom o a una IA.</li>
+      <li>Nombres y apellidos completos del alumnado en un chat de IA.</li>
+      <li>Usar la IA para <b>decidir</b> sobre un alumno (promoción, notas): apoya, no decide.</li>
+    </ul></div>
+  </div>
+
+  <h3 class="bloque" id="bloqueHazNo">2. Haz y no hagas</h3>
+  <div class="dt-dos">
+    <div class="dt-si"><h4>✅ Haz</h4><ul>
+      <li>Usa la cuenta <b>@g.educaand.es</b> para Gemini y NotebookLM: no entrenan con tus datos y el historial de Gemini se borra a las 72 h.</li>
+      <li><b>Revisa siempre</b> lo que te da la IA: puede equivocarse o inventar.</li>
+      <li>Comparte archivos con personas concretas y el permiso justo (ver, comentar o editar).</li>
+      <li>Revisa de vez en cuando quién tiene acceso a tus archivos y quita lo que sobre.</li>
+      <li>Contraseña larga y tuya; cierra sesión en ordenadores compartidos.</li>
+      <li>En Claude o ChatGPT, desactiva en Privacidad que tus chats se usen para entrenar.</li>
+      <li>Si pasa algo (pierdes el móvil, un acceso raro), <b>avisa a dirección ese mismo día</b>.</li>
+    </ul></div>
+    <div class="dt-no"><h4>⛔ No hagas</h4><ul>
+      <li>Compartir con «<b>cualquier persona con el enlace</b>» documentos con datos del alumnado.</li>
+      <li>Comunicarte con las familias por Gmail, Chat o Meet: lo oficial va por <b>Séneca e iPasen</b>.</li>
+      <li>Registrarte en apps externas con tu cuenta @g.educaand.es ni usar «Iniciar sesión con Google» en webs no autorizadas.</li>
+      <li>Subir a NotebookLM actas, evaluaciones o informes internos.</li>
+      <li>Usar la cuenta del cole para cosas personales.</li>
+      <li>Grabar a la clase con Meet o subir vídeos del alumnado a Drive.</li>
+    </ul></div>
+  </div>
+
+  <h3 class="bloque" id="bloqueCasos">3. ¿Se puede? Ponte a prueba</h3>
+  <div id="dtCasos"></div>
+
+  <h3 class="bloque" id="bloqueApps">4. Si creas apps para el cole</h3>
+  <div class="dt-dos">
+    <div><h4>🛠️ Cómo las hacemos en Capitulaciones</h4><ul>
+      <li>En la nube, <b>solo siglas</b>; los nombres completos se quedan en el dispositivo.</li>
+      <li>Antes de copiar un prompt para la IA, la app <b>quita los diagnósticos</b> y deja solo lo pedagógico.</li>
+      <li>Para alumnado con ACI, <b>número de lista</b> («Alumno15»): el tutor/a sabe quién es.</li>
+      <li>Fotos y voces (por ejemplo, el podcast) se procesan <b>en el propio dispositivo</b>, sin subirlas.</li>
+      <li>Cada app con su usuario y contraseña, y reglas de Firebase que dejan ver a cada uno <b>solo lo suyo</b>.</li>
+    </ul></div>
+    <div><h4>📋 Pídeselo así a la IA cuando programes</h4>
+      <div class="caja-codigo"><pre class="codigo" id="dtPrompt" style="white-space:pre-wrap">Mi app guarda datos del alumnado. Antes de copiar cualquier texto para una IA:
+1. Cambia los nombres por siglas o por «Alumno 1, Alumno 2…» (la equivalencia solo en este dispositivo).
+2. Quita diagnósticos y datos de salud (TEA, TDAH, dislexia, medicación…) y deja solo necesidades pedagógicas.
+3. Cuando pegue la respuesta de la IA, vuelve a poner los nombres.
+En la base de datos en la nube guarda solo siglas. Dame el archivo completo.</pre><button class="btn suave copiar" data-copiar="dtPrompt">Copiar</button></div>
+    </div>
+  </div>
+
+  <h3 class="bloque" id="bloqueIncidentes">5. Si pasa algo, y tus derechos</h3>
+  <ul style="line-height:1.6;max-width:80ch">
+    <li><b>Incidente</b> (pérdida de un dispositivo, acceso no autorizado, algo compartido por error): comunícalo <b>de inmediato a la dirección</b> del centro.</li>
+    <li><b>Dudas de protección de datos:</b> Delegado de Protección de Datos de la Consejería, <a href="mailto:dpd.ced@juntadeandalucia.es">dpd.ced@juntadeandalucia.es</a>.</li>
+    <li><b>Derechos</b> (acceso, rectificación, supresión, portabilidad, limitación): se piden en el propio centro con el formulario de la Consejería. Por el alumnado menor de 14 años los ejerce la familia. Respuesta en un mes (prorrogable dos más).</li>
+    <li><b>Activación para el alumnado:</b> desde 2026/27 la dirección autoriza cada curso en Séneca qué etapas usan la plataforma; Infantil queda fuera. El alumnado tiene <b>Gemini y NotebookLM desactivados</b>.</li>
+  </ul>
+  <p class="dt-fuente">Fuente: <i>Guía de Buenas Prácticas para el uso de Google Workspace for Education y la Protección de Datos</i>, Consejería de Educación de la Junta de Andalucía, versión 08 (28/10/2026). Lo referido a Claude, ChatGPT y a las apps del centro son recomendaciones del centro a partir de los mismos principios (RGPD y LOPDGDD).</p>
+</section>
+
 </main>
 
 <footer id="pie"></footer>
@@ -1968,6 +2065,25 @@ document.addEventListener('click', async e => {
   tostada(ok ? 'Copiado' : 'No se pudo copiar: selecciónalo a mano');
 });
 
+</script>
+<script>
+// ── Privacidad: casos de «¿se puede?» ──
+(function(){
+  const C=[
+    ['Pegar en Gemini «Juan Pérez, 3.º B, tiene TDAH: hazle actividades».',0,'No: nombre y diagnóstico. Mejor: «un alumno de 3.º que necesita tareas cortas y apoyo visual».'],
+    ['Pedir a Gemini (cuenta @g.educaand.es) una rúbrica de expresión escrita para 4.º.',1,'Sí: no hay datos personales. Es el uso ideal.'],
+    ['Compartir en Drive la lista de notas del grupo con «cualquier persona con el enlace».',0,'No: compártela solo con las personas concretas que la necesitan.'],
+    ['Subir a NotebookLM el Plan de Centro para hacer preguntas.',1,'Sí: es un documento del centro, sin datos personales del alumnado.'],
+    ['Subir a NotebookLM el acta de evaluación del trimestre.',0,'No: actas, evaluaciones e informes internos no se suben.'],
+    ['Avisar a una familia de una falta por el chat de Google.',0,'No: la comunicación oficial con familias va por iPasen o Séneca.'],
+    ['Escribir en el prompt «MRG, 2.º, le cuesta la conciencia fonológica».',1,'Sí, con siglas y una necesidad pedagógica. Sin diagnóstico.'],
+    ['Grabar la exposición oral de la clase con Meet y dejarla en Drive.',0,'No: la imagen y la voz del alumnado no se suben a la plataforma.']
+  ];
+  const box=document.getElementById('dtCasos'); if(!box) return;
+  box.innerHTML=C.map((c,i)=>'<div class="dt-caso" data-i="'+i+'"><p>'+(i+1)+'. '+c[0]+'</p><div class="bts"><button type="button" data-r="1">✅ Se puede</button><button type="button" data-r="0">⛔ No se puede</button></div><div class="res"></div></div>').join('');
+  box.addEventListener('click',e=>{ const b=e.target.closest('[data-r]'); if(!b) return; const d=b.closest('.dt-caso'), c=C[+d.dataset.i], ok=+b.dataset.r===c[1];
+    d.classList.remove('ok','mal'); d.classList.add(ok?'ok':'mal'); d.querySelector('.res').innerHTML=(ok?'👏 ¡Bien! ':'🤔 Casi. ')+c[2]; });
+})();
 </script>
 <script>
 /* ════════════════ NUEVO: En directo · Modo ponente · Historia · Taller · Galería ════════════════ */
@@ -2872,14 +2988,14 @@ document.addEventListener('click', e => {
 });
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-10-26d';
+  const ID = 'formacion-novedades-2026-11-05-datos';
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
   d.setAttribute('role', 'dialog'); d.setAttribute('aria-label', 'Novedades');
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">Las cuatro sesiones están <b>reordenadas</b>: cada fila del guion lleva a su apartado, en el mismo orden y con el mismo número. Novedades: <b>NotebookLM</b> en la sesión 1, <b>música con IA</b> en la 2 y <b>Google AI Studio</b> en la 3. Además hay apartados nuevos para el QR y el aviso de novedades (sesión 2) y para la prueba de la cerradura (sesión 3).</p>'
+    + '<p style="margin-bottom:14px">Nueva pestaña <b>🔒 Privacidad y datos</b>: el semáforo de los datos, qué hacer y qué no con la IA, casos para ponerte a prueba y cómo proteger los datos si creas apps.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
