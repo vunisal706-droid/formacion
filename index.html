@@ -724,6 +724,129 @@ p,li,dd{text-wrap:pretty}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
 }
+
+/* ══════════ FERIA DE APPS (sesión de muestra) ══════════ */
+#panel-feria{--ses:#6D3FD1}
+.pestana[data-panel="feria"]{--ses:#6D3FD1}
+.fx-escena{position:relative;border-radius:22px;overflow:hidden;color:#fff;margin:0 0 30px;
+  background:radial-gradient(120% 90% at 15% 0%,#3B2A8C 0%,transparent 55%),radial-gradient(90% 80% at 100% 100%,#0E6B7A 0%,transparent 60%),#0F1535;
+  box-shadow:0 30px 70px -30px rgba(15,21,53,.75)}
+.fx-escena canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.8}
+.fx-escena>*:not(canvas){position:relative}
+.fx-cab{padding:34px 34px 0;display:flex;gap:18px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
+.fx-cab p.k{font:700 .82rem var(--texto);letter-spacing:.14em;text-transform:uppercase;color:#FFE45C;margin-bottom:8px}
+.fx-cab h2{font-family:var(--display);font-weight:800;font-size:clamp(2rem,5vw,3.6rem);line-height:1;letter-spacing:-.02em;max-width:14ch}
+.fx-cab h2 em{font-style:normal;color:#FFE45C}
+.fx-cab .sub{color:#C9D2F5;max-width:46ch;margin-top:12px;font-size:1.05rem}
+.fx-cab .acc{display:flex;gap:8px;flex-wrap:wrap}
+.fx-b{appearance:none;border:1.5px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:#fff;font:700 .92rem var(--texto);
+  padding:10px 16px;border-radius:999px;cursor:pointer;min-height:44px;backdrop-filter:blur(6px);transition:background .15s,transform .1s}
+.fx-b:hover{background:rgba(255,255,255,.18)} .fx-b:active{transform:scale(.96)}
+.fx-b.oro{background:#FFE45C;color:#1B2A4E;border-color:#FFE45C} .fx-b.oro:hover{background:#FFEE8F}
+.fx-pista{display:flex;gap:26px;overflow-x:auto;scroll-snap-type:x mandatory;padding:38px calc(50% - 170px) 26px;scrollbar-width:none;perspective:1400px}
+.fx-pista::-webkit-scrollbar{display:none}
+.fx-carta{flex:none;width:340px;scroll-snap-align:center;border-radius:20px;background:#fff;color:var(--tinta);overflow:hidden;cursor:pointer;
+  box-shadow:0 24px 50px -18px rgba(0,0,0,.6);transform-style:preserve-3d;transition:transform .25s ease,opacity .25s ease,box-shadow .25s;will-change:transform;
+  border:0;text-align:left;font:inherit;padding:0;display:block}
+.fx-carta.centro{box-shadow:0 34px 70px -18px rgba(0,0,0,.7),0 0 0 3px var(--c)}
+.fx-pant{height:190px;background:var(--c);position:relative;overflow:hidden}
+.fx-pant svg{width:100%;height:100%;display:block}
+.fx-pant::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.28) 0%,transparent 34%)}
+.fx-cuerpo{padding:16px 18px 18px}
+.fx-cat{font:700 .72rem var(--texto);letter-spacing:.1em;text-transform:uppercase;color:var(--c)}
+.fx-carta h3{font-family:var(--display);font-weight:800;font-size:1.35rem;line-height:1.15;margin:4px 0 6px}
+.fx-carta p{font-size:.95rem;color:var(--tinta-suave);line-height:1.45;min-height:4.3em}
+.fx-pie{display:flex;gap:8px;align-items:center;margin-top:12px;flex-wrap:wrap}
+.fx-pie .btn{min-height:40px;padding:6px 14px;font-size:.9rem}
+.fx-voto{appearance:none;border:2px solid var(--c);background:#fff;color:var(--c);font:700 .9rem var(--texto);border-radius:999px;min-height:40px;padding:6px 14px;cursor:pointer}
+.fx-voto[aria-pressed="true"]{background:var(--c);color:#fff}
+.fx-nav{display:flex;align-items:center;justify-content:center;gap:14px;padding:0 20px 28px}
+.fx-nav .fx-b{width:48px;padding:0;font-size:1.2rem}
+.fx-puntos{display:flex;gap:7px}
+.fx-puntos i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.3);transition:all .2s}
+.fx-puntos i.on{background:#FFE45C;width:26px}
+.fx-escena:fullscreen{border-radius:0;display:flex;flex-direction:column;justify-content:center}
+.fx-escena:fullscreen .fx-carta{width:420px} .fx-escena:fullscreen .fx-pista{padding-left:calc(50% - 210px);padding-right:calc(50% - 210px)}
+.fx-escena:fullscreen .fx-pant{height:240px}
+@keyframes fxLate{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+@keyframes fxSube{from{transform:scaleY(.15)}to{transform:scaleY(1)}}
+@keyframes fxFlota{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes fxRaya{to{stroke-dashoffset:0}}
+.fx-late{animation:fxLate 2.4s ease-in-out infinite;transform-origin:center;transform-box:fill-box}
+.fx-sube{animation:fxSube 1.6s ease-in-out infinite alternate;transform-origin:bottom;transform-box:fill-box}
+.fx-flota{animation:fxFlota 3s ease-in-out infinite}
+.fx-raya{stroke-dasharray:300;stroke-dashoffset:300;animation:fxRaya 2.5s ease forwards infinite}
+
+/* guion */
+.fx-guion{display:grid;gap:10px;margin:14px 0 6px;counter-reset:fx}
+.fx-paso{background:#fff;border:1.5px solid var(--linea);border-radius:16px;overflow:hidden}
+.fx-paso summary{list-style:none;display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;padding:12px 16px;cursor:pointer}
+.fx-paso summary::-webkit-details-marker{display:none}
+.fx-paso .h{font:800 1.05rem var(--display);color:var(--ses);font-variant-numeric:tabular-nums}
+.fx-paso b{display:block;font-size:1.02rem} .fx-paso small{color:var(--tinta-suave)}
+.fx-paso .min{font:700 .82rem var(--texto);background:#F1ECFD;color:var(--ses);padding:4px 10px;border-radius:999px;white-space:nowrap}
+.fx-paso[open]{border-color:var(--ses);box-shadow:0 10px 26px -16px rgba(109,63,209,.6)}
+.fx-det{padding:4px 18px 18px 94px;display:grid;gap:10px}
+.fx-det p{max-width:74ch}
+.fx-det .dice{border-left:4px solid var(--ses);background:#F7F4FE;padding:10px 14px;border-radius:0 10px 10px 0;font-style:italic}
+.fx-det .dice::before{content:"Qué digo";display:block;font:700 .75rem var(--texto);font-style:normal;letter-spacing:.08em;text-transform:uppercase;color:var(--ses);margin-bottom:2px}
+.fx-det ul{padding-left:20px;max-width:74ch} .fx-det li{margin:2px 0}
+.fx-crono{position:fixed;left:16px;bottom:16px;z-index:60;background:#0F1535;color:#fff;border-radius:16px;padding:10px 14px;display:none;gap:12px;align-items:center;
+  box-shadow:0 14px 34px rgba(15,21,53,.45);font:700 .95rem var(--texto)}
+.fx-crono.ver{display:flex} .fx-crono .t{font:800 1.5rem var(--display);font-variant-numeric:tabular-nums;color:#FFE45C;min-width:3.4ch}
+.fx-crono.fin .t{color:#FF7A8A} .fx-crono button{appearance:none;border:0;background:rgba(255,255,255,.15);color:#fff;border-radius:8px;padding:6px 10px;cursor:pointer;font:inherit}
+/* grupos y muro de QR */
+.fx-grupos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.fx-grupo{background:#fff;border:1.5px solid var(--linea);border-radius:16px;padding:16px;border-top:5px solid var(--g)}
+.fx-grupo h4{font-family:var(--display);font-size:1.15rem;margin-bottom:2px} .fx-grupo>small{color:var(--tinta-suave)}
+.fx-grupo ul{list-style:none;margin-top:10px;display:grid;gap:8px}
+.fx-grupo li{display:grid;grid-template-columns:12px 1fr;gap:10px;align-items:start;font-size:.95rem}
+.fx-grupo li i{width:12px;height:12px;border-radius:4px;margin-top:6px;background:var(--c)}
+.fx-grupo li span{color:var(--tinta-suave);display:block;font-size:.9rem}
+.fx-muro{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px}
+.fx-qr{background:#fff;border:1.5px solid var(--linea);border-radius:16px;padding:14px;text-align:center;border-bottom:5px solid var(--c)}
+.fx-qr .q{display:flex;justify-content:center;min-height:136px;align-items:center}
+.fx-qr .q img,.fx-qr .q canvas{max-width:100%;height:auto}
+.fx-qr b{display:block;margin-top:8px;font-size:.95rem;line-height:1.2} .fx-qr small{color:var(--tinta-suave);font-size:.8rem}
+/* podio */
+.fx-podio{background:#0F1535;color:#fff;border-radius:22px;padding:26px;position:relative;overflow:hidden}
+.fx-podio h4{font-family:var(--display);font-size:1.6rem;font-weight:800}
+.fx-podio .est{color:#C9D2F5;margin:4px 0 16px}
+.fx-podio .est b{color:#FFE45C;font-size:1.3em}
+.fx-barras{display:grid;gap:9px}
+.fx-barra{display:grid;grid-template-columns:minmax(120px,210px) 1fr 44px;gap:12px;align-items:center;transition:transform .5s}
+.fx-barra span{font-weight:700;font-size:.98rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fx-barra .r{height:26px;border-radius:999px;background:rgba(255,255,255,.1);overflow:hidden}
+.fx-barra .r i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--c),#fff8);width:0;transition:width .7s cubic-bezier(.2,.9,.2,1)}
+.fx-barra em{font:800 1.15rem var(--display);font-style:normal;text-align:right;font-variant-numeric:tabular-nums}
+.fx-podio .acc{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.fx-podio:fullscreen{border-radius:0;padding:5vh 6vw;display:flex;flex-direction:column;justify-content:center}
+.fx-podio:fullscreen .fx-barra{grid-template-columns:minmax(200px,340px) 1fr 70px} .fx-podio:fullscreen .fx-barra span{font-size:1.5rem}
+.fx-podio:fullscreen .fx-barra .r{height:42px} .fx-podio:fullscreen .fx-barra em{font-size:2rem} .fx-podio:fullscreen h4{font-size:2.6rem}
+.fx-mivoto{background:#F7F4FE;border:1.5px solid #D9CDF7;border-radius:16px;padding:14px 16px;margin-bottom:14px}
+/* ganadora */
+.fx-gana{position:fixed;inset:0;z-index:9998;display:none;place-items:center;text-align:center;color:#fff;padding:24px;
+  background:radial-gradient(90% 70% at 50% 40%,#3B2A8C,#0F1535 70%)}
+.fx-gana.ver{display:grid}
+.fx-gana canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.fx-gana .n{font:800 clamp(6rem,26vw,16rem)/1 var(--display);color:#FFE45C;animation:fxPum .9s ease both}
+.fx-gana .k{font:700 1rem var(--texto);letter-spacing:.2em;text-transform:uppercase;color:#C9D2F5}
+.fx-gana h2{font:800 clamp(2.4rem,9vw,6.5rem)/1.02 var(--display);letter-spacing:-.02em;margin:14px 0;animation:fxPum .8s cubic-bezier(.2,1.4,.3,1) both}
+.fx-gana h2 span{color:#FFE45C}
+.fx-gana p{color:#C9D2F5;font-size:1.2rem;max-width:40ch;margin:0 auto 22px}
+@keyframes fxPum{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:scale(1)}}
+.fx-solo-ponente{display:none} body.fx-ponente .fx-solo-ponente{display:revert}
+@media (max-width:760px){
+  .fx-grupos{grid-template-columns:1fr} .fx-cab{padding:24px 20px 0}
+  .fx-pista{padding:26px calc(50% - 140px) 20px;gap:16px} .fx-carta{width:280px} .fx-pant{height:150px}
+  .fx-paso summary{grid-template-columns:52px 1fr} .fx-paso .min{display:none} .fx-det{padding:4px 16px 16px}
+  .fx-barra{grid-template-columns:110px 1fr 34px}
+}
+@media (prefers-reduced-motion:reduce){
+  .fx-late,.fx-sube,.fx-flota,.fx-raya{animation:none} .fx-raya{stroke-dashoffset:0}
+  .fx-carta{transition:none;transform:none !important;opacity:1 !important} .fx-gana .n,.fx-gana h2{animation:none}
+}
+@media print{.fx-escena canvas,.fx-nav,.fx-crono,.fx-gana{display:none !important} .fx-paso{break-inside:avoid} .fx-paso .fx-det{display:grid !important}}
 </style>
 </head>
 <body>
@@ -738,6 +861,7 @@ p,li,dd{text-wrap:pretty}
 
 <nav class="pestanas" role="tablist" aria-label="Secciones de la formación">
   <button class="pestana" role="tab" id="t-inicio" aria-controls="panel-inicio" data-panel="inicio">Presentación</button>
+  <button class="pestana" role="tab" id="t-feria" aria-controls="panel-feria" data-panel="feria">🎪 Feria de apps</button>
   <button class="pestana" role="tab" id="t-s1" aria-controls="panel-s1" data-panel="s1">1 · Tu primera app</button>
   <button class="pestana" role="tab" id="t-s2" aria-controls="panel-s2" data-panel="s2">2 · Que salga de tu ordenador</button>
   <button class="pestana" role="tab" id="t-s3" aria-controls="panel-s3" data-panel="s3">3 · Apps con datos</button>
@@ -836,7 +960,8 @@ p,li,dd{text-wrap:pretty}
       <h2>Manos a la obra</h2>
       <p class="lead">Abre la pestaña de la sesión de hoy y sigue el guion paso a paso.</p>
       <div class="fila" style="margin-top:30px">
-        <button class="btn azul" data-ir="s1">Sesión 1</button>
+        <button class="btn azul" data-ir="feria">Feria de apps</button>
+        <button class="btn linea" data-ir="s1">Sesión 1</button>
         <button class="btn linea" data-ir="s2">Sesión 2</button>
         <button class="btn linea" data-ir="s3">Sesión 3</button>
         <button class="btn linea" data-ir="s4">Sesión 4</button>
@@ -954,6 +1079,89 @@ p,li,dd{text-wrap:pretty}
   </details>
 
 </section>
+
+<!-- ═════════════════════ FERIA DE APPS (sesión de muestra) ═════════════════════ -->
+<section class="panel" id="panel-feria" role="tabpanel" aria-labelledby="t-feria">
+
+  <div class="fx-escena" id="fxEscena">
+    <canvas id="fxCielo" aria-hidden="true"></canvas>
+    <div class="fx-cab">
+      <div>
+        <p class="k">Sesión 1 · Muestra de apps</p>
+        <h2>Diez apps hechas <em>por un maestro</em></h2>
+        <p class="sub">Ninguna la ha programado un informático. Míralas, pruébalas en tu móvil y vota cuál quiere tu centro.</p>
+      </div>
+      <div class="acc no-imprimir">
+        <button class="fx-b" id="fxPantalla">Pantalla completa</button>
+        <button class="fx-b oro" data-fx-ir="fxVotar">Ir a la votación</button>
+      </div>
+    </div>
+    <div class="fx-pista" id="fxPista" tabindex="0" aria-label="Escaparate de apps"></div>
+    <div class="fx-nav no-imprimir">
+      <button class="fx-b" id="fxAnt" aria-label="App anterior">‹</button>
+      <div class="fx-puntos" id="fxPuntos"></div>
+      <button class="fx-b" id="fxSig" aria-label="App siguiente">›</button>
+    </div>
+  </div>
+
+  <div class="intro">
+    <p class="ses-etq">Sesión 1 · Dos horas · Para centros que primero quieren ver y después elegir</p>
+    <h2>Feria de apps</h2>
+  </div>
+  <p class="ses-lleva"><strong>Os lleváis:</strong> las diez apps vistas y probadas en vuestro móvil, un juego hecho por cada persona con Gemini y, sobre todo, la app que vuestro centro va a desarrollar en las próximas sesiones, elegida por votación.</p>
+  <p><strong>Antes de venir:</strong> el móvil con batería y, si puede ser, un ordenador por pareja con <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> abierto y funcionando.</p>
+
+  <h3 class="bloque">El guion de la sesión</h3>
+  <p style="color:var(--tinta-suave);margin:-6px 0 12px;max-width:70ch">Pulsa un bloque para ver qué decir y qué hacer. <span class="fx-solo-ponente">El botón ▶ pone en marcha el reloj de ese bloque.</span></p>
+  <div class="fx-guion" id="fxGuion"></div>
+
+  <h3 class="bloque" id="fxMuestra">La muestra, por problemas</h3>
+  <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">No se enseñan apps: se enseñan problemas del día a día y cómo se resolvieron. Quince minutos por bloque.</p>
+  <div class="fx-grupos" id="fxGrupos"></div>
+
+  <h3 class="bloque" id="fxProbar">Pruébalas en tu móvil</h3>
+  <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Escanea la que más te interese y trastea sin miedo: no se rompe nada. Las que piden usuario las enseña el ponente.</p>
+  <div class="fx-muro" id="fxMuro"></div>
+
+  <h3 class="bloque" id="fxJuego">Crea un juego en diez minutos</h3>
+  <p style="max-width:70ch">Para que nadie se vaya sin haber creado algo. Copia el encargo, cambia lo que está entre corchetes, pégalo en Gemini con <strong>Canvas</strong> activado y juega.</p>
+  <div class="caja-codigo"><pre class="codigo" id="fxPrompt" style="white-space:pre-wrap">Hazme un juego para la pizarra digital de mi clase de [3.º de Primaria] sobre [las tablas de multiplicar del 2 al 5].
+
+Cómo se juega:
+- Arriba aparece una pregunta y debajo caen despacio cuatro globos con respuestas.
+- El alumno toca el globo correcto. Si acierta, suma un punto y sale una pregunta nueva. Si falla, pierde una vida.
+- Hay tres vidas y un marcador con el récord.
+- Cada diez aciertos, los globos caen un poco más rápido.
+
+Cómo lo quiero:
+- Todo en un único archivo HTML, sin nada que instalar.
+- Letras y globos grandes, que se vean desde el fondo de la clase, y que funcione tocando la pantalla.
+- Colores alegres y un sonido corto al acertar, con botón para silenciarlo.
+
+Dame el archivo completo, de principio a fin.</pre><button class="btn suave copiar" data-copiar="fxPrompt">Copiar</button></div>
+  <p class="consejo">¿Algo no te gusta? Pídelo en una frase: «Hazlo más lento», «Cambia los globos por estrellas». Un cambio cada vez.</p>
+
+  <h3 class="bloque" id="fxVotar">La votación</h3>
+  <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Cada persona elige hasta dos apps desde su móvil. La más votada es la que el centro desarrollará en las próximas sesiones.</p>
+  <div class="fx-mivoto" id="fxMiVoto" style="display:none"></div>
+  <div class="fx-podio" id="fxPodio">
+    <h4 id="fxPodioTit">¿Qué app quiere este centro?</h4>
+    <p class="est" id="fxPodioEst"></p>
+    <div class="fx-barras" id="fxBarras"></div>
+    <div class="acc fx-solo-ponente no-imprimir" id="fxAcc"></div>
+  </div>
+
+  <h3 class="bloque">Y después</h3>
+  <div class="retos">
+    <div class="reto"><b>Sesión 2 · La hacemos nuestra</b><p>La app ganadora, con el nombre, los cursos y los colores del centro, publicada en internet con su QR.</p></div>
+    <div class="reto"><b>Sesión 3 · Con datos del centro</b><p>La base de datos propia, las cuentas del claustro y las reglas de seguridad.</p></div>
+    <div class="reto"><b>Sesión 4 · En marcha</b><p>Mejoras pedidas por el claustro, prueba real en las aulas y cómo mantenerla.</p></div>
+  </div>
+  <p class="consejo">Este reparto se ajusta según la app elegida: las que no necesitan base de datos van más rápido.</p>
+</section>
+
+<div class="fx-crono no-imprimir" id="fxCrono" role="timer"><span id="fxCronoTit"></span><span class="t" id="fxCronoT">0:00</span><button id="fxCronoX" aria-label="Parar el reloj">✕</button></div>
+<div class="fx-gana" id="fxGana" role="dialog" aria-label="App ganadora"><canvas id="fxConfeti" aria-hidden="true"></canvas><div id="fxGanaIn"></div></div>
 
 <!-- ═════════════════════ SESIÓN 1 ═════════════════════ -->
 <section class="panel" id="panel-s1" role="tabpanel" aria-labelledby="t-s1">
@@ -2195,6 +2403,8 @@ function aplicarEstado(e, navegar) {
   S.estado.panel = e.panel || S.estado.panel;
   if (typeof e.diapo === 'number') S.estado.diapo = e.diapo;
   S.estado.actividad = e.actividad || '';
+  S.estado.feria = e.feria || ''; S.estado.ganadora = e.ganadora || '';
+  document.dispatchEvent(new Event('feria'));
   if (e.pregunta && e.pregunta !== S.estado.pregunta) { S.estado.pregunta = e.pregunta; pintarPregunta(); }
   if (antes !== S.estado.actividad) R.descartado = false;
   pintarMando(); pintarBotonActividad(); pintarBanner();
@@ -2315,6 +2525,7 @@ document.addEventListener('click', e => {
 });
 
 function pintarModo() {
+  document.dispatchEvent(new Event('feria'));
   const chip = $('modoChip'); if (!chip) return;
   let clase = 'ensayo', txt = 'Modo ensayo · todo en este ordenador';
   if (S.sala && FB.ok) { clase = 'vivo'; txt = (S.rol === 'asistente' ? 'Conectado a la sesión ' : 'Sesión ') + S.sala + ' en directo'; }
@@ -2381,7 +2592,7 @@ $('respEnviar').onclick = async () => {
 /* ── Mando (móvil) y ventana de ponente ── */
 const mando = $('mando');
 const M = { inicio: Date.now(), reloj: null };
-const TITULOS_PANEL = { inicio: 'Presentación', s1: 'Sesión 1', s2: 'Sesión 2', s3: 'Sesión 3', s4: 'Sesión 4' };
+const TITULOS_PANEL = { inicio: 'Presentación', feria: 'Feria de apps', s1: 'Sesión 1', s2: 'Sesión 2', s3: 'Sesión 3', s4: 'Sesión 4' };
 function tituloDiapo(i) { const d = diapos[i]; if (!d) return ''; const h = d.querySelector('h2'); return h ? h.textContent.trim() : 'Diapositiva ' + (i + 1); }
 function mmss(ms) { const s = Math.floor(ms / 1000); return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); }
 function pintarMando() {
@@ -2488,8 +2699,10 @@ function conectarRespuestas() {
     refResp = ref('salas/' + S.sala + '/respuestas');
     refResp.on('value', sn => {
       const v = sn.val() || {};
-      R.lista = Object.entries(v).map(([id, r]) => ({ id, texto: r.texto, t: r.t || 0 })).sort((a, b) => b.t - a.t);
-      pintarRadio();
+      const todo = Object.entries(v).map(([id, r]) => ({ id, texto: r.texto, t: r.t || 0 })).sort((a, b) => b.t - a.t);
+      R.votos = todo.filter(r => String(r.texto).startsWith('#voto:'));
+      R.lista = todo.filter(r => !String(r.texto).startsWith('#voto:'));
+      pintarRadio(); document.dispatchEvent(new Event('votos'));
     });
   } else if (R.fuente === 'hoja') {
     const tirar = () => {
@@ -2971,6 +3184,252 @@ document.addEventListener('click', e => { if (e.target.closest('[data-recreativa
 /* ════════════════ ARRANQUE ════════════════ */
 $('reglasDirecto').textContent = "{\n  \"rules\": {\n    \".read\": false,\n    \".write\": false,\n    \"admins\": {\n      \"$uid\": { \".read\": \"auth != null && auth.uid === $uid\" }\n    },\n    \"salas\": {\n      \"$s\": {\n        \".read\": true,\n        \".write\": \"auth != null && data.child('dueno').val() === auth.uid && !newData.exists()\",\n        \"dueno\": {\n          \".write\": \"auth != null && !data.exists() && newData.val() === auth.uid\"\n        },\n        \"estado\": {\n          \".write\": \"auth != null && (root.child('salas/' + $s + '/dueno').val() === auth.uid || root.child('salas/' + $s + '/mandos/' + auth.uid).val() === true)\"\n        },\n        \"mandos\": {\n          \"$uid\": {\n            \".write\": \"auth != null && root.child('salas/' + $s + '/dueno').val() === auth.uid\"\n          }\n        },\n        \"solicitudes\": {\n          \"$uid\": {\n            \".write\": \"auth != null && (auth.uid === $uid || root.child('salas/' + $s + '/dueno').val() === auth.uid)\",\n            \".validate\": \"newData.isString() && newData.val().length <= 40 && root.child('salas/' + $s + '/dueno').exists()\"\n          }\n        },\n        \"respuestas\": {\n          \".write\": \"auth != null && root.child('salas/' + $s + '/dueno').val() === auth.uid\",\n          \"$uid\": {\n            \".write\": \"auth != null && auth.uid === $uid\",\n            \".validate\": \"newData.hasChildren(['texto', 't']) && newData.child('texto').isString() && newData.child('texto').val().length > 0 && newData.child('texto').val().length <= 200 && root.child('salas/' + $s + '/dueno').exists()\"\n          }\n        }\n      }\n    },\n    \"galeria\": {\n      \".read\": true,\n      \"$id\": {\n        \".write\": \"auth != null && ((!data.exists() && newData.child('uid').val() === auth.uid) || data.child('uid').val() === auth.uid || root.child('admins/' + auth.uid).val() === true)\",\n        \".validate\": \"newData.hasChildren(['titulo', 'enlace', 'uid', 't']) && newData.child('titulo').isString() && newData.child('titulo').val().length > 0 && newData.child('titulo').val().length <= 80 && newData.child('enlace').isString() && newData.child('enlace').val().beginsWith('https://') && newData.child('enlace').val().length <= 300 && (!newData.child('problema').exists() || newData.child('problema').val().length <= 200) && (!newData.child('prompt').exists() || newData.child('prompt').val().length <= 2000)\",\n        \"votos\": {\n          \"$uid\": {\n            \".write\": \"auth != null && auth.uid === $uid\",\n            \".validate\": \"newData.val() === true\"\n          }\n        }\n      }\n    }\n  }\n}";
 S.estado.pregunta = preguntaActual();
+
+/* ════════════════ FERIA DE APPS: escaparate, guion con reloj, muro de QR y votación ════════════════ */
+(function feria() {
+if (!$('panel-feria')) return;
+const FX = {
+  agora:        { cat: 'Aula',        g: 0, problema: '¿Qué leemos y qué problemas hacemos esta semana? El plan, ya repartido por cursos y semanas.' },
+  registro:     { cat: 'Aula',        g: 0, problema: 'Lecturas con preguntas de comprensión. El alumnado responde y los resultados se recogen solos.' },
+  sda:          { cat: 'Aula',        g: 0, problema: 'Una situación de aprendizaje bien armada con el currículo andaluz, sin empezar de cero.' },
+  troglodita:   { cat: 'Aula',        g: 0, problema: 'La historia de tu pueblo convertida en videojuego. El alumnado aprende jugando.' },
+  convive:      { cat: 'Convivencia', g: 1, problema: '¿Quién está solo en clase? El sociograma lo enseña y propone cómo agrupar.' },
+  convivemas:   { cat: 'Convivencia', g: 1, problema: 'El parte de convivencia en dos minutos, conforme al Decreto, y con sus gráficas.' },
+  evaluaciones: { cat: 'Gestión',     g: 2, problema: 'Los resultados de cada evaluación analizados sin hojas de cálculo, con actas e informes.' },
+  horarios:     { cat: 'Gestión',     g: 2, problema: 'El horario del centro sin choques, a partir de las condiciones del profesorado.' },
+  teletrabajo:  { cat: 'Gestión',     g: 2, problema: 'Reuniones en línea con asistencia, votaciones y el acta casi hecha.' },
+  pdfaword:     { cat: 'Gestión',     g: 2, problema: 'Ese PDF que no se puede editar, convertido a Word en tu propio ordenador.' }
+};
+const GRUPOS = [
+  { n: 'En el aula', s: 'Lo que usa el alumnado o prepara la clase', c: '#2459C7' },
+  { n: 'Convivencia', s: 'Conocer al grupo y registrar lo que pasa', c: '#D2503B' },
+  { n: 'Gestión del centro', s: 'Lo que quita tiempo al claustro y al equipo directivo', c: '#177A4C' }
+];
+const ORDEN = ['troglodita', 'registro', 'convive', 'evaluaciones', 'agora', 'convivemas', 'horarios', 'sda', 'teletrabajo', 'pdfaword'];
+const LISTA = ORDEN.map(id => APPS.find(a => a.id === id)).filter(Boolean);
+const conUsuario = a => /usuario/i.test(a.usa || '');
+const B = 'rgba(255,255,255,';
+/* Pantallas en miniatura dibujadas: cada una cuenta de un vistazo qué hace la app */
+const MINI = {
+  troglodita: '<rect width="340" height="190" fill="#3d2a16"/><circle cx="270" cy="46" r="22" fill="#FFE45C" class="fx-late"/><path d="M0 150h120v-30h70v30h150v40H0z" fill="#6b8f3a"/><path d="M0 190V150h120v-30h70v30h150v40z" fill="none" stroke="#2f4a14" stroke-width="3"/><g class="fx-flota"><rect x="78" y="112" width="26" height="36" rx="8" fill="#F2B880"/><circle cx="91" cy="100" r="13" fill="#F2B880"/><path d="M78 96q13-16 26 0v-8q-13-12-26 0z" fill="#3a2410"/></g><path d="M230 150l14-40 14 40z" fill="#9aa5b1"/><path d="M286 150l10-28 10 28z" fill="#9aa5b1"/>',
+  registro: '<rect x="40" y="34" width="120" height="130" rx="8" fill="' + B + '.95)"/><rect x="180" y="34" width="120" height="130" rx="8" fill="' + B + '.95)"/><g stroke="#E8612C" stroke-width="6" stroke-linecap="round"><path d="M58 60h84M58 82h84M58 104h60"/></g><g fill="none" stroke-width="5" stroke-linecap="round"><path d="M198 62l8 8 14-16" stroke="#177A4C" class="fx-raya"/><path d="M198 98l8 8 14-16" stroke="#177A4C" class="fx-raya"/><path d="M198 132h20" stroke="#bbb"/></g><g fill="#F3D9CD"><rect x="232" y="56" width="52" height="10" rx="5"/><rect x="232" y="92" width="52" height="10" rx="5"/><rect x="232" y="128" width="52" height="10" rx="5"/></g>',
+  convive: '<g stroke="' + B + '.75)" stroke-width="3"><path d="M170 96L86 54M170 96l92-40M170 96l-70 56M170 96l80 52M86 54l14 98M262 56l-12 92"/></g><circle cx="170" cy="96" r="24" fill="#fff" class="fx-late"/><g fill="' + B + '.92)"><circle cx="86" cy="54" r="15"/><circle cx="262" cy="56" r="15"/><circle cx="100" cy="152" r="15"/><circle cx="250" cy="148" r="15"/></g><circle cx="304" cy="110" r="13" fill="#FFE45C" class="fx-flota"/>',
+  evaluaciones: '<path d="M40 160h260" stroke="' + B + '.6)" stroke-width="3"/><g fill="' + B + '.92)"><rect class="fx-sube" x="56" y="90" width="34" height="70" rx="5"/><rect class="fx-sube" style="animation-delay:.2s" x="106" y="60" width="34" height="100" rx="5"/><rect class="fx-sube" style="animation-delay:.4s" x="156" y="104" width="34" height="56" rx="5"/><rect class="fx-sube" style="animation-delay:.6s" x="206" y="44" width="34" height="116" rx="5"/></g><rect class="fx-sube" style="animation-delay:.8s" x="256" y="76" width="34" height="84" rx="5" fill="#FFE45C"/>',
+  agora: '<path d="M170 30l96 40H74z" fill="' + B + '.95)"/><g fill="' + B + '.9)"><rect x="92" y="78" width="18" height="62"/><rect x="134" y="78" width="18" height="62"/><rect x="188" y="78" width="18" height="62"/><rect x="230" y="78" width="18" height="62"/><rect x="74" y="144" width="192" height="14" rx="3"/></g><g class="fx-flota"><rect x="262" y="112" width="52" height="46" rx="8" fill="#FFE45C"/><path d="M272 128h32M272 142h20" stroke="#1F4E8C" stroke-width="5" stroke-linecap="round"/></g>',
+  convivemas: '<rect x="70" y="26" width="200" height="140" rx="10" fill="' + B + '.96)"/><rect x="88" y="44" width="90" height="12" rx="6" fill="#2563EB"/><g fill="#D6E2FB"><rect x="88" y="70" width="164" height="9" rx="4"/><rect x="88" y="88" width="164" height="9" rx="4"/><rect x="88" y="106" width="110" height="9" rx="4"/></g><rect x="88" y="130" width="62" height="22" rx="11" fill="#177A4C"/><circle cx="262" cy="40" r="20" fill="#FFE45C" class="fx-late"/><path d="M262 30v12M262 49v1" stroke="#1B2A4E" stroke-width="5" stroke-linecap="round"/>',
+  horarios: '<g fill="' + B + '.25)"><rect x="40" y="30" width="260" height="130" rx="8"/></g><g>' + [0, 1, 2, 3, 4].map(c => [0, 1, 2, 3].map(r => '<rect x="' + (50 + c * 50) + '" y="' + (40 + r * 30) + '" width="42" height="22" rx="5" fill="' + ['#fff', '#FFE45C', '#BFE3CF', '#FBD0C6', '#D6E2FB'][(c * 2 + r * 3) % 5] + '"' + ((c + r) % 4 === 0 ? ' class="fx-late"' : '') + '/>').join('')).join('') + '</g>',
+  sda: '<g fill="' + B + '.95)"><rect x="36" y="76" width="70" height="46" rx="10"/><rect x="135" y="76" width="70" height="46" rx="10"/><rect x="234" y="76" width="70" height="46" rx="10"/></g><g stroke="#FFE45C" stroke-width="5" stroke-linecap="round" fill="none"><path d="M110 99h20" class="fx-raya"/><path d="M209 99h20" class="fx-raya"/></g><g fill="#1E40AF"><circle cx="71" cy="99" r="9"/><rect x="161" y="90" width="18" height="18" rx="3"/><path d="M269 88l11 20h-22z"/></g><rect x="110" y="140" width="120" height="14" rx="7" fill="' + B + '.5)"/>',
+  teletrabajo: '<g fill="' + B + '.94)"><rect x="40" y="30" width="80" height="58" rx="8"/><rect x="130" y="30" width="80" height="58" rx="8"/><rect x="220" y="30" width="80" height="58" rx="8"/><rect x="40" y="100" width="170" height="62" rx="8"/></g><g fill="#3949AB"><circle cx="80" cy="52" r="11"/><circle cx="170" cy="52" r="11" class="fx-late"/><circle cx="260" cy="52" r="11"/></g><g stroke="#3949AB" stroke-width="5" stroke-linecap="round"><path d="M56 118h138M56 132h138M56 146h80"/></g><rect x="222" y="104" width="78" height="54" rx="8" fill="#FFE45C" class="fx-flota"/><path d="M240 132l10 10 22-24" stroke="#1B2A4E" stroke-width="6" fill="none" stroke-linecap="round"/>',
+  pdfaword: '<rect x="44" y="40" width="96" height="116" rx="8" fill="' + B + '.96)"/><text x="92" y="108" text-anchor="middle" font-family="system-ui" font-weight="800" font-size="26" fill="#DC2626">PDF</text><rect x="200" y="40" width="96" height="116" rx="8" fill="#fff"/><text x="248" y="108" text-anchor="middle" font-family="system-ui" font-weight="800" font-size="26" fill="#2459C7">W</text><g class="fx-flota"><path d="M152 98h30M172 86l12 12-12 12" stroke="#FFE45C" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>'
+};
+const mini = id => '<svg viewBox="0 0 340 190" preserveAspectRatio="xMidYMid slice" aria-hidden="true">' + (MINI[id] || '') + '</svg>';
+
+/* ── Escaparate ── */
+const pista = $('fxPista'), puntos = $('fxPuntos');
+pista.innerHTML = LISTA.map(a => {
+  const f = FX[a.id] || { cat: '', problema: a.desc };
+  return '<article class="fx-carta" style="--c:' + a.color + '" data-fx="' + a.id + '"><div class="fx-pant">' + mini(a.id) + '</div><div class="fx-cuerpo">' +
+    '<span class="fx-cat">' + esc(f.cat) + '</span><h3>' + esc(a.nombre) + '</h3><p>' + esc(f.problema) + '</p>' +
+    '<div class="fx-pie">' + (a.url ? '<a class="btn linea" href="' + esc(a.url) + '" target="_blank" rel="noopener">Abrir</a>' : '') +
+    '<button class="fx-voto" data-fxvoto="' + a.id + '" aria-pressed="false" hidden>Votar</button></div></div></article>';
+}).join('');
+puntos.innerHTML = LISTA.map(() => '<i></i>').join('');
+const cartas = [...pista.children];
+const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let fxCentro = 0, fxRaf = 0;
+function colocar() {
+  fxRaf = 0;
+  const r = pista.getBoundingClientRect(), mid = r.left + r.width / 2; let mejor = 0, dmin = 1e9;
+  cartas.forEach((c, i) => {
+    const b = c.getBoundingClientRect(), d = (b.left + b.width / 2 - mid) / b.width, ad = Math.abs(d);
+    if (ad < dmin) { dmin = ad; mejor = i; }
+    if (!quieto) { c.style.transform = 'rotateY(' + Math.max(-38, Math.min(38, -d * 30)) + 'deg) scale(' + Math.max(.8, 1.06 - ad * .16) + ') translateZ(' + (-Math.min(ad, 2) * 60) + 'px)'; c.style.opacity = Math.max(.45, 1 - ad * .32); }
+  });
+  fxCentro = mejor;
+  cartas.forEach((c, i) => c.classList.toggle('centro', i === mejor));
+  [...puntos.children].forEach((p, i) => p.classList.toggle('on', i === mejor));
+}
+const pedir = () => { if (!fxRaf) fxRaf = requestAnimationFrame(colocar); };
+function irCarta(i) {
+  i = (i + cartas.length) % cartas.length; const c = cartas[i];
+  pista.scrollTo({ left: c.offsetLeft - (pista.clientWidth - c.offsetWidth) / 2, behavior: quieto ? 'auto' : 'smooth' });
+}
+pista.addEventListener('scroll', pedir, { passive: true }); addEventListener('resize', pedir);
+$('fxAnt').onclick = () => irCarta(fxCentro - 1); $('fxSig').onclick = () => irCarta(fxCentro + 1);
+pista.addEventListener('keydown', e => { if (e.key === 'ArrowRight') { e.preventDefault(); e.stopPropagation(); irCarta(fxCentro + 1); } if (e.key === 'ArrowLeft') { e.preventDefault(); e.stopPropagation(); irCarta(fxCentro - 1); } });
+pista.addEventListener('click', e => { const c = e.target.closest('.fx-carta'); if (c && !e.target.closest('a,button') && !c.classList.contains('centro')) irCarta(cartas.indexOf(c)); });
+$('fxPantalla').onclick = () => { const el = $('fxEscena'); if (document.fullscreenElement) document.exitFullscreen(); else if (el.requestFullscreen) el.requestFullscreen().then(() => setTimeout(() => irCarta(fxCentro), 200)); };
+document.addEventListener('click', e => { const b = e.target.closest('[data-fx-ir]'); if (!b) return; if (document.fullscreenElement) document.exitFullscreen(); const d = $(b.dataset.fxIr); if (d) d.scrollIntoView({ behavior: quieto ? 'auto' : 'smooth', block: 'start' }); });
+
+/* Cielo: puntos que se unen, como una red de aulas conectadas */
+(function cielo() {
+  const cv = $('fxCielo'), cx = cv.getContext('2d'); let P = [], w = 0, h = 0, vivo = false;
+  function medir() { const r = cv.getBoundingClientRect(); w = cv.width = r.width; h = cv.height = r.height; const n = Math.min(70, Math.round(w * h / 16000)); P = Array.from({ length: n }, () => ({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - .5) * .25, vy: (Math.random() - .5) * .25 })); }
+  function paso() {
+    if (!vivo) return; cx.clearRect(0, 0, w, h);
+    P.forEach(p => { p.x += p.vx; p.y += p.vy; if (p.x < 0 || p.x > w) p.vx *= -1; if (p.y < 0 || p.y > h) p.vy *= -1; });
+    for (let i = 0; i < P.length; i++) { const a = P[i]; cx.fillStyle = 'rgba(255,255,255,.55)'; cx.beginPath(); cx.arc(a.x, a.y, 1.6, 0, 6.3); cx.fill();
+      for (let j = i + 1; j < P.length; j++) { const b = P[j], d = Math.hypot(a.x - b.x, a.y - b.y); if (d < 120) { cx.strokeStyle = 'rgba(160,190,255,' + (.22 * (1 - d / 120)) + ')'; cx.beginPath(); cx.moveTo(a.x, a.y); cx.lineTo(b.x, b.y); cx.stroke(); } } }
+    requestAnimationFrame(paso);
+  }
+  function arrancar() { const on = panelActual() === 'feria' && !quieto; if (on && !vivo) { vivo = true; medir(); paso(); } else if (!on) vivo = false; if (panelActual() === 'feria') { if (quieto) { medir(); vivo = true; paso(); vivo = false; } setTimeout(() => { colocar(); pintarMuro(); }, 30); } }
+  document.addEventListener('panel', arrancar); addEventListener('resize', () => { if (vivo) medir(); }); document.addEventListener('fullscreenchange', () => setTimeout(() => { if (vivo) medir(); colocar(); }, 150));
+  setTimeout(arrancar, 0);
+})();
+
+/* ── Guion con reloj ── */
+const GUION = [
+  { h: '0:00', m: 10, t: 'Bienvenida y radiografía del claustro', s: 'Cada persona responde desde su móvil qué tarea le quita más tiempo',
+    dice: 'Soy maestro, no informático. Todo lo que vais a ver hoy lo he hecho hablando con una IA, igual que vais a hacer vosotros. Antes de enseñar nada, quiero saber qué os quita tiempo en el cole.',
+    hace: ['Pulsa «Empezar sesión en directo» y proyecta el QR.', 'Comenta en voz alta dos o tres respuestas según llegan.', 'Quédate con los temas que más se repiten: te dicen qué apps destacar después.'], ir: ['directo', 'Abrir «En directo»'] },
+  { h: '0:10', m: 10, t: 'Así nació una app', s: 'La historia real de Teletrabajo, de un problema a una herramienta',
+    dice: 'Esta app no empezó con una idea brillante, empezó con un fastidio: redactar el acta después de cada reunión. Mirad cómo fue creciendo, conversación a conversación.',
+    hace: ['Recorre la línea del tiempo de la presentación, hito a hito.', 'Lee en voz alta uno de los encargos reales: se ve que es lenguaje normal.'], ir: ['inicio', 'Abrir la presentación'] },
+  { h: '0:20', m: 15, t: 'Muestra · En el aula', s: 'Troglodita, Mis Lecturas, Ágora y Generador de SdA',
+    dice: 'Empiezo por lo que toca al alumnado. Fijaos menos en la app y más en el problema que resuelve: seguro que en vuestro centro también existe.',
+    hace: ['Pon el escaparate en pantalla completa y abre cada app desde su tarjeta.', 'Dos o tres minutos por app: el problema, una demostración corta y nada más.', 'El Troglodita primero: es el que rompe el hielo.'], ir: ['fxEscena', 'Ir al escaparate'] },
+  { h: '0:35', m: 15, t: 'Muestra · Convivencia', s: 'Convivencia+ (sociograma) y Convive+ (partes)',
+    dice: 'Todos tenemos un alumno que está solo y no lo vemos. Y todos hemos perdido media hora con un parte. Estas dos apps salieron de ahí.',
+    hace: ['Entra con tu usuario: son apps con datos y se enseñan desde tu ordenador.', 'Usa un grupo inventado, nunca datos reales de tu centro.'], ir: ['fxMuestra', 'Ver la muestra'] },
+  { h: '0:50', m: 15, t: 'Muestra · Gestión del centro', s: 'Evaluaciones, Cuadra Horarios, Teletrabajo y PDF a Word',
+    dice: 'Y ahora lo que nos quita las tardes al claustro y al equipo directivo. Si alguna os ahorra una hora a la semana, ya ha merecido la pena.',
+    hace: ['Cuadra Horarios y PDF a Word no piden usuario: que los abran a la vez que tú.', 'Cierra el bloque preguntando: «¿Cuál os llevaríais mañana?».'], ir: ['fxMuestra', 'Ver la muestra'] },
+  { h: '1:05', m: 25, t: 'Pruébalas en tu móvil', s: 'Muro de códigos QR: cada persona entra en las que más le interesen',
+    dice: 'Ya me habéis visto a mí. Ahora os toca: escanead la que más os haya llamado la atención y trastead sin miedo, no se rompe nada.',
+    hace: ['Proyecta el muro de QR y pasea por la sala.', 'Apunta las dudas que se repitan: son el temario de la sesión siguiente.', 'A mitad de bloque, pide que prueben una segunda app.'], ir: ['fxProbar', 'Ir al muro de QR'] },
+  { h: '1:30', m: 15, t: 'Crea un juego en diez minutos', s: 'Cada persona hace su juego con Gemini y Canvas',
+    dice: 'No quiero que os vayáis creyendo que esto es cosa mía. En diez minutos vais a tener un juego hecho por vosotros, funcionando.',
+    hace: ['Todos copian el encargo y cambian curso y tema.', 'Quien termine antes, que pida un cambio en una sola frase.', 'Proyecta dos o tres juegos del grupo: es el mejor momento de la sesión.'], ir: ['fxJuego', 'Ir al encargo'] },
+  { h: '1:45', m: 10, t: 'Votación y app ganadora', s: 'Hasta dos votos por persona, con el resultado en directo',
+    dice: 'Llega el momento de decidir. Votad pensando en el centro, no solo en vuestra clase: la que gane la vamos a desarrollar entre todos.',
+    hace: ['Pulsa «Abrir la votación» y pon el marcador en pantalla completa.', 'Cuando hayan votado casi todos, pulsa «Cerrar y descubrir la ganadora».', 'Si hay empate o dos muy igualadas, se pueden trabajar las dos en dos grupos.'], ir: ['fxVotar', 'Ir a la votación'] },
+  { h: '1:55', m: 5, t: 'Qué viene ahora', s: 'Reparto de las siguientes sesiones y qué traer',
+    dice: 'En la próxima sesión esta app deja de ser mía y empieza a ser vuestra: con vuestro nombre, vuestros cursos y vuestros colores.',
+    hace: ['Acuerda quién coordina en el centro y con qué cuenta de Google se creará todo.', 'Pide que traigan pensado qué cambiarían de la app ganadora.'] }
+];
+$('fxGuion').innerHTML = GUION.map((g, i) => '<details class="fx-paso"><summary><span class="h">' + g.h + '</span><span><b>' + esc(g.t) + '</b><small>' + esc(g.s) + '</small></span><span class="min">' + g.m + ' min</span></summary>' +
+  '<div class="fx-det"><p class="dice">«' + esc(g.dice) + '»</p><ul>' + g.hace.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul><div class="fila no-imprimir">' +
+  '<button class="btn azul fx-solo-ponente" data-fxcrono="' + i + '">▶ Reloj de ' + g.m + ' min</button>' + (g.ir ? '<button class="btn linea" data-fxa="' + g.ir[0] + '">' + esc(g.ir[1]) + '</button>' : '') + '</div></div></details>').join('');
+let cronoFin = 0, cronoInt = null;
+function pintarCrono() {
+  const q = Math.round((cronoFin - Date.now()) / 1000), a = Math.abs(q);
+  $('fxCronoT').textContent = (q < 0 ? '+' : '') + Math.floor(a / 60) + ':' + String(a % 60).padStart(2, '0');
+  $('fxCrono').classList.toggle('fin', q <= 0);
+}
+$('fxGuion').addEventListener('click', e => {
+  const c = e.target.closest('[data-fxcrono]'), a = e.target.closest('[data-fxa]');
+  if (c) { const g = GUION[+c.dataset.fxcrono]; cronoFin = Date.now() + g.m * 60000; $('fxCronoTit').textContent = g.t; $('fxCrono').classList.add('ver'); clearInterval(cronoInt); cronoInt = setInterval(pintarCrono, 1000); pintarCrono(); }
+  if (a) { const id = a.dataset.fxa; if (id.startsWith('fx')) $(id).scrollIntoView({ behavior: quieto ? 'auto' : 'smooth', block: 'start' }); else { irA(id); scrollTo({ top: 0 }); } }
+});
+$('fxCronoX').onclick = () => { clearInterval(cronoInt); $('fxCrono').classList.remove('ver'); };
+
+/* ── Muestra por problemas y muro de QR ── */
+$('fxGrupos').innerHTML = GRUPOS.map((g, gi) => '<div class="fx-grupo" style="--g:' + g.c + '"><h4>' + g.n + '</h4><small>' + g.s + '</small><ul>' +
+  LISTA.filter(a => (FX[a.id] || {}).g === gi).map(a => '<li style="--c:' + a.color + '"><i></i><div><b>' + esc(a.nombre) + '</b><span>' + esc(FX[a.id].problema) + '</span></div></li>').join('') + '</ul></div>').join('');
+let muroHecho = false;
+function pintarMuro() {
+  if (muroHecho) return; muroHecho = true;
+  $('fxMuro').innerHTML = LISTA.map(a => '<div class="fx-qr" style="--c:' + a.color + '"><div class="q" data-q="' + esc(a.url) + '"></div><b>' + esc(a.nombre) + '</b><small>' + (conUsuario(a) ? 'Con usuario · la enseña el ponente' : 'Pruébala tú') + '</small></div>').join('');
+  $$('#fxMuro .q').forEach(q => pintarQR(q, q.dataset.q, 132));
+}
+
+/* ── Votación ── */
+const V = { locales: {}, mios: new Set(leer('fxMios', [])), ultima: '' };
+const estadoFeria = () => S.estado.feria || '';
+const enSala = () => !!(S.sala && FB.ok);
+function recuento() {
+  const c = {}; LISTA.forEach(a => c[a.id] = 0); let n = 0;
+  if (enSala()) (R.votos || []).forEach(v => { const ids = String(v.texto).slice(6).split(',').filter(x => x in c); if (ids.length) n++; ids.forEach(x => c[x]++); });
+  else { Object.entries(V.locales).forEach(([k, x]) => { if (k in c) c[k] = x; }); n = V.nLocal || 0; }
+  return { c, n };
+}
+function pintarFeria() {
+  if (!$('fxBarras')) return;
+  const ponente = S.rol !== 'asistente' && S.rol !== 'mando';
+  document.body.classList.toggle('fx-ponente', ponente);
+  const ef = estadoFeria(), { c, n } = recuento(), max = Math.max(1, ...Object.values(c));
+  const orden = LISTA.slice().sort((a, b) => c[b.id] - c[a.id]);
+  const caja = $('fxBarras');
+  if (!caja.children.length) caja.innerHTML = LISTA.map(a => '<div class="fx-barra" data-b="' + a.id + '" style="--c:' + a.color + '"><span>' + esc(a.nombre) + '</span><div class="r"><i></i></div><em>0</em></div>').join('');
+  orden.forEach((a, i) => { const el = caja.querySelector('[data-b="' + a.id + '"]'); el.style.order = i; el.querySelector('i').style.width = (c[a.id] / max * 100) + '%'; el.querySelector('em').textContent = c[a.id]; });
+  $('fxPodioTit').textContent = ef === 'ganadora' || ef === 'cerrada' ? 'Votación cerrada' : ef === 'abierta' ? 'Votación abierta: ¡a votar!' : '¿Qué app quiere este centro?';
+  $('fxPodioEst').innerHTML = '<b>' + n + '</b> ' + (n === 1 ? 'persona ha votado' : 'personas han votado') + (enSala() ? ' · sesión ' + esc(S.sala) : ponente ? ' · modo ensayo (sin sesión en directo)' : '');
+  if (ponente) $('fxAcc').innerHTML =
+    (ef === 'abierta' ? '<button class="fx-b oro" data-fxv="cerrar">Cerrar y descubrir la ganadora</button>' : '<button class="fx-b oro" data-fxv="abrir">' + (ef ? 'Volver a abrir la votación' : 'Abrir la votación') + '</button>') +
+    '<button class="fx-b" data-fxv="pantalla">Pantalla completa</button>' +
+    (enSala() ? '' : '<button class="fx-b" data-fxv="simular">Simular votos (ensayo)</button>') +
+    (n ? '<button class="fx-b" data-fxv="vaciar">Borrar votos</button>' : '') +
+    (enSala() ? '' : '<span style="color:#C9D2F5;font-size:.9rem;flex-basis:100%">Para votar desde los móviles, empieza la sesión en directo.</span>');
+  // botones de voto en las tarjetas y resumen del asistente
+  const puedeVotar = S.rol === 'asistente' && FB.ok && ef === 'abierta';
+  $$('[data-fxvoto]').forEach(b => { b.hidden = !puedeVotar; b.setAttribute('aria-pressed', V.mios.has(b.dataset.fxvoto)); b.textContent = V.mios.has(b.dataset.fxvoto) ? '✓ Votada' : 'Votar'; });
+  const mv = $('fxMiVoto');
+  if (S.rol === 'asistente') {
+    mv.style.display = '';
+    mv.innerHTML = ef === 'abierta'
+      ? '<b>Elige hasta dos apps.</b> ' + (V.mios.size ? 'Has votado: ' + [...V.mios].map(id => esc((APPS.find(a => a.id === id) || {}).nombre || id)).join(' y ') + '.' : 'Aún no has votado.') +
+        '<div class="fila" style="margin-top:10px">' + LISTA.map(a => '<button class="fx-voto" style="--c:' + a.color + '" data-fxvoto="' + a.id + '" aria-pressed="' + V.mios.has(a.id) + '">' + (V.mios.has(a.id) ? '✓ ' : '') + esc(a.nombre) + '</button>').join('') + '</div>'
+      : ef ? 'La votación está cerrada. ¡Gracias por votar!' : 'La votación se abrirá al final de la sesión. Mientras tanto, prueba las apps.';
+  } else mv.style.display = 'none';
+  if (ef === 'ganadora' && S.estado.ganadora && V.ultima !== S.estado.ganadora) { V.ultima = S.estado.ganadora; revelar(S.estado.ganadora); }
+  if (ef !== 'ganadora') { V.ultima = ''; $('fxGana').classList.remove('ver'); }
+}
+async function votar(id) {
+  if (V.mios.has(id)) V.mios.delete(id); else { if (V.mios.size >= 2) { tostada('Solo dos votos: quita uno para cambiar'); return; } V.mios.add(id); }
+  guardar('fxMios', [...V.mios]); pintarFeria();
+  try { await ref('salas/' + S.sala + '/respuestas/' + FB.uid).set({ texto: '#voto:' + [...V.mios].join(','), t: TS() }); }
+  catch (e) { tostada('No se pudo enviar el voto'); }
+}
+function fijar(c) { emitir(c); pintarFeria(); }
+document.addEventListener('click', e => {
+  const v = e.target.closest('[data-fxvoto]'); if (v) { e.stopPropagation(); if (S.rol === 'asistente' && FB.ok && estadoFeria() === 'abierta') votar(v.dataset.fxvoto); return; }
+  const b = e.target.closest('[data-fxv]'); if (!b) return; const a = b.dataset.fxv;
+  if (a === 'abrir') { fijar({ feria: 'abierta', ganadora: '' }); tostada('Votación abierta'); }
+  else if (a === 'cerrar') {
+    const { c, n } = recuento(); if (!n) { tostada('Todavía no ha votado nadie'); return; }
+    const g = LISTA.slice().sort((x, y) => c[y.id] - c[x.id])[0];
+    fijar({ feria: 'ganadora', ganadora: g.id });
+  }
+  else if (a === 'pantalla') { const el = $('fxPodio'); if (document.fullscreenElement) document.exitFullscreen(); else if (el.requestFullscreen) el.requestFullscreen(); }
+  else if (a === 'simular') { V.nLocal = 18; LISTA.forEach(x => V.locales[x.id] = Math.floor(Math.random() * 9)); pintarFeria(); }
+  else if (a === 'vaciar') {
+    if (!confirm('¿Borrar todos los votos?')) return;
+    V.locales = {}; V.nLocal = 0;
+    if (enSala()) (R.votos || []).forEach(x => ref('salas/' + S.sala + '/respuestas/' + x.id).remove().catch(() => {}));
+    fijar({ feria: '', ganadora: '' });
+  }
+});
+document.addEventListener('votos', pintarFeria); document.addEventListener('feria', pintarFeria);
+document.addEventListener('panel', e => { if (e.detail === 'feria') pintarFeria(); });
+
+/* ── La ganadora: cuenta atrás y confeti ── */
+let confetiVivo = false;
+function confeti() {
+  const cv = $('fxConfeti'), cx = cv.getContext('2d'); cv.width = innerWidth; cv.height = innerHeight;
+  const col = ['#FFE45C', '#FF6FA5', '#6FD3FF', '#8CF0B0', '#FF9D6C', '#fff'];
+  const P = Array.from({ length: 190 }, () => ({ x: Math.random() * cv.width, y: -20 - Math.random() * cv.height * .6, vx: (Math.random() - .5) * 3, vy: 2 + Math.random() * 4, r: 5 + Math.random() * 7, a: Math.random() * 6, va: (Math.random() - .5) * .3, c: col[Math.floor(Math.random() * col.length)] }));
+  confetiVivo = true; const t0 = Date.now();
+  (function paso() {
+    if (!confetiVivo) return; cx.clearRect(0, 0, cv.width, cv.height);
+    P.forEach(p => { p.x += p.vx; p.y += p.vy; p.a += p.va; if (p.y > cv.height + 20 && Date.now() - t0 < 9000) { p.y = -20; p.x = Math.random() * cv.width; }
+      cx.save(); cx.translate(p.x, p.y); cx.rotate(p.a); cx.fillStyle = p.c; cx.fillRect(-p.r / 2, -p.r / 4, p.r, p.r / 2); cx.restore(); });
+    if (Date.now() - t0 < 14000) requestAnimationFrame(paso); else { confetiVivo = false; cx.clearRect(0, 0, cv.width, cv.height); }
+  })();
+}
+function revelar(id) {
+  const a = APPS.find(x => x.id === id); if (!a) return;
+  const caja = $('fxGana'), dentro = $('fxGanaIn'); caja.classList.add('ver'); confetiVivo = false;
+  const final = () => {
+    dentro.innerHTML = '<p class="k">La app de este centro es</p><h2><span>' + esc(a.nombre) + '</span></h2><p>' + esc((FX[a.id] || {}).problema || '') + '</p><button class="fx-b oro" id="fxGanaX">Cerrar</button>';
+    $('fxGanaX').onclick = () => { caja.classList.remove('ver'); confetiVivo = false; };
+    if (!quieto) confeti();
+  };
+  if (quieto) return final();
+  let n = 3; const tic = () => { if (n === 0) return final(); dentro.innerHTML = '<p class="k">Y la app ganadora es…</p><div class="n">' + n + '</div>'; n--; setTimeout(tic, 1000); }; tic();
+}
+pintarFeria();
+})();
+
 S.estado.panel = panelActual(); S.estado.diapo = dActual;
 pintarSala(); conectarRespuestas();
 if (panelActual() === 's4') iniciarGaleria();
@@ -2988,14 +3447,14 @@ document.addEventListener('click', e => {
 });
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-05-datos';
+  const ID = 'formacion-novedades-2026-11-10-feria';
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
   d.setAttribute('role', 'dialog'); d.setAttribute('aria-label', 'Novedades');
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">Nueva pestaña <b>🔒 Privacidad y datos</b>: el semáforo de los datos, qué hacer y qué no con la IA, casos para ponerte a prueba y cómo proteger los datos si creas apps.</p>'
+    + '<p style="margin-bottom:14px">Nueva pestaña <b>🎪 Feria de apps</b>: escaparate de las diez apps, guion de la sesión, códigos QR para probarlas y votación en directo.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
