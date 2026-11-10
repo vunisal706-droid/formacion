@@ -796,7 +796,7 @@ p,li,dd{text-wrap:pretty}
 .fx-crono.ver{display:flex} .fx-crono .t{font:800 1.5rem var(--display);font-variant-numeric:tabular-nums;color:#FFE45C;min-width:3.4ch}
 .fx-crono.fin .t{color:#FF7A8A} .fx-crono button{appearance:none;border:0;background:rgba(255,255,255,.15);color:#fff;border-radius:8px;padding:6px 10px;cursor:pointer;font:inherit}
 /* grupos y muro de QR */
-.fx-grupos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.fx-grupos{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
 .fx-grupo{background:#fff;border:1.5px solid var(--linea);border-radius:16px;padding:16px}
 .fx-grupo h4{font-family:var(--display);font-size:1.15rem;margin-bottom:2px;color:var(--g)} .fx-grupo>small{color:var(--tinta-suave)}
 .fx-grupo ul{list-style:none;margin-top:10px;display:grid;gap:8px}
@@ -814,6 +814,7 @@ p,li,dd{text-wrap:pretty}
 .fx-podio .est{color:#C9D2F5;margin:4px 0 16px}
 .fx-podio .est b{color:#FFE45C;font-size:1.3em}
 .fx-barras{display:grid;gap:9px}
+.fx-barra[hidden]{display:none}
 .fx-barra{display:grid;grid-template-columns:minmax(120px,210px) 1fr 44px;gap:12px;align-items:center;transition:transform .5s}
 .fx-barra span{font-weight:700;font-size:.98rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .fx-barra .r{height:26px;border-radius:999px;background:rgba(255,255,255,.1);overflow:hidden}
@@ -1088,7 +1089,7 @@ p,li,dd{text-wrap:pretty}
     <div class="fx-cab">
       <div>
         <p class="k">Sesión 1 · Muestra de apps</p>
-        <h2>Diez apps hechas <em>por un maestro</em></h2>
+        <h2><span id="fxCuantas">22</span> apps hechas <em>por un maestro</em></h2>
         <p class="sub">Ninguna la ha programado un informático. Míralas, pruébalas en tu móvil y vota cuál quiere tu centro.</p>
       </div>
       <div class="acc no-imprimir">
@@ -1108,7 +1109,7 @@ p,li,dd{text-wrap:pretty}
     <p class="ses-etq">Sesión 1 · Dos horas · Para centros que primero quieren ver y después elegir</p>
     <h2>Feria de apps</h2>
   </div>
-  <p class="ses-lleva"><strong>Os lleváis:</strong> las diez apps vistas y probadas en vuestro móvil, un juego hecho por cada persona con Gemini y, sobre todo, la app que vuestro centro va a desarrollar en las próximas sesiones, elegida por votación.</p>
+  <p class="ses-lleva"><strong>Os lleváis:</strong> todas las apps del cole vistas y las que más os interesen probadas en vuestro móvil, un juego hecho por cada persona con Gemini y, sobre todo, la app que vuestro centro va a desarrollar en las próximas sesiones, elegida por votación.</p>
   <p><strong>Antes de venir:</strong> el móvil con batería y, si puede ser, un ordenador por pareja con <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> abierto y funcionando.</p>
 
   <h3 class="bloque">El guion de la sesión</h3>
@@ -1116,7 +1117,7 @@ p,li,dd{text-wrap:pretty}
   <div class="fx-guion" id="fxGuion"></div>
 
   <h3 class="bloque" id="fxMuestra">La muestra, por problemas</h3>
-  <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">No se enseñan apps: se enseñan problemas del día a día y cómo se resolvieron. Quince minutos por bloque.</p>
+  <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">No se enseñan apps: se enseñan problemas del día a día y cómo se resolvieron. Cinco bloques de unos nueve minutos.</p>
   <div class="fx-grupos" id="fxGrupos"></div>
 
   <h3 class="bloque" id="fxProbar">Pruébalas en tu móvil</h3>
@@ -3200,14 +3201,50 @@ const FX = {
   teletrabajo:  { cat: 'Gestión',     g: 2, problema: 'Reuniones en línea con asistencia, votaciones y el acta casi hecha.' },
   pdfaword:     { cat: 'Gestión',     g: 2, problema: 'Ese PDF que no se puede editar, convertido a Word en tu propio ordenador.' }
 };
-const GRUPOS = [
-  { n: 'En el aula', s: 'Lo que usa el alumnado o prepara la clase', c: '#2459C7' },
-  { n: 'Convivencia', s: 'Conocer al grupo y registrar lo que pasa', c: '#D2503B' },
-  { n: 'Gestión del centro', s: 'Lo que quita tiempo al claustro y al equipo directivo', c: '#177A4C' }
+const EXTRA = [
+  { id: 'capitool', nombre: 'Capitoolappciones', color: '#0E7490', url: 'https://vunisal706-droid.github.io/central/' },
+  { id: 'tablon', nombre: 'Tablón de Avisos', color: '#C2410C', url: 'https://vunisal706-droid.github.io/tablon/' },
+  { id: 'agenda', nombre: 'Agenda del Equipo Directivo', color: '#7C3AED', url: 'https://vunisal706-droid.github.io/agenda/', u: 1 },
+  { id: 'capiguia', nombre: 'CapiGuía', color: '#0F766E', url: 'https://vunisal706-droid.github.io/capiguia/' },
+  { id: 'pcentro', nombre: 'Plan de Centro', color: '#BE123C', url: 'https://vunisal706-droid.github.io/proyectocentro/' },
+  { id: 'programas', nombre: 'Programas del cole', color: '#4D7C0F', url: 'https://vunisal706-droid.github.io/programas/', u: 1 },
+  { id: 'resolucion', nombre: 'Plan de Resolución', color: '#B45309', url: 'https://vunisal706-droid.github.io/Resoluciondeproblemas/' },
+  { id: 'reglectura', nombre: 'Registro de Lectura y Problemas', color: '#9D174D', url: 'https://vunisal706-droid.github.io/lecturayproblemas/', u: 1 },
+  { id: 'podcast', nombre: 'Podcast a Vídeo', color: '#6D28D9', url: 'https://vunisal706-droid.github.io/central/podcast/' },
+  { id: 'aulapt', nombre: 'Aula PT', color: '#0369A1', url: 'https://vunisal706-droid.github.io/aulapt/index.html#home' },
+  { id: 'refuerzo', nombre: 'Gestor de Refuerzo', color: '#15803D', url: 'https://vunisal706-droid.github.io/refuerzo/', u: 1 },
+  { id: 'portal', nombre: 'Portal Educativo', color: '#DB2777', url: 'https://vunisal706-droid.github.io/webcentral/' }
 ];
-const ORDEN = ['troglodita', 'registro', 'convive', 'evaluaciones', 'agora', 'convivemas', 'horarios', 'sda', 'teletrabajo', 'pdfaword'];
-const LISTA = ORDEN.map(id => APPS.find(a => a.id === id)).filter(Boolean);
-const conUsuario = a => /usuario/i.test(a.usa || '');
+Object.assign(FX, {
+  capitool:   { cat: 'El centro en el móvil', g: 4, problema: 'Todas las apps del cole en una sola pantalla, con los avisos del día y un asistente que responde dudas.' },
+  tablon:     { cat: 'El centro en el móvil', g: 4, problema: 'Los avisos a familias y profesorado en un sitio, sin cadenas de mensajes.' },
+  agenda:     { cat: 'El centro en el móvil', g: 4, problema: 'Qué toca hacer este mes en Dirección, Jefatura y Secretaría, para que no se pase ningún plazo.' },
+  capiguia:   { cat: 'El centro en el móvil', g: 4, problema: 'Cómo trabajamos en este centro, explicado para quien llega nuevo.' },
+  pcentro:    { cat: 'El centro en el móvil', g: 4, problema: 'El Plan de Centro que por fin se consulta: con buscador y desde el móvil.' },
+  programas:  { cat: 'Gestión del centro', g: 3, problema: 'Los plazos, la asistencia y la documentación de los programas del centro, al día.' },
+  resolucion: { cat: 'Lectura y problemas', g: 1, problema: 'Los mismos pasos para resolver problemas desde Infantil hasta 6.º.' },
+  reglectura: { cat: 'Lectura y problemas', g: 1, problema: 'El registro semanal de lectura y de problemas de cada curso, sin papeles.' },
+  podcast:    { cat: 'En el aula', g: 0, problema: 'El pódcast de clase convertido en vídeo con fotos, sintonía y el logo del cole.' },
+  aulapt:     { cat: 'En el aula', g: 0, problema: 'Actividades de grafía, lectura, fonología y números para el aula de PT.' },
+  refuerzo:   { cat: 'Alumnado y convivencia', g: 2, problema: 'Quién va a refuerzo, qué trabaja cada día y cómo evoluciona.' },
+  portal:     { cat: 'En el aula', g: 0, problema: 'Los juegos y actividades del cole para el alumnado, reunidos en un portal.' }
+});
+Object.assign(FX.agora, { cat: 'Lectura y problemas', g: 1 }); Object.assign(FX.sda, { cat: 'Lectura y problemas', g: 1 });
+FX.troglodita.cat = FX.registro.cat = 'En el aula';
+['convive', 'convivemas'].forEach(k => Object.assign(FX[k], { cat: 'Alumnado y convivencia', g: 2 }));
+['evaluaciones', 'horarios', 'teletrabajo', 'pdfaword'].forEach(k => Object.assign(FX[k], { cat: 'Gestión del centro', g: 3 }));
+const GRUPOS = [
+  { n: 'En el aula', s: 'Lo que usa el alumnado', c: '#2459C7' },
+  { n: 'Lectura y problemas', s: 'Planificar y registrar el trabajo de clase', c: '#B45309' },
+  { n: 'Alumnado y convivencia', s: 'Conocer al grupo y atender a quien lo necesita', c: '#D2503B' },
+  { n: 'Gestión del centro', s: 'Lo que quita tiempo al claustro y al equipo directivo', c: '#177A4C' },
+  { n: 'El centro en el móvil', s: 'Información y organización al alcance de todos', c: '#0E7490' }
+];
+const ORDEN = ['capitool', 'troglodita', 'portal', 'registro', 'aulapt', 'podcast', 'agora', 'sda', 'resolucion', 'reglectura', 'convive', 'convivemas', 'refuerzo',
+  'evaluaciones', 'horarios', 'teletrabajo', 'pdfaword', 'programas', 'tablon', 'agenda', 'capiguia', 'pcentro'];
+const TODAS = APPS.concat(EXTRA);
+const LISTA = ORDEN.map(id => TODAS.find(a => a.id === id)).filter(Boolean);
+const conUsuario = a => !!a.u || /usuario/i.test(a.usa || '');
 const B = 'rgba(255,255,255,';
 /* Pantallas en miniatura dibujadas: cada una cuenta de un vistazo qué hace la app */
 const MINI = {
@@ -3222,10 +3259,26 @@ const MINI = {
   teletrabajo: '<g fill="' + B + '.94)"><rect x="40" y="30" width="80" height="58" rx="8"/><rect x="130" y="30" width="80" height="58" rx="8"/><rect x="220" y="30" width="80" height="58" rx="8"/><rect x="40" y="100" width="170" height="62" rx="8"/></g><g fill="#3949AB"><circle cx="80" cy="52" r="11"/><circle cx="170" cy="52" r="11" class="fx-late"/><circle cx="260" cy="52" r="11"/></g><g stroke="#3949AB" stroke-width="5" stroke-linecap="round"><path d="M56 118h138M56 132h138M56 146h80"/></g><rect x="222" y="104" width="78" height="54" rx="8" fill="#FFE45C" class="fx-flota"/><path d="M240 132l10 10 22-24" stroke="#1B2A4E" stroke-width="6" fill="none" stroke-linecap="round"/>',
   pdfaword: '<rect x="44" y="40" width="96" height="116" rx="8" fill="' + B + '.96)"/><text x="92" y="108" text-anchor="middle" font-family="system-ui" font-weight="800" font-size="26" fill="#DC2626">PDF</text><rect x="200" y="40" width="96" height="116" rx="8" fill="#fff"/><text x="248" y="108" text-anchor="middle" font-family="system-ui" font-weight="800" font-size="26" fill="#2459C7">W</text><g class="fx-flota"><path d="M152 98h30M172 86l12 12-12 12" stroke="#FFE45C" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>'
 };
+
+Object.assign(MINI, {
+  capitool: '<g>' + [0, 1, 2, 3].map(c => [0, 1].map(r => '<rect x="' + (46 + c * 64) + '" y="' + (38 + r * 62) + '" width="52" height="52" rx="13" fill="' + ['#fff', '#FFE45C', '#BFE3CF', '#FBD0C6', '#D6E2FB', '#fff', '#E9D5FF', '#FFE45C'][c + r * 4] + '"' + ((c + r) % 3 === 0 ? ' class="fx-late"' : '') + '/>').join('')).join('') + '</g><rect x="110" y="164" width="120" height="8" rx="4" fill="' + B + '.5)"/>',
+  tablon: '<rect x="36" y="26" width="268" height="138" rx="10" fill="' + B + '.22)"/><g class="fx-flota"><rect x="54" y="44" width="76" height="62" rx="4" fill="#FFE45C"/><circle cx="92" cy="46" r="6" fill="#D23B4A"/></g><rect x="142" y="52" width="70" height="56" rx="4" fill="#fff"/><circle cx="177" cy="54" r="6" fill="#2459C7"/><rect x="224" y="42" width="64" height="72" rx="4" fill="#BFE3CF"/><circle cx="256" cy="44" r="6" fill="#D23B4A"/><rect x="92" y="120" width="96" height="34" rx="4" fill="#FBD0C6"/>',
+  agenda: '<rect x="70" y="34" width="200" height="132" rx="12" fill="' + B + '.96)"/><rect x="70" y="34" width="200" height="30" rx="12" fill="#FFE45C"/><g fill="#E9D5FF">' + [0, 1, 2, 3, 4, 5].map(c => [0, 1, 2].map(r => '<rect x="' + (84 + c * 30) + '" y="' + (76 + r * 28) + '" width="22" height="20" rx="5"/>').join('')).join('') + '</g><rect x="144" y="104" width="22" height="20" rx="5" fill="#7C3AED" class="fx-late"/>',
+  capiguia: '<path d="M170 44c-30-16-70-16-104-4v112c34-12 74-12 104 4z" fill="' + B + '.96)"/><path d="M170 44c30-16 70-16 104-4v112c-34-12-74-12-104 4z" fill="' + B + '.85)"/><g stroke="#0F766E" stroke-width="5" stroke-linecap="round"><path d="M86 72h62M86 92h62M86 112h40"/></g><g class="fx-flota"><circle cx="228" cy="92" r="22" fill="#FFE45C"/><path d="M228 80v14M228 103v1" stroke="#1B2A4E" stroke-width="5" stroke-linecap="round"/></g>',
+  pcentro: '<rect x="96" y="24" width="150" height="144" rx="8" fill="' + B + '.55)"/><rect x="82" y="34" width="150" height="134" rx="8" fill="' + B + '.97)"/><rect x="98" y="50" width="80" height="12" rx="6" fill="#BE123C"/><g fill="#F6CBD5"><rect x="98" y="74" width="118" height="8" rx="4"/><rect x="98" y="90" width="118" height="8" rx="4"/><rect x="98" y="106" width="80" height="8" rx="4"/></g><g class="fx-flota"><circle cx="252" cy="126" r="24" fill="none" stroke="#FFE45C" stroke-width="8"/><path d="M270 144l20 20" stroke="#FFE45C" stroke-width="9" stroke-linecap="round"/></g>',
+  programas: '<rect x="60" y="30" width="220" height="136" rx="10" fill="' + B + '.96)"/><g fill="none" stroke="#4D7C0F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M82 58l8 8 14-16" class="fx-raya"/><path d="M82 96l8 8 14-16" class="fx-raya"/></g><rect x="80" y="124" width="22" height="22" rx="5" fill="none" stroke="#bbb" stroke-width="4"/><g fill="#DCEBC4"><rect x="120" y="54" width="140" height="10" rx="5"/><rect x="120" y="92" width="140" height="10" rx="5"/><rect x="120" y="130" width="100" height="10" rx="5"/></g>',
+  resolucion: '<g fill="' + B + '.96)"><circle cx="70" cy="140" r="26"/><circle cx="170" cy="100" r="26"/><circle cx="270" cy="60" r="26" class="fx-late"/></g><g stroke="#FFE45C" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 12"><path d="M96 130l48-20M196 90l48-20"/></g><g font-family="system-ui" font-weight="800" font-size="26" fill="#B45309" text-anchor="middle"><text x="70" y="149">1</text><text x="170" y="109">2</text><text x="270" y="69">3</text></g>',
+  reglectura: '<rect x="50" y="30" width="240" height="134" rx="10" fill="' + B + '.96)"/><g>' + [0, 1, 2, 3, 4].map(c => [0, 1, 2].map(r => '<circle cx="' + (112 + c * 38) + '" cy="' + (62 + r * 36) + '" r="11" fill="' + ((c * 3 + r * 5) % 4 === 0 ? '#F3D0DF' : '#9D174D') + '"' + ((c + r) % 5 === 1 ? ' class="fx-late"' : '') + '/>').join('')).join('') + '</g><g fill="#F3D0DF"><rect x="64" y="56" width="26" height="12" rx="6"/><rect x="64" y="92" width="26" height="12" rx="6"/><rect x="64" y="128" width="26" height="12" rx="6"/></g>',
+  podcast: '<rect x="150" y="28" width="40" height="76" rx="20" fill="' + B + '.96)"/><path d="M130 84a40 40 0 0080 0M170 124v26M146 152h48" stroke="' + B + '.96)" stroke-width="7" fill="none" stroke-linecap="round"/><g fill="#FFE45C">' + [0, 1, 2, 3].map(k => '<rect class="fx-sube" style="animation-delay:' + (k * .18) + 's" x="' + (40 + k * 18) + '" y="70" width="10" height="56" rx="5"/>').join('') + [0, 1, 2, 3].map(k => '<rect class="fx-sube" style="animation-delay:' + (k * .18 + .1) + 's" x="' + (236 + k * 18) + '" y="70" width="10" height="56" rx="5"/>').join('') + '</g>',
+  aulapt: '<rect x="40" y="34" width="260" height="124" rx="10" fill="' + B + '.96)"/><g stroke="#BAE0F5" stroke-width="2"><path d="M54 76h232M54 116h232"/></g><path d="M66 116c8-44 30-44 26-10s22 30 30-6-18-40-8-4 30 14 40-10 16-6 12 12 20 22 30 4 12-22 22-22 20 30 44 34" fill="none" stroke="#0369A1" stroke-width="6" stroke-linecap="round" class="fx-raya"/><g class="fx-flota"><path d="M262 42l22 22-12 6-16-16z" fill="#FFE45C"/></g>',
+  refuerzo: '<path d="M44 160h252" stroke="' + B + '.6)" stroke-width="3"/><g fill="' + B + '.94)"><rect x="60" y="126" width="46" height="34" rx="5"/><rect x="118" y="100" width="46" height="60" rx="5"/><rect x="176" y="74" width="46" height="86" rx="5"/></g><rect x="234" y="46" width="46" height="114" rx="5" fill="#FFE45C" class="fx-sube"/><path d="M70 104l58-28 58-24 62-22" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" class="fx-raya"/>',
+  portal: '<g class="fx-flota"><rect x="60" y="62" width="220" height="86" rx="43" fill="' + B + '.96)"/><path d="M104 94v24M92 106h24" stroke="#DB2777" stroke-width="8" stroke-linecap="round"/><circle cx="226" cy="94" r="10" fill="#2459C7"/><circle cx="248" cy="116" r="10" fill="#177A4C"/></g><circle cx="286" cy="42" r="12" fill="#FFE45C" class="fx-late"/><circle cx="52" cy="46" r="8" fill="' + B + '.7)" class="fx-late"/>'
+});
 const mini = id => '<svg viewBox="0 0 340 190" preserveAspectRatio="xMidYMid slice" aria-hidden="true">' + (MINI[id] || '') + '</svg>';
 
 /* ── Escaparate ── */
 const pista = $('fxPista'), puntos = $('fxPuntos');
+if ($('fxCuantas')) $('fxCuantas').textContent = LISTA.length;
 pista.innerHTML = LISTA.map(a => {
   const f = FX[a.id] || { cat: '', problema: a.desc };
   return '<article class="fx-carta" style="--c:' + a.color + '" data-fx="' + a.id + '"><div class="fx-pant">' + mini(a.id) + '</div><div class="fx-cuerpo">' +
@@ -3285,15 +3338,21 @@ const GUION = [
   { h: '0:10', m: 10, t: 'Así nació una app', s: 'La historia real de Teletrabajo, de un problema a una herramienta',
     dice: 'Esta app no empezó con una idea brillante, empezó con un fastidio: redactar el acta después de cada reunión. Mirad cómo fue creciendo, conversación a conversación.',
     hace: ['Recorre la línea del tiempo de la presentación, hito a hito.', 'Lee en voz alta uno de los encargos reales: se ve que es lenguaje normal.'], ir: ['inicio', 'Abrir la presentación'] },
-  { h: '0:20', m: 15, t: 'Muestra · En el aula', s: 'Troglodita, Mis Lecturas, Ágora y Generador de SdA',
-    dice: 'Empiezo por lo que toca al alumnado. Fijaos menos en la app y más en el problema que resuelve: seguro que en vuestro centro también existe.',
-    hace: ['Pon el escaparate en pantalla completa y abre cada app desde su tarjeta.', 'Dos o tres minutos por app: el problema, una demostración corta y nada más.', 'El Troglodita primero: es el que rompe el hielo.'], ir: ['fxEscena', 'Ir al escaparate'] },
-  { h: '0:35', m: 15, t: 'Muestra · Convivencia', s: 'Convivencia+ (sociograma) y Convive+ (partes)',
-    dice: 'Todos tenemos un alumno que está solo y no lo vemos. Y todos hemos perdido media hora con un parte. Estas dos apps salieron de ahí.',
+  { h: '0:20', m: 10, t: 'Muestra · En el aula', s: 'Capitoolappciones como puerta de entrada, Troglodita, Portal Educativo, Mis Lecturas, Aula PT y Podcast a Vídeo',
+    dice: 'Todo lo que vais a ver cabe en esta pantalla: es la app que reúne las demás. Empiezo por lo que toca al alumnado. Fijaos menos en la app y más en el problema que resuelve.',
+    hace: ['Abre Capitoolappciones medio minuto: es el mapa de toda la muestra.', 'Pon el escaparate en pantalla completa y abre cada app desde su tarjeta.', 'Dos minutos por app. El Troglodita primero: es el que rompe el hielo.'], ir: ['fxEscena', 'Ir al escaparate'] },
+  { h: '0:30', m: 8, t: 'Muestra · Lectura y problemas', s: 'Ágora, Generador de SdA, Plan de Resolución y Registro de Lectura y Problemas',
+    dice: 'Un plan de lectura que nadie abre no sirve. Estas cuatro salieron de querer que el plan se use cada semana, no que esté en un cajón.',
+    hace: ['Enseña una semana concreta en Ágora y cómo se registra después.', 'En el Generador de SdA, llega hasta el encargo para la IA y párate ahí.'], ir: ['fxMuestra', 'Ver la muestra'] },
+  { h: '0:38', m: 9, t: 'Muestra · Alumnado y convivencia', s: 'Convivencia+ (sociograma), Convive+ (partes) y Gestor de Refuerzo',
+    dice: 'Todos tenemos un alumno que está solo y no lo vemos. Y todos hemos perdido media hora con un parte. Estas apps salieron de ahí.',
     hace: ['Entra con tu usuario: son apps con datos y se enseñan desde tu ordenador.', 'Usa un grupo inventado, nunca datos reales de tu centro.'], ir: ['fxMuestra', 'Ver la muestra'] },
-  { h: '0:50', m: 15, t: 'Muestra · Gestión del centro', s: 'Evaluaciones, Cuadra Horarios, Teletrabajo y PDF a Word',
+  { h: '0:47', m: 9, t: 'Muestra · Gestión del centro', s: 'Evaluaciones, Cuadra Horarios, Teletrabajo, PDF a Word y Programas del cole',
     dice: 'Y ahora lo que nos quita las tardes al claustro y al equipo directivo. Si alguna os ahorra una hora a la semana, ya ha merecido la pena.',
-    hace: ['Cuadra Horarios y PDF a Word no piden usuario: que los abran a la vez que tú.', 'Cierra el bloque preguntando: «¿Cuál os llevaríais mañana?».'], ir: ['fxMuestra', 'Ver la muestra'] },
+    hace: ['Cuadra Horarios y PDF a Word no piden usuario: que los abran a la vez que tú.', 'Elige dos para enseñar a fondo y nombra las demás.'], ir: ['fxMuestra', 'Ver la muestra'] },
+  { h: '0:56', m: 9, t: 'Muestra · El centro en el móvil', s: 'Capitoolappciones, Tablón de Avisos, Agenda, CapiGuía y Plan de Centro',
+    dice: 'La última familia es la que más agradece el claustro: saber qué pasa hoy en el cole sin preguntar a nadie.',
+    hace: ['Vuelve a Capitoolappciones y enseña el panel del día y el asistente.', 'Busca una duda real en el Plan de Centro desde el móvil.', 'Cierra preguntando: «¿Cuál os llevaríais mañana?».'], ir: ['fxMuestra', 'Ver la muestra'] },
   { h: '1:05', m: 25, t: 'Pruébalas en tu móvil', s: 'Muro de códigos QR: cada persona entra en las que más le interesen',
     dice: 'Ya me habéis visto a mí. Ahora os toca: escanead la que más os haya llamado la atención y trastead sin miedo, no se rompe nada.',
     hace: ['Proyecta el muro de QR y pasea por la sala.', 'Apunta las dudas que se repitan: son el temario de la sesión siguiente.', 'A mitad de bloque, pide que prueben una segunda app.'], ir: ['fxProbar', 'Ir al muro de QR'] },
@@ -3351,7 +3410,7 @@ function pintarFeria() {
   const orden = LISTA.slice().sort((a, b) => c[b.id] - c[a.id]);
   const caja = $('fxBarras');
   if (!caja.children.length) caja.innerHTML = LISTA.map(a => '<div class="fx-barra" data-b="' + a.id + '" style="--c:' + a.color + '"><span>' + esc(a.nombre) + '</span><div class="r"><i></i></div><em>0</em></div>').join('');
-  orden.forEach((a, i) => { const el = caja.querySelector('[data-b="' + a.id + '"]'); el.style.order = i; el.querySelector('i').style.width = (c[a.id] / max * 100) + '%'; el.querySelector('em').textContent = c[a.id]; });
+  orden.forEach((a, i) => { const el = caja.querySelector('[data-b="' + a.id + '"]'); el.style.order = i; el.hidden = i >= 10 && !c[a.id]; el.querySelector('i').style.width = (c[a.id] / max * 100) + '%'; el.querySelector('em').textContent = c[a.id]; });
   $('fxPodioTit').textContent = ef === 'ganadora' || ef === 'cerrada' ? 'Votación cerrada' : ef === 'abierta' ? 'Votación abierta: ¡a votar!' : '¿Qué app quiere este centro?';
   $('fxPodioEst').innerHTML = '<b>' + n + '</b> ' + (n === 1 ? 'persona ha votado' : 'personas han votado') + (enSala() ? ' · sesión ' + esc(S.sala) : ponente ? ' · modo ensayo (sin sesión en directo)' : '');
   if (ponente) $('fxAcc').innerHTML =
@@ -3367,7 +3426,7 @@ function pintarFeria() {
   if (S.rol === 'asistente') {
     mv.style.display = '';
     mv.innerHTML = ef === 'abierta'
-      ? '<b>Elige hasta dos apps.</b> ' + (V.mios.size ? 'Has votado: ' + [...V.mios].map(id => esc((APPS.find(a => a.id === id) || {}).nombre || id)).join(' y ') + '.' : 'Aún no has votado.') +
+      ? '<b>Elige hasta dos apps.</b> ' + (V.mios.size ? 'Has votado: ' + [...V.mios].map(id => esc((TODAS.find(a => a.id === id) || {}).nombre || id)).join(' y ') + '.' : 'Aún no has votado.') +
         '<div class="fila" style="margin-top:10px">' + LISTA.map(a => '<button class="fx-voto" style="--c:' + a.color + '" data-fxvoto="' + a.id + '" aria-pressed="' + V.mios.has(a.id) + '">' + (V.mios.has(a.id) ? '✓ ' : '') + esc(a.nombre) + '</button>').join('') + '</div>'
       : ef ? 'La votación está cerrada. ¡Gracias por votar!' : 'La votación se abrirá al final de la sesión. Mientras tanto, prueba las apps.';
   } else mv.style.display = 'none';
@@ -3417,7 +3476,7 @@ function confeti() {
   })();
 }
 function revelar(id) {
-  const a = APPS.find(x => x.id === id); if (!a) return;
+  const a = TODAS.find(x => x.id === id); if (!a) return;
   const caja = $('fxGana'), dentro = $('fxGanaIn'); caja.classList.add('ver'); confetiVivo = false;
   const final = () => {
     dentro.innerHTML = '<p class="k">La app de este centro es</p><h2><span>' + esc(a.nombre) + '</span></h2><p>' + esc((FX[a.id] || {}).problema || '') + '</p><button class="fx-b oro" id="fxGanaX">Cerrar</button>';
@@ -3447,14 +3506,14 @@ document.addEventListener('click', e => {
 });
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-10-feria';
+  const ID = 'formacion-novedades-2026-11-10-feria22';
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
   d.setAttribute('role', 'dialog'); d.setAttribute('aria-label', 'Novedades');
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">Nueva pestaña <b>🎪 Feria de apps</b>: escaparate de las diez apps, guion de la sesión, códigos QR para probarlas y votación en directo.</p>'
+    + '<p style="margin-bottom:14px">La <b>🎪 Feria de apps</b> ya enseña las 22 apps del cole, con Capitoolappciones incluida.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
