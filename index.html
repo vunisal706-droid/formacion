@@ -2447,6 +2447,7 @@ document.addEventListener('diapo', e => {
 
 /* ── Dueño: abrir, retomar y cerrar sala ── */
 const LETRAS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+const SALA_FIJA = 'IACOLE';   // código fijo: el QR de «Escanea y responde» sale siempre igual y se puede imprimir
 const nuevoCodigo = () => Array.from({ length: 4 }, () => LETRAS[Math.floor(Math.random() * LETRAS.length)]).join('');
 async function abrirSala(soloRetomar) {
   S.errorSala = '';
@@ -2456,6 +2457,17 @@ async function abrirSala(soloRetomar) {
     try { if ((await ref('salas/' + cod + '/dueno').get()).val() !== FB.uid) cod = ''; } catch (e) { cod = ''; }
   }
   if (!cod && soloRetomar) { guardar('salaPropia', ''); pintarSala(); return; }
+  if (!cod) {   // primero se intenta la sala fija
+    try {
+      const d = (await ref('salas/' + SALA_FIJA + '/dueno').get()).val();
+      if (d === FB.uid) cod = SALA_FIJA;
+      else if (!d) { await ref('salas/' + SALA_FIJA + '/dueno').set(FB.uid); cod = SALA_FIJA; }
+      else tostada('La sala ' + SALA_FIJA + ' sigue abierta en otro ordenador: ciérrala allí para usar el QR impreso. Hoy se usará un código nuevo.');
+    } catch (e) { /* sin permiso: código nuevo */ }
+  }
+  if (cod && !soloRetomar) {   // sesión nueva: se vacían respuestas y mandos de la anterior
+    try { await Promise.all(['respuestas', 'mandos', 'solicitudes'].map(n => ref('salas/' + cod + '/' + n).remove())); } catch (e) {}
+  }
   for (let i = 0; i < 6 && !cod; i++) {
     const c = nuevoCodigo();
     try { await ref('salas/' + c + '/dueno').set(FB.uid); cod = c; } catch (e) { /* ocupado o sin permiso */ }
@@ -2559,7 +2571,7 @@ async function iniciarAsistente(sala) {
   if (!await iniciarFirebase()) { pintarBanner(hayFirebase() ? FB.error : 'Esta formación no tiene sala en directo'); return; }
   ref('salas/' + sala + '/estado').on('value', sn => {
     const e = sn.val();
-    if (!e) { pintarBanner('La sala ' + sala + ' no existe o ya ha terminado'); return; }
+    if (!e) { pintarBanner(sala === SALA_FIJA ? 'La sesión aún no ha empezado. Deja esta página abierta: se conectará sola.' : 'La sala ' + sala + ' no existe o ya ha terminado'); return; }
     aplicarEstado(e, S.siguiendo);
   });
   conectarRespuestas(); pintarModo(); pintarRadio(); pintarSala();
@@ -3507,14 +3519,14 @@ document.addEventListener('click', e => {
 });
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-11-qr';
+  const ID = 'formacion-novedades-2026-11-11-qr-fijo';
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
   d.setAttribute('role', 'dialog'); d.setAttribute('aria-label', 'Novedades');
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">Los <b>códigos QR</b> ya salen siempre: se generan en la propia web, aunque la red del centro bloquee servidores externos.</p>'
+    + '<p style="margin-bottom:14px">El QR de <b>«Escanea y responde»</b> ya es siempre el mismo (sala IACOLE): puedes llevarlo impreso a la sesión.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
