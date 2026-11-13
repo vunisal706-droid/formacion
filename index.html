@@ -580,8 +580,8 @@ details.activar ol{padding-left:22px;display:grid;gap:6px;margin:8px 0}
 .dt-caso p{margin:0 0 8px;font-weight:600}.dt-caso .bts{display:flex;gap:8px;flex-wrap:wrap}.dt-caso .bts button{min-height:38px;padding:6px 14px;border-radius:999px;border:1.5px solid var(--borde);background:#fff;font-weight:700;cursor:pointer}
 .dt-caso .res{display:none;margin-top:8px;padding:8px 12px;border-radius:10px;font-size:.95rem}.dt-caso.ok .res{display:block;background:#E2F4EA}.dt-caso.mal .res{display:block;background:#FDECEE}
 .dt-fuente{font-size:.85rem;color:var(--tinta-suave);margin-top:30px}
-#panel-inicio{--ses:var(--rojo)} #panel-s1{--ses:var(--s1)} #panel-s2{--ses:var(--s2)} #panel-s3{--ses:var(--s3)} #panel-s4{--ses:var(--s4)} #panel-galeria{--ses:#C62F3E}
-.pestana[data-panel="inicio"]{--ses:var(--rojo)} .pestana[data-panel="s1"]{--ses:var(--s1)} .pestana[data-panel="s2"]{--ses:var(--s2)} .pestana[data-panel="s3"]{--ses:var(--s3)} .pestana[data-panel="s4"]{--ses:var(--s4)} .pestana[data-panel="galeria"]{--ses:#C62F3E}
+#panel-inicio,#panel-directo{--ses:var(--rojo)} #panel-s1{--ses:var(--s1)} #panel-s2{--ses:var(--s2)} #panel-s3{--ses:var(--s3)} #panel-s4{--ses:var(--s4)} #panel-galeria{--ses:#C62F3E}
+.pestana[data-panel="inicio"],.pestana[data-panel="directo"]{--ses:var(--rojo)} .pestana[data-panel="s1"]{--ses:var(--s1)} .pestana[data-panel="s2"]{--ses:var(--s2)} .pestana[data-panel="s3"]{--ses:var(--s3)} .pestana[data-panel="s4"]{--ses:var(--s4)} .pestana[data-panel="galeria"]{--ses:#C62F3E}
 
 /* Fondo: luz de mañana que cambia muy despacio (cielo, menta, papel, rubor) */
 body{background:linear-gradient(120deg,#EAF2FF,#EAF7F0,#FFF6DD,#FDEEEE,#EAF2FF);background-size:320% 320%;background-attachment:fixed;animation:fondoCambia 48s ease-in-out infinite}
@@ -884,6 +884,39 @@ body:not(.rol-ponente) .solo-ponente{display:none!important}
 .fx-mat{font:800 .74rem var(--texto);color:var(--c);background:#F4F7FB;border:1.5px solid var(--linea);border-radius:999px;
   padding:6px 11px;text-decoration:none;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
 .fx-mat:hover{background:#fff;border-color:var(--c)}
+
+/* ═══ Guion de la sesión en tarjetas (para proyectar) ═══ */
+.gp-ayuda{color:var(--tinta-suave);margin:-6px 0 14px;max-width:70ch}
+.gp{display:grid;gap:10px;margin:0 0 8px}
+.gp-p{background:#fff;border:1.5px solid var(--linea);border-radius:16px;overflow:hidden;transition:opacity .2s}
+.gp-p summary{list-style:none;display:grid;grid-template-columns:62px 36px 1fr auto;gap:12px;align-items:center;padding:12px 14px;cursor:pointer}
+.gp-p summary::-webkit-details-marker{display:none}
+.gp-h{font:800 1.02rem var(--display);color:var(--ses);font-variant-numeric:tabular-nums}
+.gp-n{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--ses);color:#fff;font:800 .95rem var(--display)}
+.gp-t{font-weight:700;font-size:1.08rem;line-height:1.25}
+.gp-ok{width:38px;height:38px;border-radius:50%;border:2px solid var(--linea);background:#fff;color:#9aa3b5;font:800 1.05rem var(--texto);cursor:pointer}
+.gp-ok:hover{border-color:var(--ok);color:var(--ok)}
+.gp-p[open]{border-color:var(--ses);box-shadow:0 12px 28px -18px rgba(27,42,78,.5)}
+.gp-c{padding:2px 20px 18px 120px}
+.gp-c ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.gp-c li{position:relative;padding-left:28px;font-size:1.32rem;line-height:1.35}
+.gp-c li::before{content:'';position:absolute;left:4px;top:.55em;width:11px;height:11px;border-radius:50%;background:var(--ses)}
+.gp-acc{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.gp-p.visto{opacity:.6;background:#F6F8FB}
+.gp-p.visto .gp-ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.gp-p.visto .gp-t{text-decoration:line-through;text-decoration-color:rgba(0,0,0,.25)}
+.gp-reinicio{margin:4px 0 0;font-size:.9rem}
+@media (max-width:700px){.gp-p summary{grid-template-columns:48px 30px 1fr auto;gap:8px}.gp-c{padding:2px 16px 16px}.gp-c li{font-size:1.08rem}}
+@media print{.gp-p .gp-c{display:block !important}.gp-ok,.gp-acc{display:none !important}}
+.mando-partes{display:grid;gap:6px}
+.mando-partes button{text-align:left;padding:10px 12px;border-radius:12px;border:1.5px solid var(--linea);background:#fff;font:600 .95rem var(--texto);cursor:pointer}
+.mando-partes button[aria-current="true"]{border-color:var(--azul);background:#EAF2FF}
+.mando-partes button.visto{opacity:.55}
+.mando-actual .hace{margin:10px 0 0;padding-left:20px;font-size:1rem}
+.mando-actual .hace li{margin-bottom:6px}
+.mando-diapo{background:#fff;border-radius:var(--r-l);padding:14px 16px;border:1.5px solid var(--linea)}
+.mando-diapo .n{color:var(--rojo);font-weight:700;font-size:.85rem;margin-bottom:4px}
+.mando-diapo .notas{font-size:.98rem;white-space:pre-line}
 </style>
 </head>
 <body>
@@ -897,7 +930,6 @@ body:not(.rol-ponente) .solo-ponente{display:none!important}
 </header>
 
 <nav class="pestanas" role="tablist" aria-label="Secciones de la formación">
-  <button class="pestana" role="tab" id="t-inicio" aria-controls="panel-inicio" data-panel="inicio">Presentación</button>
   <button class="pestana" role="tab" id="t-s1" aria-controls="panel-s1" data-panel="s1">1 · Las apps del cole</button>
   <button class="pestana" role="tab" id="t-s2" aria-controls="panel-s2" data-panel="s2">2 · Tu primera app</button>
   <button class="pestana" role="tab" id="t-s3" aria-controls="panel-s3" data-panel="s3">3 · Que salga de tu ordenador</button>
@@ -905,125 +937,21 @@ body:not(.rol-ponente) .solo-ponente{display:none!important}
   <button class="pestana" role="tab" id="t-materiales" aria-controls="panel-materiales" data-panel="materiales">📎 Materiales</button>
   <button class="pestana" role="tab" id="t-galeria" aria-controls="panel-galeria" data-panel="galeria">🖼️ Galería</button>
   <button class="pestana" role="tab" id="t-datos" aria-controls="panel-datos" data-panel="datos">🔒 Privacidad y datos</button>
+  <button class="pestana solo-ponente" role="tab" id="t-directo" aria-controls="panel-directo" data-panel="directo">🎛️ Directo</button>
 </nav>
 <div class="pestanas-borde"></div>
 
 <main>
 
 <!-- ═════════════════════ PRESENTACIÓN ═════════════════════ -->
-<section class="panel" id="panel-inicio" role="tabpanel" aria-labelledby="t-inicio">
-  <div class="diapos" id="diapos" tabindex="-1" aria-roledescription="presentación">
-
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="Bienvenida. Presentarse en 30 segundos: director y maestro de PT, no programador. Cuatro sesiones, una al mes: hoy la muestra de apps y, desde la segunda, cada persona hace las suyas.">
-      <h2>IA en el cole</h2>
-      <p class="lead">Una formación de cuatro sesiones para crear herramientas para tu aula y tu centro con inteligencia artificial, sin saber programar. Primero ves lo que se puede hacer; después lo haces tú, y de cada sesión te vas con algo funcionando.</p>
-      <p class="firma" id="firmaDiapo"></p>
-    </div>
-
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="Si el QR no aparece, pulsa «Empezar sesión en directo». Que escaneen y respondan en una frase; mientras llegan, comentar qué temas suben. Las respuestas dicen qué apps destacar hoy; en la sesión 2 volverán para que cada persona haga su herramienta." data-actividad="radiografia">
-      <p class="num">Antes de empezar</p>
-      <h2 class="medio" data-pregunta-diapo></h2>
-      <div class="radio-diapo">
-        <div class="qr" id="diapoQR"></div>
-        <div>
-          <p class="lead">Escanea el código y respóndelo en una frase. Es anónimo.</p>
-          <p class="cuenta-diapo"><b id="diapoCuenta">0</b> respuestas</p>
-          <div class="nube" id="diapoNube"></div>
-          <button class="btn azul" data-ir="directo">Ver la pizarra completa</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="Insistir: hoy nadie se va sin haber creado algo, aunque sea un juego. La teoría justa, después de haber hecho algo.">
-      <h2 class="medio">Cómo vamos a trabajar</h2>
-      <div class="tres">
-        <div style="--c:var(--azul)"><b>Ver y hacer</b><p>Hoy ves lo que ya funciona en un colegio y lo pruebas en tu móvil. Desde la sesión 2, a los veinte minutos ya tienes algo tuyo en la pantalla.</p></div>
-        <div style="--c:var(--ok)"><b>Salir con algo hecho</b><p>Cada sesión termina con algo tuyo: un juego, tu primera app, tu app publicada y la app del centro con sus datos.</p></div>
-        <div style="--c:var(--rojo)"><b>Un reto al mes</b><p>Entre sesión y sesión, algo pequeño para usar en tu clase. Lo enseñamos al empezar la siguiente.</p></div>
-      </div>
-    </div>
-
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="Recorrer las cuatro. Cada sesión usa solo lo aprendido en las anteriores. Todo queda en las pestañas: no hace falta apuntar nada.">
-      <h2 class="medio">Las cuatro sesiones</h2>
-      <ol class="agenda">
-        <li><div><strong>Las apps del cole</strong><span>Ves las apps de un colegio, las pruebas en tu móvil, creas un juego y votas cuál quiere tu centro.</span></div></li>
-        <li><div><strong>Tu primera app</strong><span>Una rueda de participación y una herramienta propia para tu clase, hechas con Gemini y con tu asistente.</span></div></li>
-        <li><div><strong>Que salga de tu ordenador</strong><span>Tu app publicada en internet, con su QR, instalada en el móvil y con el estilo del centro.</span></div></li>
-        <li><div><strong>La app del centro</strong><span>La app elegida, funcionando con vuestra propia base de datos, de forma segura, y las apps de todos en la galería.</span></div></li>
-      </ol>
-    </div>
-
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="Cada app nació de un problema concreto del centro. Preguntar: ¿cuál os suena más?">
-      <h2 class="medio">Diez apps, un mismo patrón</h2>
-      <div class="nube-apps" id="nubeApps"></div>
-      <p class="lead" style="margin-top:26px">Todas nacieron de una necesidad concreta del centro y todas son un único archivo HTML. Unas guardan en el navegador y otras en una base de datos en la nube para compartir datos. Si entiendes una, entiendes todas.</p>
-    </div>
-
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="La clave es la conversación. El código lo escribe la IA; la persona decide qué quiere y prueba.">
-      <h2 class="medio">Cómo se hace una app así</h2>
-      <div class="flujo">
-        <div><b>Necesidad</b><small>Algo que hoy haces con papel, correos o una hoja de cálculo.</small></div>
-        <div><b>Conversación con IA</b><small>Describes el problema y la IA escribe el código.</small></div>
-        <div><b>Un solo archivo</b><small>index.html: diseño, textos y funciones juntos.</small></div>
-        <div><b>Firebase</b><small>La base de datos donde se guardan y comparten los datos. Solo si hace falta.</small></div>
-        <div><b>GitHub Pages</b><small>La publica con una dirección web gratuita.</small></div>
-      </div>
-      <p class="lead" style="margin-top:26px">No hace falta saber programar. Hace falta saber qué quieres y tener paciencia para probar.</p>
-    </div>
-
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="Recorrer los hitos con los botones de la línea. Mensaje: cada mejora fue una conversación, no un curso de programación.">
-      <h2 class="medio">Así nació <span data-historia-app></span></h2>
-      <div class="historia" data-historia></div>
-    </div>
-
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="Recordar qué traer a cada sesión. La cuenta de Google del centro solo hace falta en la cuarta.">
-      <h2 class="medio">Qué necesitas en cada sesión</h2>
-      <div class="tres">
-        <div style="--c:var(--azul)"><b>Sesiones 1 y 2</b><p>El móvil con batería, un ordenador y tu cuenta de Gemini funcionando. En la segunda, una tarea que repitas cada semana.</p></div>
-        <div style="--c:var(--ok)"><b>Sesión 3</b><p>Una cuenta gratuita de GitHub, creada antes de venir, y el archivo de tu reto del mes.</p></div>
-        <div style="--c:var(--rojo)"><b>Sesión 4</b><p>La cuenta de Google del centro, mejor que la personal: si cambias de destino, la app sigue.</p></div>
-      </div>
-    </div>
-
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="La primera regla es la que más se olvida: ningún dato del alumnado, ni en la conversación con la IA ni en el código.">
-      <h2 class="medio">Tres reglas desde el primer día</h2>
-      <div class="tres">
-        <div style="--c:var(--rojo)"><b>Ningún dato del alumnado</b><p>Ni en la conversación con la IA ni dentro del código, que es público. Números de lista o datos inventados.</p></div>
-        <div style="--c:var(--rojo)"><b>Reglas de seguridad siempre</b><p>Una base de datos sin reglas está abierta a cualquiera. La veremos en la sesión 4.</p></div>
-        <div style="--c:var(--rojo)"><b>No sustituyen a Séneca</b><p>Ayudan a organizar y analizar. Lo oficial se sigue registrando donde corresponde.</p></div>
-      </div>
-    </div>
-
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="Abrir la pestaña de la sesión de hoy y seguir su guion.">
-      <h2>Manos a la obra</h2>
-      <p class="lead">Abre la pestaña de la sesión de hoy y sigue el guion paso a paso.</p>
-      <div class="fila" style="margin-top:30px">
-        <button class="btn azul" data-ir="s1">Sesión 1</button>
-        <button class="btn linea" data-ir="s2">Sesión 2</button>
-        <button class="btn linea" data-ir="s3">Sesión 3</button>
-        <button class="btn linea" data-ir="s4">Sesión 4</button>
-      </div>
-    </div>
-
-    <div class="controles no-imprimir">
-      <div class="fila">
-        <button class="btn icono" id="dAnt" aria-label="Diapositiva anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <span class="contador" id="dCont" aria-live="polite">1 / 10</span>
-        <button class="btn icono" id="dSig" aria-label="Diapositiva siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
-      </div>
-      <div class="puntos" id="dPuntos"></div>
-      <button class="btn icono" id="dPantalla" aria-label="Pantalla completa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
-    </div>
-  </div>
-  <p style="margin-top:12px;font-size:.9rem;color:var(--tinta-suave)">Usa las flechas del teclado para avanzar y la tecla F para pantalla completa.</p>
-
+<section class="panel" id="panel-directo" role="tabpanel" aria-labelledby="t-directo">
   <h3 class="bloque solo-ponente" id="bloqueDirecto">En directo: radiografía, mando y ventana de ponente</h3>
   <p class="solo-ponente" style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Para quien presenta. El grupo responde desde el móvil, tú lo proyectas, y puedes llevar las diapositivas con tu móvil como mando.</p>
   <div id="directoAncla"></div>
 
   <div class="tarjeta solo-ponente" id="accesoTarjeta" style="margin-bottom:16px">
     <h3>Sesiones que ven los asistentes</h3>
-    <p>Marca las que están abiertas. Las demás no aparecen en sus móviles ni cuando entren desde casa. La presentación, la galería y la pestaña de privacidad se ven siempre.</p>
+    <p>Marca las que están abiertas. Las demás no aparecen en sus móviles ni cuando entren desde casa. Los materiales, la galería y la pestaña de privacidad se ven siempre.</p>
     <div class="acceso-checks" id="accesoChecks"></div>
     <div class="estado" id="accesoEstado"></div>
     <p style="font-size:.92rem;color:var(--tinta-suave)">Clave para los asistentes: <code id="accesoClave"></code>. Con el QR de «Escanea y responde» entran sin escribirla.</p>
@@ -1123,7 +1051,6 @@ body:not(.rol-ponente) .solo-ponente{display:none!important}
       <p class="alerta">La hoja queda visible para quien tenga el enlace. Las respuestas son anónimas, pero pide que nadie escriba nombres de alumnado.</p>
     </div>
   </details>
-
 </section>
 
 <!-- ═════════════════════ SESIÓN 1 · Las apps del cole ═════════════════════ -->
@@ -1157,21 +1084,112 @@ body:not(.rol-ponente) .solo-ponente{display:none!important}
   <p class="ses-lleva"><strong>Te llevas:</strong> todas las apps del cole vistas y las que más te interesen probadas en tu móvil, un juego hecho por ti con Gemini y la app que tu centro pondrá en marcha en la sesión 4, elegida por votación.</p>
   <p><strong>Antes de venir:</strong> el móvil con batería y, si puede ser, un ordenador por pareja con <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> abierto y funcionando.</p>
 
-  <h3 class="bloque">Qué hacemos hoy</h3>
-  <table class="ses-tabla">
-          <tr><th>Tiempo</th><th>Qué hacemos</th><th>Dónde</th></tr>
-          <tr><td>0:00</td><td>Bienvenida y radiografía del claustro: qué tarea te quita más tiempo</td><td>Desde tu móvil</td></tr>
-          <tr><td>0:10</td><td>Así nació una app: de un fastidio a una herramienta</td><td>Presentación</td></tr>
-          <tr><td>0:20</td><td>La muestra: las apps del cole, por problemas</td><td><a href="#fxMuestra" data-ses="fxMuestra">La muestra</a></td></tr>
-          <tr><td>1:05</td><td>Pruébalas en tu móvil</td><td><a href="#fxProbar" data-ses="fxProbar">Códigos QR</a></td></tr>
-          <tr><td>1:30</td><td>Crea un juego en diez minutos, con Gemini</td><td><a href="#fxJuego" data-ses="fxJuego">El juego</a></td></tr>
-          <tr><td>1:45</td><td>Votación: la app que quiere el centro</td><td><a href="#fxVotar" data-ses="fxVotar">La votación</a></td></tr>
-          <tr><td>1:55</td><td>Qué viene en las tres sesiones siguientes</td><td><a href="#fxDespues" data-ses="fxDespues">Y después</a></td></tr>
-        </table>
+  <h3 class="bloque" id="guion-s1">El guion de hoy</h3>
+  <p class="gp-ayuda">Pulsa cada parte para ver los puntos que vamos a tratar. Con <b>✓</b> se marca como vista y se pliega.</p>
+  <div class="gp" data-guion="s1"></div>
+  <p class="gp-reinicio solo-ponente no-imprimir"><button class="enlace" data-gpreset="s1">Desmarcar todas las partes</button></p>
 
-  <h3 class="bloque solo-ponente">Guion del ponente</h3>
-  <p class="solo-ponente" style="color:var(--tinta-suave);margin:-6px 0 12px;max-width:70ch">Solo lo ves tú. Pulsa un bloque para ver qué decir y qué hacer. El botón ▶ pone en marcha el reloj de ese bloque.</p>
-  <div class="fx-guion solo-ponente" id="fxGuion"></div>
+  <h3 class="bloque" id="bloquePresentacion">Presentación</h3>
+  <div class="diapos" id="diapos" tabindex="-1" aria-roledescription="presentación">
+
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="Bienvenida. Presentarse en 30 segundos: director y maestro de PT, no programador. Cuatro sesiones, una al mes: hoy la muestra de apps y, desde la segunda, cada persona hace las suyas.">
+      <h2>IA en el cole</h2>
+      <p class="lead">Una formación de cuatro sesiones para crear herramientas para tu aula y tu centro con inteligencia artificial, sin saber programar. Primero ves lo que se puede hacer; después lo haces tú, y de cada sesión te vas con algo funcionando.</p>
+      <p class="firma" id="firmaDiapo"></p>
+    </div>
+
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="Si el QR no aparece, pulsa «Empezar sesión en directo». Que escaneen y respondan en una frase; mientras llegan, comentar qué temas suben. Las respuestas dicen qué apps destacar hoy; en la sesión 2 volverán para que cada persona haga su herramienta." data-actividad="radiografia">
+      <p class="num">Antes de empezar</p>
+      <h2 class="medio" data-pregunta-diapo></h2>
+      <div class="radio-diapo">
+        <div class="qr" id="diapoQR"></div>
+        <div>
+          <p class="lead">Escanea el código y respóndelo en una frase. Es anónimo.</p>
+          <p class="cuenta-diapo"><b id="diapoCuenta">0</b> respuestas</p>
+          <div class="nube" id="diapoNube"></div>
+          <button class="btn azul solo-ponente" data-ir="directo">Ver la pizarra completa</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="Insistir: hoy nadie se va sin haber creado algo, aunque sea un juego. La teoría justa, después de haber hecho algo.">
+      <h2 class="medio">Cómo vamos a trabajar</h2>
+      <div class="tres">
+        <div style="--c:var(--azul)"><b>Ver y hacer</b><p>Hoy ves lo que ya funciona en un colegio y lo pruebas en tu móvil. Desde la sesión 2, a los veinte minutos ya tienes algo tuyo en la pantalla.</p></div>
+        <div style="--c:var(--ok)"><b>Salir con algo hecho</b><p>Cada sesión termina con algo tuyo: un juego, tu primera app, tu app publicada y la app del centro con sus datos.</p></div>
+        <div style="--c:var(--rojo)"><b>Un reto al mes</b><p>Entre sesión y sesión, algo pequeño para usar en tu clase. Lo enseñamos al empezar la siguiente.</p></div>
+      </div>
+    </div>
+
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="Recorrer las cuatro. Cada sesión usa solo lo aprendido en las anteriores. Todo queda en las pestañas: no hace falta apuntar nada.">
+      <h2 class="medio">Las cuatro sesiones</h2>
+      <ol class="agenda">
+        <li><div><strong>Las apps del cole</strong><span>Ves las apps de un colegio, las pruebas en tu móvil, creas un juego y votas cuál quiere tu centro.</span></div></li>
+        <li><div><strong>Tu primera app</strong><span>Una rueda de participación y una herramienta propia para tu clase, hechas con Gemini y con tu asistente.</span></div></li>
+        <li><div><strong>Que salga de tu ordenador</strong><span>Tu app publicada en internet, con su QR, instalada en el móvil y con el estilo del centro.</span></div></li>
+        <li><div><strong>La app del centro</strong><span>La app elegida, funcionando con vuestra propia base de datos, de forma segura, y las apps de todos en la galería.</span></div></li>
+      </ol>
+    </div>
+
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="Cada app nació de un problema concreto del centro. Preguntar: ¿cuál os suena más?">
+      <h2 class="medio">Diez apps, un mismo patrón</h2>
+      <div class="nube-apps" id="nubeApps"></div>
+      <p class="lead" style="margin-top:26px">Todas nacieron de una necesidad concreta del centro y todas son un único archivo HTML. Unas guardan en el navegador y otras en una base de datos en la nube para compartir datos. Si entiendes una, entiendes todas.</p>
+    </div>
+
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="La clave es la conversación. El código lo escribe la IA; la persona decide qué quiere y prueba.">
+      <h2 class="medio">Cómo se hace una app así</h2>
+      <div class="flujo">
+        <div><b>Necesidad</b><small>Algo que hoy haces con papel, correos o una hoja de cálculo.</small></div>
+        <div><b>Conversación con IA</b><small>Describes el problema y la IA escribe el código.</small></div>
+        <div><b>Un solo archivo</b><small>index.html: diseño, textos y funciones juntos.</small></div>
+        <div><b>Firebase</b><small>La base de datos donde se guardan y comparten los datos. Solo si hace falta.</small></div>
+        <div><b>GitHub Pages</b><small>La publica con una dirección web gratuita.</small></div>
+      </div>
+      <p class="lead" style="margin-top:26px">No hace falta saber programar. Hace falta saber qué quieres y tener paciencia para probar.</p>
+    </div>
+
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="Recorrer los hitos con los botones de la línea. Mensaje: cada mejora fue una conversación, no un curso de programación.">
+      <h2 class="medio">Así nació <span data-historia-app></span></h2>
+      <div class="historia" data-historia></div>
+    </div>
+
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="Recordar qué traer a cada sesión. La cuenta de Google del centro solo hace falta en la cuarta.">
+      <h2 class="medio">Qué necesitas en cada sesión</h2>
+      <div class="tres">
+        <div style="--c:var(--azul)"><b>Sesiones 1 y 2</b><p>El móvil con batería, un ordenador y tu cuenta de Gemini funcionando. En la segunda, una tarea que repitas cada semana.</p></div>
+        <div style="--c:var(--ok)"><b>Sesión 3</b><p>Una cuenta gratuita de GitHub, creada antes de venir, y el archivo de tu reto del mes.</p></div>
+        <div style="--c:var(--rojo)"><b>Sesión 4</b><p>La cuenta de Google del centro, mejor que la personal: si cambias de destino, la app sigue.</p></div>
+      </div>
+    </div>
+
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="La primera regla es la que más se olvida: ningún dato del alumnado, ni en la conversación con la IA ni en el código.">
+      <h2 class="medio">Tres reglas desde el primer día</h2>
+      <div class="tres">
+        <div style="--c:var(--rojo)"><b>Ningún dato del alumnado</b><p>Ni en la conversación con la IA ni dentro del código, que es público. Números de lista o datos inventados.</p></div>
+        <div style="--c:var(--rojo)"><b>Reglas de seguridad siempre</b><p>Una base de datos sin reglas está abierta a cualquiera. La veremos en la sesión 4.</p></div>
+        <div style="--c:var(--rojo)"><b>No sustituyen a Séneca</b><p>Ayudan a organizar y analizar. Lo oficial se sigue registrando donde corresponde.</p></div>
+      </div>
+    </div>
+
+    <div class="diapo" aria-roledescription="diapositiva" data-notas="Cerrar la presentación y pasar a la muestra de apps.">
+      <h2>Manos a la obra</h2>
+      <p class="lead">Empezamos por lo que ya funciona en un colegio: las apps del cole.</p>
+      <div class="fila" style="margin-top:30px"><a class="btn azul" href="#fxMuestra" data-ses="fxMuestra">Ir a la muestra</a></div>
+    </div>
+
+    <div class="controles no-imprimir">
+      <div class="fila">
+        <button class="btn icono" id="dAnt" aria-label="Diapositiva anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <span class="contador" id="dCont" aria-live="polite">1 / 10</span>
+        <button class="btn icono" id="dSig" aria-label="Diapositiva siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+      <div class="puntos" id="dPuntos"></div>
+      <button class="btn icono" id="dPantalla" aria-label="Pantalla completa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+    </div>
+  </div>
+  <p style="margin-top:12px;font-size:.9rem;color:var(--tinta-suave)">Usa las flechas del teclado para avanzar y la tecla F para pantalla completa.</p>
+
 
   <h3 class="bloque" id="fxMuestra">La muestra, por problemas</h3>
   <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">No se enseñan apps: se enseñan problemas del día a día y cómo se resolvieron. Cinco bloques de unos nueve minutos.</p>
@@ -1229,18 +1247,11 @@ Dame el archivo completo, de principio a fin.</pre><button class="btn suave copi
   </div>
   <p class="ses-lleva"><strong>Te llevas:</strong> la rueda de participación hecha y personalizada, una herramienta propia para tu clase, tu asistente «Constructor de apps del cole» creado y un cuaderno de NotebookLM con documentos de tu centro.</p>
   <p><strong>Antes de venir:</strong> entra en <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> con tu cuenta y comprueba que funciona. Trae pensada una tarea que repitas cada semana (o lo que respondiste en la sesión 1 a «qué te quita más tiempo») y 2 o 3 documentos del centro sin datos personales (Plan de Convivencia, ROF, una unidad) para NotebookLM.</p>
-  <h3 class="bloque" style="margin-top:26px">El guion de la sesión</h3>
-  <table class="ses-tabla">
-          <tr><th>Tiempo</th><th>Qué hacemos</th><th>Dónde</th></tr>
-          <tr><td>0:00</td><td>Lo que salió en la sesión 1: la app elegida y lo que más tiempo os quita</td><td><a href="#bloqueBienvenida" data-ses="bloqueBienvenida">1. Bienvenida</a></td></tr>
-          <tr><td>0:10</td><td>Gemini por dentro: el menú + herramienta a herramienta</td><td><a href="#bloqueGemini" data-ses="bloqueGemini">2. Gemini</a></td></tr>
-          <tr><td>0:20</td><td>La rueda de participación, todos a la vez, y hazla tuya: colores, sonido y lista</td><td><a href="#bloqueRueda" data-ses="bloqueRueda">3. La rueda · Prompts 1 y 2</a></td></tr>
-          <tr><td>0:45</td><td>Por qué ha funcionado: el método</td><td><a href="#bloqueMetodo" data-ses="bloqueMetodo">4. El método</a></td></tr>
-          <tr><td>0:55</td><td>Creas tu asistente y haces con él tu herramienta propia: lo que más tiempo te quita</td><td><a href="#bloqueAsistente" data-ses="bloqueAsistente">5. Tu asistente</a></td></tr>
-          <tr><td>1:20</td><td>Taller de errores: encuentra el fallo con F12 y arréglalo con la IA</td><td><a href="#bloqueTaller" data-ses="bloqueTaller">6. Taller de errores</a></td></tr>
-          <tr><td>1:30</td><td>NotebookLM: tu centro en un cuaderno</td><td><a href="#bloqueNotebook" data-ses="bloqueNotebook">7. NotebookLM</a></td></tr>
-          <tr><td>1:55</td><td>Reto del mes y dudas</td><td><a href="#bloqueReto1" data-ses="bloqueReto1">8. Reto del mes</a></td></tr>
-        </table>
+  <h3 class="bloque" style="margin-top:26px" id="guion-s2">El guion de hoy</h3>
+  <p class="gp-ayuda">Pulsa cada parte para ver los puntos que vamos a tratar. Con <b>✓</b> se marca como vista y se pliega.</p>
+  <div class="gp" data-guion="s2"></div>
+  <p class="gp-reinicio solo-ponente no-imprimir"><button class="enlace" data-gpreset="s2">Desmarcar todas las partes</button></p>
+
 
 
 
@@ -1431,17 +1442,11 @@ Que funcione también en el móvil.</pre></div>
   </div>
   <p class="ses-lleva"><strong>Te llevas:</strong> tu app publicada en internet con su dirección y su código QR, instalada en el móvil con su icono y con el estilo del centro, y una canción para tu clase hecha con IA.</p>
   <p><strong>Antes de venir:</strong> crea tu cuenta en <a href="https://github.com" target="_blank" rel="noopener">github.com</a> (gratuita) y trae el archivo de la herramienta que hiciste en la sesión 2 o de tu reto del mes. Para la música, piensa el tema de la canción de tu clase.</p>
-  <h3 class="bloque" style="margin-top:26px">El guion de la sesión</h3>
-  <table class="ses-tabla">
-          <tr><th>Tiempo</th><th>Qué hacemos</th><th>Dónde</th></tr>
-          <tr><td>0:00</td><td>Ronda del reto: tres o cuatro personas enseñan lo que hicieron en la sesión 2</td><td><a href="#bloqueGaleriaReto" data-ses="bloqueGaleriaReto">1. Ronda del reto</a></td></tr>
-          <tr><td>0:10</td><td>GitHub desde cero: repositorio, subir el archivo como index.html y activar Pages</td><td><a href="#bloquePublicar" data-ses="bloquePublicar">2. Publicar</a></td></tr>
-          <tr><td>0:40</td><td>De web a app: que se pueda instalar en el móvil con su icono</td><td><a href="#bloquePWA" data-ses="bloquePWA">3. App instalable · Prompt 4</a></td></tr>
-          <tr><td>1:00</td><td>Que se vea bien: guía de estilo del centro y revisión de accesibilidad</td><td><a href="#bloqueEstilo" data-ses="bloqueEstilo">4. Estilo · Prompt 5</a></td></tr>
-          <tr><td>1:15</td><td>Compartir y mantenerla al día: código QR, aviso de novedades y cómo actualizarla</td><td><a href="#bloqueCompartir" data-ses="bloqueCompartir">5. Compartir y actualizar</a></td></tr>
-          <tr><td>1:30</td><td>Música con IA: la canción de tu clase</td><td><a href="#bloqueMusica" data-ses="bloqueMusica">6. Música</a></td></tr>
-          <tr><td>1:55</td><td>Reto del mes y dudas</td><td><a href="#bloqueReto2" data-ses="bloqueReto2">7. Reto del mes</a></td></tr>
-        </table>
+  <h3 class="bloque" style="margin-top:26px" id="guion-s3">El guion de hoy</h3>
+  <p class="gp-ayuda">Pulsa cada parte para ver los puntos que vamos a tratar. Con <b>✓</b> se marca como vista y se pliega.</p>
+  <div class="gp" data-guion="s3"></div>
+  <p class="gp-reinicio solo-ponente no-imprimir"><button class="enlace" data-gpreset="s3">Desmarcar todas las partes</button></p>
+
 
 
 
@@ -1589,18 +1594,11 @@ Usa esta letra:
   </div>
   <p class="ses-lleva"><strong>Te llevas:</strong> la app que eligió el centro funcionando con vuestra propia base de datos, con inicio de sesión y reglas de seguridad, tu app revisada y presentada en la galería, y un plan para que todo siga funcionando.</p>
   <p><strong>Antes de venir:</strong> trae la cuenta de Google del centro. La app será la que ganó la votación de la sesión 1; si prefieres otra, mírala antes en la pestaña <a href="https://vunisal706-droid.github.io/IAparadocentes/#apps" target="_blank" rel="noopener">Apps</a> de la página de apoyo. Ten a mano tu cuenta de GitHub de la sesión 3.</p>
-  <h3 class="bloque" style="margin-top:26px">El guion de la sesión</h3>
-  <table class="ses-tabla">
-          <tr><th>Tiempo</th><th>Qué hacemos</th><th>Dónde</th></tr>
-          <tr><td>0:00</td><td>Dos sitios para guardar: en el aparato o en la nube. Cuándo cada uno</td><td><a href="#bloqueGuardar" data-ses="bloqueGuardar">1. Dos sitios para guardar</a></td></tr>
-          <tr><td>0:10</td><td>Datos del alumnado: lo que no se sube nunca, siglas en lugar de nombres y casos para debatir en parejas</td><td><a href="#bloqueDatos" data-ses="bloqueDatos">2. Datos · Prompt 6</a></td></tr>
-          <tr><td>0:25</td><td>Firebase paso a paso: proyecto, base de datos en Europa e inicio de sesión</td><td><a href="#bloqueFirebase" data-ses="bloqueFirebase">3. Firebase</a></td></tr>
-          <tr><td>0:50</td><td>La app del centro: la descargas, la pasas por el configurador, publicas las reglas y la subes a GitHub</td><td><a href="#bloqueTuApp" data-ses="bloqueTuApp">4. Tu app del centro</a></td></tr>
-          <tr><td>1:15</td><td>Prueba de la cerradura: un compañero no autorizado intenta entrar y no puede</td><td><a href="#bloqueCerradura" data-ses="bloqueCerradura">5. La cerradura</a></td></tr>
-          <tr><td>1:25</td><td>Segunda opinión: otra IA revisa tu app</td><td><a href="#bloqueSegunda" data-ses="bloqueSegunda">6. Segunda opinión · Prompt 7</a></td></tr>
-          <tr><td>1:35</td><td>Galería final: las apps de todos en la pizarra y la recreativa del claustro</td><td><a href="#bloqueGaleria" data-ses="bloqueGaleria">7. Galería</a></td></tr>
-          <tr><td>1:50</td><td>Cómo seguir: quién mantiene cada app, cuentas del centro y una carpeta común</td><td><a href="#bloqueSeguir" data-ses="bloqueSeguir">8. Para seguir</a></td></tr>
-        </table>
+  <h3 class="bloque" style="margin-top:26px" id="guion-s4">El guion de hoy</h3>
+  <p class="gp-ayuda">Pulsa cada parte para ver los puntos que vamos a tratar. Con <b>✓</b> se marca como vista y se pliega.</p>
+  <div class="gp" data-guion="s4"></div>
+  <p class="gp-reinicio solo-ponente no-imprimir"><button class="enlace" data-gpreset="s4">Desmarcar todas las partes</button></p>
+
 
 
 
@@ -2321,14 +2319,15 @@ const SESIONES = ['s1', 's2', 's3', 's4'];
 let ROL = leer('rol', '');                       // '' · asistente · ponente
 let ABIERTAS = new Set(leer('abiertas', null) || ACCESO.abiertas);
 const esPonente = () => ROL === 'ponente';
-const puedeVer = id => esPonente() || !SESIONES.includes(id) || ABIERTAS.has(id);
+const puedeVer = id => esPonente() || (id !== 'directo' && (!SESIONES.includes(id) || ABIERTAS.has(id)));
+const primeraVisible = () => { const p = pestanas.find(x => puedeVer(x.dataset.panel)); return p ? p.dataset.panel : 'galeria'; };
 function aplicarAcceso() {
   document.body.classList.toggle('rol-ponente', esPonente());
   document.body.classList.toggle('rol-asistente', ROL === 'asistente');
   pestanas.forEach(p => { p.hidden = !puedeVer(p.dataset.panel); });
   document.querySelectorAll('[data-ir]').forEach(b => b.classList.toggle('cerrada', !puedeVer((ALIAS[b.dataset.ir] || [b.dataset.ir])[0])));
   const act = document.querySelector('section.panel.activo');
-  if (act && !puedeVer(act.id.replace('panel-', ''))) irA('inicio');
+  if (act && !puedeVer(act.id.replace('panel-', ''))) irA(primeraVisible());
   const caja = $('accesoChecks');
   if (caja) {
     caja.innerHTML = SESIONES.map((id, i) => '<label><input type="checkbox" value="' + id + '"' + (ABIERTAS.has(id) ? ' checked' : '') + '> Sesión ' + (i + 1) + '</label>').join('');
@@ -2360,10 +2359,10 @@ function pedirClave(soloPonente, despues) {
 /* ── Pestañas ─────────────────────────────────────────── */
 const pestanas = [...document.querySelectorAll('.pestana')];
 // Pestañas antiguas → sesión y apartado donde viven ahora
-const ALIAS = { directo: ['inicio', 'directoAncla'], feria: ['s1', null], sesiones: ['s1', null], apps: ['s4', 'bloqueApps'], configurar: ['s4', 'bloqueConfig'], guias: ['s4', 'bloqueFirebase'], ia: ['s2', 'bloqueMetodo'], gemini: ['s2', 'bloqueGemini'], taller: ['s2', 'bloqueTaller'], recursos: ['s4', null] };
+const ALIAS = { inicio: ['s1', 'bloquePresentacion'], presentacion: ['s1', 'bloquePresentacion'], feria: ['s1', null], sesiones: ['s1', null], apps: ['s4', 'bloqueApps'], configurar: ['s4', 'bloqueConfig'], guias: ['s4', 'bloqueFirebase'], ia: ['s2', 'bloqueMetodo'], gemini: ['s2', 'bloqueGemini'], taller: ['s2', 'bloqueTaller'], recursos: ['s4', null] };
 function irA(id, foco) {
   if (ALIAS[id]) { const [p, a] = ALIAS[id]; irA(p, foco); if (a) setTimeout(() => { const el = document.getElementById(a); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60); return; }
-  if (!pestanas.some(p => p.dataset.panel === id) || !puedeVer(id)) id = 'inicio';
+  if (!pestanas.some(p => p.dataset.panel === id) || !puedeVer(id)) id = puedeVer('s1') ? 's1' : primeraVisible();
   pestanas.forEach(p => {
     const on = p.dataset.panel === id;
     p.setAttribute('aria-selected', on); p.tabIndex = on ? 0 : -1;
@@ -2391,7 +2390,7 @@ document.addEventListener('click', e => {
 });
 window.addEventListener('hashchange', () => irA(location.hash.slice(1)));
 aplicarAcceso();
-irA(location.hash.slice(1) || 'inicio');
+irA(location.hash.slice(1) || 's1');
 
 /* ── Diapositivas ─────────────────────────────────────── */
 const diapos = [...document.querySelectorAll('.diapo')];
@@ -2418,7 +2417,8 @@ $('dPantalla').onclick = () => {
   else if ($('diapos').requestFullscreen) $('diapos').requestFullscreen().catch(() => {});
 };
 document.addEventListener('keydown', e => {
-  if (!$('panel-inicio').classList.contains('activo')) return;
+  if (!$('panel-s1').classList.contains('activo')) return;
+  if (!document.fullscreenElement) { const r = $('diapos').getBoundingClientRect(); if (r.bottom < 120 || r.top > innerHeight - 120) return; }
   if (e.target.closest('input,textarea,[role=tab]')) return;
   if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); verDiapo(dActual + 1); }
   else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); verDiapo(dActual - 1); }
@@ -2524,7 +2524,7 @@ const BASE = location.origin + location.pathname;
 const MODO = window.MODO_URL || null;
 const $$ = (s, r) => [...(r || document).querySelectorAll(s)];
 const plano = s => String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-const panelActual = () => { const p = document.querySelector('section.panel.activo'); return p ? p.id.replace('panel-', '') : 'inicio'; };
+const panelActual = () => { const p = document.querySelector('section.panel.activo'); return p ? p.id.replace('panel-', '') : 's1'; };
 const TS = () => firebase.database.ServerValue.TIMESTAMP;
 
 function cargarScript(src) {
@@ -2608,7 +2608,7 @@ function columna(fila, claves) {
 const S = {
   rol: 'local',        // local · dueno · asistente · mando · ponenteLocal
   sala: '', aplicando: false, siguiendo: true, autorizado: false,
-  estado: { panel: 'inicio', diapo: 0, actividad: '', pregunta: '' },
+  estado: { panel: 's1', diapo: 0, actividad: '', pregunta: '', parte: '' },
   solicitudes: {}, errorSala: '', admin: false, aviso: ''
 };
 const canal = ('BroadcastChannel' in window) ? new BroadcastChannel('ia-en-el-cole') : null;
@@ -2621,10 +2621,12 @@ function aplicarEstado(e, navegar) {
     if (navegar) {
       if (e.panel && e.panel !== panelActual()) irA(e.panel);
       if (typeof e.diapo === 'number' && e.diapo !== dActual) verDiapo(e.diapo);
+      if (e.parte && e.parte !== S.estado.parte && window.abrirParte) window.abrirParte(e.parte, S.rol !== 'mando' && S.rol !== 'ponenteLocal');
     }
   } finally { S.aplicando = false; }
   S.estado.panel = e.panel || S.estado.panel;
   if (typeof e.diapo === 'number') S.estado.diapo = e.diapo;
+  S.estado.parte = e.parte || S.estado.parte || '';
   S.estado.actividad = e.actividad || '';
   S.estado.feria = e.feria || ''; S.estado.ganadora = e.ganadora || '';
   if (typeof e.abiertas === 'string' && S.rol !== 'dueno' && S.rol !== 'local') { S.estado.abiertas = e.abiertas; if (e.abiertas !== [...ABIERTAS].join(',')) fijarAbiertas(e.abiertas.split(',')); }
@@ -2868,7 +2870,7 @@ $('respEnviar').onclick = async () => {
 /* ── Mando (móvil) y ventana de ponente ── */
 const mando = $('mando');
 const M = { inicio: Date.now(), reloj: null };
-const TITULOS_PANEL = { inicio: 'Presentación', s1: 'Sesión 1', s2: 'Sesión 2', s3: 'Sesión 3', s4: 'Sesión 4', galeria: 'Galería' };
+const TITULOS_PANEL = { s1: 'Sesión 1', s2: 'Sesión 2', s3: 'Sesión 3', s4: 'Sesión 4', galeria: 'Galería', directo: 'Directo' };
 function tituloDiapo(i) { const d = diapos[i]; if (!d) return ''; const h = d.querySelector('h2'); return h ? h.textContent.trim() : 'Diapositiva ' + (i + 1); }
 function mmss(ms) { const s = Math.floor(ms / 1000); return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); }
 function pintarMando() {
@@ -2878,31 +2880,45 @@ function pintarMando() {
     '<button class="mando-reloj" id="mReloj" title="Toca para poner a cero" style="background:none;border:0;cursor:pointer">' + mmss(Date.now() - M.inicio) + '</button></div>';
   if (S.rol === 'mando' && !S.autorizado) {
     mando.innerHTML = cab + '<div class="mando-espera"><h2>' + (S.errorSala ? 'No se puede conectar' : 'Casi listo') + '</h2><p>' +
-      esc(S.errorSala || 'Autoriza este móvil en el ordenador del ponente, en la pestaña En directo.') + '</p></div>';
+      esc(S.errorSala || 'Autoriza este móvil en el ordenador del ponente, en la pestaña Directo.') + '</p></div>';
     return;
   }
-  const i = dActual, enDiapos = S.estado.panel === 'inicio';
-  const notas = diapos[i] && diapos[i].dataset.notas || 'Sin notas para esta diapositiva.';
-  const abierta = S.estado.actividad === 'radiografia';
-  mando.innerHTML = cab + '<div class="mando-cuerpo">' +
-    '<div class="mando-actual"><div class="n">' + (enDiapos ? 'Diapositiva ' + (i + 1) + ' de ' + diapos.length : 'Pestaña: ' + esc(TITULOS_PANEL[S.estado.panel] || S.estado.panel)) + '</div>' +
-    '<h2>' + esc(enDiapos ? tituloDiapo(i) : TITULOS_PANEL[S.estado.panel] || '') + '</h2>' +
-    (enDiapos ? '<div class="notas">' + esc(notas) + '</div>' : '') + '</div>' +
-    (enDiapos && i < diapos.length - 1 ? '<div class="mando-sig">Siguiente: ' + esc(tituloDiapo(i + 1)) + '</div>' : '') +
-    '<div class="mando-botones"><button class="ant" data-m="ant" aria-label="Anterior">‹</button><button class="sig" data-m="sig" aria-label="Siguiente">›</button></div>' +
-    '<div class="mando-paneles">' + Object.keys(TITULOS_PANEL).map(p =>
-      '<button data-m="panel" data-p="' + p + '" aria-current="' + (S.estado.panel === p) + '">' + TITULOS_PANEL[p] + '</button>').join('') + '</div>' +
-    '</div>';
+  const pan = S.estado.panel, G = (window.GUIONES || {})[pan] || null;
+  const pp = (S.estado.parte || '').split(':'), pi = pp[0] === pan ? +pp[1] : -1, g = G && G[pi];
+  const vistos = window.partesVistas ? partesVistas(pan) : [];
+  let h = '<div class="mando-actual"><div class="n">' + esc(TITULOS_PANEL[pan] || pan) + (g ? ' · parte ' + (pi + 1) + ' de ' + G.length + ' · ' + g.h + ' · ' + g.m + ' min' : '') + '</div>';
+  if (g) {
+    h += '<h2>' + esc(g.t) + '</h2>' + (g.dice ? '<div class="notas"><b>Lo que dices:</b> «' + esc(g.dice) + '»</div>' : '') +
+      (g.hace && g.hace.length ? '<ul class="hace">' + g.hace.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' : '');
+  } else h += '<h2>' + (G ? 'Toca una parte del guion' : esc(TITULOS_PANEL[pan] || '')) + '</h2>' + (G ? '<div class="notas">Se abrirá en la pizarra y aquí verás tus notas.</div>' : '');
+  h += '</div>';
+  if (pan === 's1' && diapos.length) {
+    const notas = diapos[dActual] && diapos[dActual].dataset.notas || 'Sin notas para esta diapositiva.';
+    h += '<div class="mando-diapo"><div class="n">Presentación · diapositiva ' + (dActual + 1) + ' de ' + diapos.length + ' · ' + esc(tituloDiapo(dActual)) + '</div><div class="notas">' + esc(notas) + '</div>' +
+      (dActual < diapos.length - 1 ? '<div class="mando-sig" style="margin-top:6px">Siguiente: ' + esc(tituloDiapo(dActual + 1)) + '</div>' : '') + '</div>' +
+      '<div class="mando-botones"><button class="ant" data-m="ant" aria-label="Diapositiva anterior">‹</button><button class="sig" data-m="sig" aria-label="Diapositiva siguiente">›</button></div>';
+  } else if (G) {
+    h += '<div class="mando-botones"><button class="ant" data-m="pant" aria-label="Parte anterior">‹</button><button class="sig" data-m="psig" aria-label="Parte siguiente">›</button></div>';
+  }
+  if (G) h += '<div class="mando-partes">' + G.map((x, i) => '<button data-m="parte" data-i="' + i + '" aria-current="' + (i === pi) + '" class="' + (vistos.includes(i) ? 'visto' : '') + '">' + x.h + ' · ' + (i + 1) + '. ' + esc(x.t) + '</button>').join('') + '</div>';
+  h += '<div class="mando-paneles">' + Object.keys(TITULOS_PANEL).map(p =>
+      '<button data-m="panel" data-p="' + p + '" aria-current="' + (pan === p) + '">' + TITULOS_PANEL[p] + '</button>').join('') + '</div>';
+  mando.innerHTML = cab + '<div class="mando-cuerpo">' + h + '</div>';
 }
 mando.addEventListener('click', e => {
   const b = e.target.closest('[data-m],#mReloj'); if (!b) return;
   if (b.id === 'mReloj') { M.inicio = Date.now(); pintarMando(); return; }
-  const m = b.dataset.m;
+  const m = b.dataset.m, pan = S.estado.panel, G = (window.GUIONES || {})[pan] || [];
+  const pp = (S.estado.parte || '').split(':'), pi = pp[0] === pan ? +pp[1] : -1;
   if (m === 'ant' || m === 'sig') {
-    if (panelActual() !== 'inicio') irA('inicio');
+    if (panelActual() !== 's1') irA('s1');
     verDiapo(dActual + (m === 'sig' ? 1 : -1));
-    if (navigator.vibrate) navigator.vibrate(15);
+  } else if (m === 'parte') emitir({ parte: pan + ':' + b.dataset.i });
+  else if (m === 'pant' || m === 'psig') {
+    const n = Math.max(0, Math.min(G.length - 1, pi + (m === 'psig' ? 1 : -1)));
+    if (G.length) emitir({ parte: pan + ':' + n });
   } else if (m === 'panel') irA(b.dataset.p);
+  if (navigator.vibrate) navigator.vibrate(15);
 });
 function arrancarReloj() { clearInterval(M.reloj); M.reloj = setInterval(() => { const r = $('mReloj'); if (r) r.textContent = mmss(Date.now() - M.inicio); }, 1000); }
 function etiquetaDispositivo() {
@@ -3610,53 +3626,111 @@ document.addEventListener('click', e => { const b = e.target.closest('[data-fx-i
 /* ── Guion con reloj ── */
 const GUION = [
   { h: '0:00', m: 10, t: 'Bienvenida y radiografía del claustro', s: 'Cada persona responde desde su móvil qué tarea le quita más tiempo',
+    puntos: ["Quiénes somos y para qué son estas cuatro sesiones", "Escanea el código QR y responde: ¿qué tarea te quita más tiempo?", "Vemos juntos qué temas se repiten"], diapo: 0, 
     dice: 'Soy maestro, no informático. Todo lo que vais a ver hoy lo he hecho hablando con una IA, igual que vais a hacer vosotros. Antes de enseñar nada, quiero saber qué os quita tiempo en el cole.',
-    hace: ['Antes de empezar, marca en «En directo» que los asistentes solo ven la sesión 1.', 'Pulsa «Empezar sesión en directo» y proyecta el QR.', 'Comenta en voz alta dos o tres respuestas según llegan.', 'Quédate con los temas que más se repiten: te dicen qué apps destacar después. Hoy no se convierten en encargo: eso es en la sesión 2.'], ir: ['directo', 'Abrir «En directo»'] },
+    hace: ['Antes de empezar, marca en «En directo» que los asistentes solo ven la sesión 1.', 'Pulsa «Empezar sesión en directo» y proyecta el QR.', 'Comenta en voz alta dos o tres respuestas según llegan.', 'Quédate con los temas que más se repiten: te dicen qué apps destacar después. Hoy no se convierten en encargo: eso es en la sesión 2.'], ir: ['directo', 'Abrir «En directo»', 1] },
   { h: '0:10', m: 10, t: 'Así nació una app', s: 'La historia real de Teletrabajo, de un problema a una herramienta',
+    puntos: ["Un problema real: redactar el acta de cada reunión", "Cómo creció la app, conversación a conversación", "Cómo se hace una app así: necesidad, IA, un archivo y publicarla"], diapo: 4, 
     dice: 'Esta app no empezó con una idea brillante, empezó con un fastidio: redactar el acta después de cada reunión. Mirad cómo fue creciendo, conversación a conversación.',
-    hace: ['Recorre la línea del tiempo de la presentación, hito a hito.', 'Lee en voz alta uno de los encargos reales: se ve que es lenguaje normal.', 'No expliques todavía cómo se hace: hoy solo se ve que es posible.'], ir: ['inicio', 'Abrir la presentación'] },
+    hace: ['Recorre la línea del tiempo de la presentación, hito a hito.', 'Lee en voz alta uno de los encargos reales: se ve que es lenguaje normal.', 'No expliques todavía cómo se hace: hoy solo se ve que es posible.'], ir: ['bloquePresentacion', 'Ver la presentación'] },
   { h: '0:20', m: 10, t: 'Muestra · En el aula', s: 'Capitoolappciones como puerta de entrada, Troglodita, Portal Educativo, Mis Lecturas, Aula PT y Podcast a Vídeo',
+    puntos: ["Capitoolappciones: la puerta de entrada a todas", "Troglodita, Portal Educativo, Mis Lecturas, Aula PT y Podcast a Vídeo", "Fíjate en el problema que resuelve cada una"], 
     dice: 'Todo lo que vais a ver cabe en esta pantalla: es la app que reúne las demás. Empiezo por lo que toca al alumnado. Fijaos menos en la app y más en el problema que resuelve.',
     hace: ['Abre Capitoolappciones medio minuto: es el mapa de toda la muestra.', 'Pon el escaparate en pantalla completa y abre cada app desde su tarjeta.', 'Dos minutos por app. El Troglodita primero: es el que rompe el hielo.'], ir: ['fxEscena', 'Ir al escaparate'] },
   { h: '0:30', m: 8, t: 'Muestra · Lectura y problemas', s: 'Ágora, Generador de SdA, Plan de Resolución y Registro de Lectura y Problemas',
+    puntos: ["Ágora: el plan de lectura, semana a semana", "Generador de SdA: de la idea al encargo para la IA", "Plan de Resolución y Registro de Lectura y Problemas"], 
     dice: 'Un plan de lectura que nadie abre no sirve. Estas cuatro salieron de querer que el plan se use cada semana, no que esté en un cajón.',
     hace: ['Enseña una semana concreta en Ágora y cómo se registra después.', 'En el Generador de SdA, llega hasta el texto que prepara para la IA y párate ahí.'], ir: ['fxMuestra', 'Ver la muestra'] },
   { h: '0:38', m: 9, t: 'Muestra · Alumnado y convivencia', s: 'Convivencia+ (sociograma), Convive+ (partes) y Gestor de Refuerzo',
+    puntos: ["Convivencia+: el sociograma del grupo", "Convive+: los partes de convivencia sin papeles", "Gestor de Refuerzo: quién, cuándo y qué"], 
     dice: 'Todos tenemos un alumno que está solo y no lo vemos. Y todos hemos perdido media hora con un parte. Estas apps salieron de ahí.',
     hace: ['Entra con tu usuario: son apps con datos y se enseñan desde tu ordenador.', 'Usa un grupo inventado, nunca datos reales de tu centro.'], ir: ['fxMuestra', 'Ver la muestra'] },
   { h: '0:47', m: 9, t: 'Muestra · Gestión del centro', s: 'Evaluaciones, Cuadra Horarios, Teletrabajo, PDF a Word y Programas del cole',
+    puntos: ["Gestor de Evaluaciones y Cuadra Horarios", "Teletrabajo: el acta de la reunión, preparada", "PDF a Word y Programas del cole"], 
     dice: 'Y ahora lo que nos quita las tardes al claustro y al equipo directivo. Si alguna os ahorra una hora a la semana, ya ha merecido la pena.',
     hace: ['Cuadra Horarios y PDF a Word no piden usuario: que los abran a la vez que tú.', 'Elige dos para enseñar a fondo y nombra las demás.'], ir: ['fxMuestra', 'Ver la muestra'] },
   { h: '0:56', m: 9, t: 'Muestra · El centro en el móvil', s: 'Capitoolappciones, Tablón de Avisos, Agenda, CapiGuía y Plan de Centro',
+    puntos: ["Capitoolappciones: el panel del día y el asistente", "Tablón de Avisos, Agenda y CapiGuía", "El Plan de Centro, en el bolsillo"], 
     dice: 'La última familia es la que más agradece el claustro: saber qué pasa hoy en el cole sin preguntar a nadie.',
     hace: ['Vuelve a Capitoolappciones y enseña el panel del día y el asistente.', 'Busca una duda real en el Plan de Centro desde el móvil.', 'Cierra preguntando: «¿Cuál os llevaríais mañana?».'], ir: ['fxMuestra', 'Ver la muestra'] },
   { h: '1:05', m: 25, t: 'Pruébalas en tu móvil', s: 'Muro de códigos QR: cada persona entra en las que más le interesen',
+    puntos: ["Escanea el QR de la app que más te interese", "Trastea sin miedo: no se rompe nada", "Prueba al menos dos"], 
     dice: 'Ya me habéis visto a mí. Ahora os toca: escanead la que más os haya llamado la atención y trastead sin miedo, no se rompe nada.',
     hace: ['Proyecta el muro de QR y pasea por la sala.', 'Apunta las dudas que se repitan: te servirán en las sesiones siguientes.', 'A mitad de bloque, pide que prueben una segunda app.'], ir: ['fxProbar', 'Ir al muro de QR'] },
   { h: '1:30', m: 15, t: 'Crea un juego en diez minutos', s: 'Cada persona hace su juego con Gemini y Canvas, sin preparar nada antes',
+    puntos: ["Abre Gemini, pulsa + y elige Canvas", "Copia el encargo y cambia el curso y el tema", "¿Algo no te gusta? Pídelo en una frase"], 
     dice: 'No quiero que os vayáis creyendo que esto es cosa mía. En diez minutos vais a tener un juego hecho por vosotros, funcionando.',
     hace: ['Enseña en la pantalla dónde está Canvas: botón + de Gemini.', 'Todos copian el encargo y cambian curso y tema.', 'Quien termine antes, que pida un cambio en una sola frase.', 'Proyecta dos o tres juegos del grupo: es el mejor momento de la sesión.'], ir: ['fxJuego', 'Ir al encargo'] },
   { h: '1:45', m: 10, t: 'Votación y app ganadora', s: 'Hasta dos votos por persona, con el resultado en directo',
+    puntos: ["Hasta dos votos por persona, desde el móvil", "Piensa en el centro, no solo en tu clase", "La ganadora se pone en marcha en la sesión 4"], 
     dice: 'Llega el momento de decidir. Votad pensando en el centro, no solo en vuestra clase: la que gane se quedará instalada en el centro, con vuestros datos, en la cuarta sesión.',
     hace: ['Pulsa «Abrir la votación» y pon el marcador en pantalla completa.', 'Cuando hayan votado casi todos, pulsa «Cerrar y descubrir la ganadora».', 'Si hay empate o dos muy igualadas, se pueden trabajar las dos en dos grupos.'], ir: ['fxVotar', 'Ir a la votación'] },
   { h: '1:55', m: 5, t: 'Qué viene ahora', s: 'Las tres sesiones que quedan y qué traer a la próxima',
+    puntos: ["Sesión 2: tu primera app", "Sesión 3: publicarla en internet", "Sesión 4: la app del centro, con vuestros datos", "Para la próxima: entra en Gemini y trae una tarea que repitas cada semana"], diapo: 7, 
     dice: 'Hoy habéis visto lo que se puede hacer. En la próxima sesión empezáis a hacerlo vosotros: primero una app pequeña, después la publicáis y, en la última, la app ganadora se queda funcionando en vuestro centro.',
     hace: ['Acuerda quién coordina en el centro y con qué cuenta de Google se creará todo en la sesión 4.', 'Para la sesión 2: que comprueben que entran en Gemini y traigan pensada una tarea que repitan cada semana.'], ir: ['fxDespues', 'Ver «Y después»'] }
 ];
-$('fxGuion').innerHTML = GUION.map((g, i) => '<details class="fx-paso"><summary><span class="h">' + g.h + '</span><span><b>' + esc(g.t) + '</b><small>' + esc(g.s) + '</small></span><span class="min">' + g.m + ' min</span></summary>' +
-  '<div class="fx-det"><p class="dice">«' + esc(g.dice) + '»</p><ul>' + g.hace.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul><div class="fila no-imprimir">' +
-  '<button class="btn azul fx-solo-ponente" data-fxcrono="' + i + '">▶ Reloj de ' + g.m + ' min</button>' + (g.ir ? '<button class="btn linea" data-fxa="' + g.ir[0] + '">' + esc(g.ir[1]) + '</button>' : '') + '</div></div></details>').join('');
+const GUIONES = window.GUIONES = { s1: GUION, s2: [{"h": "0:00", "m": 10, "t": "Lo que salió en la sesión 1", "puntos": ["La app que eligió el centro", "Las tareas que más tiempo os quitan", "Hoy: tu primera app, hecha por ti"], "dice": "En la primera sesión visteis lo que se puede hacer. Hoy cada uno se va con algo suyo funcionando.", "hace": ["Abre la pestaña Directo y enseña las respuestas de la radiografía.", "Recuerda la regla: nunca nombres de alumnos en la IA."], "ir": ["bloqueBienvenida", "Ir al apartado"]}, {"h": "0:10", "m": 10, "t": "Gemini por dentro", "puntos": ["Qué hace cada opción del menú +", "Canvas: la app funcionando junto a la conversación", "Hoy probamos dos o tres; el resto, para consultar"], "dice": "Gemini no es solo un chat: con el menú + puede escribir, investigar, hacer imágenes o construir una app.", "hace": ["Proyecta Gemini y abre el menú +.", "Prueba en directo dos herramientas, Canvas la última."], "ir": ["bloqueGemini", "Ver las herramientas"]}, {"h": "0:20", "m": 25, "t": "La rueda de participación", "puntos": ["Todos a la vez: copia el encargo y pégalo en Gemini con Canvas", "En unos minutos, la rueda funciona", "Hazla tuya: colores, sonido y lista, un cambio cada vez"], "dice": "Vais a pedirle a la IA una app que podéis usar mañana mismo en clase.", "hace": ["Haz tú la rueda a la vez que el grupo, proyectada.", "Pasea por la sala y ayuda a quien se atasque.", "Que guarden el archivo: lo publicarán en la sesión 3."], "ir": ["bloqueRueda", "Ir a los encargos"]}, {"h": "0:45", "m": 10, "t": "Por qué ha funcionado: el método", "puntos": ["Describe el problema, no la app", "Deja que la IA te pregunte antes de programar", "Pide siempre el archivo completo", "Prueba, copia el error y pégalo"], "dice": "No ha sido suerte: habéis seguido un método que sirve para cualquier app.", "hace": ["Relaciona cada regla con lo que acaban de hacer en la rueda."], "ir": ["bloqueMetodo", "Ver el método"]}, {"h": "0:55", "m": 25, "t": "Tu asistente y tu herramienta propia", "puntos": ["Crea tu Gem «Constructor de apps del cole»", "Pega las instrucciones y elige Canvas", "Pídele una herramienta para lo que más tiempo te quita"], "dice": "Ahora cada uno tiene su propio ayudante, que ya sabe cómo queremos las apps del cole.", "hace": ["Crea la Gem en directo, paso a paso.", "Que cada persona elija su tarea de la radiografía.", "Enseña dos o tres herramientas del grupo al final."], "ir": ["bloqueAsistente", "Ir a las instrucciones"]}, {"h": "1:20", "m": 10, "t": "Taller de errores", "puntos": ["Tres apps rotas a propósito", "Encuentra el fallo con F12 y cópialo para la IA", "Hoy el primer nivel; los otros dos, en casa"], "dice": "Las apps fallan. Lo importante es saber contárselo a la IA para que lo arregle.", "hace": ["Haz el primer nivel en la pantalla grande.", "Enseña dónde está la consola con F12."], "ir": ["bloqueTaller", "Ir al taller"]}, {"h": "1:30", "m": 25, "t": "NotebookLM: tu centro en un cuaderno", "puntos": ["Sube documentos del centro: Plan de Convivencia, ROF…", "La IA responde solo con lo que hay en ellos y dice de dónde lo saca", "Conviértelos en un audio tipo pódcast para las familias"], "dice": "Imaginad preguntarle al ROF y que os conteste diciendo en qué página está.", "hace": ["Haz una pregunta real a un documento del centro.", "Genera el resumen en audio y pon un trozo."], "ir": ["bloqueNotebook", "Ver el paso a paso"]}, {"h": "1:55", "m": 5, "t": "Reto del mes y dudas", "puntos": ["Usa en clase tu herramienta al menos una semana", "O haz otra pequeña: semáforo, sorteo de grupos o marcador", "Antes de la sesión 3: crea tu cuenta de GitHub"], "dice": "Lo que no se usa se olvida: probadla en clase y la próxima vez la publicamos.", "hace": ["Recuerda guardar el archivo de la herramienta.", "Resuelve dudas y despide la sesión."], "ir": ["bloqueReto1", "Ver el reto"]}], s3: [{"h": "0:00", "m": 10, "t": "Ronda del reto", "puntos": ["Tres o cuatro personas enseñan lo que hicieron", "Qué problema resuelve y cómo lo pidieron", "Qué falló por el camino"], "dice": "Empezamos por lo vuestro: lo que habéis hecho este mes vale más que cualquier ejemplo mío.", "hace": ["Pide voluntarios antes de empezar.", "Proyecta sus herramientas en la pantalla grande."], "ir": ["bloqueGaleriaReto", "Ir al apartado"]}, {"h": "0:10", "m": 30, "t": "Publicar en GitHub Pages", "puntos": ["Crea un repositorio público con nombre corto", "Sube tu archivo con el nombre index.html", "Activa Pages y recibe tu dirección web"], "dice": "Hasta hoy vuestra app vivía en vuestro ordenador. En media hora tendrá dirección en internet.", "hace": ["Hazlo en directo con tu cuenta, paso a paso.", "Espera a que todos tengan su dirección antes de seguir."], "ir": ["bloquePublicar", "Ver los pasos"]}, {"h": "0:40", "m": 20, "t": "De web a app instalable", "puntos": ["Pide a la IA que la convierta en app instalable", "Que funcione también sin conexión", "Instálala en el móvil con su icono"], "dice": "Ahora vamos a hacer que se instale en el móvil como cualquier otra app.", "hace": ["Enseña la instalación en tu móvil o en el ordenador."], "ir": ["bloquePWA", "Ir al encargo"]}, {"h": "1:00", "m": 15, "t": "Que se vea bien", "puntos": ["Aplica el estilo del centro sin cambiar lo que hace", "Letra grande, botones grandes y buen contraste", "Revisión de accesibilidad"], "dice": "Una app clara se usa más. Y la del centro tiene que parecer del centro.", "hace": ["Compara el antes y el después en una app del grupo."], "ir": ["bloqueEstilo", "Ir al encargo"]}, {"h": "1:15", "m": 15, "t": "Compartir y mantenerla al día", "puntos": ["Crea su código QR desde Chrome", "Añade un aviso de novedades", "Cómo subir una versión nueva"], "dice": "Una app publicada se comparte y se mejora. Así se hace sin complicarse.", "hace": ["Que un compañero escanee el QR de otro.", "Sube un cambio pequeño en directo."], "ir": ["bloqueCompartir", "Ver cómo"]}, {"h": "1:30", "m": 25, "t": "Música con IA: la canción de tu clase", "puntos": ["Escribe la letra: el valor del mes, una rutina, las tablas…", "Gemini para piezas cortas; Suno para canciones completas", "Descárgala y que suene en clase"], "dice": "Para terminar, algo que a vuestros alumnos les va a encantar: su propia canción.", "hace": ["Haz una canción en directo con una letra del grupo.", "Ponla entera: es el momento más divertido."], "ir": ["bloqueMusica", "Ver los pasos"]}, {"h": "1:55", "m": 5, "t": "Reto del mes y dudas", "puntos": ["Publica una segunda herramienta pequeña", "Compártela por QR con un compañero o con las familias", "Para la sesión 4: la cuenta de Google del centro"], "dice": "La última sesión es la grande: la app del centro funcionando con vuestros datos.", "hace": ["Recuerda la cuenta de Google del centro.", "Resuelve dudas y despide la sesión."], "ir": ["bloqueReto2", "Ver el reto"]}], s4: [{"h": "0:00", "m": 10, "t": "Dos sitios para guardar", "puntos": ["En el aparato: sin cuentas, pero no se comparte", "En la nube: datos compartidos, con usuario y reglas", "Cuándo usar cada uno"], "dice": "Vuestras apps guardaban en el propio aparato. La del centro necesita guardar en la nube, y eso pide cuidado.", "hace": ["Pon un ejemplo de cada tipo con apps que ya conocen."], "ir": ["bloqueGuardar", "Ir al apartado"]}, {"h": "0:10", "m": 15, "t": "Datos del alumnado", "puntos": ["Lo que no se sube nunca", "Siglas o números en lugar de nombres", "Casos para debatir en parejas"], "dice": "Antes de tocar la base de datos, hablemos de lo que no se hace nunca con datos del alumnado.", "hace": ["Reparte los casos y deja tres minutos por pareja.", "Pon en común dos o tres respuestas."], "ir": ["bloqueDatos", "Ver los casos"]}, {"h": "0:25", "m": 25, "t": "Firebase paso a paso", "puntos": ["Crea el proyecto con la cuenta del centro", "Base de datos en Europa (Bélgica)", "Activa el inicio de sesión con usuario"], "dice": "Firebase es donde la app guardará los datos del centro. Lo hacemos juntos, pantalla a pantalla.", "hace": ["Hazlo en directo con la cuenta del centro.", "No sigas hasta que todos tengan el proyecto creado."], "ir": ["bloqueFirebase", "Ver las guías"]}, {"h": "0:50", "m": 25, "t": "Tu app del centro", "puntos": ["Descarga la app que eligió el centro", "Pásala por el configurador", "Publica las reglas y súbela a GitHub"], "dice": "Ahora sí: la app que votasteis en la primera sesión, con vuestros datos.", "hace": ["Sigue los cuatro pasos con la app ganadora.", "Comprueba que todos llegan a abrirla publicada."], "ir": ["bloqueTuApp", "Ver los pasos"]}, {"h": "1:15", "m": 10, "t": "Prueba de la cerradura", "puntos": ["Entra con tu usuario: ves tus datos", "Un compañero sin permiso intenta entrar", "Si ve algo, las reglas no están bien"], "dice": "La comprobación más importante del día: que quien no tiene permiso no ve nada.", "hace": ["Haz tú la prueba con alguien del grupo.", "Si alguien ve datos, revisad juntos las reglas."], "ir": ["bloqueCerradura", "Ir a la prueba"]}, {"h": "1:25", "m": 10, "t": "La segunda opinión", "puntos": ["Pide a otra IA que revise tu app", "Errores, fallos en el móvil y riesgos para los datos", "Arregla lo importante antes de enseñarla"], "dice": "Antes de dar por buena una app, que la revise otra IA, como haría un compañero.", "hace": ["Enseña una revisión real y qué se cambió por ella."], "ir": ["bloqueSegunda", "Ir al encargo"]}, {"h": "1:35", "m": 15, "t": "Galería final y recreativa del claustro", "puntos": ["Sube tu app a la galería", "Las apps de todos, en la pizarra", "Prueba las de los demás y vota tu favorita"], "dice": "Mirad todo lo que habéis hecho en cuatro meses.", "hace": ["Abre la Recreativa en la pantalla grande.", "Anuncia la favorita del claustro al final."], "ir": ["bloqueGaleria", "Ir a la galería"]}, {"h": "1:50", "m": 10, "t": "Cómo seguir", "puntos": ["Quién mantiene cada app y quién le ayuda", "Todo con las cuentas del centro, no las personales", "Una carpeta común con enlaces, QR y prompts"], "dice": "Para que esto siga cuando acabe la formación, hace falta organizarse un poco.", "hace": ["Acordad responsable y suplente de la app del centro.", "Despide la formación y da las gracias."], "ir": ["bloqueSeguir", "Ver cómo seguir"]}] };
+const VISTOS_K = 'guion-vistos';
+window.partesVistas = sid => (leer(VISTOS_K, {}) || {})[sid] || [];
+function marcarVista(sid, i, si) {
+  const v = leer(VISTOS_K, {}) || {}; const l = new Set(v[sid] || []);
+  si ? l.add(i) : l.delete(i); v[sid] = [...l]; guardar(VISTOS_K, v);
+}
+function pintarGuiones() {
+  $$('[data-guion]').forEach(cont => {
+    const sid = cont.dataset.guion, G = GUIONES[sid] || [], vistos = partesVistas(sid);
+    cont.innerHTML = G.map((g, i) => '<details class="gp-p' + (vistos.includes(i) ? ' visto' : '') + '" id="parte-' + sid + '-' + i + '" data-sid="' + sid + '" data-i="' + i + '">' +
+      '<summary><span class="gp-h">' + g.h + '</span><span class="gp-n">' + (i + 1) + '</span><span class="gp-t">' + esc(g.t) + '</span>' +
+      '<button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>' +
+      '<div class="gp-c"><ul>' + (g.puntos || []).map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' +
+      '<div class="gp-acc no-imprimir">' +
+      (typeof g.diapo === 'number' ? '<button type="button" class="btn azul" data-gpdiapo="' + g.diapo + '">Abrir la presentación</button>' : '') +
+      (g.ir && !(typeof g.diapo === 'number' && g.ir[0] === 'bloquePresentacion') ? (g.ir[0] === 'directo'
+        ? '<button type="button" class="btn linea solo-ponente" data-ir="directo">' + esc(g.ir[1]) + '</button>'
+        : '<a class="btn linea" href="#' + g.ir[0] + '" data-ses="' + g.ir[0] + '">' + esc(g.ir[1]) + '</a>') : '') +
+      '<button type="button" class="btn linea solo-ponente" data-gpcrono="' + i + '">⏱ Reloj de ' + g.m + ' min</button>' +
+      '</div></div></details>').join('');
+  });
+}
+pintarGuiones();
+window.abrirParte = function (code, mover) {
+  const [sid, i] = String(code).split(':'); const d = $('parte-' + sid + '-' + i); if (!d) return;
+  S.aplicando = true; try { if (panelActual() !== sid && puedeVer(sid)) irA(sid); d.open = true; } finally { S.aplicando = false; }
+  S.estado.parte = code;
+  if (mover !== false) setTimeout(() => d.scrollIntoView({ behavior: quieto ? 'auto' : 'smooth', block: 'start' }), 60);
+};
+document.addEventListener('toggle', e => {
+  const d = e.target; if (!d.classList || !d.classList.contains('gp-p') || !d.open || S.aplicando) return;
+  if (S.rol === 'asistente' || S.rol === 'mando') return;
+  emitir({ parte: d.dataset.sid + ':' + d.dataset.i });
+}, true);
+document.addEventListener('click', e => {
+  const ok = e.target.closest('[data-gpok]');
+  if (ok) {
+    e.preventDefault(); e.stopPropagation();
+    const d = ok.closest('.gp-p'), sid = d.dataset.sid, i = +d.dataset.i, si = !d.classList.contains('visto');
+    d.classList.toggle('visto', si); if (si) d.open = false; marcarVista(sid, i, si); pintarMando();
+    return;
+  }
+  const dia = e.target.closest('[data-gpdiapo]');
+  if (dia) { verDiapo(+dia.dataset.gpdiapo); $('bloquePresentacion').scrollIntoView({ behavior: quieto ? 'auto' : 'smooth', block: 'start' }); return; }
+  const cr = e.target.closest('[data-gpcrono]');
+  if (cr) {
+    const d = cr.closest('.gp-p'), g = GUIONES[d.dataset.sid][+cr.dataset.gpcrono];
+    cronoFin = Date.now() + g.m * 60000; $('fxCronoTit').textContent = g.t; $('fxCrono').classList.add('ver');
+    clearInterval(cronoInt); cronoInt = setInterval(pintarCrono, 1000); pintarCrono(); return;
+  }
+  const rs = e.target.closest('[data-gpreset]');
+  if (rs) { const v = leer(VISTOS_K, {}) || {}; delete v[rs.dataset.gpreset]; guardar(VISTOS_K, v); pintarGuiones(); pintarMando(); }
+}, true);
 let cronoFin = 0, cronoInt = null;
 function pintarCrono() {
   const q = Math.round((cronoFin - Date.now()) / 1000), a = Math.abs(q);
   $('fxCronoT').textContent = (q < 0 ? '+' : '') + Math.floor(a / 60) + ':' + String(a % 60).padStart(2, '0');
   $('fxCrono').classList.toggle('fin', q <= 0);
 }
-$('fxGuion').addEventListener('click', e => {
-  const c = e.target.closest('[data-fxcrono]'), a = e.target.closest('[data-fxa]');
-  if (c) { const g = GUION[+c.dataset.fxcrono]; cronoFin = Date.now() + g.m * 60000; $('fxCronoTit').textContent = g.t; $('fxCrono').classList.add('ver'); clearInterval(cronoInt); cronoInt = setInterval(pintarCrono, 1000); pintarCrono(); }
-  if (a) { const id = a.dataset.fxa; if (id.startsWith('fx')) $(id).scrollIntoView({ behavior: quieto ? 'auto' : 'smooth', block: 'start' }); else { irA(id); scrollTo({ top: 0 }); } }
-});
+
 $('fxCronoX').onclick = () => { clearInterval(cronoInt); $('fxCrono').classList.remove('ver'); };
 
 /* ── Muestra por problemas y muro de QR ── */
@@ -3790,14 +3864,14 @@ document.addEventListener('click', e => {
 });
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-12-materiales';
+  const ID = 'formacion-novedades-2026-11-13-guion';
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
   d.setAttribute('role', 'dialog'); d.setAttribute('aria-label', 'Novedades');
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">Nueva pestaña <b>📎 Materiales</b>: los documentos de ejemplo que piden las apps en las prácticas, listos para descargar.</p>'
+    + '<p style="margin-bottom:14px">El guion de cada sesión es ahora una lista de partes que se abren y se cierran, y la presentación está dentro de la Sesión 1.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
