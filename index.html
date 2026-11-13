@@ -886,27 +886,39 @@ body:not(.rol-ponente) .solo-ponente{display:none!important}
 .fx-mat:hover{background:#fff;border-color:var(--c)}
 
 /* ═══ Guion de la sesión en tarjetas (para proyectar) ═══ */
-.gp-ayuda{color:var(--tinta-suave);margin:-6px 0 14px;max-width:70ch}
-.gp{display:grid;gap:10px;margin:0 0 8px}
-.gp-p{background:#fff;border:1.5px solid var(--linea);border-radius:16px;overflow:hidden;transition:opacity .2s}
-.gp-p summary{list-style:none;display:grid;grid-template-columns:62px 36px 1fr auto;gap:12px;align-items:center;padding:12px 14px;cursor:pointer}
+.gp-cab{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 18px;align-items:baseline;margin:-6px 0 14px}
+.gp-ayuda{color:var(--tinta-suave);margin:0;max-width:70ch}
+.gp-reinicio{margin:0;font-size:.9rem}
+.gp{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin:0 0 8px}
+.gp-p,.gp-c,.gp-mat{min-width:0}
+.ancla{display:block;position:relative;top:-90px;height:0}
+.gp-p{background:#fff;border:1.5px solid var(--linea);border-radius:18px;transition:opacity .2s}
+.gp-p summary{list-style:none;display:grid;grid-template-columns:62px 38px 1fr auto auto;gap:12px;align-items:center;padding:14px 16px;cursor:pointer}
 .gp-p summary::-webkit-details-marker{display:none}
-.gp-h{font:800 1.02rem var(--display);color:var(--ses);font-variant-numeric:tabular-nums}
-.gp-n{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--ses);color:#fff;font:800 .95rem var(--display)}
-.gp-t{font-weight:700;font-size:1.08rem;line-height:1.25}
-.gp-ok{width:38px;height:38px;border-radius:50%;border:2px solid var(--linea);background:#fff;color:#9aa3b5;font:800 1.05rem var(--texto);cursor:pointer}
+.gp-h{font:800 1.05rem var(--display);color:var(--ses);font-variant-numeric:tabular-nums}
+.gp-n{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--ses);color:#fff;font:800 1rem var(--display)}
+.gp-t{font-weight:800;font-size:1.18rem;line-height:1.25}
+.gp-min{font:700 .82rem var(--texto);color:var(--tinta-suave);white-space:nowrap}
+.gp-ok{width:40px;height:40px;border-radius:50%;border:2px solid var(--linea);background:#fff;color:#9aa3b5;font:800 1.05rem var(--texto);cursor:pointer}
 .gp-ok:hover{border-color:var(--ok);color:var(--ok)}
-.gp-p[open]{border-color:var(--ses);box-shadow:0 12px 28px -18px rgba(27,42,78,.5)}
-.gp-c{padding:2px 20px 18px 120px}
-.gp-c ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
-.gp-c li{position:relative;padding-left:28px;font-size:1.32rem;line-height:1.35}
-.gp-c li::before{content:'';position:absolute;left:4px;top:.55em;width:11px;height:11px;border-radius:50%;background:var(--ses)}
-.gp-acc{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.gp-p[open]{border-color:var(--ses);box-shadow:0 14px 30px -20px rgba(27,42,78,.55)}
+.gp-p[open]>summary{border-bottom:1px solid var(--linea)}
+.gp-c{padding:20px 24px 22px}
+.gp-texto{max-width:78ch}
+.gp-texto p{font-size:1.24rem;line-height:1.6;margin:0 0 14px;color:var(--tinta)}
+.gp-texto p:last-child{margin-bottom:0}
+.gp-mat{margin-top:22px;padding-top:20px;border-top:1px dashed var(--linea)}
+.gp-mat>*:first-child{margin-top:0}
+.gp-acc{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 .gp-p.visto{opacity:.6;background:#F6F8FB}
 .gp-p.visto .gp-ok{background:var(--ok);border-color:var(--ok);color:#fff}
 .gp-p.visto .gp-t{text-decoration:line-through;text-decoration-color:rgba(0,0,0,.25)}
-.gp-reinicio{margin:4px 0 0;font-size:.9rem}
-@media (max-width:700px){.gp-p summary{grid-template-columns:48px 30px 1fr auto;gap:8px}.gp-c{padding:2px 16px 16px}.gp-c li{font-size:1.08rem}}
+.diapos.lamina{min-height:0;display:block;margin-bottom:16px}
+.diapos.lamina .diapo{display:block;animation:none;padding:40px 44px 34px 112px;border-bottom:1px dashed var(--linea)}
+.diapos.lamina .diapo:last-child{border-bottom:0}
+.gp-mat .fx-grupos{margin-top:16px}
+.gp-mat .fx-escena{margin:0 0 6px}
+@media (max-width:700px){.gp-p summary{grid-template-columns:44px 30px 1fr auto;gap:8px}.gp-min{display:none}.gp-c{padding:16px}.gp-texto p{font-size:1.06rem}.diapos.lamina .diapo{padding:26px 18px 22px 46px}}
 @media print{.gp-p .gp-c{display:block !important}.gp-ok,.gp-acc{display:none !important}}
 .mando-partes{display:grid;gap:6px}
 .mando-partes button{text-align:left;padding:10px 12px;border-radius:12px;border:1.5px solid var(--linea);background:#fff;font:600 .95rem var(--texto);cursor:pointer}
@@ -930,10 +942,10 @@ body:not(.rol-ponente) .solo-ponente{display:none!important}
 </header>
 
 <nav class="pestanas" role="tablist" aria-label="Secciones de la formación">
-  <button class="pestana" role="tab" id="t-s1" aria-controls="panel-s1" data-panel="s1">1 · Las apps del cole</button>
-  <button class="pestana" role="tab" id="t-s2" aria-controls="panel-s2" data-panel="s2">2 · Tu primera app</button>
-  <button class="pestana" role="tab" id="t-s3" aria-controls="panel-s3" data-panel="s3">3 · Que salga de tu ordenador</button>
-  <button class="pestana" role="tab" id="t-s4" aria-controls="panel-s4" data-panel="s4">4 · La app del centro</button>
+  <button class="pestana" role="tab" id="t-s1" aria-controls="panel-s1" data-panel="s1">Sesión 1</button>
+  <button class="pestana" role="tab" id="t-s2" aria-controls="panel-s2" data-panel="s2">Sesión 2</button>
+  <button class="pestana" role="tab" id="t-s3" aria-controls="panel-s3" data-panel="s3">Sesión 3</button>
+  <button class="pestana" role="tab" id="t-s4" aria-controls="panel-s4" data-panel="s4">Sesión 4</button>
   <button class="pestana" role="tab" id="t-materiales" aria-controls="panel-materiales" data-panel="materiales">📎 Materiales</button>
   <button class="pestana" role="tab" id="t-galeria" aria-controls="panel-galeria" data-panel="galeria">🖼️ Galería</button>
   <button class="pestana" role="tab" id="t-datos" aria-controls="panel-datos" data-panel="datos">🔒 Privacidad y datos</button>
@@ -1056,7 +1068,76 @@ body:not(.rol-ponente) .solo-ponente{display:none!important}
 <!-- ═════════════════════ SESIÓN 1 · Las apps del cole ═════════════════════ -->
 <section class="panel" id="panel-s1" role="tabpanel" aria-labelledby="t-s1">
 
-  <div class="fx-escena" id="fxEscena">
+  <div class="intro">
+    <p class="ses-etq">Sesión 1 de 4 · Mes 1 · Primero ver, después elegir</p>
+    <h2>Las apps del cole</h2>
+  </div>
+  <p class="ses-lleva"><strong>Te llevas:</strong> todas las apps del cole vistas y las que más te interesen probadas en tu móvil, un juego hecho por ti con Gemini y la app que tu centro pondrá en marcha en la sesión 4, elegida por votación.</p>
+  <p><strong>Antes de venir:</strong> el móvil con batería y, si puede ser, un ordenador por pareja con <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> abierto y funcionando.</p>
+
+  <h3 class="bloque" id="guion-s1">La sesión, paso a paso</h3>
+  <div class="gp-cab"><p class="gp-ayuda">Cada parte de la sesión, en orden. Ábrela para leer lo que se cuenta y ver el material. Con <b>✓</b> se marca como vista y se pliega.</p><p class="gp-reinicio solo-ponente no-imprimir"><button class="enlace" data-gpreset="s1">Desmarcar todas</button> · <button class="enlace" data-gptodo="s1">Abrir todas</button></p></div>
+  <div class="gp">
+  <details class="gp-p" id="parte-s1-0" data-sid="s1" data-i="0"><summary><span class="gp-h">0:00</span><span class="gp-n">1</span><span class="gp-t">Bienvenida</span><span class="gp-min">5 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Buenas tardes y gracias por estar aquí. Soy director de un colegio público y maestro de Pedagogía Terapéutica. No soy informático ni programador: todo lo que vais a ver estos meses lo he hecho hablando con una inteligencia artificial, igual que vais a hacer vosotros.</p><p>Esta formación tiene cuatro sesiones, una al mes. Hoy es la sesión de ver: os enseño las apps que usamos en mi colegio, las probáis en vuestro móvil, hacéis un pequeño juego y votáis cuál queréis para vuestro centro. A partir de la segunda sesión, el protagonismo es vuestro: cada sesión termina con algo hecho por vosotros.</p><p>La forma de trabajar es sencilla: primero vemos algo que funciona, después lo hacemos, y la teoría justa llega cuando ya habéis hecho algo. Entre sesión y sesión os propondré un reto pequeño para usar en clase. No hace falta apuntar nada: todo lo que digamos está en esta web, en la pestaña de cada sesión.</p></div><div class="gp-mat"><div class="diapos lamina"><div class="diapo" aria-roledescription="diapositiva" data-notas="Bienvenida. Presentarse en 30 segundos: director y maestro de PT, no programador. Cuatro sesiones, una al mes: hoy la muestra de apps y, desde la segunda, cada persona hace las suyas.">
+      <h2>IA en el cole</h2>
+      <p class="lead">Una formación de cuatro sesiones para crear herramientas para tu aula y tu centro con inteligencia artificial, sin saber programar. Primero ves lo que se puede hacer; después lo haces tú, y de cada sesión te vas con algo funcionando.</p>
+      <p class="firma" id="firmaDiapo"></p>
+    </div><div class="diapo" aria-roledescription="diapositiva" data-notas="Insistir: hoy nadie se va sin haber creado algo, aunque sea un juego. La teoría justa, después de haber hecho algo.">
+      <h2 class="medio">Cómo vamos a trabajar</h2>
+      <div class="tres">
+        <div style="--c:var(--azul)"><b>Ver y hacer</b><p>Hoy ves lo que ya funciona en un colegio y lo pruebas en tu móvil. Desde la sesión 2, a los veinte minutos ya tienes algo tuyo en la pantalla.</p></div>
+        <div style="--c:var(--ok)"><b>Salir con algo hecho</b><p>Cada sesión termina con algo tuyo: un juego, tu primera app, tu app publicada y la app del centro con sus datos.</p></div>
+        <div style="--c:var(--rojo)"><b>Un reto al mes</b><p>Entre sesión y sesión, algo pequeño para usar en tu clase. Lo enseñamos al empezar la siguiente.</p></div>
+      </div>
+    </div><div class="diapo" aria-roledescription="diapositiva" data-notas="Recorrer las cuatro. Cada sesión usa solo lo aprendido en las anteriores. Todo queda en las pestañas: no hace falta apuntar nada.">
+      <h2 class="medio">Las cuatro sesiones</h2>
+      <ol class="agenda">
+        <li><div><strong>Las apps del cole</strong><span>Ves las apps de un colegio, las pruebas en tu móvil, creas un juego y votas cuál quiere tu centro.</span></div></li>
+        <li><div><strong>Tu primera app</strong><span>Una rueda de participación y una herramienta propia para tu clase, hechas con Gemini y con tu asistente.</span></div></li>
+        <li><div><strong>Que salga de tu ordenador</strong><span>Tu app publicada en internet, con su QR, instalada en el móvil y con el estilo del centro.</span></div></li>
+        <li><div><strong>La app del centro</strong><span>La app elegida, funcionando con vuestra propia base de datos, de forma segura, y las apps de todos en la galería.</span></div></li>
+      </ol>
+    </div></div></div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 5 min</button></div></div>
+</details>
+  <details class="gp-p" id="parte-s1-1" data-sid="s1" data-i="1"><summary><span class="gp-h">0:05</span><span class="gp-n">2</span><span class="gp-t">La radiografía del claustro</span><span class="gp-min">5 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Antes de enseñaros nada, quiero saber algo de vosotros. Sacad el móvil y escanead el código que aparece en la pantalla. Os sale una sola pregunta: ¿qué tarea del cole os quita más tiempo? Respondedla en una frase. Es anónimo: nadie sabrá quién ha escrito qué.</p><p>Mientras llegan las respuestas, las vamos viendo en la pantalla, y las palabras que más se repiten se hacen más grandes. Fijaos en lo que sale: casi siempre son papeles, listas, actas, horarios, comunicar a las familias… Tareas que repetimos cada semana y que no tienen nada que ver con enseñar.</p><p>Guardad bien vuestra respuesta. En la segunda sesión cada uno va a construir una herramienta precisamente para eso que hoy habéis escrito.</p></div><div class="gp-mat"><div class="diapos lamina"><div class="diapo" aria-roledescription="diapositiva" data-notas="Si el QR no aparece, pulsa «Empezar sesión en directo». Que escaneen y respondan en una frase; mientras llegan, comentar qué temas suben. Las respuestas dicen qué apps destacar hoy; en la sesión 2 volverán para que cada persona haga su herramienta." data-actividad="radiografia">
+      <p class="num">Antes de empezar</p>
+      <h2 class="medio" data-pregunta-diapo></h2>
+      <div class="radio-diapo">
+        <div class="qr" id="diapoQR"></div>
+        <div>
+          <p class="lead">Escanea el código y respóndelo en una frase. Es anónimo.</p>
+          <p class="cuenta-diapo"><b id="diapoCuenta">0</b> respuestas</p>
+          <div class="nube" id="diapoNube"></div>
+          <button class="btn azul solo-ponente" data-ir="directo">Ver la pizarra completa</button>
+        </div>
+      </div>
+    </div></div></div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 5 min</button></div></div>
+</details>
+  <details class="gp-p" id="parte-s1-2" data-sid="s1" data-i="2"><summary><span class="gp-h">0:10</span><span class="gp-n">3</span><span class="gp-t">Así nació una app</span><span class="gp-min">10 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Todas las apps que vais a ver nacieron igual: de un problema concreto del día a día, no de una idea brillante. Y todas siguen el mismo patrón: son un único archivo, una página web, que se abre en cualquier navegador y en el móvil.</p><p>El camino es siempre el mismo. Primero, una necesidad: algo que hoy hacéis con papel, con correos o con una hoja de cálculo. Después, una conversación con la IA: le contáis el problema con vuestras palabras y ella escribe el código. Ese código es un solo archivo. Si varias personas tienen que compartir datos, se le añade una base de datos en la nube, Firebase. Y para que tenga dirección en internet, se publica gratis en GitHub Pages.</p><p>Os cuento cómo nació una de ellas, Teletrabajo, la app de las reuniones en línea. Fijaos en que cada paso fue una conversación: no hubo ningún curso de programación. Lo único que hace falta es saber qué queréis y tener paciencia para probar.</p><p>Hoy solo vamos a ver que es posible. Cómo se hace, paso a paso, lo aprenderéis en la segunda sesión.</p></div><div class="gp-mat"><div class="diapos lamina"><div class="diapo" aria-roledescription="diapositiva" data-notas="Cada app nació de un problema concreto del centro. Preguntar: ¿cuál os suena más?">
+      <h2 class="medio">Diez apps, un mismo patrón</h2>
+      <div class="nube-apps" id="nubeApps"></div>
+      <p class="lead" style="margin-top:26px">Todas nacieron de una necesidad concreta del centro y todas son un único archivo HTML. Unas guardan en el navegador y otras en una base de datos en la nube para compartir datos. Si entiendes una, entiendes todas.</p>
+    </div><div class="diapo" aria-roledescription="diapositiva" data-notas="La clave es la conversación. El código lo escribe la IA; la persona decide qué quiere y prueba.">
+      <h2 class="medio">Cómo se hace una app así</h2>
+      <div class="flujo">
+        <div><b>Necesidad</b><small>Algo que hoy haces con papel, correos o una hoja de cálculo.</small></div>
+        <div><b>Conversación con IA</b><small>Describes el problema y la IA escribe el código.</small></div>
+        <div><b>Un solo archivo</b><small>index.html: diseño, textos y funciones juntos.</small></div>
+        <div><b>Firebase</b><small>La base de datos donde se guardan y comparten los datos. Solo si hace falta.</small></div>
+        <div><b>GitHub Pages</b><small>La publica con una dirección web gratuita.</small></div>
+      </div>
+      <p class="lead" style="margin-top:26px">No hace falta saber programar. Hace falta saber qué quieres y tener paciencia para probar.</p>
+    </div><div class="diapo" aria-roledescription="diapositiva" data-notas="Recorrer los hitos con los botones de la línea. Mensaje: cada mejora fue una conversación, no un curso de programación.">
+      <h2 class="medio">Así nació <span data-historia-app></span></h2>
+      <div class="historia" data-historia></div>
+    </div></div></div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 10 min</button></div></div>
+</details>
+  <span class="ancla" id="fxMuestra"></span>
+  <details class="gp-p" id="parte-s1-3" data-sid="s1" data-i="3"><summary><span class="gp-h">0:20</span><span class="gp-n">4</span><span class="gp-t">Las apps del cole · En el aula</span><span class="gp-min">10 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Ahora sí, vamos con las apps. No os las voy a enseñar por orden alfabético, sino por problemas: en cada bloque, un problema del día a día y cómo lo hemos resuelto. Son cinco bloques de unos nueve minutos. Este escaparate las reúne todas; lo usaremos durante toda la muestra.</p><p>Empezamos por la puerta de entrada: Capitoolappciones, la app que reúne todas las demás. Desde ella, cualquier maestro del centro llega a cualquier herramienta en dos toques.</p><p>El primer bloque es lo que usa el alumnado en el aula: el Troglodita de Santa Fe, que convierte la historia del pueblo en un videojuego; el Portal Educativo, con los juegos y actividades del cole; Mis Lecturas, con lecturas y preguntas de comprensión cuyos resultados se recogen solos; Aula PT, con actividades de grafía, lectura, fonología y números para el aula de apoyo; y Podcast a Vídeo, que convierte el pódcast de clase en un vídeo con fotos y el logo del cole.</p><p>Fijaos menos en la app y más en el problema que resuelve. Preguntaos: ¿esto me pasa a mí?</p></div><div class="gp-mat"><div class="fx-escena" id="fxEscena">
     <canvas id="fxCielo" aria-hidden="true"></canvas>
     <div class="fx-cab">
       <div>
@@ -1076,131 +1157,30 @@ body:not(.rol-ponente) .solo-ponente{display:none!important}
       <button class="fx-b" id="fxSig" aria-label="App siguiente">›</button>
     </div>
   </div>
-
-  <div class="intro">
-    <p class="ses-etq">Sesión 1 de 4 · Mes 1 · Primero ver, después elegir</p>
-    <h2>Las apps del cole</h2>
-  </div>
-  <p class="ses-lleva"><strong>Te llevas:</strong> todas las apps del cole vistas y las que más te interesen probadas en tu móvil, un juego hecho por ti con Gemini y la app que tu centro pondrá en marcha en la sesión 4, elegida por votación.</p>
-  <p><strong>Antes de venir:</strong> el móvil con batería y, si puede ser, un ordenador por pareja con <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> abierto y funcionando.</p>
-
-  <h3 class="bloque" id="guion-s1">El guion de hoy</h3>
-  <p class="gp-ayuda">Pulsa cada parte para ver los puntos que vamos a tratar. Con <b>✓</b> se marca como vista y se pliega.</p>
-  <div class="gp" data-guion="s1"></div>
-  <p class="gp-reinicio solo-ponente no-imprimir"><button class="enlace" data-gpreset="s1">Desmarcar todas las partes</button></p>
-
-  <h3 class="bloque" id="bloquePresentacion">Presentación</h3>
-  <div class="diapos" id="diapos" tabindex="-1" aria-roledescription="presentación">
-
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="Bienvenida. Presentarse en 30 segundos: director y maestro de PT, no programador. Cuatro sesiones, una al mes: hoy la muestra de apps y, desde la segunda, cada persona hace las suyas.">
-      <h2>IA en el cole</h2>
-      <p class="lead">Una formación de cuatro sesiones para crear herramientas para tu aula y tu centro con inteligencia artificial, sin saber programar. Primero ves lo que se puede hacer; después lo haces tú, y de cada sesión te vas con algo funcionando.</p>
-      <p class="firma" id="firmaDiapo"></p>
-    </div>
-
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="Si el QR no aparece, pulsa «Empezar sesión en directo». Que escaneen y respondan en una frase; mientras llegan, comentar qué temas suben. Las respuestas dicen qué apps destacar hoy; en la sesión 2 volverán para que cada persona haga su herramienta." data-actividad="radiografia">
-      <p class="num">Antes de empezar</p>
-      <h2 class="medio" data-pregunta-diapo></h2>
-      <div class="radio-diapo">
-        <div class="qr" id="diapoQR"></div>
-        <div>
-          <p class="lead">Escanea el código y respóndelo en una frase. Es anónimo.</p>
-          <p class="cuenta-diapo"><b id="diapoCuenta">0</b> respuestas</p>
-          <div class="nube" id="diapoNube"></div>
-          <button class="btn azul solo-ponente" data-ir="directo">Ver la pizarra completa</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="Insistir: hoy nadie se va sin haber creado algo, aunque sea un juego. La teoría justa, después de haber hecho algo.">
-      <h2 class="medio">Cómo vamos a trabajar</h2>
-      <div class="tres">
-        <div style="--c:var(--azul)"><b>Ver y hacer</b><p>Hoy ves lo que ya funciona en un colegio y lo pruebas en tu móvil. Desde la sesión 2, a los veinte minutos ya tienes algo tuyo en la pantalla.</p></div>
-        <div style="--c:var(--ok)"><b>Salir con algo hecho</b><p>Cada sesión termina con algo tuyo: un juego, tu primera app, tu app publicada y la app del centro con sus datos.</p></div>
-        <div style="--c:var(--rojo)"><b>Un reto al mes</b><p>Entre sesión y sesión, algo pequeño para usar en tu clase. Lo enseñamos al empezar la siguiente.</p></div>
-      </div>
-    </div>
-
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="Recorrer las cuatro. Cada sesión usa solo lo aprendido en las anteriores. Todo queda en las pestañas: no hace falta apuntar nada.">
-      <h2 class="medio">Las cuatro sesiones</h2>
-      <ol class="agenda">
-        <li><div><strong>Las apps del cole</strong><span>Ves las apps de un colegio, las pruebas en tu móvil, creas un juego y votas cuál quiere tu centro.</span></div></li>
-        <li><div><strong>Tu primera app</strong><span>Una rueda de participación y una herramienta propia para tu clase, hechas con Gemini y con tu asistente.</span></div></li>
-        <li><div><strong>Que salga de tu ordenador</strong><span>Tu app publicada en internet, con su QR, instalada en el móvil y con el estilo del centro.</span></div></li>
-        <li><div><strong>La app del centro</strong><span>La app elegida, funcionando con vuestra propia base de datos, de forma segura, y las apps de todos en la galería.</span></div></li>
-      </ol>
-    </div>
-
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="Cada app nació de un problema concreto del centro. Preguntar: ¿cuál os suena más?">
-      <h2 class="medio">Diez apps, un mismo patrón</h2>
-      <div class="nube-apps" id="nubeApps"></div>
-      <p class="lead" style="margin-top:26px">Todas nacieron de una necesidad concreta del centro y todas son un único archivo HTML. Unas guardan en el navegador y otras en una base de datos en la nube para compartir datos. Si entiendes una, entiendes todas.</p>
-    </div>
-
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="La clave es la conversación. El código lo escribe la IA; la persona decide qué quiere y prueba.">
-      <h2 class="medio">Cómo se hace una app así</h2>
-      <div class="flujo">
-        <div><b>Necesidad</b><small>Algo que hoy haces con papel, correos o una hoja de cálculo.</small></div>
-        <div><b>Conversación con IA</b><small>Describes el problema y la IA escribe el código.</small></div>
-        <div><b>Un solo archivo</b><small>index.html: diseño, textos y funciones juntos.</small></div>
-        <div><b>Firebase</b><small>La base de datos donde se guardan y comparten los datos. Solo si hace falta.</small></div>
-        <div><b>GitHub Pages</b><small>La publica con una dirección web gratuita.</small></div>
-      </div>
-      <p class="lead" style="margin-top:26px">No hace falta saber programar. Hace falta saber qué quieres y tener paciencia para probar.</p>
-    </div>
-
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="Recorrer los hitos con los botones de la línea. Mensaje: cada mejora fue una conversación, no un curso de programación.">
-      <h2 class="medio">Así nació <span data-historia-app></span></h2>
-      <div class="historia" data-historia></div>
-    </div>
-
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="Recordar qué traer a cada sesión. La cuenta de Google del centro solo hace falta en la cuarta.">
-      <h2 class="medio">Qué necesitas en cada sesión</h2>
-      <div class="tres">
-        <div style="--c:var(--azul)"><b>Sesiones 1 y 2</b><p>El móvil con batería, un ordenador y tu cuenta de Gemini funcionando. En la segunda, una tarea que repitas cada semana.</p></div>
-        <div style="--c:var(--ok)"><b>Sesión 3</b><p>Una cuenta gratuita de GitHub, creada antes de venir, y el archivo de tu reto del mes.</p></div>
-        <div style="--c:var(--rojo)"><b>Sesión 4</b><p>La cuenta de Google del centro, mejor que la personal: si cambias de destino, la app sigue.</p></div>
-      </div>
-    </div>
-
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="La primera regla es la que más se olvida: ningún dato del alumnado, ni en la conversación con la IA ni en el código.">
-      <h2 class="medio">Tres reglas desde el primer día</h2>
-      <div class="tres">
-        <div style="--c:var(--rojo)"><b>Ningún dato del alumnado</b><p>Ni en la conversación con la IA ni dentro del código, que es público. Números de lista o datos inventados.</p></div>
-        <div style="--c:var(--rojo)"><b>Reglas de seguridad siempre</b><p>Una base de datos sin reglas está abierta a cualquiera. La veremos en la sesión 4.</p></div>
-        <div style="--c:var(--rojo)"><b>No sustituyen a Séneca</b><p>Ayudan a organizar y analizar. Lo oficial se sigue registrando donde corresponde.</p></div>
-      </div>
-    </div>
-
-    <div class="diapo" aria-roledescription="diapositiva" data-notas="Cerrar la presentación y pasar a la muestra de apps.">
-      <h2>Manos a la obra</h2>
-      <p class="lead">Empezamos por lo que ya funciona en un colegio: las apps del cole.</p>
-      <div class="fila" style="margin-top:30px"><a class="btn azul" href="#fxMuestra" data-ses="fxMuestra">Ir a la muestra</a></div>
-    </div>
-
-    <div class="controles no-imprimir">
-      <div class="fila">
-        <button class="btn icono" id="dAnt" aria-label="Diapositiva anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <span class="contador" id="dCont" aria-live="polite">1 / 10</span>
-        <button class="btn icono" id="dSig" aria-label="Diapositiva siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
-      </div>
-      <div class="puntos" id="dPuntos"></div>
-      <button class="btn icono" id="dPantalla" aria-label="Pantalla completa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
-    </div>
-  </div>
-  <p style="margin-top:12px;font-size:.9rem;color:var(--tinta-suave)">Usa las flechas del teclado para avanzar y la tecla F para pantalla completa.</p>
-
-
-  <h3 class="bloque" id="fxMuestra">La muestra, por problemas</h3>
-  <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">No se enseñan apps: se enseñan problemas del día a día y cómo se resolvieron. Cinco bloques de unos nueve minutos.</p>
-  <div class="fx-grupos" id="fxGrupos"></div>
-
-  <h3 class="bloque" id="fxProbar">Pruébalas en tu móvil</h3>
-  <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Escanea la que más te interese y trastea sin miedo: no se rompe nada. Las que piden usuario las enseña el ponente.</p>
+<div class="fx-grupos" data-grupo="0"></div></div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 10 min</button></div></div>
+</details>
+  <details class="gp-p" id="parte-s1-4" data-sid="s1" data-i="4"><summary><span class="gp-h">0:30</span><span class="gp-n">5</span><span class="gp-t">Las apps del cole · Lectura y problemas</span><span class="gp-min">8 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Segundo bloque: la lectura y la resolución de problemas. En muchos centros hay un plan de lectura muy bien escrito que nadie abre en todo el curso. Estas cuatro apps nacieron para que el plan se use cada semana.</p><p>Ágora reparte el plan por cursos y semanas: qué se lee y qué problemas se hacen cada semana. El Generador de Situaciones de Aprendizaje prepara una SdA bien armada con el currículo andaluz, sin empezar de cero. El Plan de Resolución sigue los mismos pasos para resolver problemas desde Infantil hasta sexto. Y el Registro de Lectura y Problemas recoge cada semana, sin papeles, lo que ha hecho cada curso.</p></div><div class="gp-mat"><div class="fx-grupos" data-grupo="1"></div></div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 8 min</button></div></div>
+</details>
+  <details class="gp-p" id="parte-s1-5" data-sid="s1" data-i="5"><summary><span class="gp-h">0:38</span><span class="gp-n">6</span><span class="gp-t">Las apps del cole · Alumnado y convivencia</span><span class="gp-min">9 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Tercer bloque: conocer al grupo y atender a quien lo necesita. Todos hemos tenido un alumno que está solo y no lo hemos visto a tiempo. Y todos hemos perdido media hora rellenando un parte.</p><p>Convivencia+ hace el sociograma de la clase: enseña quién está solo y propone cómo agrupar. Convive+ registra el parte de convivencia en dos minutos, conforme al Decreto, y saca sus gráficas. Y el Gestor de Refuerzo lleva quién va a refuerzo, qué trabaja cada día y cómo evoluciona.</p><p>Estas apps guardan datos del alumnado, por eso piden usuario y contraseña. Os las enseño con un grupo inventado: en una formación nunca se usan datos reales.</p></div><div class="gp-mat"><div class="fx-grupos" data-grupo="2"></div></div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 9 min</button></div></div>
+</details>
+  <details class="gp-p" id="parte-s1-6" data-sid="s1" data-i="6"><summary><span class="gp-h">0:47</span><span class="gp-n">7</span><span class="gp-t">Las apps del cole · Gestión del centro</span><span class="gp-min">9 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Cuarto bloque: lo que nos quita las tardes al claustro y al equipo directivo. Si alguna de estas apps os ahorra una hora a la semana, ya habrá merecido la pena venir hoy.</p><p>El Gestor de Evaluaciones analiza los resultados de cada evaluación sin hojas de cálculo, con actas e informes. Cuadra Horarios hace el horario del centro sin choques, a partir de las condiciones del profesorado. Teletrabajo lleva las reuniones en línea con asistencia y votaciones, y deja el acta casi hecha. PDF a Word convierte ese PDF que no se puede editar en un Word, en vuestro propio ordenador. Y Programas del cole tiene al día los plazos, la asistencia y la documentación de los programas del centro.</p><p>Cuadra Horarios y PDF a Word no piden usuario: podéis abrirlas ya en vuestro móvil mientras yo las enseño.</p></div><div class="gp-mat"><div class="fx-grupos" data-grupo="3"></div></div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 9 min</button></div></div>
+</details>
+  <details class="gp-p" id="parte-s1-7" data-sid="s1" data-i="7"><summary><span class="gp-h">0:56</span><span class="gp-n">8</span><span class="gp-t">Las apps del cole · El centro en el móvil</span><span class="gp-min">9 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Último bloque de la muestra: saber qué pasa hoy en el cole sin tener que preguntar a nadie. Es el que más agradece un claustro.</p><p>Volvemos a Capitoolappciones: todas las apps del cole en una sola pantalla, con los avisos del día y un asistente que responde dudas. El Tablón de Avisos reúne los avisos a familias y profesorado en un sitio, sin cadenas de mensajes. La Agenda del Equipo Directivo dice qué toca hacer cada mes en Dirección, Jefatura y Secretaría, para que no se pase ningún plazo. CapiGuía explica cómo trabajamos en el centro a quien llega nuevo. Y el Plan de Centro, por fin, se consulta: con buscador y desde el móvil.</p><p>Para terminar la muestra, una pregunta: de todo lo que habéis visto, ¿cuál os llevaríais mañana a vuestro centro? Pensadlo, porque dentro de un rato vamos a votar.</p></div><div class="gp-mat"><div class="fx-grupos" data-grupo="4"></div></div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 9 min</button></div></div>
+</details>
+  <span class="ancla" id="fxProbar"></span>
+  <details class="gp-p" id="parte-s1-8" data-sid="s1" data-i="8"><summary><span class="gp-h">1:05</span><span class="gp-n">9</span><span class="gp-t">Pruébalas en tu móvil</span><span class="gp-min">25 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Ya me habéis visto a mí; ahora os toca a vosotros. Aquí tenéis el código QR de cada app. Escanead con la cámara del móvil la que más os haya llamado la atención y trastead sin miedo: no se rompe nada y no hay datos reales.</p><p>Las que llevan la etiqueta «Con usuario» guardan datos del alumnado o del centro y necesitan una cuenta; esas os las he enseñado yo. El resto, todas vuestras.</p><p>Probad al menos dos: una que podáis usar en vuestra clase y otra que pueda servir al centro. Si os surge una duda o una idea, decídmela: la apuntamos para las próximas sesiones.</p></div><div class="gp-mat">
   <div class="fx-muro" id="fxMuro"></div>
 
-  <h3 class="bloque" id="fxJuego">Crea un juego en diez minutos</h3>
-  <p style="max-width:70ch">Para que nadie se vaya sin haber creado algo. Abre <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a>, pulsa <strong>+</strong> y elige <strong>Canvas</strong>. Copia el encargo, cambia lo que está entre corchetes, pégalo y juega. No hace falta nada más: el asistente propio lo crearás en la sesión 2.</p>
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 25 min</button></div></div>
+</details>
+  <span class="ancla" id="fxJuego"></span>
+  <details class="gp-p" id="parte-s1-9" data-sid="s1" data-i="9"><summary><span class="gp-h">1:30</span><span class="gp-n">10</span><span class="gp-t">Crea un juego en diez minutos</span><span class="gp-min">15 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>No quiero que os vayáis pensando que esto es cosa mía. En diez minutos vais a tener un juego hecho por vosotros y funcionando.</p><p>Abrid gemini.google.com con vuestra cuenta, pulsad el botón + que hay junto al cuadro de escribir y elegid Canvas. Canvas es la parte de Gemini que, además de escribir el código, os enseña el juego funcionando a la derecha de la conversación.</p><p>Copiad el encargo de abajo, cambiad lo que va entre corchetes, el curso y el tema, y pegadlo en Gemini. En un minuto tendréis el juego. Si algo no os gusta, pedidlo en una frase: «hazlo más lento», «cambia los globos por estrellas». Un cambio cada vez: así se trabaja con la IA.</p><p>Cuando lo tengáis, enseñádselo a quien tengáis al lado. Proyectaremos dos o tres en la pizarra.</p></div><div class="gp-mat">
   <div class="caja-codigo"><pre class="codigo" id="fxPrompt" style="white-space:pre-wrap">Hazme un juego para la pizarra digital de mi clase de [3.º de Primaria] sobre [las tablas de multiplicar del 2 al 5].
 
 Cómo se juega:
@@ -1217,8 +1197,11 @@ Cómo lo quiero:
 Dame el archivo completo, de principio a fin.</pre><button class="btn suave copiar" data-copiar="fxPrompt">Copiar</button></div>
   <p class="consejo">¿Algo no te gusta? Pídelo en una frase: «Hazlo más lento», «Cambia los globos por estrellas». Un cambio cada vez.</p>
 
-  <h3 class="bloque" id="fxVotar">La votación</h3>
-  <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Cada persona elige hasta dos apps desde su móvil. La más votada es la que el centro pondrá en marcha, con sus propios datos, en la sesión 4.</p>
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 15 min</button></div></div>
+</details>
+  <span class="ancla" id="fxVotar"></span>
+  <details class="gp-p" id="parte-s1-10" data-sid="s1" data-i="10"><summary><span class="gp-h">1:45</span><span class="gp-n">11</span><span class="gp-t">La votación</span><span class="gp-min">10 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Llega el momento de decidir. Desde vuestro móvil podéis votar hasta dos apps. Votad pensando en el centro, no solo en vuestra clase: la que gane es la que pondremos en marcha en la cuarta sesión, con vuestra propia base de datos y vuestros usuarios.</p><p>Los votos aparecen en directo en la pantalla. Cuando hayáis votado casi todos, cerramos la votación y descubrimos la ganadora. Si hay empate, o dos apps muy igualadas, podemos trabajar las dos en dos grupos.</p></div><div class="gp-mat">
   <div class="fx-mivoto" id="fxMiVoto" style="display:none"></div>
   <div class="fx-podio" id="fxPodio">
     <h4 id="fxPodioTit">¿Qué app quiere este centro?</h4>
@@ -1227,13 +1210,66 @@ Dame el archivo completo, de principio a fin.</pre><button class="btn suave copi
     <div class="acc fx-solo-ponente no-imprimir" id="fxAcc"></div>
   </div>
 
-  <h3 class="bloque" id="fxDespues">Y después</h3>
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 10 min</button></div></div>
+</details>
+  <span class="ancla" id="fxDespues"></span>
+  <details class="gp-p" id="parte-s1-11" data-sid="s1" data-i="11"><summary><span class="gp-h">1:55</span><span class="gp-n">12</span><span class="gp-t">Qué viene ahora</span><span class="gp-min">5 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Hoy habéis visto lo que se puede hacer. A partir de ahora, lo hacéis vosotros. En la segunda sesión aprenderéis a pedirle una app a la IA: haréis una rueda de participación para la clase y una herramienta para esa tarea que hoy habéis escrito en la radiografía. En la tercera la publicaréis en internet, con su dirección y su código QR, y la instalaréis en el móvil. Y en la cuarta, la app ganadora de hoy quedará funcionando en vuestro centro, con vuestros datos.</p><p>Desde hoy, tres reglas que no se negocian. Ningún dato del alumnado, ni en la conversación con la IA ni dentro del código: números de lista o datos inventados. Una base de datos, siempre con reglas de seguridad; las veremos en la cuarta sesión. Y estas apps no sustituyen a Séneca: ayudan a organizar y a analizar, pero lo oficial se sigue registrando donde corresponde.</p><p>Para la próxima sesión, comprobad que entráis en Gemini con vuestra cuenta y traed pensada una tarea que repitáis cada semana. Muchas gracias.</p></div><div class="gp-mat"><div class="diapos lamina"><div class="diapo" aria-roledescription="diapositiva" data-notas="Recordar qué traer a cada sesión. La cuenta de Google del centro solo hace falta en la cuarta.">
+      <h2 class="medio">Qué necesitas en cada sesión</h2>
+      <div class="tres">
+        <div style="--c:var(--azul)"><b>Sesiones 1 y 2</b><p>El móvil con batería, un ordenador y tu cuenta de Gemini funcionando. En la segunda, una tarea que repitas cada semana.</p></div>
+        <div style="--c:var(--ok)"><b>Sesión 3</b><p>Una cuenta gratuita de GitHub, creada antes de venir, y el archivo de tu reto del mes.</p></div>
+        <div style="--c:var(--rojo)"><b>Sesión 4</b><p>La cuenta de Google del centro, mejor que la personal: si cambias de destino, la app sigue.</p></div>
+      </div>
+    </div><div class="diapo" aria-roledescription="diapositiva" data-notas="La primera regla es la que más se olvida: ningún dato del alumnado, ni en la conversación con la IA ni en el código.">
+      <h2 class="medio">Tres reglas desde el primer día</h2>
+      <div class="tres">
+        <div style="--c:var(--rojo)"><b>Ningún dato del alumnado</b><p>Ni en la conversación con la IA ni dentro del código, que es público. Números de lista o datos inventados.</p></div>
+        <div style="--c:var(--rojo)"><b>Reglas de seguridad siempre</b><p>Una base de datos sin reglas está abierta a cualquiera. La veremos en la sesión 4.</p></div>
+        <div style="--c:var(--rojo)"><b>No sustituyen a Séneca</b><p>Ayudan a organizar y analizar. Lo oficial se sigue registrando donde corresponde.</p></div>
+      </div>
+    </div></div>
   <div class="retos">
     <div class="reto"><b>Sesión 2 · Tu primera app</b><p>Aprendes a pedirle una app a la IA: una rueda de participación y una herramienta para lo que más tiempo te quita.</p></div>
     <div class="reto"><b>Sesión 3 · Que salga de tu ordenador</b><p>La publicas en internet con su dirección y su QR, y la instalas en el móvil.</p></div>
     <div class="reto"><b>Sesión 4 · La app del centro</b><p>La app ganadora de hoy, con la base de datos del centro, las cuentas del claustro y las reglas de seguridad.</p></div>
   </div>
   <p class="consejo"><strong>Para la sesión 2:</strong> comprueba que entras en <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> con tu cuenta y trae pensada una tarea que repitas cada semana. Si te apetece, usa en clase el juego que has hecho hoy.</p>
+</div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 5 min</button></div></div>
+</details>
+  </div>
+  <div class="diapos" id="diapos" hidden style="display:none" tabindex="-1" aria-roledescription="presentación">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="controles no-imprimir">
+      <div class="fila">
+        <button class="btn icono" id="dAnt" aria-label="Diapositiva anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <span class="contador" id="dCont" aria-live="polite">1 / 10</span>
+        <button class="btn icono" id="dSig" aria-label="Diapositiva siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+      <div class="puntos" id="dPuntos"></div>
+      <button class="btn icono" id="dPantalla" aria-label="Pantalla completa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+    </div>
+  </div>
 </section>
 
 <div class="fx-crono no-imprimir" id="fxCrono" role="timer"><span id="fxCronoTit"></span><span class="t" id="fxCronoT">0:00</span><button id="fxCronoX" aria-label="Parar el reloj">✕</button></div>
@@ -1247,20 +1283,21 @@ Dame el archivo completo, de principio a fin.</pre><button class="btn suave copi
   </div>
   <p class="ses-lleva"><strong>Te llevas:</strong> la rueda de participación hecha y personalizada, una herramienta propia para tu clase, tu asistente «Constructor de apps del cole» creado y un cuaderno de NotebookLM con documentos de tu centro.</p>
   <p><strong>Antes de venir:</strong> entra en <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> con tu cuenta y comprueba que funciona. Trae pensada una tarea que repitas cada semana (o lo que respondiste en la sesión 1 a «qué te quita más tiempo») y 2 o 3 documentos del centro sin datos personales (Plan de Convivencia, ROF, una unidad) para NotebookLM.</p>
-  <h3 class="bloque" style="margin-top:26px" id="guion-s2">El guion de hoy</h3>
-  <p class="gp-ayuda">Pulsa cada parte para ver los puntos que vamos a tratar. Con <b>✓</b> se marca como vista y se pliega.</p>
-  <div class="gp" data-guion="s2"></div>
-  <p class="gp-reinicio solo-ponente no-imprimir"><button class="enlace" data-gpreset="s2">Desmarcar todas las partes</button></p>
-
-
-
-
-  <h3 class="bloque" id="bloqueBienvenida">1. Lo que salió en la sesión 1</h3>
+  <h3 class="bloque" style="margin-top:26px" id="guion-s2">La sesión, paso a paso</h3>
+  <div class="gp-cab"><p class="gp-ayuda">Cada parte de la sesión, en orden. Ábrela para leer lo que se cuenta y ver el material. Con <b>✓</b> se marca como vista y se pliega.</p><p class="gp-reinicio solo-ponente no-imprimir"><button class="enlace" data-gpreset="s2">Desmarcar todas</button> · <button class="enlace" data-gptodo="s2">Abrir todas</button></p></div>
+  <div class="gp">
+  <span class="ancla" id="bloqueBienvenida"></span>
+  <details class="gp-p" id="parte-s2-0" data-sid="s2" data-i="0"><summary><span class="gp-h">0:00</span><span class="gp-n">1</span><span class="gp-t">Lo que salió en la sesión 1</span><span class="gp-min">10 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Bienvenidos a la segunda sesión. Antes de empezar, recordamos lo que salió en la primera: la app que votó el centro, que pondremos en marcha en la cuarta sesión, y las respuestas a la pregunta «¿qué tarea te quita más tiempo?».</p><p>Hoy cambia todo: dejáis de mirar y empezáis a hacer. Al terminar la sesión os llevaréis una rueda de participación para la clase, vuestro propio asistente para crear apps y una herramienta hecha por vosotros para esa tarea que os quita tiempo. Buscad la vuestra en la radiografía y tenedla a mano: la usaréis en la parte 5.</p><p>Y una regla desde el primer minuto: nunca escribáis nombres de alumnos en una conversación con la IA. Números de lista o datos inventados.</p></div><div class="gp-mat">
   <p style="max-width:70ch">Repasamos la app que eligió el centro y las respuestas a «¿qué tarea te quita más tiempo?». Quédate con la tuya: en el bloque 5, con tu asistente ya creado, la convertirás en tu herramienta propia.</p>
   <p class="fila solo-ponente" style="margin-top:12px"><button class="btn azul" data-ir="directo">Abrir «En directo»</button></p>
   <p class="alerta">Desde el primer día: nunca nombres de alumnos en una conversación con la IA. Números de lista o datos inventados.</p>
   
-  <h3 class="bloque" id="bloqueGemini">2. Gemini, herramienta a herramienta</h3>
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 10 min</button></div></div>
+</details>
+  <span class="ancla" id="bloqueGemini"></span>
+  <details class="gp-p" id="parte-s2-1" data-sid="s2" data-i="1"><summary><span class="gp-h">0:10</span><span class="gp-n">2</span><span class="gp-t">Gemini por dentro</span><span class="gp-min">10 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Gemini es la inteligencia artificial de Google y la vamos a usar con vuestra cuenta. Mucha gente la usa solo como un chat para preguntar cosas, pero tiene mucho más. Junto al cuadro donde se escribe hay un botón +: desde ahí se eligen herramientas para investigar a fondo, crear imágenes o construir una app.</p><p>La que más vamos a usar es Canvas. Con Canvas, Gemini no solo escribe el código: os enseña la app funcionando a la derecha de la conversación, y podéis probarla y pedir cambios sin salir de ahí.</p><p>Abajo tenéis cada herramienta con un encargo para probarla. Hoy vemos dos o tres juntos; el resto queda aquí para que lo probéis cuando queráis.</p></div><div class="gp-mat">
   <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Visita rápida para empezar: qué hace cada opción del menú <strong>+</strong> de Gemini y un encargo para probarla. Hoy probamos dos o tres; el resto, para consultar cuando quieras.</p>
   <div class="gem-dos">
     <div>
@@ -1270,7 +1307,11 @@ Dame el archivo completo, de principio a fin.</pre><button class="btn suave copi
     <div class="gem-ficha tarjeta" id="gemFicha" aria-live="polite"></div>
   </div>
   
-  <h3 class="bloque" id="bloqueRueda">3. La rueda de participación</h3>
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 10 min</button></div></div>
+</details>
+  <span class="ancla" id="bloqueRueda"></span>
+  <details class="gp-p" id="parte-s2-2" data-sid="s2" data-i="2"><summary><span class="gp-h">0:20</span><span class="gp-n">3</span><span class="gp-t">La rueda de participación</span><span class="gp-min">25 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Vamos a hacer todos a la vez nuestra primera app: una rueda de participación para la pizarra digital. Sirve para elegir al azar quién sale, quién responde o quién empieza, sin que nadie piense que siempre le toca al mismo.</p><p>Copiad el primer encargo, el Prompt 1, abrid Gemini con Canvas y pegadlo. En un par de minutos la rueda estará funcionando a la derecha. Probadla: giradla y mirad cómo elige un número.</p><p>Ahora la hacéis vuestra con el Prompt 2: cambiad los colores, añadid un sonido, quitad los números de quien no ha venido. La regla de oro: un cambio cada vez. Si pedís diez cosas a la vez, la IA se lía. Cuando os guste, descargad el archivo y guardadlo bien: en la tercera sesión lo publicaremos en internet.</p></div><div class="gp-mat">
   <p style="max-width:70ch">Todo el grupo a la vez: copias el encargo, lo pegas en Gemini con Canvas y en unos minutos la rueda funciona. Después, la haces tuya pidiendo cambios de uno en uno.</p>
   <h4 class="ses-h4">Prompt 1 · La rueda</h4>
         <div class="caja-codigo"><pre class="codigo" id="sesP1" style="white-space:pre-wrap">Hazme una rueda de participación para usar en la pizarra digital de mi clase.
@@ -1302,7 +1343,11 @@ Pon debajo de la rueda una lista pequeña con los números que ya han salido. Da
     <li>Ábrelo con doble clic: la rueda funciona en tu navegador, sin Gemini y sin internet. Ese archivo es tu app; lo publicaremos en la sesión 3.</li>
   </ol>
 
-  <h3 class="bloque" id="bloqueMetodo">4. Por qué ha funcionado: el método</h3>
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 25 min</button></div></div>
+</details>
+  <span class="ancla" id="bloqueMetodo"></span>
+  <details class="gp-p" id="parte-s2-3" data-sid="s2" data-i="3"><summary><span class="gp-h">0:45</span><span class="gp-n">4</span><span class="gp-t">Por qué ha funcionado: el método</span><span class="gp-min">10 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>¿Por qué os ha funcionado a todos? No ha sido suerte: habéis seguido, sin daros cuenta, un método que sirve para cualquier app.</p><p>Primero, describid el problema, no la app. «Perdemos las autorizaciones de las salidas» funciona mejor que «hazme un formulario», porque la IA entiende qué necesitáis y propone la mejor solución. Segundo, dejad que la IA os pregunte antes de programar: pedidle que os haga preguntas y ahorraréis muchas vueltas. Tercero, exigid siempre el archivo completo, de principio a fin, nunca trozos sueltos. Y cuarto, probad: si algo falla, pulsad F12, copiad lo que sale en rojo y pegadlo en la conversación.</p><p>Con estas cuatro ideas podéis hacer cualquier app que os imaginéis.</p></div><div class="gp-mat">
   <ol class="metodo">
         <li><b>Describe el problema, no la app</b><span>"Perdemos las autorizaciones de salida" funciona mejor que "hazme un formulario".</span></li>
         <li><b>Deja que la IA pregunte</b><span>Pídele que te haga preguntas antes de programar. Ahorra muchas vueltas.</span></li>
@@ -1312,7 +1357,11 @@ Pon debajo de la rueda una lista pequeña con los números que ya han salido. Da
         <li><b>Publica y comparte</b><span>GitHub Pages y un código QR para el claustro (sesión 3).</span></li>
       </ol>
   
-  <h3 class="bloque" id="bloqueAsistente">5. Tu asistente y tu herramienta propia</h3>
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 10 min</button></div></div>
+</details>
+  <span class="ancla" id="bloqueAsistente"></span>
+  <details class="gp-p" id="parte-s2-4" data-sid="s2" data-i="4"><summary><span class="gp-h">0:55</span><span class="gp-n">5</span><span class="gp-t">Tu asistente y tu herramienta propia</span><span class="gp-min">25 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Ahora vais a crear vuestro propio asistente para hacer apps. En Gemini se llaman Gems: un Gem es una Gemini con instrucciones fijas que ya sabe cómo queremos las apps del cole, así que no tenéis que explicárselo cada vez.</p><p>Entrad en gemini.google.com, en el menú lateral pulsad Gems y luego Nueva Gem. Ponedle de nombre «Constructor de apps del cole», pegad las instrucciones que tenéis abajo en el cuadro de instrucciones y, si os deja, elegid Canvas como herramienta. Guardadlo.</p><p>Ya tenéis vuestro asistente. Ahora usadlo: contadle la tarea que escribisteis en la radiografía, la que más tiempo os quita, y dejad que os pregunte lo que necesite. Al final de esta parte enseñamos dos o tres herramientas del grupo.</p></div><div class="gp-mat">
   <div class="dos-col"><div><ol class="pasos-lista" style="margin-bottom:14px">
         <li>Abre <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> y, en el menú lateral, entra en <strong>Gems</strong>.</li>
         <li>Pulsa <strong>Nueva Gem</strong>. Nombre: <em>Constructor de apps del cole</em>.</li>
@@ -1368,7 +1417,11 @@ Que funcione también en el móvil.</pre></div>
   <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Cambia lo que está entre corchetes. Sirven igual con Gemini, ChatGPT o Claude. El de Firebase es para la sesión 4.</p>
   <div class="prompts" id="prompts"></div>
 
-  <h3 class="bloque" id="bloqueTaller">6. Taller de errores</h3>
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 25 min</button></div></div>
+</details>
+  <span class="ancla" id="bloqueTaller"></span>
+  <details class="gp-p" id="parte-s2-5" data-sid="s2" data-i="5"><summary><span class="gp-h">1:20</span><span class="gp-n">6</span><span class="gp-t">Taller de errores</span><span class="gp-min">10 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Las apps fallan, y las vuestras también fallarán. Lo importante no es que no fallen, sino saber contarle el fallo a la IA para que lo arregle.</p><p>Aquí tenéis tres apps rotas a propósito. Pulsad «Probar» y veréis que algo no va. Copiad el fallo para la IA con el botón, pegadlo en la conversación, traed aquí su respuesta entera y volved a probar. Si queréis ver el error vosotros, la tecla F12 abre la consola: lo que sale en rojo es el error.</p><p>Hoy hacemos juntos el primer nivel. Los otros dos os los dejo para casa: es exactamente lo mismo que haréis con vuestras propias apps.</p></div><div class="gp-mat">
   <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Tres apps rotas a propósito. Pulsa <strong>Probar</strong>, copia el fallo para la IA, pega aquí su respuesta y vuelve a probar. Es lo mismo que harás con tus apps. En la sesión hacemos juntos el primer nivel; los otros dos, en casa.</p>
   <div class="niveles" id="niveles"></div>
   <div class="taller">
@@ -1400,7 +1453,11 @@ Que funcione también en el móvil.</pre></div>
     </div>
   </div>
   
-  <h3 class="bloque" id="bloqueNotebook">7. NotebookLM: tu centro en un cuaderno</h3>
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 10 min</button></div></div>
+</details>
+  <span class="ancla" id="bloqueNotebook"></span>
+  <details class="gp-p" id="parte-s2-6" data-sid="s2" data-i="6"><summary><span class="gp-h">1:30</span><span class="gp-n">7</span><span class="gp-t">NotebookLM: tu centro en un cuaderno</span><span class="gp-min">25 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Cambiamos de herramienta. NotebookLM es otra IA de Google con una diferencia importante: responde solo con lo que hay en los documentos que vosotros le dais, y dice de dónde saca cada respuesta. No se inventa nada.</p><p>Entrad en notebooklm.google.com con vuestra cuenta y cread un cuaderno nuevo. Subid documentos de vuestro centro: el Plan de Convivencia, el ROF, una unidad didáctica… Y preguntadle, por ejemplo: «¿Qué hay que hacer si un alumno llega tarde tres veces?». Os contestará citando el documento.</p><p>Además, con un clic convierte esos documentos en un audio tipo pódcast, un mapa mental o un cuestionario. Probad el audio: es una forma estupenda de explicar las normas a las familias.</p></div><div class="gp-mat">
   <p style="max-width:70ch">Subes tus documentos (Plan de Convivencia, ROF, una unidad didáctica…) y la IA responde <strong>solo con lo que hay en ellos</strong>, diciendo de dónde lo saca. Además, con un clic los convierte en un audio tipo pódcast, un mapa mental o un cuestionario.</p>
   <p class="consejo" style="margin-top:0;margin-bottom:16px"><strong>25 minutos.</strong> <strong>Te llevas:</strong> un cuaderno con documentos de tu centro y un audio para familias.</p>
   <div class="dos-col"><div>
@@ -1430,9 +1487,21 @@ Que funcione también en el móvil.</pre></div>
   </div>
   <p class="alerta">Solo documentos del centro sin datos personales: nada de actas con nombres, informes del alumnado ni listados. Y aunque se ciña a tus fuentes, también puede equivocarse: revisa siempre antes de compartir.</p>
   
-  <h3 class="bloque" id="bloqueReto1">8. Reto del mes y dudas</h3>
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 25 min</button></div></div>
+</details>
+  <span class="ancla" id="bloqueReto1"></span>
+  <details class="gp-p" id="parte-s2-7" data-sid="s2" data-i="7"><summary><span class="gp-h">1:55</span><span class="gp-n">8</span><span class="gp-t">Reto del mes y dudas</span><span class="gp-min">5 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Para terminar, el reto de este mes: usad en clase al menos una semana la herramienta que habéis hecho hoy. Si os apetece, haced otra pequeña: un semáforo de rutinas, un sorteo de grupos o un marcador por equipos.</p><p>Guardad bien el archivo, porque en la tercera sesión lo enseñamos y lo publicamos en internet. Y antes de venir, cread vuestra cuenta gratuita de GitHub: la necesitaréis para publicar. ¿Alguna duda?</p></div><div class="gp-mat">
   <p class="consejo"><strong>Reto del mes:</strong> usa en clase al menos una semana la herramienta que has hecho hoy, o haz otra pequeña (un semáforo de rutinas, un sorteo de grupos o un marcador por equipos). Guarda el archivo: en la sesión 3 lo enseñamos y lo publicamos. Antes de venir, crea tu cuenta gratuita de GitHub.</p>
-</section>
+</div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 5 min</button></div></div>
+</details>
+  </div>
+  
+
+
+
+
+  </section>
 
 <!-- ═════════════════════ SESIÓN 3 · Que salga de tu ordenador ═════════════════════ -->
 <section class="panel" id="panel-s3" role="tabpanel" aria-labelledby="t-s3">
@@ -1442,17 +1511,18 @@ Que funcione también en el móvil.</pre></div>
   </div>
   <p class="ses-lleva"><strong>Te llevas:</strong> tu app publicada en internet con su dirección y su código QR, instalada en el móvil con su icono y con el estilo del centro, y una canción para tu clase hecha con IA.</p>
   <p><strong>Antes de venir:</strong> crea tu cuenta en <a href="https://github.com" target="_blank" rel="noopener">github.com</a> (gratuita) y trae el archivo de la herramienta que hiciste en la sesión 2 o de tu reto del mes. Para la música, piensa el tema de la canción de tu clase.</p>
-  <h3 class="bloque" style="margin-top:26px" id="guion-s3">El guion de hoy</h3>
-  <p class="gp-ayuda">Pulsa cada parte para ver los puntos que vamos a tratar. Con <b>✓</b> se marca como vista y se pliega.</p>
-  <div class="gp" data-guion="s3"></div>
-  <p class="gp-reinicio solo-ponente no-imprimir"><button class="enlace" data-gpreset="s3">Desmarcar todas las partes</button></p>
-
-
-
-
-  <h3 class="bloque" id="bloqueGaleriaReto">1. Ronda del reto</h3>
+  <h3 class="bloque" style="margin-top:26px" id="guion-s3">La sesión, paso a paso</h3>
+  <div class="gp-cab"><p class="gp-ayuda">Cada parte de la sesión, en orden. Ábrela para leer lo que se cuenta y ver el material. Con <b>✓</b> se marca como vista y se pliega.</p><p class="gp-reinicio solo-ponente no-imprimir"><button class="enlace" data-gpreset="s3">Desmarcar todas</button> · <button class="enlace" data-gptodo="s3">Abrir todas</button></p></div>
+  <div class="gp">
+  <span class="ancla" id="bloqueGaleriaReto"></span>
+  <details class="gp-p" id="parte-s3-0" data-sid="s3" data-i="0"><summary><span class="gp-h">0:00</span><span class="gp-n">1</span><span class="gp-t">Ronda del reto</span><span class="gp-min">10 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Empezamos por lo vuestro: lo que habéis hecho este mes vale más que cualquier ejemplo mío. Necesito tres o cuatro voluntarios que enseñen en la pantalla grande lo que hicieron en la segunda sesión o en el reto.</p><p>Contadnos tres cosas: qué problema resuelve, cómo se lo pedisteis a la IA y qué falló por el camino. Los fallos son lo más útil, porque a todos nos van a pasar.</p><p>Al final de esta sesión cada app tendrá su dirección en internet y la subiremos a la galería del claustro.</p></div><div class="gp-mat">
   <p style="max-width:70ch">Tres o cuatro personas enseñan en la pantalla grande lo que hicieron en la sesión 2 o en el reto del mes: qué problema resuelve, cómo lo pidieron y qué falló por el camino. La galería del claustro se llenará al final de la sesión, cuando cada app tenga su dirección.</p>
-  <h3 class="bloque" id="bloquePublicar">2. Publicar en GitHub Pages</h3>
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 10 min</button></div></div>
+</details>
+  <span class="ancla" id="bloquePublicar"></span>
+  <details class="gp-p" id="parte-s3-1" data-sid="s3" data-i="1"><summary><span class="gp-h">0:10</span><span class="gp-n">2</span><span class="gp-t">Publicar en GitHub Pages</span><span class="gp-min">30 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Hasta hoy vuestra app vivía en vuestro ordenador. En media hora tendrá dirección en internet y podréis abrirla desde cualquier móvil. Lo haremos con GitHub Pages, que es gratis.</p><p>Entrad en github.com con vuestra cuenta. Vuestro nombre de usuario formará parte de la dirección. Cread un repositorio nuevo, con un nombre corto y sin espacios, por ejemplo «rueda», y marcadlo como público. Cambiad el nombre de vuestro archivo a index.html y subidlo.</p><p>Por último, activad Pages en la configuración del repositorio, siguiendo los pasos de abajo. En uno o dos minutos vuestra app estará en vuestrousuario.github.io/rueda. Esperamos a que todos tengáis la vuestra antes de seguir.</p></div><div class="gp-mat">
   <div class="guias"><details class="guia">
       <summary><div><b>5. Publicar en GitHub Pages</b><small>Tu app con dirección web gratuita</small></div></summary>
       <div class="guia-cuerpo">
@@ -1467,7 +1537,11 @@ Que funcione también en el móvil.</pre></div>
       </div>
     </details></div>
   
-  <h3 class="bloque" id="bloquePWA">3. De web a app instalable</h3>
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 30 min</button></div></div>
+</details>
+  <span class="ancla" id="bloquePWA"></span>
+  <details class="gp-p" id="parte-s3-2" data-sid="s3" data-i="2"><summary><span class="gp-h">0:40</span><span class="gp-n">3</span><span class="gp-t">De web a app instalable</span><span class="gp-min">20 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Ahora vamos a hacer que vuestra app se pueda instalar en el móvil como cualquier otra, con su icono en la pantalla de inicio y funcionando aunque no haya conexión. A esto se le llama una app web instalable.</p><p>Copiad el Prompt 4, poned el nombre y el color de vuestra app y pegadlo en la conversación junto con vuestro archivo. La IA os devolverá lo necesario: un archivo con el nombre y el icono de la app, y otro que la guarda en el móvil para usarla sin conexión.</p><p>Subid los archivos nuevos a GitHub, abrid la dirección en el móvil y veréis la opción «Instalar» o «Añadir a pantalla de inicio».</p></div><div class="gp-mat">
   <h4 class="ses-h4">Prompt 4 · Convertirla en app instalable</h4>
         <div class="caja-codigo"><pre class="codigo" id="sesP3" style="white-space:pre-wrap">Esta es una app web que tengo publicada en GitHub Pages. Te pego el archivo completo.
 
@@ -1495,7 +1569,11 @@ Dame cada archivo completo por separado, con su nombre exacto, y dime cuáles te
       </div>
     </details></div>
   
-  <h3 class="bloque" id="bloqueEstilo">4. Que se vea bien</h3>
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 20 min</button></div></div>
+</details>
+  <span class="ancla" id="bloqueEstilo"></span>
+  <details class="gp-p" id="parte-s3-3" data-sid="s3" data-i="3"><summary><span class="gp-h">1:00</span><span class="gp-n">4</span><span class="gp-t">Que se vea bien</span><span class="gp-min">15 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Una app clara se usa más. Y si es del centro, tiene que parecer del centro: sus colores y su estilo.</p><p>El Prompt 5 le pide a la IA que aplique un estilo sencillo sin cambiar lo que la app hace: fondo blanco, el color del centro en el botón principal, letra grande y botones grandes y redondeados.</p><p>Después, que revise la accesibilidad: que el texto se lea bien sobre el fondo, que todo funcione con el teclado y que se entienda en una pantalla pequeña. Comparad el antes y el después: la diferencia se nota.</p></div><div class="gp-mat">
   <h4 class="ses-h4">Prompt 5 · El estilo del centro</h4>
         <div class="caja-codigo"><pre class="codigo" id="sesP4" style="white-space:pre-wrap">Aplica este estilo a la app sin cambiar lo que hace:
 - Fondo blanco. Texto en [color oscuro].
@@ -1506,7 +1584,11 @@ Dame cada archivo completo por separado, con su nombre exacto, y dime cuáles te
 
 Después revisa la accesibilidad: buen contraste, que nada dependa solo del color y sonidos desactivables. Dame el archivo completo y la lista de cambios.</pre><button class="btn suave copiar" data-copiar="sesP4">Copiar</button></div>
   
-  <h3 class="bloque" id="bloqueCompartir">5. Compartir y mantenerla al día</h3>
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 15 min</button></div></div>
+</details>
+  <span class="ancla" id="bloqueCompartir"></span>
+  <details class="gp-p" id="parte-s3-4" data-sid="s3" data-i="4"><summary><span class="gp-h">1:15</span><span class="gp-n">5</span><span class="gp-t">Compartir y mantenerla al día</span><span class="gp-min">15 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Una app publicada se comparte y se mejora. Para compartirla, lo más fácil es un código QR: abrid vuestra app en Chrome, en el ordenador, pulsad el menú de los tres puntos, «Compartir» y «Crear código QR», y descargadlo. Probadlo: que un compañero lo escanee con su móvil.</p><p>Para mantenerla al día, cada vez que mejoréis algo subid el archivo nuevo a GitHub con el mismo nombre. Y con el encargo de abajo, la app mostrará un aviso de novedades una sola vez en cada dispositivo, para que quien la use sepa qué ha cambiado.</p></div><div class="gp-mat">
   <h4 class="ses-h4" style="margin-top:0">El código QR</h4>
   <ol class="pasos-lista" style="max-width:70ch">
     <li>Abre tu app publicada en Chrome, en el ordenador.</li>
@@ -1536,7 +1618,11 @@ Después revisa la accesibilidad: buen contraste, que nada dependa solo del colo
   <p style="max-width:70ch">Tu app ya tiene dirección: compártela con el claustro en la galería, con el encargo con el que empezaste.</p>
   <p class="fila" style="margin-top:12px"><button class="btn azul" data-ir="galeria">Abrir la galería</button></p>
 
-  <h3 class="bloque" id="bloqueMusica">6. Música con IA: la canción de tu clase</h3>
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 15 min</button></div></div>
+</details>
+  <span class="ancla" id="bloqueMusica"></span>
+  <details class="gp-p" id="parte-s3-5" data-sid="s3" data-i="5"><summary><span class="gp-h">1:30</span><span class="gp-n">6</span><span class="gp-t">Música con IA: la canción de tu clase</span><span class="gp-min">25 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Para terminar, algo que a vuestros alumnos les va a encantar: una canción hecha para vuestra clase.</p><p>Primero, la letra. Decidid el tema: el valor del mes, una rutina, las tablas, la vuelta del recreo… Podéis escribirla con el alumnado o pedirle ayuda a Gemini. Después, la música: Gemini sirve para piezas cortas y sintonías, y Suno para canciones completas con varias estrofas.</p><p>Escuchad las versiones, quedaos con la que más os guste y descargadla. Y la próxima vez que entréis en clase, que suene.</p></div><div class="gp-mat">
   <p style="max-width:70ch">La letra la escribís en clase (o con ayuda de Gemini) y la IA le pone música y voz. Dos herramientas: <strong>Gemini</strong>, que ya tienes con tu cuenta, para piezas cortas y sintonías; y <strong>Suno</strong>, para canciones completas con varias estrofas.</p>
   <p class="consejo" style="margin-top:0;margin-bottom:16px"><strong>25 minutos.</strong> <strong>Te llevas:</strong> una canción para tu clase, descargada y lista para sonar.</p>
   <div class="dos-col"><div>
@@ -1582,9 +1668,21 @@ Usa esta letra:
   </div>
   <p class="alerta">La crea el docente, no el alumnado: la música de Gemini exige ser mayor de 18 años, y Suno también tiene edad mínima. Sin nombres del alumnado en la letra, sin imitar a artistas reales y sin usar letras de canciones conocidas. Revisa las condiciones de Suno: con el plan gratuito, las canciones no pueden tener uso comercial.</p>
   
-  <h3 class="bloque" id="bloqueReto2">7. Reto del mes y dudas</h3>
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 25 min</button></div></div>
+</details>
+  <span class="ancla" id="bloqueReto2"></span>
+  <details class="gp-p" id="parte-s3-6" data-sid="s3" data-i="6"><summary><span class="gp-h">1:55</span><span class="gp-n">7</span><span class="gp-t">Reto del mes y dudas</span><span class="gp-min">5 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>El reto de este mes: publicad una segunda herramienta pequeña, una cuenta atrás, un concurso de preguntas o unas votaciones, y compartidla por QR con un compañero o con las familias.</p><p>La próxima es la última sesión y la más importante: la app que eligió el claustro, funcionando con vuestros propios datos. Para ella necesitáis la cuenta de Google del centro, no la personal. Conseguidla antes de venir y pensad qué cambiaríais de la app ganadora. ¿Alguna duda?</p></div><div class="gp-mat">
   <p class="consejo"><strong>Reto del mes:</strong> publica una segunda herramienta pequeña (una cuenta atrás, un concurso de preguntas o unas votaciones) y compártela por QR con un compañero o con tus familias. Para la sesión 4, consigue la cuenta de Google del centro y piensa qué cambiarías de la app que eligió el claustro.</p>
-</section>
+</div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 5 min</button></div></div>
+</details>
+  </div>
+  
+
+
+
+
+  </section>
 
 <!-- ═════════════════════ SESIÓN 4 · La app del centro ═════════════════════ -->
 <section class="panel" id="panel-s4" role="tabpanel" aria-labelledby="t-s4">
@@ -1594,22 +1692,23 @@ Usa esta letra:
   </div>
   <p class="ses-lleva"><strong>Te llevas:</strong> la app que eligió el centro funcionando con vuestra propia base de datos, con inicio de sesión y reglas de seguridad, tu app revisada y presentada en la galería, y un plan para que todo siga funcionando.</p>
   <p><strong>Antes de venir:</strong> trae la cuenta de Google del centro. La app será la que ganó la votación de la sesión 1; si prefieres otra, mírala antes en la pestaña <a href="https://vunisal706-droid.github.io/IAparadocentes/#apps" target="_blank" rel="noopener">Apps</a> de la página de apoyo. Ten a mano tu cuenta de GitHub de la sesión 3.</p>
-  <h3 class="bloque" style="margin-top:26px" id="guion-s4">El guion de hoy</h3>
-  <p class="gp-ayuda">Pulsa cada parte para ver los puntos que vamos a tratar. Con <b>✓</b> se marca como vista y se pliega.</p>
-  <div class="gp" data-guion="s4"></div>
-  <p class="gp-reinicio solo-ponente no-imprimir"><button class="enlace" data-gpreset="s4">Desmarcar todas las partes</button></p>
-
-
-
-
-  <h3 class="bloque" id="bloqueGuardar">1. Dos sitios para guardar</h3>
+  <h3 class="bloque" style="margin-top:26px" id="guion-s4">La sesión, paso a paso</h3>
+  <div class="gp-cab"><p class="gp-ayuda">Cada parte de la sesión, en orden. Ábrela para leer lo que se cuenta y ver el material. Con <b>✓</b> se marca como vista y se pliega.</p><p class="gp-reinicio solo-ponente no-imprimir"><button class="enlace" data-gpreset="s4">Desmarcar todas</button> · <button class="enlace" data-gptodo="s4">Abrir todas</button></p></div>
+  <div class="gp">
+  <span class="ancla" id="bloqueGuardar"></span>
+  <details class="gp-p" id="parte-s4-0" data-sid="s4" data-i="0"><summary><span class="gp-h">0:00</span><span class="gp-n">1</span><span class="gp-t">Dos sitios para guardar</span><span class="gp-min">10 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Hasta ahora vuestras apps guardaban todo en el propio aparato. Es lo más sencillo: no hace falta cuenta ni configuración. Pero cada ordenador o móvil tiene sus propios datos, no se comparten con nadie y se pierden si se borra el navegador. Sirve para herramientas de una sola persona: la rueda, un marcador, un cronómetro.</p><p>La app del centro es distinta: varias personas tienen que ver y escribir los mismos datos. Para eso los datos se guardan en la nube, en una base de datos, y eso exige cuentas de usuario y reglas que digan quién puede ver y escribir qué.</p><p>Antes de crear nada, preguntaos siempre: ¿estos datos los usa una persona o varias? La respuesta decide dónde se guardan.</p></div><div class="gp-mat">
   <p style="max-width:70ch">Las apps que hiciste en las sesiones 2 y 3 guardan todo en el propio aparato. Las del centro, en la nube. Antes de crear nada, conviene saber cuándo usar cada una.</p>
   <div class="retos" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
     <div class="reto"><b>En el aparato (el navegador)</b><p>Sin cuentas ni configuración. Pero cada ordenador o móvil tiene sus propios datos, no se comparten y se pierden si se borra el navegador. Para herramientas de una sola persona: la rueda, un temporizador, un marcador.</p></div>
     <div class="reto"><b>En la nube (Firebase)</b><p>Los datos se comparten con el claustro y no se pierden al cambiar de aparato. A cambio, hay que crear el proyecto, las cuentas y las reglas. Para todo lo que usen varias personas: evaluaciones, convivencia, reuniones.</p></div>
   </div>
   
-  <h3 class="bloque" id="bloqueDatos">2. Datos del alumnado: lo que hay que hacer bien</h3>
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 10 min</button></div></div>
+</details>
+  <span class="ancla" id="bloqueDatos"></span>
+  <details class="gp-p" id="parte-s4-1" data-sid="s4" data-i="1"><summary><span class="gp-h">0:10</span><span class="gp-n">2</span><span class="gp-t">Datos del alumnado</span><span class="gp-min">15 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Antes de tocar la base de datos, hablemos de lo que no se hace nunca con los datos del alumnado.</p><p>Nada de nombres, usuarios ni notas escritos dentro del código, porque el código es público. El proyecto se crea con la cuenta del centro y la base de datos, en Europa. Las reglas de seguridad se publican siempre, y quien tenga que escribir datos tiene su propia cuenta. Se guarda solo lo que la app necesita: si un dato no hace falta, no se pide. Y, cuando se pueda, siglas o números en lugar de nombres.</p><p>Ahora, en parejas, leed los casos de abajo y decidid si se puede hacer o no, y por qué. Tres minutos, y lo ponemos en común.</p></div><div class="gp-mat">
   <div class="guias"><details class="guia">
       <summary><div><b>Lo mínimo imprescindible</b><small>Antes de meter datos de alumnado o familias</small></div></summary>
       <div class="guia-cuerpo">
@@ -1625,7 +1724,11 @@ Usa esta letra:
   <h4 class="ses-h4">Prompt 6 · Siglas en lugar de nombres</h4>
         <div class="caja-codigo"><pre class="codigo" id="sesP5" style="white-space:pre-wrap">El alumnado debe aparecer solo con sus siglas: inicial del nombre, del primer apellido y del segundo. Si importo una lista con nombres completos en formato «Apellido1 Apellido2, Nombre», convierte cada alumno en siglas y no guardes el nombre en ningún sitio. Si dos coinciden, añade un número al segundo. Ordena la lista por el primer apellido. Dame el archivo completo.</pre><button class="btn suave copiar" data-copiar="sesP5">Copiar</button></div>
   
-  <h3 class="bloque" id="bloqueFirebase">3. Firebase paso a paso</h3>
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 15 min</button></div></div>
+</details>
+  <span class="ancla" id="bloqueFirebase"></span>
+  <details class="gp-p" id="parte-s4-2" data-sid="s4" data-i="2"><summary><span class="gp-h">0:25</span><span class="gp-n">3</span><span class="gp-t">Firebase paso a paso</span><span class="gp-min">25 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Firebase es el servicio de Google donde la app guardará los datos del centro. Lo vamos a crear juntos, pantalla a pantalla, con la cuenta del centro.</p><p>Son tres pasos. Primero, crear el proyecto. Segundo, crear la base de datos eligiendo como ubicación Bélgica, para que los datos se queden en Europa. Tercero, activar el inicio de sesión, para que cada persona entre con su usuario.</p><p>Seguid las guías de la página de apoyo: tienen las pantallas de hoy. No pasamos a la siguiente parte hasta que todos tengáis el proyecto creado.</p></div><div class="gp-mat">
   <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Crear el proyecto, la base de datos en Europa y el acceso con usuario. Lo hacemos juntos, antes de descargar la app, siguiendo las guías de la página de apoyo: son las del capítulo 8 del libro, con las pantallas de hoy.</p>
   <div class="guias" style="margin-bottom:18px"><details class="guia" open>
     <summary><div><b>Firebase paso a paso</b><small>Página de apoyo · pestaña «Firebase»</small></div></summary>
@@ -1633,7 +1736,11 @@ Usa esta letra:
     <p style="margin-top:12px"><a class="btn azul" href="https://vunisal706-droid.github.io/IAparadocentes/#firebase" target="_blank" rel="noopener">Abrir la página de apoyo</a></p></div>
   </details></div>
   
-  <h3 class="bloque" id="bloqueTuApp">4. Tu app del centro</h3>
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 25 min</button></div></div>
+</details>
+  <span class="ancla" id="bloqueTuApp"></span>
+  <details class="gp-p" id="parte-s4-3" data-sid="s4" data-i="3"><summary><span class="gp-h">0:50</span><span class="gp-n">4</span><span class="gp-t">Tu app del centro</span><span class="gp-min">25 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Ahora sí: la app que votasteis en la primera sesión, funcionando con vuestros datos. Son cuatro pasos seguidos.</p><p>Uno: descargad la plantilla de la app desde la página de apoyo. Dos: pasadla por el configurador, que la adapta a vuestro proyecto de Firebase. Tres: publicad en vuestra base de datos las reglas de seguridad que os da el configurador. Y cuatro: subid el archivo a GitHub, como en la sesión anterior.</p><p>Cuando terminéis, abrid la dirección en el móvil y entrad con vuestro usuario. Esperamos a que todos la tengáis funcionando.</p></div><div class="gp-mat">
   <p style="max-width:70ch">Con Firebase creado, ya puedes instalar la app que eligió el centro en la sesión 1 (o cualquier otra del catálogo). Son cuatro pasos seguidos.</p>
   <h4 class="ses-h4" id="bloqueApps">Paso 1 · Elige y descarga la app</h4>
   <p style="color:var(--tinta-suave);margin:-6px 0 16px;max-width:70ch">Las apps y sus plantillas están en la <strong>página de apoyo del libro</strong>, junto con el configurador y las guías de Firebase. Elige allí la que te vas a llevar hoy.</p>
@@ -1670,7 +1777,11 @@ Usa esta letra:
       </div>
     </details></div>
   
-  <h3 class="bloque" id="bloqueCerradura">5. Prueba de la cerradura</h3>
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 25 min</button></div></div>
+</details>
+  <span class="ancla" id="bloqueCerradura"></span>
+  <details class="gp-p" id="parte-s4-4" data-sid="s4" data-i="4"><summary><span class="gp-h">1:15</span><span class="gp-n">5</span><span class="gp-t">Prueba de la cerradura</span><span class="gp-min">10 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Llega la comprobación más importante del día: que quien no tiene permiso no ve nada.</p><p>Entrad en vuestra app publicada con vuestro usuario: tenéis que ver vuestros datos. Ahora pasad el enlace o el QR a un compañero al que no hayáis dado de alta. Él solo debe ver la pantalla de acceso o un aviso de que no está autorizado. Ningún dato.</p><p>Si ve datos, las reglas no están publicadas o están abiertas. Volvemos al paso de las reglas y lo arreglamos juntos antes de seguir.</p></div><div class="gp-mat">
   <p style="max-width:70ch">La comprobación más importante del día: que quien no tiene permiso no ve nada.</p>
   <ol class="pasos-lista" style="max-width:70ch">
     <li>Entra en tu app publicada con tu usuario: tienes que ver tus datos.</li>
@@ -1681,13 +1792,21 @@ Usa esta letra:
   </ol>
   <p class="alerta">Nunca el «modo de prueba» de Firebase ni reglas que dejen leer y escribir a cualquiera, aunque sea un rato. Con datos de un colegio, la base de datos empieza cerrada.</p>
   
-  <h3 class="bloque" id="bloqueSegunda">6. La segunda opinión</h3>
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 10 min</button></div></div>
+</details>
+  <span class="ancla" id="bloqueSegunda"></span>
+  <details class="gp-p" id="parte-s4-5" data-sid="s4" data-i="5"><summary><span class="gp-h">1:25</span><span class="gp-n">6</span><span class="gp-t">La segunda opinión</span><span class="gp-min">10 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Antes de dar por buena una app, que la revise otra IA, igual que pediríamos a un compañero que le eche un vistazo a un documento importante.</p><p>Abrid una conversación nueva y pegad el Prompt 7 junto con vuestro archivo. Le pedimos que la revise como un programador con experiencia: qué errores ve, qué podría fallar en el móvil y qué riesgos tiene para los datos.</p><p>Leed lo que os dice, quedaos con lo importante y pedid que lo arregle. Una app revisada es una app más segura.</p></div><div class="gp-mat">
   <p style="max-width:70ch">Antes de enseñar tu app (la que publicaste en la sesión 3 o la del centro), pide a otra IA que la revise. Pega el encargo y tu archivo en una conversación nueva.</p>
   <h4 class="ses-h4">Prompt 7 · La segunda opinión</h4>
         <div class="caja-codigo"><pre class="codigo" id="sesP7" style="white-space:pre-wrap">Esta app la va a usar el profesorado de un colegio. Revísala como lo haría un programador con experiencia: dime qué errores ves, qué podría fallar en el móvil y qué riesgos tiene para los datos. No la reescribas todavía; solo dame la lista.</pre><button class="btn suave copiar" data-copiar="sesP7">Copiar</button></div>
   <p class="consejo">Después, repasa tu app con la lista de comprobación de la <a href="https://vunisal706-droid.github.io/IAparadocentes/#instalar" target="_blank" rel="noopener">página de apoyo</a>.</p>
   
-  <h3 class="bloque" id="bloqueGaleria">7. Galería final y recreativa del claustro</h3>
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 10 min</button></div></div>
+</details>
+  <span class="ancla" id="bloqueGaleria"></span>
+  <details class="gp-p" id="parte-s4-6" data-sid="s4" data-i="6"><summary><span class="gp-h">1:35</span><span class="gp-n">7</span><span class="gp-t">Galería final y recreativa del claustro</span><span class="gp-min">15 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Mirad todo lo que habéis hecho en cuatro meses. Vamos a verlo juntos.</p><p>Si vuestra app todavía no está en la galería, copiad su dirección o el enlace de vuestro juego de Canvas, id a la pestaña Galería, pulsad «Añadir mi app» y pegadlo. En la pantalla grande abriremos la recreativa del claustro: todas las apps y juegos del curso, como una sala de máquinas.</p><p>Probad las de vuestros compañeros desde el móvil y votad vuestra favorita. Al final anunciamos la ganadora.</p></div><div class="gp-mat">
   <div class="actividades" style="margin-bottom:18px">
     <article class="actividad" style="--c:#7C3AED">
       <small>Actividad · 15 min</small>
@@ -1706,7 +1825,11 @@ Usa esta letra:
     </article>
   </div>
 
-  <h3 class="bloque" id="bloqueSeguir">8. Cómo seguir</h3>
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 15 min</button></div></div>
+</details>
+  <span class="ancla" id="bloqueSeguir"></span>
+  <details class="gp-p" id="parte-s4-7" data-sid="s4" data-i="7"><summary><span class="gp-h">1:50</span><span class="gp-n">8</span><span class="gp-t">Cómo seguir</span><span class="gp-min">10 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Para que todo esto siga funcionando cuando acabe la formación, hace falta organizarse un poco.</p><p>Cada app del centro necesita una persona responsable y otra con acceso de administración, por si la primera cambia de destino. Todo se crea con las cuentas del centro, no con las personales: Firebase, GitHub y los Gems. Y conviene tener una carpeta común en Drive con los enlaces, los códigos QR, los prompts con los que se hizo cada app y una copia de cada versión.</p><p>Muchas gracias por estas cuatro sesiones. Ya sabéis hacerlo: ahora, a seguir creando.</p></div><div class="gp-mat">
   <ul class="pasos-lista" style="max-width:70ch;list-style:disc">
     <li><strong>Quién mantiene cada app:</strong> una persona responsable y una segunda con acceso de administración, por si la primera cambia de destino.</li>
     <li><strong>Cuentas del centro:</strong> Firebase, GitHub y los Gems, con la cuenta del centro y no con la personal.</li>
@@ -1714,6 +1837,14 @@ Usa esta letra:
   </ul>
   <p class="consejo"><strong>Para después:</strong> un grupo para dudas donde cada uno comparta las apps que vaya haciendo.</p>
   
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 10 min</button></div></div>
+</details>
+  </div>
+  
+
+
+
+
   <h3 class="bloque" id="bloqueAIStudio">Extra para casa · Google AI Studio: el generador de fichas de cálculo</h3>
   <p style="max-width:70ch">AI Studio es el taller de Google para crear apps describiéndolas. Escribes lo que quieres y a la derecha ves la app funcionando. Esta práctica no cabe en las dos horas de la sesión: es para hacerla en casa, paso a paso. No necesita base de datos, ni claves, ni publicar nada: se usa desde el propio AI Studio.</p>
   <p class="consejo" style="margin-top:0;margin-bottom:16px"><strong>30 minutos.</strong> <strong>Te llevas:</strong> un generador de fichas de cálculo con solucionario, para imprimir al día siguiente.</p>
@@ -2356,12 +2487,21 @@ function pedirClave(soloPonente, despues) {
   };
 }
 
+window.abrirDestino = function (id) {
+  const el = document.getElementById(id); if (!el) return false;
+  let card = el.closest('.gp-p');
+  if (!card && el.classList.contains('ancla') && el.nextElementSibling && el.nextElementSibling.classList.contains('gp-p')) card = el.nextElementSibling;
+  if (card && !card.open) card.open = true;
+  if (el.tagName === 'DETAILS') el.open = true;
+  setTimeout(() => el.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }), 40);
+  return true;
+};
 /* ── Pestañas ─────────────────────────────────────────── */
 const pestanas = [...document.querySelectorAll('.pestana')];
 // Pestañas antiguas → sesión y apartado donde viven ahora
-const ALIAS = { inicio: ['s1', 'bloquePresentacion'], presentacion: ['s1', 'bloquePresentacion'], feria: ['s1', null], sesiones: ['s1', null], apps: ['s4', 'bloqueApps'], configurar: ['s4', 'bloqueConfig'], guias: ['s4', 'bloqueFirebase'], ia: ['s2', 'bloqueMetodo'], gemini: ['s2', 'bloqueGemini'], taller: ['s2', 'bloqueTaller'], recursos: ['s4', null] };
+const ALIAS = { inicio: ['s1', 'guion-s1'], presentacion: ['s1', 'guion-s1'], feria: ['s1', null], sesiones: ['s1', null], apps: ['s4', 'bloqueApps'], configurar: ['s4', 'bloqueConfig'], guias: ['s4', 'bloqueFirebase'], ia: ['s2', 'bloqueMetodo'], gemini: ['s2', 'bloqueGemini'], taller: ['s2', 'bloqueTaller'], recursos: ['s4', null] };
 function irA(id, foco) {
-  if (ALIAS[id]) { const [p, a] = ALIAS[id]; irA(p, foco); if (a) setTimeout(() => { const el = document.getElementById(a); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60); return; }
+  if (ALIAS[id]) { const [p, a] = ALIAS[id]; irA(p, foco); if (a) setTimeout(() => abrirDestino(a), 60); return; }
   if (!pestanas.some(p => p.dataset.panel === id) || !puedeVer(id)) id = puedeVer('s1') ? 's1' : primeraVisible();
   pestanas.forEach(p => {
     const on = p.dataset.panel === id;
@@ -2417,7 +2557,7 @@ $('dPantalla').onclick = () => {
   else if ($('diapos').requestFullscreen) $('diapos').requestFullscreen().catch(() => {});
 };
 document.addEventListener('keydown', e => {
-  if (!$('panel-s1').classList.contains('activo')) return;
+  return;
   if (!document.fullscreenElement) { const r = $('diapos').getBoundingClientRect(); if (r.bottom < 120 || r.top > innerHeight - 120) return; }
   if (e.target.closest('input,textarea,[role=tab]')) return;
   if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); verDiapo(dActual + 1); }
@@ -2892,12 +3032,7 @@ function pintarMando() {
       (g.hace && g.hace.length ? '<ul class="hace">' + g.hace.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' : '');
   } else h += '<h2>' + (G ? 'Toca una parte del guion' : esc(TITULOS_PANEL[pan] || '')) + '</h2>' + (G ? '<div class="notas">Se abrirá en la pizarra y aquí verás tus notas.</div>' : '');
   h += '</div>';
-  if (pan === 's1' && diapos.length) {
-    const notas = diapos[dActual] && diapos[dActual].dataset.notas || 'Sin notas para esta diapositiva.';
-    h += '<div class="mando-diapo"><div class="n">Presentación · diapositiva ' + (dActual + 1) + ' de ' + diapos.length + ' · ' + esc(tituloDiapo(dActual)) + '</div><div class="notas">' + esc(notas) + '</div>' +
-      (dActual < diapos.length - 1 ? '<div class="mando-sig" style="margin-top:6px">Siguiente: ' + esc(tituloDiapo(dActual + 1)) + '</div>' : '') + '</div>' +
-      '<div class="mando-botones"><button class="ant" data-m="ant" aria-label="Diapositiva anterior">‹</button><button class="sig" data-m="sig" aria-label="Diapositiva siguiente">›</button></div>';
-  } else if (G) {
+  if (G) {
     h += '<div class="mando-botones"><button class="ant" data-m="pant" aria-label="Parte anterior">‹</button><button class="sig" data-m="psig" aria-label="Parte siguiente">›</button></div>';
   }
   if (G) h += '<div class="mando-partes">' + G.map((x, i) => '<button data-m="parte" data-i="' + i + '" aria-current="' + (i === pi) + '" class="' + (vistos.includes(i) ? 'visto' : '') + '">' + x.h + ' · ' + (i + 1) + '. ' + esc(x.t) + '</button>').join('') + '</div>';
@@ -3605,7 +3740,7 @@ $('fxAnt').onclick = () => irCarta(fxCentro - 1); $('fxSig').onclick = () => irC
 pista.addEventListener('keydown', e => { if (e.key === 'ArrowRight') { e.preventDefault(); e.stopPropagation(); irCarta(fxCentro + 1); } if (e.key === 'ArrowLeft') { e.preventDefault(); e.stopPropagation(); irCarta(fxCentro - 1); } });
 pista.addEventListener('click', e => { const c = e.target.closest('.fx-carta'); if (c && !e.target.closest('a,button') && !c.classList.contains('centro')) irCarta(cartas.indexOf(c)); });
 $('fxPantalla').onclick = () => { const el = $('fxEscena'); if (document.fullscreenElement) document.exitFullscreen(); else if (el.requestFullscreen) el.requestFullscreen().then(() => setTimeout(() => irCarta(fxCentro), 200)); };
-document.addEventListener('click', e => { const b = e.target.closest('[data-fx-ir]'); if (!b) return; if (document.fullscreenElement) document.exitFullscreen(); const d = $(b.dataset.fxIr); if (d) d.scrollIntoView({ behavior: quieto ? 'auto' : 'smooth', block: 'start' }); });
+document.addEventListener('click', e => { const b = e.target.closest('[data-fx-ir]'); if (!b) return; if (document.fullscreenElement) document.exitFullscreen(); abrirDestino(b.dataset.fxIr); });
 
 /* Cielo: puntos que se unen, como una red de aulas conectadas */
 (function cielo() {
@@ -3624,53 +3759,7 @@ document.addEventListener('click', e => { const b = e.target.closest('[data-fx-i
 })();
 
 /* ── Guion con reloj ── */
-const GUION = [
-  { h: '0:00', m: 10, t: 'Bienvenida y radiografía del claustro', s: 'Cada persona responde desde su móvil qué tarea le quita más tiempo',
-    puntos: ["Quiénes somos y para qué son estas cuatro sesiones", "Escanea el código QR y responde: ¿qué tarea te quita más tiempo?", "Vemos juntos qué temas se repiten"], diapo: 0, 
-    dice: 'Soy maestro, no informático. Todo lo que vais a ver hoy lo he hecho hablando con una IA, igual que vais a hacer vosotros. Antes de enseñar nada, quiero saber qué os quita tiempo en el cole.',
-    hace: ['Antes de empezar, marca en «En directo» que los asistentes solo ven la sesión 1.', 'Pulsa «Empezar sesión en directo» y proyecta el QR.', 'Comenta en voz alta dos o tres respuestas según llegan.', 'Quédate con los temas que más se repiten: te dicen qué apps destacar después. Hoy no se convierten en encargo: eso es en la sesión 2.'], ir: ['directo', 'Abrir «En directo»', 1] },
-  { h: '0:10', m: 10, t: 'Así nació una app', s: 'La historia real de Teletrabajo, de un problema a una herramienta',
-    puntos: ["Un problema real: redactar el acta de cada reunión", "Cómo creció la app, conversación a conversación", "Cómo se hace una app así: necesidad, IA, un archivo y publicarla"], diapo: 4, 
-    dice: 'Esta app no empezó con una idea brillante, empezó con un fastidio: redactar el acta después de cada reunión. Mirad cómo fue creciendo, conversación a conversación.',
-    hace: ['Recorre la línea del tiempo de la presentación, hito a hito.', 'Lee en voz alta uno de los encargos reales: se ve que es lenguaje normal.', 'No expliques todavía cómo se hace: hoy solo se ve que es posible.'], ir: ['bloquePresentacion', 'Ver la presentación'] },
-  { h: '0:20', m: 10, t: 'Muestra · En el aula', s: 'Capitoolappciones como puerta de entrada, Troglodita, Portal Educativo, Mis Lecturas, Aula PT y Podcast a Vídeo',
-    puntos: ["Capitoolappciones: la puerta de entrada a todas", "Troglodita, Portal Educativo, Mis Lecturas, Aula PT y Podcast a Vídeo", "Fíjate en el problema que resuelve cada una"], 
-    dice: 'Todo lo que vais a ver cabe en esta pantalla: es la app que reúne las demás. Empiezo por lo que toca al alumnado. Fijaos menos en la app y más en el problema que resuelve.',
-    hace: ['Abre Capitoolappciones medio minuto: es el mapa de toda la muestra.', 'Pon el escaparate en pantalla completa y abre cada app desde su tarjeta.', 'Dos minutos por app. El Troglodita primero: es el que rompe el hielo.'], ir: ['fxEscena', 'Ir al escaparate'] },
-  { h: '0:30', m: 8, t: 'Muestra · Lectura y problemas', s: 'Ágora, Generador de SdA, Plan de Resolución y Registro de Lectura y Problemas',
-    puntos: ["Ágora: el plan de lectura, semana a semana", "Generador de SdA: de la idea al encargo para la IA", "Plan de Resolución y Registro de Lectura y Problemas"], 
-    dice: 'Un plan de lectura que nadie abre no sirve. Estas cuatro salieron de querer que el plan se use cada semana, no que esté en un cajón.',
-    hace: ['Enseña una semana concreta en Ágora y cómo se registra después.', 'En el Generador de SdA, llega hasta el texto que prepara para la IA y párate ahí.'], ir: ['fxMuestra', 'Ver la muestra'] },
-  { h: '0:38', m: 9, t: 'Muestra · Alumnado y convivencia', s: 'Convivencia+ (sociograma), Convive+ (partes) y Gestor de Refuerzo',
-    puntos: ["Convivencia+: el sociograma del grupo", "Convive+: los partes de convivencia sin papeles", "Gestor de Refuerzo: quién, cuándo y qué"], 
-    dice: 'Todos tenemos un alumno que está solo y no lo vemos. Y todos hemos perdido media hora con un parte. Estas apps salieron de ahí.',
-    hace: ['Entra con tu usuario: son apps con datos y se enseñan desde tu ordenador.', 'Usa un grupo inventado, nunca datos reales de tu centro.'], ir: ['fxMuestra', 'Ver la muestra'] },
-  { h: '0:47', m: 9, t: 'Muestra · Gestión del centro', s: 'Evaluaciones, Cuadra Horarios, Teletrabajo, PDF a Word y Programas del cole',
-    puntos: ["Gestor de Evaluaciones y Cuadra Horarios", "Teletrabajo: el acta de la reunión, preparada", "PDF a Word y Programas del cole"], 
-    dice: 'Y ahora lo que nos quita las tardes al claustro y al equipo directivo. Si alguna os ahorra una hora a la semana, ya ha merecido la pena.',
-    hace: ['Cuadra Horarios y PDF a Word no piden usuario: que los abran a la vez que tú.', 'Elige dos para enseñar a fondo y nombra las demás.'], ir: ['fxMuestra', 'Ver la muestra'] },
-  { h: '0:56', m: 9, t: 'Muestra · El centro en el móvil', s: 'Capitoolappciones, Tablón de Avisos, Agenda, CapiGuía y Plan de Centro',
-    puntos: ["Capitoolappciones: el panel del día y el asistente", "Tablón de Avisos, Agenda y CapiGuía", "El Plan de Centro, en el bolsillo"], 
-    dice: 'La última familia es la que más agradece el claustro: saber qué pasa hoy en el cole sin preguntar a nadie.',
-    hace: ['Vuelve a Capitoolappciones y enseña el panel del día y el asistente.', 'Busca una duda real en el Plan de Centro desde el móvil.', 'Cierra preguntando: «¿Cuál os llevaríais mañana?».'], ir: ['fxMuestra', 'Ver la muestra'] },
-  { h: '1:05', m: 25, t: 'Pruébalas en tu móvil', s: 'Muro de códigos QR: cada persona entra en las que más le interesen',
-    puntos: ["Escanea el QR de la app que más te interese", "Trastea sin miedo: no se rompe nada", "Prueba al menos dos"], 
-    dice: 'Ya me habéis visto a mí. Ahora os toca: escanead la que más os haya llamado la atención y trastead sin miedo, no se rompe nada.',
-    hace: ['Proyecta el muro de QR y pasea por la sala.', 'Apunta las dudas que se repitan: te servirán en las sesiones siguientes.', 'A mitad de bloque, pide que prueben una segunda app.'], ir: ['fxProbar', 'Ir al muro de QR'] },
-  { h: '1:30', m: 15, t: 'Crea un juego en diez minutos', s: 'Cada persona hace su juego con Gemini y Canvas, sin preparar nada antes',
-    puntos: ["Abre Gemini, pulsa + y elige Canvas", "Copia el encargo y cambia el curso y el tema", "¿Algo no te gusta? Pídelo en una frase"], 
-    dice: 'No quiero que os vayáis creyendo que esto es cosa mía. En diez minutos vais a tener un juego hecho por vosotros, funcionando.',
-    hace: ['Enseña en la pantalla dónde está Canvas: botón + de Gemini.', 'Todos copian el encargo y cambian curso y tema.', 'Quien termine antes, que pida un cambio en una sola frase.', 'Proyecta dos o tres juegos del grupo: es el mejor momento de la sesión.'], ir: ['fxJuego', 'Ir al encargo'] },
-  { h: '1:45', m: 10, t: 'Votación y app ganadora', s: 'Hasta dos votos por persona, con el resultado en directo',
-    puntos: ["Hasta dos votos por persona, desde el móvil", "Piensa en el centro, no solo en tu clase", "La ganadora se pone en marcha en la sesión 4"], 
-    dice: 'Llega el momento de decidir. Votad pensando en el centro, no solo en vuestra clase: la que gane se quedará instalada en el centro, con vuestros datos, en la cuarta sesión.',
-    hace: ['Pulsa «Abrir la votación» y pon el marcador en pantalla completa.', 'Cuando hayan votado casi todos, pulsa «Cerrar y descubrir la ganadora».', 'Si hay empate o dos muy igualadas, se pueden trabajar las dos en dos grupos.'], ir: ['fxVotar', 'Ir a la votación'] },
-  { h: '1:55', m: 5, t: 'Qué viene ahora', s: 'Las tres sesiones que quedan y qué traer a la próxima',
-    puntos: ["Sesión 2: tu primera app", "Sesión 3: publicarla en internet", "Sesión 4: la app del centro, con vuestros datos", "Para la próxima: entra en Gemini y trae una tarea que repitas cada semana"], diapo: 7, 
-    dice: 'Hoy habéis visto lo que se puede hacer. En la próxima sesión empezáis a hacerlo vosotros: primero una app pequeña, después la publicáis y, en la última, la app ganadora se queda funcionando en vuestro centro.',
-    hace: ['Acuerda quién coordina en el centro y con qué cuenta de Google se creará todo en la sesión 4.', 'Para la sesión 2: que comprueben que entran en Gemini y traigan pensada una tarea que repitan cada semana.'], ir: ['fxDespues', 'Ver «Y después»'] }
-];
-const GUIONES = window.GUIONES = { s1: GUION, s2: [{"h": "0:00", "m": 10, "t": "Lo que salió en la sesión 1", "puntos": ["La app que eligió el centro", "Las tareas que más tiempo os quitan", "Hoy: tu primera app, hecha por ti"], "dice": "En la primera sesión visteis lo que se puede hacer. Hoy cada uno se va con algo suyo funcionando.", "hace": ["Abre la pestaña Directo y enseña las respuestas de la radiografía.", "Recuerda la regla: nunca nombres de alumnos en la IA."], "ir": ["bloqueBienvenida", "Ir al apartado"]}, {"h": "0:10", "m": 10, "t": "Gemini por dentro", "puntos": ["Qué hace cada opción del menú +", "Canvas: la app funcionando junto a la conversación", "Hoy probamos dos o tres; el resto, para consultar"], "dice": "Gemini no es solo un chat: con el menú + puede escribir, investigar, hacer imágenes o construir una app.", "hace": ["Proyecta Gemini y abre el menú +.", "Prueba en directo dos herramientas, Canvas la última."], "ir": ["bloqueGemini", "Ver las herramientas"]}, {"h": "0:20", "m": 25, "t": "La rueda de participación", "puntos": ["Todos a la vez: copia el encargo y pégalo en Gemini con Canvas", "En unos minutos, la rueda funciona", "Hazla tuya: colores, sonido y lista, un cambio cada vez"], "dice": "Vais a pedirle a la IA una app que podéis usar mañana mismo en clase.", "hace": ["Haz tú la rueda a la vez que el grupo, proyectada.", "Pasea por la sala y ayuda a quien se atasque.", "Que guarden el archivo: lo publicarán en la sesión 3."], "ir": ["bloqueRueda", "Ir a los encargos"]}, {"h": "0:45", "m": 10, "t": "Por qué ha funcionado: el método", "puntos": ["Describe el problema, no la app", "Deja que la IA te pregunte antes de programar", "Pide siempre el archivo completo", "Prueba, copia el error y pégalo"], "dice": "No ha sido suerte: habéis seguido un método que sirve para cualquier app.", "hace": ["Relaciona cada regla con lo que acaban de hacer en la rueda."], "ir": ["bloqueMetodo", "Ver el método"]}, {"h": "0:55", "m": 25, "t": "Tu asistente y tu herramienta propia", "puntos": ["Crea tu Gem «Constructor de apps del cole»", "Pega las instrucciones y elige Canvas", "Pídele una herramienta para lo que más tiempo te quita"], "dice": "Ahora cada uno tiene su propio ayudante, que ya sabe cómo queremos las apps del cole.", "hace": ["Crea la Gem en directo, paso a paso.", "Que cada persona elija su tarea de la radiografía.", "Enseña dos o tres herramientas del grupo al final."], "ir": ["bloqueAsistente", "Ir a las instrucciones"]}, {"h": "1:20", "m": 10, "t": "Taller de errores", "puntos": ["Tres apps rotas a propósito", "Encuentra el fallo con F12 y cópialo para la IA", "Hoy el primer nivel; los otros dos, en casa"], "dice": "Las apps fallan. Lo importante es saber contárselo a la IA para que lo arregle.", "hace": ["Haz el primer nivel en la pantalla grande.", "Enseña dónde está la consola con F12."], "ir": ["bloqueTaller", "Ir al taller"]}, {"h": "1:30", "m": 25, "t": "NotebookLM: tu centro en un cuaderno", "puntos": ["Sube documentos del centro: Plan de Convivencia, ROF…", "La IA responde solo con lo que hay en ellos y dice de dónde lo saca", "Conviértelos en un audio tipo pódcast para las familias"], "dice": "Imaginad preguntarle al ROF y que os conteste diciendo en qué página está.", "hace": ["Haz una pregunta real a un documento del centro.", "Genera el resumen en audio y pon un trozo."], "ir": ["bloqueNotebook", "Ver el paso a paso"]}, {"h": "1:55", "m": 5, "t": "Reto del mes y dudas", "puntos": ["Usa en clase tu herramienta al menos una semana", "O haz otra pequeña: semáforo, sorteo de grupos o marcador", "Antes de la sesión 3: crea tu cuenta de GitHub"], "dice": "Lo que no se usa se olvida: probadla en clase y la próxima vez la publicamos.", "hace": ["Recuerda guardar el archivo de la herramienta.", "Resuelve dudas y despide la sesión."], "ir": ["bloqueReto1", "Ver el reto"]}], s3: [{"h": "0:00", "m": 10, "t": "Ronda del reto", "puntos": ["Tres o cuatro personas enseñan lo que hicieron", "Qué problema resuelve y cómo lo pidieron", "Qué falló por el camino"], "dice": "Empezamos por lo vuestro: lo que habéis hecho este mes vale más que cualquier ejemplo mío.", "hace": ["Pide voluntarios antes de empezar.", "Proyecta sus herramientas en la pantalla grande."], "ir": ["bloqueGaleriaReto", "Ir al apartado"]}, {"h": "0:10", "m": 30, "t": "Publicar en GitHub Pages", "puntos": ["Crea un repositorio público con nombre corto", "Sube tu archivo con el nombre index.html", "Activa Pages y recibe tu dirección web"], "dice": "Hasta hoy vuestra app vivía en vuestro ordenador. En media hora tendrá dirección en internet.", "hace": ["Hazlo en directo con tu cuenta, paso a paso.", "Espera a que todos tengan su dirección antes de seguir."], "ir": ["bloquePublicar", "Ver los pasos"]}, {"h": "0:40", "m": 20, "t": "De web a app instalable", "puntos": ["Pide a la IA que la convierta en app instalable", "Que funcione también sin conexión", "Instálala en el móvil con su icono"], "dice": "Ahora vamos a hacer que se instale en el móvil como cualquier otra app.", "hace": ["Enseña la instalación en tu móvil o en el ordenador."], "ir": ["bloquePWA", "Ir al encargo"]}, {"h": "1:00", "m": 15, "t": "Que se vea bien", "puntos": ["Aplica el estilo del centro sin cambiar lo que hace", "Letra grande, botones grandes y buen contraste", "Revisión de accesibilidad"], "dice": "Una app clara se usa más. Y la del centro tiene que parecer del centro.", "hace": ["Compara el antes y el después en una app del grupo."], "ir": ["bloqueEstilo", "Ir al encargo"]}, {"h": "1:15", "m": 15, "t": "Compartir y mantenerla al día", "puntos": ["Crea su código QR desde Chrome", "Añade un aviso de novedades", "Cómo subir una versión nueva"], "dice": "Una app publicada se comparte y se mejora. Así se hace sin complicarse.", "hace": ["Que un compañero escanee el QR de otro.", "Sube un cambio pequeño en directo."], "ir": ["bloqueCompartir", "Ver cómo"]}, {"h": "1:30", "m": 25, "t": "Música con IA: la canción de tu clase", "puntos": ["Escribe la letra: el valor del mes, una rutina, las tablas…", "Gemini para piezas cortas; Suno para canciones completas", "Descárgala y que suene en clase"], "dice": "Para terminar, algo que a vuestros alumnos les va a encantar: su propia canción.", "hace": ["Haz una canción en directo con una letra del grupo.", "Ponla entera: es el momento más divertido."], "ir": ["bloqueMusica", "Ver los pasos"]}, {"h": "1:55", "m": 5, "t": "Reto del mes y dudas", "puntos": ["Publica una segunda herramienta pequeña", "Compártela por QR con un compañero o con las familias", "Para la sesión 4: la cuenta de Google del centro"], "dice": "La última sesión es la grande: la app del centro funcionando con vuestros datos.", "hace": ["Recuerda la cuenta de Google del centro.", "Resuelve dudas y despide la sesión."], "ir": ["bloqueReto2", "Ver el reto"]}], s4: [{"h": "0:00", "m": 10, "t": "Dos sitios para guardar", "puntos": ["En el aparato: sin cuentas, pero no se comparte", "En la nube: datos compartidos, con usuario y reglas", "Cuándo usar cada uno"], "dice": "Vuestras apps guardaban en el propio aparato. La del centro necesita guardar en la nube, y eso pide cuidado.", "hace": ["Pon un ejemplo de cada tipo con apps que ya conocen."], "ir": ["bloqueGuardar", "Ir al apartado"]}, {"h": "0:10", "m": 15, "t": "Datos del alumnado", "puntos": ["Lo que no se sube nunca", "Siglas o números en lugar de nombres", "Casos para debatir en parejas"], "dice": "Antes de tocar la base de datos, hablemos de lo que no se hace nunca con datos del alumnado.", "hace": ["Reparte los casos y deja tres minutos por pareja.", "Pon en común dos o tres respuestas."], "ir": ["bloqueDatos", "Ver los casos"]}, {"h": "0:25", "m": 25, "t": "Firebase paso a paso", "puntos": ["Crea el proyecto con la cuenta del centro", "Base de datos en Europa (Bélgica)", "Activa el inicio de sesión con usuario"], "dice": "Firebase es donde la app guardará los datos del centro. Lo hacemos juntos, pantalla a pantalla.", "hace": ["Hazlo en directo con la cuenta del centro.", "No sigas hasta que todos tengan el proyecto creado."], "ir": ["bloqueFirebase", "Ver las guías"]}, {"h": "0:50", "m": 25, "t": "Tu app del centro", "puntos": ["Descarga la app que eligió el centro", "Pásala por el configurador", "Publica las reglas y súbela a GitHub"], "dice": "Ahora sí: la app que votasteis en la primera sesión, con vuestros datos.", "hace": ["Sigue los cuatro pasos con la app ganadora.", "Comprueba que todos llegan a abrirla publicada."], "ir": ["bloqueTuApp", "Ver los pasos"]}, {"h": "1:15", "m": 10, "t": "Prueba de la cerradura", "puntos": ["Entra con tu usuario: ves tus datos", "Un compañero sin permiso intenta entrar", "Si ve algo, las reglas no están bien"], "dice": "La comprobación más importante del día: que quien no tiene permiso no ve nada.", "hace": ["Haz tú la prueba con alguien del grupo.", "Si alguien ve datos, revisad juntos las reglas."], "ir": ["bloqueCerradura", "Ir a la prueba"]}, {"h": "1:25", "m": 10, "t": "La segunda opinión", "puntos": ["Pide a otra IA que revise tu app", "Errores, fallos en el móvil y riesgos para los datos", "Arregla lo importante antes de enseñarla"], "dice": "Antes de dar por buena una app, que la revise otra IA, como haría un compañero.", "hace": ["Enseña una revisión real y qué se cambió por ella."], "ir": ["bloqueSegunda", "Ir al encargo"]}, {"h": "1:35", "m": 15, "t": "Galería final y recreativa del claustro", "puntos": ["Sube tu app a la galería", "Las apps de todos, en la pizarra", "Prueba las de los demás y vota tu favorita"], "dice": "Mirad todo lo que habéis hecho en cuatro meses.", "hace": ["Abre la Recreativa en la pantalla grande.", "Anuncia la favorita del claustro al final."], "ir": ["bloqueGaleria", "Ir a la galería"]}, {"h": "1:50", "m": 10, "t": "Cómo seguir", "puntos": ["Quién mantiene cada app y quién le ayuda", "Todo con las cuentas del centro, no las personales", "Una carpeta común con enlaces, QR y prompts"], "dice": "Para que esto siga cuando acabe la formación, hace falta organizarse un poco.", "hace": ["Acordad responsable y suplente de la app del centro.", "Despide la formación y da las gracias."], "ir": ["bloqueSeguir", "Ver cómo seguir"]}] };
+const GUIONES = window.GUIONES = { s1: [{"h": "0:00", "m": 5, "t": "Bienvenida", "hace": ["Antes de empezar, en la pestaña Directo, marca que los asistentes solo ven la Sesión 1.", "Pulsa «Empezar sesión en directo» para que el QR de la radiografía esté listo.", "Preséntate en treinta segundos."]}, {"h": "0:05", "m": 5, "t": "La radiografía del claustro", "hace": ["Si el QR no aparece, pulsa «Empezar sesión en directo» en la pestaña Directo.", "Comenta en voz alta dos o tres respuestas según llegan.", "Quédate con los temas que más se repiten: los usarás en la sesión 2."]}, {"h": "0:10", "m": 10, "t": "Así nació una app", "hace": ["Recorre la línea del tiempo hito a hito con sus botones.", "Lee en voz alta uno de los encargos reales: se ve que es lenguaje normal.", "No expliques todavía cómo se hace."]}, {"h": "0:20", "m": 10, "t": "Las apps del cole · En el aula", "hace": ["Abre Capitoolappciones medio minuto: es el mapa de toda la muestra.", "Pon el escaparate en pantalla completa y abre cada app desde su tarjeta.", "Dos minutos por app. El Troglodita primero: rompe el hielo."]}, {"h": "0:30", "m": 8, "t": "Las apps del cole · Lectura y problemas", "hace": ["Enseña una semana concreta en Ágora y cómo se registra después.", "En el Generador de SdA, llega hasta el texto que prepara para la IA y párate ahí."]}, {"h": "0:38", "m": 9, "t": "Las apps del cole · Alumnado y convivencia", "hace": ["Entra con tu usuario: son apps con datos y se enseñan desde tu ordenador.", "Usa un grupo inventado, nunca datos reales."]}, {"h": "0:47", "m": 9, "t": "Las apps del cole · Gestión del centro", "hace": ["Elige dos para enseñar a fondo y nombra las demás."]}, {"h": "0:56", "m": 9, "t": "Las apps del cole · El centro en el móvil", "hace": ["Enseña el panel del día y el asistente de Capitoolappciones.", "Busca una duda real en el Plan de Centro desde el móvil."]}, {"h": "1:05", "m": 25, "t": "Pruébalas en tu móvil", "hace": ["Pasea por la sala mientras prueban.", "Apunta las dudas que se repitan: te servirán en las sesiones siguientes.", "A mitad de bloque, pide que prueben una segunda app."]}, {"h": "1:30", "m": 15, "t": "Crea un juego en diez minutos", "hace": ["Enseña en la pantalla dónde está Canvas.", "Quien termine antes, que pida un cambio en una sola frase.", "Proyecta dos o tres juegos del grupo."]}, {"h": "1:45", "m": 10, "t": "La votación", "hace": ["Pulsa «Abrir la votación» y pon el marcador en pantalla completa.", "Cuando hayan votado casi todos, pulsa «Cerrar y descubrir la ganadora»."]}, {"h": "1:55", "m": 5, "t": "Qué viene ahora", "hace": ["Acuerda quién coordina en el centro y con qué cuenta de Google se creará todo en la sesión 4."]}], s2: [{"h": "0:00", "m": 10, "t": "Lo que salió en la sesión 1", "hace": ["Abre la pestaña Directo y proyecta las respuestas de la radiografía."]}, {"h": "0:10", "m": 10, "t": "Gemini por dentro", "hace": ["Proyecta Gemini y abre el menú +.", "Prueba en directo dos herramientas, Canvas la última."]}, {"h": "0:20", "m": 25, "t": "La rueda de participación", "hace": ["Haz tú la rueda a la vez que el grupo, proyectada.", "Pasea por la sala y ayuda a quien se atasque."]}, {"h": "0:45", "m": 10, "t": "Por qué ha funcionado: el método", "hace": ["Relaciona cada regla con lo que acaban de hacer en la rueda."]}, {"h": "0:55", "m": 25, "t": "Tu asistente y tu herramienta propia", "hace": ["Crea la Gem en directo, paso a paso.", "Enseña dos o tres herramientas del grupo al final."]}, {"h": "1:20", "m": 10, "t": "Taller de errores", "hace": ["Haz el primer nivel en la pantalla grande.", "Enseña dónde está la consola con F12."]}, {"h": "1:30", "m": 25, "t": "NotebookLM: tu centro en un cuaderno", "hace": ["Haz una pregunta real a un documento del centro.", "Genera el resumen en audio y pon un trozo."]}, {"h": "1:55", "m": 5, "t": "Reto del mes y dudas", "hace": ["Resuelve dudas y despide la sesión."]}], s3: [{"h": "0:00", "m": 10, "t": "Ronda del reto", "hace": ["Pide voluntarios antes de empezar.", "Proyecta sus herramientas en la pantalla grande."]}, {"h": "0:10", "m": 30, "t": "Publicar en GitHub Pages", "hace": ["Hazlo en directo con tu cuenta, paso a paso.", "Espera a que todos tengan su dirección antes de seguir."]}, {"h": "0:40", "m": 20, "t": "De web a app instalable", "hace": ["Enseña la instalación en tu móvil o en el ordenador."]}, {"h": "1:00", "m": 15, "t": "Que se vea bien", "hace": ["Compara el antes y el después en una app del grupo."]}, {"h": "1:15", "m": 15, "t": "Compartir y mantenerla al día", "hace": ["Que un compañero escanee el QR de otro.", "Sube un cambio pequeño en directo."]}, {"h": "1:30", "m": 25, "t": "Música con IA: la canción de tu clase", "hace": ["Haz una canción en directo con una letra del grupo.", "Ponla entera: es el momento más divertido."]}, {"h": "1:55", "m": 5, "t": "Reto del mes y dudas", "hace": ["Recuerda la cuenta de Google del centro.", "Resuelve dudas y despide la sesión."]}], s4: [{"h": "0:00", "m": 10, "t": "Dos sitios para guardar", "hace": ["Pon un ejemplo de cada tipo con apps que ya conocen."]}, {"h": "0:10", "m": 15, "t": "Datos del alumnado", "hace": ["Reparte los casos y deja tres minutos por pareja.", "Pon en común dos o tres respuestas."]}, {"h": "0:25", "m": 25, "t": "Firebase paso a paso", "hace": ["Hazlo en directo con la cuenta del centro.", "No sigas hasta que todos tengan el proyecto creado."]}, {"h": "0:50", "m": 25, "t": "Tu app del centro", "hace": ["Sigue los cuatro pasos con la app ganadora.", "Comprueba que todos llegan a abrirla publicada."]}, {"h": "1:15", "m": 10, "t": "Prueba de la cerradura", "hace": ["Haz tú la prueba con alguien del grupo."]}, {"h": "1:25", "m": 10, "t": "La segunda opinión", "hace": ["Enseña una revisión real y qué se cambió por ella."]}, {"h": "1:35", "m": 15, "t": "Galería final y recreativa del claustro", "hace": ["Abre la Recreativa en la pantalla grande.", "Anuncia la favorita del claustro al final."]}, {"h": "1:50", "m": 10, "t": "Cómo seguir", "hace": ["Acordad responsable y suplente de la app del centro.", "Despide la formación y da las gracias."]}] };
 const VISTOS_K = 'guion-vistos';
 window.partesVistas = sid => (leer(VISTOS_K, {}) || {})[sid] || [];
 function marcarVista(sid, i, si) {
@@ -3678,20 +3767,7 @@ function marcarVista(sid, i, si) {
   si ? l.add(i) : l.delete(i); v[sid] = [...l]; guardar(VISTOS_K, v);
 }
 function pintarGuiones() {
-  $$('[data-guion]').forEach(cont => {
-    const sid = cont.dataset.guion, G = GUIONES[sid] || [], vistos = partesVistas(sid);
-    cont.innerHTML = G.map((g, i) => '<details class="gp-p' + (vistos.includes(i) ? ' visto' : '') + '" id="parte-' + sid + '-' + i + '" data-sid="' + sid + '" data-i="' + i + '">' +
-      '<summary><span class="gp-h">' + g.h + '</span><span class="gp-n">' + (i + 1) + '</span><span class="gp-t">' + esc(g.t) + '</span>' +
-      '<button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>' +
-      '<div class="gp-c"><ul>' + (g.puntos || []).map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' +
-      '<div class="gp-acc no-imprimir">' +
-      (typeof g.diapo === 'number' ? '<button type="button" class="btn azul" data-gpdiapo="' + g.diapo + '">Abrir la presentación</button>' : '') +
-      (g.ir && !(typeof g.diapo === 'number' && g.ir[0] === 'bloquePresentacion') ? (g.ir[0] === 'directo'
-        ? '<button type="button" class="btn linea solo-ponente" data-ir="directo">' + esc(g.ir[1]) + '</button>'
-        : '<a class="btn linea" href="#' + g.ir[0] + '" data-ses="' + g.ir[0] + '">' + esc(g.ir[1]) + '</a>') : '') +
-      '<button type="button" class="btn linea solo-ponente" data-gpcrono="' + i + '">⏱ Reloj de ' + g.m + ' min</button>' +
-      '</div></div></details>').join('');
-  });
+  $$('.gp-p').forEach(d => d.classList.toggle('visto', partesVistas(d.dataset.sid).includes(+d.dataset.i)));
 }
 pintarGuiones();
 window.abrirParte = function (code, mover) {
@@ -3701,7 +3777,9 @@ window.abrirParte = function (code, mover) {
   if (mover !== false) setTimeout(() => d.scrollIntoView({ behavior: quieto ? 'auto' : 'smooth', block: 'start' }), 60);
 };
 document.addEventListener('toggle', e => {
-  const d = e.target; if (!d.classList || !d.classList.contains('gp-p') || !d.open || S.aplicando) return;
+  const d = e.target; if (!d.classList || !d.classList.contains('gp-p') || !d.open) return;
+  setTimeout(() => window.dispatchEvent(new Event('resize')), 30);
+  if (S.aplicando) return;
   if (S.rol === 'asistente' || S.rol === 'mando') return;
   emitir({ parte: d.dataset.sid + ':' + d.dataset.i });
 }, true);
@@ -3713,11 +3791,11 @@ document.addEventListener('click', e => {
     d.classList.toggle('visto', si); if (si) d.open = false; marcarVista(sid, i, si); pintarMando();
     return;
   }
-  const dia = e.target.closest('[data-gpdiapo]');
-  if (dia) { verDiapo(+dia.dataset.gpdiapo); $('bloquePresentacion').scrollIntoView({ behavior: quieto ? 'auto' : 'smooth', block: 'start' }); return; }
+  const td = e.target.closest('[data-gptodo]');
+  if (td) { const ds = $$('#panel-' + td.dataset.gptodo + ' .gp-p'); const abrir = ds.some(x => !x.open); S.aplicando = true; ds.forEach(x => x.open = abrir); S.aplicando = false; td.textContent = abrir ? 'Cerrar todas' : 'Abrir todas'; return; }
   const cr = e.target.closest('[data-gpcrono]');
   if (cr) {
-    const d = cr.closest('.gp-p'), g = GUIONES[d.dataset.sid][+cr.dataset.gpcrono];
+    const d = cr.closest('.gp-p'), g = GUIONES[d.dataset.sid][+d.dataset.i];
     cronoFin = Date.now() + g.m * 60000; $('fxCronoTit').textContent = g.t; $('fxCrono').classList.add('ver');
     clearInterval(cronoInt); cronoInt = setInterval(pintarCrono, 1000); pintarCrono(); return;
   }
@@ -3734,8 +3812,8 @@ function pintarCrono() {
 $('fxCronoX').onclick = () => { clearInterval(cronoInt); $('fxCrono').classList.remove('ver'); };
 
 /* ── Muestra por problemas y muro de QR ── */
-$('fxGrupos').innerHTML = GRUPOS.map((g, gi) => '<div class="fx-grupo" style="--g:' + g.c + '"><h4>' + g.n + '</h4><small>' + g.s + '</small><ul>' +
-  LISTA.filter(a => (FX[a.id] || {}).g === gi).map(a => '<li style="--c:' + a.color + '"><i></i><div><b>' + esc(a.nombre) + '</b><span>' + esc(FX[a.id].problema) + '</span></div></li>').join('') + '</ul></div>').join('');
+$$('[data-grupo]').forEach(cont => { const gi = +cont.dataset.grupo, g = GRUPOS[gi]; cont.innerHTML = '<div class="fx-grupo" style="--g:' + g.c + '"><h4>' + g.n + '</h4><small>' + g.s + '</small><ul>' +
+  LISTA.filter(a => (FX[a.id] || {}).g === gi).map(a => '<li style="--c:' + a.color + '"><i></i><div><b>' + esc(a.nombre) + '</b><span>' + esc(FX[a.id].problema) + '</span></div></li>').join('') + '</ul></div>'; });
 let muroHecho = false;
 function pintarMuro() {
   if (muroHecho) return; muroHecho = true;
@@ -3859,19 +3937,18 @@ else pedirClave(paraPonente, arrancar);
 // ── Sesiones: abrir la sesión elegida ──
 document.addEventListener('click', e => {
   const b = e.target.closest('[data-ses]'); if (!b) return; e.preventDefault();
-  const d = document.getElementById(b.dataset.ses); if (!d) return;
-  d.open = true; d.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  abrirDestino(b.dataset.ses);
 });
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-13-guion';
+  const ID = 'formacion-novedades-2026-11-13-guion2';
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
   d.setAttribute('role', 'dialog'); d.setAttribute('aria-label', 'Novedades');
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">El guion de cada sesión es ahora una lista de partes que se abren y se cierran, y la presentación está dentro de la Sesión 1.</p>'
+    + '<p style="margin-bottom:14px">Cada sesión es ahora una lista de partes, en orden: al abrir una aparece todo lo que se cuenta y su material.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
