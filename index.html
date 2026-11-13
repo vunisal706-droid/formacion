@@ -1292,7 +1292,7 @@ En la base de datos en la nube guarda solo siglas. Dame el archivo completo.</pr
   <div class="gp-c"><div class="gp-texto"><p>Segundo bloque: la lectura y la resolución de problemas. En muchos centros hay un plan de lectura muy bien escrito que nadie abre en todo el curso. Estas cuatro apps nacieron para que el plan se use cada semana.</p><p>Ágora reparte el plan por cursos y semanas: qué se lee y qué problemas se hacen cada semana. El Generador de Situaciones de Aprendizaje prepara una SdA bien armada con el currículo andaluz, sin empezar de cero. El Plan de Resolución sigue los mismos pasos para resolver problemas desde Infantil hasta sexto. Y el Registro de Lectura y Problemas recoge cada semana, sin papeles, lo que ha hecho cada curso.</p></div><div class="gp-mat"><div class="fx-grupos" data-grupo="1"></div></div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 8 min</button></div></div>
 </details>
   <details class="gp-p" id="parte-s1-6" data-sid="s1" data-i="6"><summary><span class="gp-h">0:47</span><span class="gp-n">7</span><span class="gp-t">Las apps del cole · Alumnado y convivencia</span><span class="gp-min">8 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
-  <div class="gp-c"><div class="gp-texto"><p>Tercer bloque: conocer al grupo y atender a quien lo necesita. Todos hemos tenido un alumno que está solo y no lo hemos visto a tiempo. Y todos hemos perdido media hora rellenando un parte.</p><p>Convivencia+ hace el sociograma de la clase: enseña quién está solo y propone cómo agrupar. Convive+ registra el parte de convivencia en dos minutos, conforme al Decreto, y saca sus gráficas. Y el Gestor de Refuerzo lleva quién va a refuerzo, qué trabaja cada día y cómo evoluciona.</p><p>Estas apps guardan datos del alumnado, por eso piden usuario y contraseña. Os las enseño con un grupo inventado: en una formación nunca se usan datos reales.</p></div><div class="gp-mat"><div class="fx-grupos" data-grupo="2"></div></div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 8 min</button></div></div>
+  <div class="gp-c"><div class="gp-texto"><p>Tercer bloque: conocer al grupo y atender a quien lo necesita. Todos hemos tenido un alumno que está solo y no lo hemos visto a tiempo. Y todos hemos perdido media hora rellenando un parte.</p><p>Convivencia+ hace el sociograma de la clase: enseña quién está solo y propone cómo agrupar. Convive+ registra el parte de convivencia en dos minutos, conforme al Decreto, y saca sus gráficas. El Gestor de Refuerzo lleva quién va a refuerzo, qué trabaja cada día y cómo evoluciona. Y el Gestor PT y AL reúne al alumnado que atienden Pedagogía Terapéutica y Audición y Lenguaje: sus programas, las adaptaciones curriculares, el seguimiento y la memoria final.</p><p>Estas apps guardan datos del alumnado, por eso piden usuario y contraseña. Os las enseño con un grupo inventado: en una formación nunca se usan datos reales.</p></div><div class="gp-mat"><div class="fx-grupos" data-grupo="2"></div></div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 8 min</button></div></div>
 </details>
   <details class="gp-p" id="parte-s1-7" data-sid="s1" data-i="7"><summary><span class="gp-h">0:55</span><span class="gp-n">8</span><span class="gp-t">Las apps del cole · Gestión del centro</span><span class="gp-min">8 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
   <div class="gp-c"><div class="gp-texto"><p>Cuarto bloque: lo que nos quita las tardes al claustro y al equipo directivo. Si alguna de estas apps os ahorra una hora a la semana, ya habrá merecido la pena venir hoy.</p><p>El Gestor de Evaluaciones analiza los resultados de cada evaluación sin hojas de cálculo, con actas e informes. Cuadra Horarios hace el horario del centro sin choques, a partir de las condiciones del profesorado. Teletrabajo lleva las reuniones en línea con asistencia y votaciones, y deja el acta casi hecha. PDF a Word convierte ese PDF que no se puede editar en un Word, en vuestro propio ordenador. Y Programas del cole tiene al día los plazos, la asistencia y la documentación de los programas del centro.</p><p>Cuadra Horarios y PDF a Word no piden usuario: podéis abrirlas ya en vuestro móvil mientras yo las enseño.</p></div><div class="gp-mat"><div class="fx-grupos" data-grupo="3"></div></div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 8 min</button></div></div>
@@ -3690,6 +3690,7 @@ const EXTRA = [
   { id: 'podcast', nombre: 'Podcast a Vídeo', color: '#6D28D9', url: 'https://vunisal706-droid.github.io/central/podcast/' },
   { id: 'aulapt', nombre: 'Aula PT', color: '#0369A1', url: 'https://vunisal706-droid.github.io/aulapt/index.html#home' },
   { id: 'refuerzo', nombre: 'Gestor de Refuerzo', color: '#15803D', url: 'https://vunisal706-droid.github.io/refuerzo/', u: 1 },
+  { id: 'gestorpt', nombre: 'Gestor PT y AL', color: '#0F766E', url: 'https://vunisal706-droid.github.io/gestorpt/', u: 1 },
   { id: 'portal', nombre: 'Portal Educativo', color: '#DB2777', url: 'https://vunisal706-droid.github.io/webcentral/' }
 ];
 Object.assign(FX, {
@@ -3704,6 +3705,7 @@ Object.assign(FX, {
   podcast:    { cat: 'En el aula', g: 0, problema: 'El pódcast de clase convertido en vídeo con fotos, sintonía y el logo del cole.' },
   aulapt:     { cat: 'En el aula', g: 0, problema: 'Actividades de grafía, lectura, fonología y números para el aula de PT.' },
   refuerzo:   { cat: 'Alumnado y convivencia', g: 2, problema: 'Quién va a refuerzo, qué trabaja cada día y cómo evoluciona.' },
+  gestorpt:   { cat: 'Alumnado y convivencia', g: 2, problema: 'El alumnado de PT y AL en un solo sitio: programas, ACI, seguimiento y la memoria final.' },
   portal:     { cat: 'En el aula', g: 0, problema: 'Los juegos y actividades del cole para el alumnado, reunidos en un portal.' }
 });
 Object.assign(FX.agora, { cat: 'Lectura y problemas', g: 1 }); Object.assign(FX.sda, { cat: 'Lectura y problemas', g: 1 });
@@ -3717,7 +3719,7 @@ const GRUPOS = [
   { n: 'Gestión del centro', s: 'Lo que quita tiempo al claustro y al equipo directivo', c: '#177A4C' },
   { n: 'El centro en el móvil', s: 'Información y organización al alcance de todos', c: '#0E7490' }
 ];
-const ORDEN = ['capitool', 'troglodita', 'portal', 'registro', 'aulapt', 'podcast', 'agora', 'sda', 'resolucion', 'reglectura', 'convive', 'convivemas', 'refuerzo',
+const ORDEN = ['capitool', 'troglodita', 'portal', 'registro', 'aulapt', 'podcast', 'agora', 'sda', 'resolucion', 'reglectura', 'convive', 'convivemas', 'refuerzo', 'gestorpt',
   'evaluaciones', 'horarios', 'teletrabajo', 'pdfaword', 'programas', 'tablon', 'agenda', 'capiguia', 'pcentro'];
 const TODAS = APPS.concat(EXTRA);
 const LISTA = ORDEN.map(id => TODAS.find(a => a.id === id)).filter(Boolean);
@@ -3748,6 +3750,7 @@ Object.assign(MINI, {
   reglectura: '<rect x="50" y="30" width="240" height="134" rx="10" fill="' + B + '.96)"/><g>' + [0, 1, 2, 3, 4].map(c => [0, 1, 2].map(r => '<circle cx="' + (112 + c * 38) + '" cy="' + (62 + r * 36) + '" r="11" fill="' + ((c * 3 + r * 5) % 4 === 0 ? '#F3D0DF' : '#9D174D') + '"' + ((c + r) % 5 === 1 ? ' class="fx-late"' : '') + '/>').join('')).join('') + '</g><g fill="#F3D0DF"><rect x="64" y="56" width="26" height="12" rx="6"/><rect x="64" y="92" width="26" height="12" rx="6"/><rect x="64" y="128" width="26" height="12" rx="6"/></g>',
   podcast: '<rect x="150" y="28" width="40" height="76" rx="20" fill="' + B + '.96)"/><path d="M130 84a40 40 0 0080 0M170 124v26M146 152h48" stroke="' + B + '.96)" stroke-width="7" fill="none" stroke-linecap="round"/><g fill="#FFE45C">' + [0, 1, 2, 3].map(k => '<rect class="fx-sube" style="animation-delay:' + (k * .18) + 's" x="' + (40 + k * 18) + '" y="70" width="10" height="56" rx="5"/>').join('') + [0, 1, 2, 3].map(k => '<rect class="fx-sube" style="animation-delay:' + (k * .18 + .1) + 's" x="' + (236 + k * 18) + '" y="70" width="10" height="56" rx="5"/>').join('') + '</g>',
   aulapt: '<rect x="40" y="34" width="260" height="124" rx="10" fill="' + B + '.96)"/><g stroke="#BAE0F5" stroke-width="2"><path d="M54 76h232M54 116h232"/></g><path d="M66 116c8-44 30-44 26-10s22 30 30-6-18-40-8-4 30 14 40-10 16-6 12 12 20 22 30 4 12-22 22-22 20 30 44 34" fill="none" stroke="#0369A1" stroke-width="6" stroke-linecap="round" class="fx-raya"/><g class="fx-flota"><path d="M262 42l22 22-12 6-16-16z" fill="#FFE45C"/></g>',
+  gestorpt: '<rect x="56" y="30" width="228" height="134" rx="12" fill="' + B + '.96)"/><circle cx="104" cy="80" r="22" fill="#5EEAD4"/><path d="M76 136c4-18 16-28 28-28s24 10 28 28" fill="#5EEAD4"/><g fill="#0F766E" opacity=".8"><rect x="152" y="62" width="110" height="10" rx="5"/><rect x="152" y="86" width="86" height="10" rx="5"/><rect x="152" y="110" width="100" height="10" rx="5"/></g><g class="fx-flota"><circle cx="258" cy="138" r="16" fill="#FFE45C"/><path d="M250 138l6 6 10-12" stroke="#0F766E" stroke-width="4" fill="none" stroke-linecap="round"/></g>',
   refuerzo: '<path d="M44 160h252" stroke="' + B + '.6)" stroke-width="3"/><g fill="' + B + '.94)"><rect x="60" y="126" width="46" height="34" rx="5"/><rect x="118" y="100" width="46" height="60" rx="5"/><rect x="176" y="74" width="46" height="86" rx="5"/></g><rect x="234" y="46" width="46" height="114" rx="5" fill="#FFE45C" class="fx-sube"/><path d="M70 104l58-28 58-24 62-22" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" class="fx-raya"/>',
   portal: '<g class="fx-flota"><rect x="60" y="62" width="220" height="86" rx="43" fill="' + B + '.96)"/><path d="M104 94v24M92 106h24" stroke="#DB2777" stroke-width="8" stroke-linecap="round"/><circle cx="226" cy="94" r="10" fill="#2459C7"/><circle cx="248" cy="116" r="10" fill="#177A4C"/></g><circle cx="286" cy="42" r="12" fill="#FFE45C" class="fx-late"/><circle cx="52" cy="46" r="8" fill="' + B + '.7)" class="fx-late"/>'
 });
@@ -3991,14 +3994,14 @@ document.addEventListener('click', e => {
 });
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-13-privacidad';
+  const ID = 'formacion-novedades-2026-11-13-gestorpt';
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
   d.setAttribute('role', 'dialog'); d.setAttribute('aria-label', 'Novedades');
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">Privacidad y datos está ahora dentro de la Sesión 1, como segunda parte, con infografías.</p>'
+    + '<p style="margin-bottom:14px">Nueva app en la muestra: el Gestor PT y AL.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
