@@ -967,6 +967,17 @@ body:not(.rol-ponente) .solo-ponente{display:none!important}
 .gb-barra{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--linea)}
 .gb-barra b{margin-right:auto;font-family:var(--display)}
 .gb-visor iframe{flex:1;border:0;width:100%;background:#525659}
+.gb-envio{display:flex;align-items:center;gap:14px;width:100%;margin-top:14px;padding:14px 16px;border:2.5px dashed #A78BFA;border-radius:16px;background:#FAF5FF;color:#4C1D95;text-align:left;cursor:pointer;font:inherit;transition:background .2s,border-color .2s,transform .2s}
+.gb-envio b{display:block;font:800 1.02rem var(--display)}.gb-envio small{color:#6B21A8;font-size:.88rem}
+.gb-envio-i{font-size:2rem}
+.gb-envio.sobre{background:#EDE9FE;border-color:#6D28D9;border-style:solid;transform:scale(1.02)}
+.gb-envio.hecho{background:#ECFDF5;border-color:#10B981;color:#065F46}
+.gb-llega{position:fixed;inset:0;z-index:9998;background:rgba(27,42,78,.5);display:flex;align-items:center;justify-content:center;padding:18px}
+.gb-llega>div{background:#fff;border-radius:20px;max-width:380px;width:100%;padding:22px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.3);animation:gbEntra .4s cubic-bezier(.2,1.4,.4,1)}
+.gb-llega .gb-mini{width:120px;margin:0 auto 12px;aspect-ratio:210/297;border-radius:4px 10px 10px 4px;background:radial-gradient(120% 80% at 100% 0%,#34D399 0%,transparent 55%),radial-gradient(90% 70% at 0% 100%,#7C3AED 0%,transparent 60%),linear-gradient(160deg,#047857,#065F46 55%,#4C1D95);color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:10px;text-align:left;font:800 .8rem/1.1 var(--display);box-shadow:0 14px 24px -12px rgba(6,78,59,.7)}
+.gb-llega h3{margin:0 0 6px;font-family:var(--display)}.gb-llega p{margin:0 0 14px;color:var(--tinta-suave)}
+.gb-llega .btn{width:100%;margin-top:8px;justify-content:center}
+@keyframes gbEntra{from{transform:translateY(30px) scale(.9);opacity:0}}
 @media (max-width:820px){.gb{grid-template-columns:1fr}.gb-portada{max-width:260px;margin:0 auto;transform:none}.gb-barra b{display:none}}
 /* ═══ Guion de la sesión en tarjetas (para proyectar) ═══ */
 .gp-cab{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 18px;align-items:baseline;margin:-6px 0 14px}
@@ -1186,7 +1197,7 @@ body:not(.rol-ponente) .solo-ponente{display:none!important}
   <details class="gp-p" id="parte-s1-1" data-sid="s1" data-i="1"><summary><span class="gp-h">0:05</span><span class="gp-n">2</span><span class="gp-t">Privacidad y datos: qué sí y qué no</span><span class="gp-min">12 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
   <div class="gp-c"><div class="gp-texto"><p>Antes de enseñaros ninguna app y antes de que nadie saque el móvil, tenemos que hablar de algo que va primero: los datos. En un colegio manejamos información muy delicada de niños, niñas y familias. La inteligencia artificial es una herramienta potentísima, pero no es un sitio donde se pueda escribir cualquier cosa. Lo que vais a ver sale de la Guía de buenas prácticas de la Consejería para Google Workspace y la protección de datos, actualizada en octubre de 2026.</p><p>La regla de oro es una sola: a una IA nunca le damos datos que identifiquen a nadie. Ni nombre ni apellidos, ni fotos, ni la voz, ni el correo, ni nada que permita saber de quién hablamos. Y jamás datos especialmente protegidos: salud y diagnósticos, religión, origen u orientación sexual.</p><p>¿Significa eso que no podemos hablar de nuestro alumnado con la IA? No: podemos, pero con siglas, con el número de lista o con el cargo, y describiendo la necesidad en clave pedagógica. En lugar de «María, que tiene TDAH», escribimos «Alumno 15, que necesita apoyo para mantener la atención». La IA nos ayuda exactamente igual, y nadie puede saber de quién hablamos.</p><p>Para no tener que pensarlo cada vez, usad el semáforo. En verde, todo lo que es preparar clases: situaciones de aprendizaje, rúbricas, actividades, resumir normativa o el Plan de Centro, y hablar del alumnado con siglas. En ámbar, con cuidado: listas y trabajos con nombre en Drive o Classroom, compartidos solo con quien toque, y las actas, mejor sin nombres. En rojo, nunca: diagnósticos y salud, fotos, vídeos o voces del alumnado subidos a una IA, nombres completos en un chat, y usar la IA para decidir sobre un alumno. La IA ayuda; las decisiones las tomamos las personas.</p><p>También importa con qué cuenta trabajáis. Con la cuenta del cole, la de @g.educaand.es, Gemini y NotebookLM funcionan dentro del convenio de la Consejería con Google: no entrenan con vuestros datos y el historial de Gemini se borra a las 72 horas. Con una cuenta personal, o con otras IAs como ChatGPT o Claude, no tenemos esas garantías: sirven para preparar materiales generales, pero ningún dato del alumnado.</p><p>Y cuando hagamos nuestras propias apps aplicaremos lo mismo: en la nube, solo siglas; los nombres completos se quedan en el dispositivo; y cada app, con su usuario y con reglas que dejan ver a cada persona solo lo suyo. Si alguna vez pasa algo, perdéis el móvil o veis un acceso raro, se avisa a la dirección ese mismo día.</p><p>Ahora os toca a vosotros: más abajo tenéis unos casos reales. Leedlos y decidid si se puede o no. Comentamos dos o tres en voz alta.</p></div><div class="gp-mat"><div class="pv"><div class="pv-oro"><div class="pv-k">🔑 La regla de oro</div><p class="pv-grande">A una IA <b>nunca</b> le das datos que identifiquen a nadie. Y <b>jamás</b> datos de salud, religión, origen u orientación.</p></div><h4 class="pv-tit">La guía oficial, entera</h4>
   <div class="gb">
-    <button type="button" class="gb-portada" data-guia="1" aria-label="Abrir la Guía de buenas prácticas">
+    <button type="button" class="gb-portada" data-guia="1" aria-label="Abrir la Guía de buenas prácticas" draggable="true">
       <span class="gb-lomo" aria-hidden="true"></span>
       <span class="gb-burbujas" aria-hidden="true"><i></i><i></i><i></i></span>
       <span class="gb-org">Consejería de Educación · Junta de Andalucía</span>
@@ -1199,6 +1210,7 @@ body:not(.rol-ponente) .solo-ponente{display:none!important}
       <p class="gb-intro">Todo lo de esta parte sale de aquí. Pulsa la portada para leerla o salta directamente a un capítulo.</p>
       <div class="gb-caps"><button type="button" class="gb-cap" data-guia="14"><span>🔐</span>Uso seguro de la plataforma<small>pág. 14</small></button><button type="button" class="gb-cap" data-guia="18"><span>🧾</span>Tratamiento seguro de datos<small>pág. 18</small></button><button type="button" class="gb-cap" data-guia="20"><span>📷</span>Imágenes y vídeo<small>pág. 20</small></button><button type="button" class="gb-cap" data-guia="27"><span>⚠️</span>Riesgos<small>pág. 27</small></button><button type="button" class="gb-cap" data-guia="29"><span>❓</span>Preguntas frecuentes<small>pág. 29</small></button><button type="button" class="gb-cap" data-guia="40"><span>✨</span>Gemini y NotebookLM<small>pág. 40</small></button></div>
       <div class="gb-btns"><button type="button" class="btn azul" data-guia="1">📖 Abrir la guía</button><a class="btn linea" href="materiales/Guia_buenas_practicas_Google_Workspace_v08.pdf" download>⬇ Descargar PDF</a></div>
+      <button type="button" class="gb-envio solo-ponente no-imprimir" id="guiaEnvio"><span class="gb-envio-i">📲</span><span><b>Arrastra aquí la portada</b><small>o pulsa: la guía llega a los móviles conectados a la sesión en directo</small></span></button>
     </div>
   </div>
   <div class="velo gb-velo" id="veloGuia" role="dialog" aria-modal="true" aria-label="Guía de buenas prácticas">
@@ -2866,6 +2878,7 @@ function aplicarEstado(e, navegar) {
   S.estado.parte = e.parte || S.estado.parte || '';
   S.estado.actividad = e.actividad || '';
   S.estado.feria = e.feria || ''; S.estado.ganadora = e.ganadora || '';
+  if (e.envio && (!S.estado.envio || S.estado.envio.n !== e.envio.n)) { S.estado.envio = e.envio; if (window.recibirEnvio) window.recibirEnvio(e.envio); }
   if (typeof e.abiertas === 'string' && S.rol !== 'dueno' && S.rol !== 'local') { S.estado.abiertas = e.abiertas; if (e.abiertas !== [...ABIERTAS].join(',')) fijarAbiertas(e.abiertas.split(',')); }
   document.dispatchEvent(new Event('feria'));
   if (e.pregunta && e.pregunta !== S.estado.pregunta) { S.estado.pregunta = e.pregunta; pintarPregunta(); }
@@ -3856,6 +3869,7 @@ document.addEventListener('click', e => { const b = e.target.closest('[data-fx-i
   function arrancar() { const on = panelActual() === 's1' && !quieto; if (on && !vivo) { vivo = true; medir(); paso(); } else if (!on) vivo = false; if (panelActual() === 's1') { if (quieto) { medir(); vivo = true; paso(); vivo = false; } setTimeout(() => { colocar(); pintarMuro(); }, 30); } }
   document.addEventListener('panel', arrancar); addEventListener('resize', () => { if (vivo) medir(); }); document.addEventListener('fullscreenchange', () => setTimeout(() => { if (vivo) medir(); colocar(); }, 150));
   setTimeout(arrancar, 0);
+window.DIRECTO_PUENTE = { S, emitir };   // para la guía de privacidad (envío a los móviles)
 })();
 
 /* ── Guion con reloj ── */
@@ -4052,20 +4066,46 @@ document.addEventListener('click', e => {
     if (movil) { window.open(url, '_blank', 'noopener'); return; }
     marco.src = url; velo.classList.add('ver');
   });
+  // Envío a los móviles de la sala en directo
+  const zona = document.getElementById('guiaEnvio'), portada = document.querySelector('.gb-portada');
+  const P = () => window.DIRECTO_PUENTE || { S: {} };
+  const enviar = () => {
+    const S = P().S;
+    if (!esPonente()) return;
+    if (!S.sala || !['dueno', 'mando', 'ponenteLocal'].includes(S.rol) || (S.rol === 'mando' && !S.autorizado)) { tostada('Empieza la sesión en directo para enviarla'); return; }
+    P().emitir({ envio: { id: 'guia', n: Date.now() } });
+    zona.classList.add('hecho'); zona.querySelector('b').textContent = '¡Enviada a los móviles!';
+    setTimeout(() => { zona.classList.remove('hecho'); zona.querySelector('b').textContent = 'Arrastra aquí la portada'; }, 3500);
+  };
+  if (portada) portada.addEventListener('dragstart', e => { e.dataTransfer.setData('text/plain', 'guia'); e.dataTransfer.effectAllowed = 'copy'; });
+  zona.addEventListener('dragover', e => { e.preventDefault(); zona.classList.add('sobre'); });
+  zona.addEventListener('dragleave', () => zona.classList.remove('sobre'));
+  zona.addEventListener('drop', e => { e.preventDefault(); zona.classList.remove('sobre'); enviar(); });
+  zona.addEventListener('click', enviar);
+  window.recibirEnvio = env => {
+    const S = P().S;
+    if (!env || env.id !== 'guia' || S.rol !== 'asistente' || Date.now() - env.n > 20 * 60000) return;
+    const k = 'envio-visto:' + env.n; try { if (sessionStorage.getItem(k)) return; sessionStorage.setItem(k, '1'); } catch (e) {}
+    const d = document.createElement('div'); d.className = 'gb-llega'; d.setAttribute('role', 'dialog');
+    d.innerHTML = '<div><div class="gb-mini">Guía de buenas prácticas</div><h3>Te han enviado la guía</h3><p>Google Workspace y protección de datos · Consejería de Educación</p>'
+      + '<a class="btn azul" href="' + PDF + '" target="_blank" rel="noopener">📖 Abrir</a><a class="btn linea" href="' + PDF + '" download>⬇ Guardar en el móvil</a><button type="button" class="btn suave">Ahora no</button></div>';
+    d.addEventListener('click', e => { if (e.target === d || e.target.closest('.btn')) setTimeout(() => d.remove(), 50); });
+    document.body.appendChild(d);
+  };
   document.getElementById('guiaCerrar').onclick = cerrar;
   velo.addEventListener('click', e => { if (e.target === velo) cerrar(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && velo.classList.contains('ver')) cerrar(); });
 })();
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-15-guia';
+  const ID = 'formacion-novedades-2026-11-15-envio';
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
   d.setAttribute('role', 'dialog'); d.setAttribute('aria-label', 'Novedades');
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">En «Privacidad y datos» ya está la guía oficial de la Consejería para leerla entera.</p>'
+    + '<p style="margin-bottom:14px">En «Privacidad y datos» puedes arrastrar la guía oficial para enviarla a los móviles de la sesión en directo.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
