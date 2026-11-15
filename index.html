@@ -986,6 +986,11 @@ body.rol-ponente .caja-codigo[data-env] pre{padding-bottom:52px}
 body.rol-ponente .caja-codigo[draggable=true],body.rol-ponente .mat[draggable=true]{cursor:grab}
 .gb-llega .env-ico{font-size:2.6rem;margin-bottom:6px}
 .gb-llega .env-pre{text-align:left;white-space:pre-wrap;max-height:34vh;overflow:auto;background:#F4F7FB;border:1px solid var(--linea);border-radius:12px;padding:10px 12px;font-size:.82rem;margin:0 0 6px}
+.qrfijo{display:grid;grid-template-columns:170px 1fr;gap:20px;align-items:center}
+.qrfijo-q{background:#fff;border:1.5px solid var(--linea);border-radius:14px;padding:10px}
+.qrfijo h3{margin-top:0}.qrfijo p{margin:0 0 12px;color:var(--tinta-suave)}
+.qrfijo-b{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:6px}.qrfijo small{color:var(--tinta-suave)}
+@media (max-width:620px){.qrfijo{grid-template-columns:1fr}.qrfijo-q{max-width:200px}}
 /* ═══ En directo con los móviles ═══ */
 .gb-llega[hidden],.dv-buzon-p[hidden],.dv-barras[hidden]{display:none!important}
 .dv-luces,.dv-buzon{display:none}
@@ -1123,6 +1128,19 @@ body.dv-pizarra .dv-buzon{display:block}
     <p style="font-size:.92rem;color:var(--tinta-suave)">Clave para los asistentes: <code id="accesoClave"></code>. Con el QR de «Escanea y responde» entran sin escribirla.</p>
   </div>
   
+
+  <div class="tarjeta solo-ponente qrfijo" id="qrFijo" style="margin-bottom:16px">
+    <div class="qrfijo-q" id="qrFijoQ" aria-label="QR de la sala IACOLE"></div>
+    <div>
+      <h3>QR para los asistentes · sala IACOLE</h3>
+      <p>Es siempre el mismo: sirve impreso. Con él entran como invitados y siguen la sesión en su móvil. Funciona cuando has pulsado «Empezar sesión en directo»; antes, el móvil espera y se conecta solo.</p>
+      <div class="qrfijo-b">
+        <a class="btn azul" href="materiales/QR_Escanea_y_responde_IACOLE.pdf" target="_blank" rel="noopener">🖨️ PDF para imprimir</a>
+        <a class="btn linea" href="#sala=IACOLE" target="_blank" rel="noopener">Probar como invitado</a>
+      </div>
+      <small>El PDF trae un cartel A4 y seis tarjetas para recortar y dejar en las mesas.</small>
+    </div>
+  </div>
 
   <div class="tarjeta inicio-directo solo-ponente" id="directoInicio">
     <div class="paso-num" aria-hidden="true">▶</div>
@@ -4126,6 +4144,7 @@ document.addEventListener('click', e => {
   const a = appPorId(b.dataset.app); if (!a || !window.enviarAMoviles) return;
   window.enviarAMoviles({ tipo: 'app', titulo: a.nombre, sub: (FX[a.id] || {}).problema || '', url: a.url, color: a.color });
 }, true);
+if ($('qrFijoQ')) pintarQR($('qrFijoQ'), BASE + '#sala=' + SALA_FIJA, 150);
 window.DIRECTO_PUENTE = { S, emitir };   // para la guía de privacidad (envío a los móviles)
 })();
 
@@ -4418,7 +4437,7 @@ document.addEventListener('click', e => {
 })();
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-15-directo';
+  const ID = 'formacion-novedades-2026-11-15-qrfijo';
   if (typeof esPonente === 'function' && !esPonente()) return;
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
@@ -4426,7 +4445,7 @@ document.addEventListener('click', e => {
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">En directo: luces de los conectados, votación del «¿Se puede?» en los móviles, apps abiertas en todos los móviles y buzón de «Recibidos» en la pizarra.</p>'
+    + '<p style="margin-bottom:14px">En la pestaña Directo tienes siempre el QR de los asistentes (sala IACOLE) y su PDF para imprimir.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
