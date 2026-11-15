@@ -2958,7 +2958,7 @@ function aplicarEstado(e, navegar) {
   S.estado.parte = e.parte || S.estado.parte || '';
   S.estado.actividad = e.actividad || '';
   S.estado.feria = e.feria || ''; S.estado.ganadora = e.ganadora || '';
-  if (e.voto && (!S.estado.voto || S.estado.voto.n !== e.voto.n || S.estado.voto.abierto !== e.voto.abierto)) { S.estado.voto = e.voto; recibirVoto(e.voto); }
+  if (e.voto && (!S.estado.voto || S.estado.voto.n !== e.voto.n || S.estado.voto.abierto !== e.voto.abierto)) { S.estado.voto = e.voto; if (window.recibirVoto) window.recibirVoto(e.voto); }
   if (e.envio && (!S.estado.envio || S.estado.envio.n !== e.envio.n)) { S.estado.envio = e.envio; if (window.recibirEnvio) window.recibirEnvio(e.envio); }
   if (typeof e.abiertas === 'string' && S.rol !== 'dueno' && S.rol !== 'local') { S.estado.abiertas = e.abiertas; if (e.abiertas !== [...ABIERTAS].join(',')) fijarAbiertas(e.abiertas.split(',')); }
   document.dispatchEvent(new Event('feria'));
@@ -3036,7 +3036,7 @@ async function abrirSala(soloRetomar) {
   escribirFB();
   ref('salas/' + cod + '/estado').on('value', sn => { const e = sn.val(); if (e) aplicarEstado(e, true); });
   ref('salas/' + cod + '/solicitudes').on('value', sn => { S.solicitudes = sn.val() || {}; pintarSala(); });
-  pizarraEnVivo(cod);
+  if (window.pizarraEnVivo) window.pizarraEnVivo(cod);
   try { S.admin = (await ref('admins/' + FB.uid).get()).val() === true; } catch (e) { S.admin = false; }
   conectarRespuestas(); pintarSala(); pintarModo(); pintarRadio(); pintarGaleria();
   if (!soloRetomar) tostada('Sesión ' + cod + ' en directo');
@@ -3049,7 +3049,7 @@ async function cerrarSala() {
       await ref('salas/' + S.sala + '/estado').set({ abiertas: [...ABIERTAS].join(','), vivo: false, t: TS() });
     } else await ref('salas/' + S.sala).remove();
   } catch (e) {}
-  pizarraFin();
+  if (window.pizarraFin) window.pizarraFin();
   ref('salas/' + S.sala).off(); ['estado', 'solicitudes', 'respuestas'].forEach(n => ref('salas/' + S.sala + '/' + n).off());
   guardar('salaPropia', ''); S.rol = 'local'; S.sala = ''; S.estado.actividad = ''; S.estado.vivo = false;
   R.lista = []; ultimoQR = ultimoQRDiapo = null; conectarRespuestas(); pintarSala(); pintarModo(); pintarRadio();
@@ -3174,7 +3174,7 @@ async function iniciarAsistente(sala) {
   });
   conectarRespuestas(); pintarModo(); pintarRadio(); pintarSala();
   R.ultPregunta = null; setTimeout(revisarActividad, 900);
-  asistenteEnVivo(sala);
+  if (window.asistenteEnVivo) window.asistenteEnVivo(sala);
 }
 function abrirRespuesta() {
   $('respTitulo').textContent = preguntaActual();
@@ -4145,6 +4145,7 @@ document.addEventListener('click', e => {
   window.enviarAMoviles({ tipo: 'app', titulo: a.nombre, sub: (FX[a.id] || {}).problema || '', url: a.url, color: a.color });
 }, true);
 if ($('qrFijoQ')) pintarQR($('qrFijoQ'), BASE + '#sala=' + SALA_FIJA, 150);
+Object.assign(window, { pizarraEnVivo, pizarraFin, asistenteEnVivo, recibirVoto });
 window.DIRECTO_PUENTE = { S, emitir };   // para la guía de privacidad (envío a los móviles)
 })();
 
