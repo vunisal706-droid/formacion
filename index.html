@@ -996,27 +996,29 @@ body.rol-ponente .caja-codigo[draggable=true],body.rol-ponente .mat[draggable=tr
 .dv-luces,.dv-buzon{display:none}
 body.dv-pizarra .dv-luces{display:flex}
 body.dv-pizarra .dv-buzon{display:block}
-.dv-luces{position:fixed;left:18px;bottom:18px;z-index:60;width:230px;height:120px;border-radius:22px;overflow:hidden;align-items:flex-end;padding:12px 16px;
-  background:radial-gradient(120% 120% at 20% 0%,#312E81,#1E1B4B 60%,#0F172A);box-shadow:0 18px 40px -18px rgba(30,27,75,.8);color:#fff}
+.dv-luces{position:fixed;left:12px;bottom:12px;z-index:60;width:auto;min-width:118px;height:34px;border-radius:999px;overflow:hidden;align-items:center;padding:0 12px;opacity:.82;transition:opacity .2s;
+  background:radial-gradient(120% 120% at 20% 0%,#312E81,#1E1B4B 60%,#0F172A);box-shadow:0 8px 20px -10px rgba(30,27,75,.7);color:#fff}
 .dv-cielo{position:absolute;inset:0}
-.dv-cielo i{position:absolute;left:var(--x);top:var(--y);width:9px;height:9px;border-radius:50%;background:var(--c);box-shadow:0 0 10px 3px var(--c);
+.dv-luces:hover{opacity:1}
+.dv-cielo i{position:absolute;left:var(--x);top:var(--y);width:4px;height:4px;border-radius:50%;background:var(--c);box-shadow:0 0 5px 1px var(--c);
   animation:dvNace .9s cubic-bezier(.2,1.6,.4,1) both,dvBrilla var(--d) ease-in-out .9s infinite alternate}
 .dv-cielo i.se-va{animation:dvSeVa .6s forwards}
 @keyframes dvNace{0%{transform:scale(0);opacity:0}60%{transform:scale(2.4);opacity:1}100%{transform:scale(1)}}
 @keyframes dvBrilla{to{opacity:.45;transform:scale(.75)}}
 @keyframes dvSeVa{to{transform:scale(0);opacity:0}}
-.dv-num{position:relative;display:flex;align-items:baseline;gap:7px;text-shadow:0 2px 10px rgba(0,0,0,.6)}
-.dv-num b{font:800 2.3rem/1 var(--display);font-variant-numeric:tabular-nums}
-.dv-num span{font:700 .95rem var(--texto);opacity:.9}
+.dv-num{position:relative;display:flex;align-items:baseline;gap:5px;margin:0 auto;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.dv-num b{font:800 1.05rem/1 var(--display);font-variant-numeric:tabular-nums}
+.dv-num span{font:700 .78rem var(--texto);opacity:.85}
 .dv-luces.llega .dv-num b{animation:dvLate .5s}
 @keyframes dvLate{40%{transform:scale(1.35);color:#FDE047}}
-.dv-buzon{position:fixed;right:18px;bottom:18px;z-index:60}
-.dv-buzon-b{border:0;border-radius:999px;padding:12px 18px;background:#fff;color:var(--tinta);font:800 1rem var(--texto);box-shadow:0 12px 30px -12px rgba(27,42,78,.5);cursor:pointer;border:2px solid var(--linea)}
-.dv-buzon-b span{display:inline-grid;place-items:center;min-width:26px;height:26px;border-radius:999px;background:#E5E7EB;margin-left:4px;font-size:.85rem}
+.dv-buzon{position:fixed;right:12px;bottom:12px;z-index:60;opacity:.82;transition:opacity .2s}.dv-buzon:hover,.dv-buzon:has(.dv-buzon-p:not([hidden])){opacity:1}
+body.dv-pizarra .dv-buzon:not(.tiene){display:none}
+.dv-buzon-b{border:0;border-radius:999px;padding:5px 12px;font-size:.85rem!important;background:#fff;color:var(--tinta);font:800 1rem var(--texto);box-shadow:0 6px 16px -8px rgba(27,42,78,.45);cursor:pointer;border:1.5px solid var(--linea)}
+.dv-buzon-b span{display:inline-grid;place-items:center;min-width:20px;height:20px;border-radius:999px;background:#E5E7EB;margin-left:4px;font-size:.85rem}
 .dv-buzon.tiene .dv-buzon-b span{background:#DC2626;color:#fff}
 .dv-buzon.nuevo .dv-buzon-b{animation:dvBote .7s 2}
 @keyframes dvBote{30%{transform:translateY(-10px) scale(1.06)}60%{transform:translateY(0)}}
-.dv-buzon-p{position:absolute;right:0;bottom:62px;width:min(440px,90vw);max-height:60vh;overflow:auto;background:#fff;border-radius:18px;padding:16px;box-shadow:0 24px 60px -16px rgba(27,42,78,.55);border:1.5px solid var(--linea)}
+.dv-buzon-p{position:absolute;right:0;bottom:44px;width:min(440px,90vw);max-height:60vh;overflow:auto;background:#fff;border-radius:18px;padding:16px;box-shadow:0 24px 60px -16px rgba(27,42,78,.55);border:1.5px solid var(--linea)}
 .dv-buzon-p h4{margin:0 0 10px;font-family:var(--display)}
 .dv-buzon-p ul{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:8px}
 .dv-buzon-p li{display:flex;align-items:center;gap:10px;padding:10px;border-radius:12px;background:#F4F7FB}
@@ -3999,6 +4001,7 @@ function pintarBuzon() {
     return '<li><span class="dv-n">' + (i + 1) + '</span><div><b>' + escH(v.titulo || 'Sin título') + '</b><small>' + escH(dom) + '</small></div><a class="btn azul" href="' + escH(v.url) + '" target="_blank" rel="noopener">Proyectar</a><button type="button" class="dv-quitar" data-k="' + escH(k) + '" aria-label="Quitar">✕</button></li>';
   }).join('') : '<li class="dv-vacio">Todavía no ha llegado nada. Desde el móvil se manda con «📤 A la pizarra».</li>';
 }
+document.addEventListener('click', e => { if (!panelB.hidden && !e.target.closest('.dv-buzon')) panelB.hidden = true; });
 buzon.addEventListener('click', e => {
   if (e.target.closest('.dv-buzon-b')) { panelB.hidden = !panelB.hidden; return; }
   const q = e.target.closest('.dv-quitar'); if (q) { ref('salas/' + S.sala + '/envios/' + q.dataset.k).remove().catch(() => tostada('No se pudo quitar')); return; }
