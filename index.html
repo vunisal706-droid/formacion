@@ -362,6 +362,13 @@ details.mini summary{cursor:pointer;font-weight:700}
 details.activar{margin-top:14px;border:1.5px solid var(--linea);border-radius:var(--r-m);background:#fff}
 details.activar summary{cursor:pointer;padding:12px 16px;font-weight:700}
 details.activar > div{padding:0 16px 16px}
+details.activar-video{margin:16px 0 6px;border:1.5px solid #BFE3CF;border-radius:16px;background:#fff;box-shadow:var(--sombra-1);max-width:80ch}
+details.activar-video summary{cursor:pointer;padding:14px 18px;font-weight:700;color:var(--ok)}
+details.activar-video > div{padding:0 18px 18px}
+details.activar-video ol{padding-left:22px;display:grid;gap:6px;margin:4px 0 14px}
+.video-169{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000}
+.video-169 iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.nota-video{margin-top:10px;font-size:.92rem;color:var(--texto-2,#555)}
 details.activar ol{padding-left:22px;display:grid;gap:6px;margin:8px 0}
 .siguiendo{position:sticky;top:0;z-index:30;display:none;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;
   background:var(--tinta);color:#fff;padding:9px 16px;font-size:.93rem;font-weight:700}
@@ -1553,6 +1560,19 @@ Dame el archivo completo, de principio a fin.</pre><button class="btn suave copi
   </div>
   <p class="ses-lleva"><strong>Te llevas:</strong> la rueda de participación hecha y personalizada, una herramienta propia para tu clase, tu asistente «Constructor de apps del cole» creado y un cuaderno de NotebookLM con documentos de tu centro.</p>
   <p><strong>Antes de venir:</strong> entra en <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> con tu cuenta y comprueba que funciona. Trae pensada una tarea que repitas cada semana (o lo que respondiste en la sesión 1 a «qué te quita más tiempo») y 2 o 3 documentos del centro sin datos personales (Plan de Convivencia, ROF, una unidad) para NotebookLM.</p>
+  <details class="activar-video" id="activar-seneca">
+    <summary>¿No te funciona Gemini, NotebookLM o YouTube con tu cuenta del cole? Actívalo en Séneca (1 min)</summary>
+    <div>
+      <ol>
+        <li>Entra en Séneca con perfil <b>Profesorado</b>.</li>
+        <li><b>Utilidades → Cuentas corporativas</b> → pestaña <b>Cuenta GSuite</b>.</li>
+        <li>En <i>Habilitación de servicios adicionales</i>, pasa <b>Gemini</b>, <b>NotebookLM</b> y <b>YouTube</b> al lado de <b>Apps activadas</b>.</li>
+        <li>Pulsa el <b>tic ✓</b> de arriba para guardar.</li>
+      </ol>
+      <div class="video-169"><iframe src="https://www.youtube-nocookie.com/embed/9w8Ml4oSVKw?rel=0" title="Activar Gemini, NotebookLM y YouTube en Séneca" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+      <p class="nota-video">Si no funciona al momento, espera un rato y vuelve a intentarlo. <a href="https://youtu.be/9w8Ml4oSVKw" target="_blank" rel="noopener">Ver en YouTube</a></p>
+    </div>
+  </details>
   <h3 class="bloque" style="margin-top:26px" id="guion-s2">La sesión, paso a paso</h3>
   <div class="gp-cab"><p class="gp-ayuda">Cada parte de la sesión, en orden. Ábrela para leer lo que se cuenta y ver el material. Con <b>✓</b> se marca como vista y se pliega.</p><p class="gp-reinicio solo-ponente no-imprimir"><button class="enlace" data-gpreset="s2">Desmarcar todas</button> · <button class="enlace" data-gptodo="s2">Abrir todas</button></p></div>
   <div class="gp">
@@ -2194,6 +2214,7 @@ Añade una opción para practicar una tabla de multiplicar concreta, del 1 al 10
     <li><a class="btn linea" href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
     <li><a class="btn linea" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></li>
     <li><a class="btn linea" href="https://notebooklm.google.com" target="_blank" rel="noopener">NotebookLM</a></li>
+    <li><a class="btn linea" href="https://youtu.be/9w8Ml4oSVKw" target="_blank" rel="noopener">Vídeo: activar Gemini y NotebookLM en Séneca</a></li>
     <li><a class="btn linea" href="https://aistudio.google.com" target="_blank" rel="noopener">Google AI Studio</a></li>
     <li><a class="btn linea" href="https://suno.com" target="_blank" rel="noopener">Suno</a></li>
   </ul>
@@ -4456,7 +4477,7 @@ document.addEventListener('click', e => {
 })();
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-15-bienvenida';
+  const ID = 'formacion-novedades-2026-11-15-video-seneca';
   if (typeof esPonente === 'function' && !esPonente()) return;
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
@@ -4464,7 +4485,7 @@ document.addEventListener('click', e => {
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">Al conectarse, los asistentes ven ahora una bienvenida; la pregunta de la radiografía les llega cuando abres esa parte.</p>'
+    + '<p style="margin-bottom:14px">Nuevo en la Sesión 2: vídeo de 1 minuto para activar Gemini, NotebookLM y YouTube en Séneca.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
