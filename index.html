@@ -3154,7 +3154,7 @@ function pintarBanner(txt) {
   banner.classList.add('ver');
   txt = txt || S.aviso;
   banner.innerHTML = '<span>' + esc(txt || (S.siguiendo ? 'Sigues la presentación · sesión ' + S.sala : 'Vas por libre · sesión ' + S.sala)) + '</span>' +
-    (txt ? '' : '<button data-b="responder">' + (leer(claveResp(), false) ? 'Cambiar mi respuesta' : 'Responder la pregunta') + '</button>') +
+    (txt || !(tocaPregunta() || leer(claveResp(), false)) ? '' : '<button data-b="responder">' + (leer(claveResp(), false) ? 'Cambiar mi respuesta' : 'Responder la pregunta') + '</button>') +
     (txt ? '' : '<button data-b="seguir">' + (S.siguiendo ? 'Ir por libre' : 'Volver a seguir') + '</button>') +
     '<button data-b="salir">Salir</button>';
 }
@@ -3190,10 +3190,22 @@ function claveResp() { return 'resp:' + S.sala + ':' + plano(preguntaActual()).s
 function revisarActividad() {
   pintarBanner();
   if (!FB.ok || S.aviso) return;
+  darBienvenida();
   const p = preguntaActual();
   if ($('veloResp').classList.contains('ver')) $('respTitulo').textContent = p;
-  else if (p !== R.ultPregunta && !leer(claveResp(), false)) abrirRespuesta();
-  R.ultPregunta = p;
+  else if (tocaPregunta()) { if (p !== R.ultPregunta && !leer(claveResp(), false) && !bienvenidaAbierta()) abrirRespuesta(); R.ultPregunta = p; }
+}
+// La pregunta de la radiografía solo salta cuando llega su momento (parte 3 de la Sesión 1 o diapositiva de la radiografía)
+function tocaPregunta() { return S.estado.parte === 's1:2' || S.estado.actividad === 'radiografia'; }
+// Bienvenida al conectarse (una vez por sesión y dispositivo)
+const bienvenidaAbierta = () => !!document.querySelector('.dv-bienvenida');
+function darBienvenida() {
+  const k = 'bienvenida:' + S.sala + ':' + new Date().toDateString(); if (leer(k, false) || bienvenidaAbierta()) return;
+  guardar(k, true);
+  const d = document.createElement('div'); d.className = 'gb-llega dv-bienvenida'; d.setAttribute('role', 'dialog');
+  d.innerHTML = '<div><div class="env-ico">👋</div><h3>¡Bienvenido, bienvenida!</h3><p>Ya estás dentro de <b>IA en el cole</b>. En tu móvil verás lo que se proyecta y, cuando toque, te llegarán preguntas, votaciones y materiales.</p><p>No hace falta que hagas nada más: deja esta página abierta.</p><button type="button" class="btn azul">¡Vamos allá!</button></div>';
+  d.addEventListener('click', e => { if (e.target === d || e.target.closest('button')) { d.remove(); if (navigator.vibrate) navigator.vibrate(20); revisarActividad(); } });
+  document.body.appendChild(d);
 }
 $('respCerrar').onclick = () => $('veloResp').classList.remove('ver');
 $('respEnviar').onclick = async () => {
@@ -4444,7 +4456,7 @@ document.addEventListener('click', e => {
 })();
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-15-qrfijo';
+  const ID = 'formacion-novedades-2026-11-15-bienvenida';
   if (typeof esPonente === 'function' && !esPonente()) return;
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
@@ -4452,7 +4464,7 @@ document.addEventListener('click', e => {
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">En la pestaña Directo tienes siempre el QR de los asistentes (sala IACOLE) y su PDF para imprimir.</p>'
+    + '<p style="margin-bottom:14px">Al conectarse, los asistentes ven ahora una bienvenida; la pregunta de la radiografía les llega cuando abres esa parte.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
