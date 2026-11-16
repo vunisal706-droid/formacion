@@ -1746,7 +1746,7 @@ Pon debajo de la rueda una lista pequeña con los números que ya han salido. Da
   </ol>
   <h4 class="ses-h4">¿La quieres enseñar ya? Compártela desde Gemini</h4>
   <ul style="max-width:70ch;line-height:1.6">
-    <li><strong>Con una cuenta personal de Gmail:</strong> en Canvas, pulsa <strong>Compartir</strong> y copia el enlace.</li>
+    <li><strong>Con una cuenta personal de Gmail:</strong> en Canvas, pulsa el icono de <strong>Compartir</strong> y luego <strong>Copiar enlace</strong> (empieza por <code>share.gemini.google</code>). También puedes usar <strong>Exportar → Google Sites</strong>.</li>
     <li><strong>Con la cuenta del centro (g.educaand):</strong> pulsa <strong>Exportar → Google Sites</strong>. Se crea un sitio en tu Drive; dale a <strong>Publicar</strong> y comparte su dirección.</li>
   </ul>
   <p class="consejo" style="max-width:70ch"><strong>Antes de enviarlo:</strong> ábrelo en una ventana de incógnito. Si te pide iniciar sesión, solo lo podrá abrir quien tenga cuenta del centro. Y nunca metas datos del alumnado en una app compartida así.</p>
@@ -1932,8 +1932,8 @@ Que funcione también en el móvil.</pre></div>
   <details class="gp-p" id="parte-s3-1" data-sid="s3" data-i="1"><summary><span class="gp-h">0:10</span><span class="gp-n">2</span><span class="gp-t">Publicar en GitHub Pages</span><span class="gp-min">30 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
   <div class="gp-c"><div class="gp-texto"><p>Ya sabéis compartir una app desde Gemini con un enlace o con Google Sites. Eso vale para enseñarla, pero la app depende de vuestra cuenta y no se puede instalar. Hoy le daremos una dirección propia con GitHub Pages, que es gratis: así la app es del centro, se instala en el móvil y más adelante podrá guardar datos.</p><p>Entrad en github.com con vuestra cuenta. Vuestro nombre de usuario formará parte de la dirección. Cread un repositorio nuevo, con un nombre corto y sin espacios, por ejemplo «rueda», y marcadlo como público. Cambiad el nombre de vuestro archivo a index.html y subidlo.</p><p>Por último, activad Pages en la configuración del repositorio, siguiendo los pasos de abajo. En uno o dos minutos vuestra app estará en vuestrousuario.github.io/rueda. Esperamos a que todos tengáis la vuestra antes de seguir.</p></div><div class="gp-mat"><div class="infog-grid no-imprimir-no"><figure class="infog"><button type="button" class="infog-ver" data-full="materiales/infografias/como-funciona-una-app.jpg" data-tit="Cómo funciona una app del cole" aria-label="Ampliar la infografía: Cómo funciona una app del cole"><img src="materiales/infografias/como-funciona-una-app-mini.jpg" alt="Infografía: Cómo funciona una app del cole" width="800" height="450" loading="lazy"><span class="infog-lupa" aria-hidden="true">⤢ Ampliar</span></button><figcaption><b>Cómo funciona una app del cole</b><span class="infog-acc"><a href="materiales/infografias/como-funciona-una-app.pdf" download>PDF</a><a href="materiales/infografias/como-funciona-una-app.jpg" download>Imagen</a></span></figcaption></figure></div>
   <div class="compartir3">
-    <div style="--c:#8B5CF6"><b>Enlace de Gemini</b><small>Cuenta personal de Gmail</small><ul><li>Compartir → copiar enlace.</li><li>Se abre en la web de Gemini.</li><li>Para probar y enseñar.</li></ul></div>
-    <div style="--c:#F59E0B"><b>Google Sites</b><small>Cuenta del centro (g.educaand)</small><ul><li>Exportar → Google Sites → Publicar.</li><li>Sigue publicada mientras no la borres y exista tu cuenta.</li><li>Comprueba en incógnito quién puede abrirla.</li></ul></div>
+    <div style="--c:#8B5CF6"><b>Enlace de Gemini</b><small>Cuenta personal de Gmail</small><ul><li>Compartir → Copiar enlace (share.gemini.google/…).</li><li>Se abre en la web de Gemini.</li><li>Para probar y enseñar.</li></ul></div>
+    <div style="--c:#F59E0B"><b>Google Sites</b><small>Cuenta del centro o personal</small><ul><li>Exportar → Google Sites → Publicar.</li><li>Sigue publicada mientras no la borres y exista tu cuenta.</li><li>Comprueba en incógnito quién puede abrirla.</li></ul></div>
     <div style="--c:var(--ok)"><b>GitHub Pages</b><small>La app del centro</small><ul><li>Dirección propia y código QR fijo.</li><li>Se instala en el móvil como una app.</li><li>No depende de Gemini y admite Firebase (sesión 4).</li></ul></div>
   </div>
   <p class="consejo" style="max-width:70ch"><strong>Regla fácil:</strong> para probar y enseñar, el enlace de Gemini o Google Sites; para usarla en el cole de verdad, GitHub Pages. Datos del alumnado, nunca en un enlace público.</p>
@@ -4642,7 +4642,7 @@ document.addEventListener('click', e => {
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">Compartir sin GitHub: enlace de Gemini (cuenta personal) o Exportar → Google Sites (cuenta del centro). Está en las sesiones 2 y 3.</p>'
+    + '<p style="margin-bottom:14px">Compartir sin GitHub: enlace de Gemini (cuenta personal) o Exportar → Google Sites (cuenta del centro o personal). Está en las sesiones 2 y 3.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
