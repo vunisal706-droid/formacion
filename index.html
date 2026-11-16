@@ -223,6 +223,11 @@ h4.ses-h4{font-family:var(--display);font-weight:600;font-size:1.05rem;margin:20
 
 /* ── Guías (acordeón) ────────────────────────────────── */
 .guias{display:grid;gap:12px;max-width:900px}
+.compartir3{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;max-width:900px;margin:14px 0 18px}
+.compartir3>div{background:#fff;border:1.5px solid var(--linea);border-radius:14px;padding:14px 16px;border-top:5px solid var(--c,var(--azul))}
+.compartir3 b{display:block;font-size:1.02rem;margin-bottom:4px}
+.compartir3 small{display:block;color:var(--tinta-suave);font-weight:700;margin-bottom:8px}
+.compartir3 ul{margin:0;padding-left:18px;font-size:.93rem;line-height:1.5}
 details.guia{background:#fff;border:1.5px solid var(--linea);border-radius:var(--r-l)}
 details.guia[open]{border-color:#BFCDE0}
 details.guia > summary{list-style:none;cursor:pointer;padding:18px 22px;display:flex;align-items:center;gap:14px}
@@ -1739,6 +1744,12 @@ Pon debajo de la rueda una lista pequeña con los números que ya han salido. Da
     <li>Abre el Bloc de notas, pega el código y guárdalo con el nombre <code>rueda.html</code>.</li>
     <li>Ábrelo con doble clic: la rueda funciona en tu navegador, sin Gemini y sin internet. Ese archivo es tu app; lo publicaremos en la sesión 3.</li>
   </ol>
+  <h4 class="ses-h4">¿La quieres enseñar ya? Compártela desde Gemini</h4>
+  <ul style="max-width:70ch;line-height:1.6">
+    <li><strong>Con una cuenta personal de Gmail:</strong> en Canvas, pulsa <strong>Compartir</strong> y copia el enlace.</li>
+    <li><strong>Con la cuenta del centro (g.educaand):</strong> pulsa <strong>Exportar → Google Sites</strong>. Se crea un sitio en tu Drive; dale a <strong>Publicar</strong> y comparte su dirección.</li>
+  </ul>
+  <p class="consejo" style="max-width:70ch"><strong>Antes de enviarlo:</strong> ábrelo en una ventana de incógnito. Si te pide iniciar sesión, solo lo podrá abrir quien tenga cuenta del centro. Y nunca metas datos del alumnado en una app compartida así.</p>
 
   </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 25 min</button></div></div>
 </details>
@@ -1919,7 +1930,13 @@ Que funcione también en el móvil.</pre></div>
 </details>
   <span class="ancla" id="bloquePublicar"></span>
   <details class="gp-p" id="parte-s3-1" data-sid="s3" data-i="1"><summary><span class="gp-h">0:10</span><span class="gp-n">2</span><span class="gp-t">Publicar en GitHub Pages</span><span class="gp-min">30 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
-  <div class="gp-c"><div class="gp-texto"><p>Hasta hoy vuestra app vivía en vuestro ordenador. En media hora tendrá dirección en internet y podréis abrirla desde cualquier móvil. Lo haremos con GitHub Pages, que es gratis.</p><p>Entrad en github.com con vuestra cuenta. Vuestro nombre de usuario formará parte de la dirección. Cread un repositorio nuevo, con un nombre corto y sin espacios, por ejemplo «rueda», y marcadlo como público. Cambiad el nombre de vuestro archivo a index.html y subidlo.</p><p>Por último, activad Pages en la configuración del repositorio, siguiendo los pasos de abajo. En uno o dos minutos vuestra app estará en vuestrousuario.github.io/rueda. Esperamos a que todos tengáis la vuestra antes de seguir.</p></div><div class="gp-mat"><div class="infog-grid no-imprimir-no"><figure class="infog"><button type="button" class="infog-ver" data-full="materiales/infografias/como-funciona-una-app.jpg" data-tit="Cómo funciona una app del cole" aria-label="Ampliar la infografía: Cómo funciona una app del cole"><img src="materiales/infografias/como-funciona-una-app-mini.jpg" alt="Infografía: Cómo funciona una app del cole" width="800" height="450" loading="lazy"><span class="infog-lupa" aria-hidden="true">⤢ Ampliar</span></button><figcaption><b>Cómo funciona una app del cole</b><span class="infog-acc"><a href="materiales/infografias/como-funciona-una-app.pdf" download>PDF</a><a href="materiales/infografias/como-funciona-una-app.jpg" download>Imagen</a></span></figcaption></figure></div>
+  <div class="gp-c"><div class="gp-texto"><p>Ya sabéis compartir una app desde Gemini con un enlace o con Google Sites. Eso vale para enseñarla, pero la app depende de vuestra cuenta y no se puede instalar. Hoy le daremos una dirección propia con GitHub Pages, que es gratis: así la app es del centro, se instala en el móvil y más adelante podrá guardar datos.</p><p>Entrad en github.com con vuestra cuenta. Vuestro nombre de usuario formará parte de la dirección. Cread un repositorio nuevo, con un nombre corto y sin espacios, por ejemplo «rueda», y marcadlo como público. Cambiad el nombre de vuestro archivo a index.html y subidlo.</p><p>Por último, activad Pages en la configuración del repositorio, siguiendo los pasos de abajo. En uno o dos minutos vuestra app estará en vuestrousuario.github.io/rueda. Esperamos a que todos tengáis la vuestra antes de seguir.</p></div><div class="gp-mat"><div class="infog-grid no-imprimir-no"><figure class="infog"><button type="button" class="infog-ver" data-full="materiales/infografias/como-funciona-una-app.jpg" data-tit="Cómo funciona una app del cole" aria-label="Ampliar la infografía: Cómo funciona una app del cole"><img src="materiales/infografias/como-funciona-una-app-mini.jpg" alt="Infografía: Cómo funciona una app del cole" width="800" height="450" loading="lazy"><span class="infog-lupa" aria-hidden="true">⤢ Ampliar</span></button><figcaption><b>Cómo funciona una app del cole</b><span class="infog-acc"><a href="materiales/infografias/como-funciona-una-app.pdf" download>PDF</a><a href="materiales/infografias/como-funciona-una-app.jpg" download>Imagen</a></span></figcaption></figure></div>
+  <div class="compartir3">
+    <div style="--c:#8B5CF6"><b>Enlace de Gemini</b><small>Cuenta personal de Gmail</small><ul><li>Compartir → copiar enlace.</li><li>Se abre en la web de Gemini.</li><li>Para probar y enseñar.</li></ul></div>
+    <div style="--c:#F59E0B"><b>Google Sites</b><small>Cuenta del centro (g.educaand)</small><ul><li>Exportar → Google Sites → Publicar.</li><li>Sigue publicada mientras no la borres y exista tu cuenta.</li><li>Comprueba en incógnito quién puede abrirla.</li></ul></div>
+    <div style="--c:var(--ok)"><b>GitHub Pages</b><small>La app del centro</small><ul><li>Dirección propia y código QR fijo.</li><li>Se instala en el móvil como una app.</li><li>No depende de Gemini y admite Firebase (sesión 4).</li></ul></div>
+  </div>
+  <p class="consejo" style="max-width:70ch"><strong>Regla fácil:</strong> para probar y enseñar, el enlace de Gemini o Google Sites; para usarla en el cole de verdad, GitHub Pages. Datos del alumnado, nunca en un enlace público.</p>
   <div class="guias"><details class="guia">
       <summary><div><b>5. Publicar en GitHub Pages</b><small>Tu app con dirección web gratuita</small></div></summary>
       <div class="guia-cuerpo">
@@ -2363,7 +2380,7 @@ Añade una opción para practicar una tabla de multiplicar concreta, del 1 al 10
   <div class="intro">
     <p class="ses-etq">Para todas las sesiones · Las apps del claustro</p>
     <h2>Galería</h2>
-    <p>Aquí se comparten las apps y los juegos que va haciendo cada persona. Sube la tuya cuando tenga enlace: el de «Compartir» de Canvas o su dirección de GitHub Pages. El encargo con el que empezaste es lo que más ayuda a los demás.</p>
+    <p>Aquí se comparten las apps y los juegos que va haciendo cada persona. Sube la tuya cuando tenga enlace: el de «Compartir» de Canvas, el de Google Sites o su dirección de GitHub Pages. El encargo con el que empezaste es lo que más ayuda a los demás.</p>
   </div>
   <div class="galeria-barra">
     <button class="btn azul" id="galAnadir">Añadir mi app</button>
@@ -2376,7 +2393,7 @@ Añade una opción para practicar una tabla de multiplicar concreta, del 1 al 10
     <h3>Tu app</h3>
     <div class="rejilla2" style="margin-top:12px">
       <label class="campo"><span>Título</span><input type="text" id="gTitulo" maxlength="80" placeholder="Préstamos de la biblioteca de aula"></label>
-      <label class="campo"><span>Enlace (el de «Compartir» de Canvas o tu web)</span><input type="text" id="gEnlace" maxlength="300" placeholder="https://usuario.github.io/prestamos/"></label>
+      <label class="campo"><span>Enlace (Compartir de Canvas, Google Sites o tu web)</span><input type="text" id="gEnlace" maxlength="300" placeholder="https://usuario.github.io/prestamos/"></label>
       <label class="campo"><span>Centro</span><input type="text" id="gCentro" maxlength="80"></label>
       <label class="campo"><span>Tu nombre (opcional)</span><input type="text" id="gNombre" maxlength="60"></label>
     </div>
@@ -4617,7 +4634,7 @@ document.addEventListener('click', e => {
 
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-16-comics-nuevos';
+  const ID = 'formacion-novedades-2026-11-16-compartir-sites';
   if (typeof esPonente === 'function' && !esPonente()) return;
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
@@ -4625,7 +4642,7 @@ document.addEventListener('click', e => {
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">Nuevo dibujo de los cómics «De la servilleta al móvil» y «Siempre salen los mismos», más bonitos.</p>'
+    + '<p style="margin-bottom:14px">Compartir sin GitHub: enlace de Gemini (cuenta personal) o Exportar → Google Sites (cuenta del centro). Está en las sesiones 2 y 3.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
