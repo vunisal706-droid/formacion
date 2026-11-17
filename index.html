@@ -1543,6 +1543,17 @@ footer{background:#fff;border-top:1px solid var(--linea)}
 }
 
 
+
+/* Libro de la formación en Materiales */
+.libro-tarjeta{display:grid;grid-template-columns:170px 1fr;gap:26px;align-items:center;margin:0 0 30px;padding:22px;border-radius:var(--r-xl);
+  background:linear-gradient(135deg,#fff 0%,#fff 55%,var(--turquesa-claro) 100%);border:1px solid var(--linea);box-shadow:var(--sombra-2)}
+.libro-tarjeta img{width:100%;height:auto;border-radius:6px 12px 12px 6px;box-shadow:0 18px 30px -14px rgba(6,26,56,.55),0 2px 6px rgba(6,26,56,.15)}
+.libro-k{font:700 .78rem var(--texto);letter-spacing:.1em;text-transform:uppercase;color:var(--turquesa-osc);margin:0 0 4px}
+.libro-tarjeta h3{font:800 1.7rem/1.1 var(--display);color:var(--noche);margin:0 0 6px}
+.libro-sub{font-weight:600;color:var(--tinta);margin:0 0 10px}
+.libro-tarjeta p{max-width:70ch}
+.acceso-checks .acceso-libro{border-color:color-mix(in srgb,var(--turquesa) 55%,var(--linea));background:var(--turquesa-claro)}
+@media (max-width:620px){.libro-tarjeta{grid-template-columns:110px 1fr;gap:16px;padding:16px}.libro-tarjeta h3{font-size:1.35rem}}
 /* Materiales por sesiones */
 .mat-ses{margin:0 0 34px}
 .mat-ses-cab{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:14px 18px;margin-bottom:6px;background:#fff;border:1px solid var(--linea);
@@ -1622,7 +1633,7 @@ nav.pestanas{padding-top:10px;padding-bottom:10px;margin-top:-4px;margin-bottom:
 
   <div class="tarjeta solo-ponente" id="accesoTarjeta" style="margin-bottom:16px">
     <h3>Sesiones que ven los asistentes</h3>
-    <p>Marca las que están abiertas. Las demás no aparecen en sus móviles ni cuando entren desde casa. Los materiales, la galería y la pestaña de privacidad se ven siempre.</p>
+    <p>Marca las que están abiertas. Las demás no aparecen en sus móviles ni cuando entren desde casa. Los materiales, la galería y la pestaña de privacidad se ven siempre. «Libro en Materiales» muestra la descarga del libro (déjalo sin marcar mientras no quieras darlo).</p>
     <div class="acceso-checks" id="accesoChecks"></div>
     <div class="estado" id="accesoEstado"></div>
     <p style="font-size:.92rem;color:var(--tinta-suave)">Clave para los asistentes: <code id="accesoClave"></code>. Con el QR de «Escanea y responde» entran sin escribirla.</p>
@@ -3272,13 +3283,14 @@ function aplicarAcceso() {
   if (act && !puedeVer(act.id.replace('panel-', ''))) irA(primeraVisible());
   const caja = $('accesoChecks');
   if (caja) {
-    caja.innerHTML = SESIONES.map((id, i) => '<label><input type="checkbox" value="' + id + '"' + (ABIERTAS.has(id) ? ' checked' : '') + '> Sesión ' + (i + 1) + '</label>').join('');
+    caja.innerHTML = SESIONES.map((id, i) => '<label><input type="checkbox" value="' + id + '"' + (ABIERTAS.has(id) ? ' checked' : '') + '> Sesión ' + (i + 1) + '</label>').join('') +
+      '<label class="acceso-libro"><input type="checkbox" value="libro"' + (ABIERTAS.has('libro') ? ' checked' : '') + '> 📘 Libro en Materiales</label>';
     $('accesoClave').textContent = ACCESO.claveAsistentes;
   }
   document.dispatchEvent(new Event('acceso'));
 }
 function fijarAbiertas(lista) {
-  ABIERTAS = new Set((lista || []).filter(x => SESIONES.includes(x)));
+  ABIERTAS = new Set((lista || []).filter(x => SESIONES.includes(x) || x === 'libro'));
   guardar('abiertas', [...ABIERTAS]); aplicarAcceso();
 }
 function fijarRol(r) { ROL = r; guardar('rol', r); aplicarAcceso(); }
@@ -3411,12 +3423,22 @@ function tarjetaMat(m) {
     '<a class="btn linea" href="' + esc(m.archivo) + '" download>' + ICO.bajar + ' Descargar ' + esc(ext) + '</a>' +
     '</article>';
 }
+function tarjetaLibro(abierto) {
+  return '<section class="libro-tarjeta">' +
+    '<img src="materiales/libro/portada.jpg" alt="Portada del libro IA para docentes" width="600" height="960" loading="lazy">' +
+    '<div><p class="libro-k">El libro de la formación</p><h3>IA para docentes</h3>' +
+    '<p class="libro-sub">Crea tus propias apps y herramientas educativas sin saber programar · 18 capítulos y 4 proyectos paso a paso</p>' +
+    '<p>Todo lo que vemos en las sesiones, con más calma y con los prompts listos para copiar. Formato EPUB: se abre en Google Play Libros, Apple Libros, Calibre o un lector de libros electrónicos.</p>' +
+    (abierto ? '' : '<p><small class="mat-cerrada">🔒 Aún no lo ven los asistentes</small></p>') +
+    '<div class="fila"><a class="btn azul" href="materiales/libro/IA_para_docentes.epub" download>' + ICO.bajar + ' Descargar el libro (EPUB)</a></div></div></section>';
+}
 function pintarMateriales() {
   const caja = $('matRejilla'); if (!caja) return;
   const ver = id => (typeof puedeVer === 'function') ? puedeVer(id) : true;
   const abierta = id => (typeof ABIERTAS !== 'undefined') ? ABIERTAS.has(id) : true;
   const visibles = MAT_SESIONES.filter(x => ver(x.id));
-  caja.innerHTML = visibles.map(x => {
+  const conLibro = abierta('libro') || (typeof esPonente === 'function' && esPonente());
+  caja.innerHTML = (conLibro ? tarjetaLibro(abierta('libro')) : '') + visibles.map(x => {
     const n = x.id.slice(1), tit = ((document.querySelector('#panel-' + x.id + ' .intro h2') || {}).textContent || '').trim();
     return '<section class="mat-ses" style="--ses:var(--s' + n + ')">' +
       '<div class="mat-ses-cab"><span class="mat-ses-n">' + n + '</span><div><h3>Sesión ' + n + (tit ? ' · ' + esc(tit) : '') + '</h3>' +
@@ -3427,7 +3449,7 @@ function pintarMateriales() {
         return '<h4 class="mat-grupo">' + esc(g.t) + '</h4>' + (g.d ? '<p class="mat-grupo-d">' + esc(g.d) + '</p>' : '') +
           '<div class="mat-rejilla">' + items.map(tarjetaMat).join('') + '</div>';
       }).join('') + '</section>';
-  }).join('') || '<div class="vacio">Los materiales aparecerán aquí cuando se abra la primera sesión.</div>';
+  }).join('') || (conLibro ? '' : '<div class="vacio">Los materiales aparecerán aquí cuando se abra la primera sesión.</div>');
 }
 pintarMateriales();
 document.addEventListener('acceso', pintarMateriales);
@@ -3718,7 +3740,7 @@ async function publicarAbiertas() {
   const txt = [...ABIERTAS].join(',');
   S.estado.abiertas = txt;
   if (canal && S.rol !== 'asistente' && S.rol !== 'mando') canal.postMessage({ tipo: 'estado', de: S.rol, estado: S.estado });
-  const bien = 'Guardado. Los asistentes ven: ' + (ABIERTAS.size ? [...ABIERTAS].map(x => 'sesión ' + x.slice(1)).join(', ') : 'ninguna sesión') + '.';
+  const bien = 'Guardado. Los asistentes ven: ' + (ABIERTAS.size ? [...ABIERTAS].map(x => x === 'libro' ? 'el libro' : 'sesión ' + x.slice(1)).join(', ') : 'ninguna sesión') + '.';
   if (S.rol === 'dueno') { escribirFB(); estado('accesoEstado', 'ok', bien); return; }
   if (!hayFirebase()) { estado('accesoEstado', 'ok', 'Guardado en este ordenador (modo ensayo).'); return; }
   if (!await iniciarFirebase()) { estado('accesoEstado', 'error', esc(FB.error || 'Sin conexión') + ' Se ha guardado solo en este dispositivo.'); return; }
@@ -5106,7 +5128,7 @@ document.addEventListener('click', e => {
 
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-17-materiales-sesiones';
+  const ID = 'formacion-novedades-2026-11-17-libro';
   if (typeof esPonente === 'function' && !esPonente()) return;
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
@@ -5114,7 +5136,7 @@ document.addEventListener('click', e => {
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">Materiales por sesiones: los asistentes solo ven los de las sesiones abiertas. En la sesión 1 hay un documento de ejemplo sacado de cada app.</p>'
+    + '<p style="margin-bottom:14px">El libro «IA para docentes» ya se puede descargar en Materiales. Solo lo ven los asistentes si marcas «Libro en Materiales» en Directo.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
