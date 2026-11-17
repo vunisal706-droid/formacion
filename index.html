@@ -1542,6 +1542,19 @@ footer{background:#fff;border-top:1px solid var(--linea)}
   .btn{min-height:48px}
 }
 
+
+/* Materiales por sesiones */
+.mat-ses{margin:0 0 34px}
+.mat-ses-cab{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:14px 18px;margin-bottom:6px;background:#fff;border:1px solid var(--linea);
+  border-left:5px solid var(--ses);border-radius:var(--r-l);box-shadow:var(--sombra-1)}
+.mat-ses-cab > div{flex:1;min-width:200px}
+.mat-ses-cab h3{font:800 1.25rem/1.2 var(--display);color:var(--noche);margin:0}
+.mat-ses-n{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font:800 1.1rem var(--display);color:#fff;
+  background:linear-gradient(135deg,var(--ses),color-mix(in srgb,var(--ses) 55%,#061A38));flex:none}
+.mat-cerrada{display:inline-block;margin-top:4px;font-weight:700;font-size:.82rem;color:#92400E;background:#FEF3C7;padding:2px 10px;border-radius:999px}
+.mat-grupo{font:800 1.05rem var(--display);color:var(--noche);margin:22px 0 4px}
+.mat-grupo-d{color:var(--tinta-suave);font-size:.93rem;margin:0 0 12px;max-width:80ch}
+.mat-grupo + .mat-rejilla{margin-top:12px}
 /* Página de apoyo del libro y enlaces del muro de QR */
 .apoyo-libro{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center;margin:22px 0 8px;
   background:linear-gradient(135deg,#fff 0%,#fff 60%,var(--turquesa-claro) 100%);border-left:4px solid var(--turquesa-osc)}
@@ -2800,10 +2813,9 @@ Añade una opción para practicar una tabla de multiplicar concreta, del 1 al 10
     <p>Los documentos que piden las apps cuando las probamos: un acta de notas, el listado del claustro, una circular en PDF… Están inventados de arriba abajo: ni un dato real de ningún centro ni de ningún alumno.</p>
   </div>
   <div class="mat-barra">
-    <a class="btn azul" href="materiales/Materiales_IA_en_el_cole.zip" download>⬇ Descargar todos (.zip)</a>
     <span class="mat-aviso"><b>Antes de la sesión:</b> descárgalos y descomprímelos en una carpeta del escritorio. Desde ahí se arrastran a cada app. De una pestaña del navegador a otra no se pueden arrastrar.</span>
   </div>
-  <div class="mat-rejilla" id="matRejilla"></div>
+  <div class="mat-sesiones" id="matRejilla"></div>
   <h3 class="bloque">Para seguir después</h3>
   <div class="tarjeta apoyo-libro"><div class="apoyo-qr" data-qr-apoyo="https://vunisal706-droid.github.io/IAparadocentes/"></div><div><h3>IA para docentes · página de apoyo</h3><p>Las plantillas de las apps al día, el configurador, Firebase paso a paso y la ayuda para publicar. Sin datos de ningún centro: os sirve para seguir cuando acabe la formación.</p><div class="fila"><a class="btn azul" href="https://vunisal706-droid.github.io/IAparadocentes/" target="_blank" rel="noopener">Abrir la página de apoyo</a><span class="apoyo-url">vunisal706-droid.github.io/IAparadocentes</span></div></div></div>
 </section>
@@ -2937,52 +2949,99 @@ const APPS = [
 const MATERIALES = [
   {
     archivo: 'materiales/Notas_5EP_1T_ejemplo.docx', color: '#1A237E',
-    nombre: 'Acta de notas de 5.º (1.er trimestre)', para: ['evaluaciones'], etiqueta: 'Gestor de Evaluaciones',
+    en: ['probar','importar'], nombre: 'Acta de notas de 5.º (1.er trimestre)', para: ['evaluaciones'], etiqueta: 'Gestor de Evaluaciones',
     que: 'Un acta como la que sale de Séneca: 22 alumnos y alumnas con sus notas (SB, NT, BI, SU, IN). Cada uno tiene Religión o Atención Educativa, y Francés o su alternativa.',
     pasos: ['Abre el Gestor de Evaluaciones y ve a «Importar notas».', 'Suelta el archivo: reconoce solo que es 5.º de Primaria.', 'Pulsa «Extraer notas», revisa la tabla y guarda.']
   },
   {
     archivo: 'materiales/Relacion_personal_del_centro_ejemplo.pdf', color: '#B7791F',
-    nombre: 'Relación de personal del centro', para: ['horarios', 'convivemas'], etiqueta: 'Cuadra Horarios · Convive+',
+    en: ['probar','importar'], nombre: 'Relación de personal del centro', para: ['horarios', 'convivemas'], etiqueta: 'Cuadra Horarios · Convive+',
     que: 'El listado del claustro en PDF, con las dos columnas de Séneca: Empleado/a y Puesto. Trae 16 maestros y maestras de todas las especialidades.',
     pasos: ['En Cuadra Horarios, paso 3: «Importar personal (PDF de Séneca)».', 'La app detecta sola la especialidad de cada uno.', 'Revisa la tabla y pulsa importar.']
   },
   {
     archivo: 'materiales/Alumnado_del_centro_ejemplo.csv', color: '#2563EB',
-    nombre: 'Alumnado del centro', para: ['convivemas'], etiqueta: 'Convive+ (partes)',
+    en: ['probar','importar'], nombre: 'Alumnado del centro', para: ['convivemas'], etiqueta: 'Convive+ (partes)',
     que: 'Treinta alumnos y alumnas de 3.º a 6.º con su curso, en un archivo de dos columnas: nombre y curso.',
     pasos: ['En Convive+, «Importar alumnado» → Excel/CSV.', 'Suelta el archivo en el recuadro.', 'Revisa los nombres y guarda.']
   },
   {
     archivo: 'materiales/Personal_con_usuario_IdEA_ejemplo.xlsx', color: '#2563EB',
-    nombre: 'Personal con usuario IdEA', para: ['convivemas'], etiqueta: 'Convive+ (partes)',
+    en: ['probar','importar'], nombre: 'Personal con usuario IdEA', para: ['convivemas'], etiqueta: 'Convive+ (partes)',
     que: 'El Excel de Séneca con las columnas Empleado/a y Usuario IdEA, que es lo que la app necesita para dar de alta al profesorado.',
     pasos: ['En Convive+, «Importar personal» → Excel/CSV.', 'Suelta el archivo.', 'Repasa quién entra y confirma.']
   },
   {
     archivo: 'materiales/Lista_de_clase_para_pegar.txt', color: '#D2503B',
-    nombre: 'Lista de clase para pegar', para: ['convive'], etiqueta: 'Convivencia+ (sociograma)',
+    en: ['probar','importar'], nombre: 'Lista de clase para pegar', para: ['convive'], etiqueta: 'Convivencia+ (sociograma)',
     que: 'Los 22 nombres de la clase, uno por línea, para montar el grupo de golpe sin escribirlos a mano.',
     pasos: ['Abre el archivo y cópialo entero (Ctrl+A y Ctrl+C).', 'En Convivencia+, crea el grupo y pega la lista.', 'La app separa los nombres sola.']
   },
   {
     archivo: 'materiales/Circular_para_familias_ejemplo.pdf', color: '#DC2626',
-    nombre: 'Circular para las familias', para: ['pdfaword'], etiqueta: 'PDF a Markdown y Word',
+    en: ['probar'], nombre: 'Circular para las familias', para: ['pdfaword'], etiqueta: 'PDF a Markdown y Word',
     que: 'Un PDF con de todo: títulos, lista de materiales, una tabla de fechas y un pie. Sirve para ver qué respeta el conversor.',
     pasos: ['Abre PDF a Markdown y Word y suelta el PDF.', 'Mira el resultado: los títulos y la tabla se mantienen.', 'Descárgalo en Word y compáralo.']
   },
   {
     archivo: 'materiales/Normas_del_centro_para_NotebookLM.pdf', color: '#0F766E',
-    nombre: 'Normas del centro (extracto del ROF)', para: [], etiqueta: 'NotebookLM · Sesión 1',
+    en: ['probar'], nombre: 'Normas del centro (extracto del ROF)', para: [], etiqueta: 'NotebookLM · Sesión 1',
     que: 'Seis apartados de normas de un centro inventado: entradas, recreos, móviles, protección, familias y material.',
     pasos: ['Crea un cuaderno en NotebookLM y sube este PDF.', 'Pregúntale: «¿Qué hago si un alumno llega a las 9:20?».', 'Fíjate en que cita el apartado de donde lo saca.']
   },
   {
     archivo: 'materiales/Acta_de_claustro_ejemplo.pdf', color: '#3949AB',
-    nombre: 'Acta de un claustro', para: ['teletrabajo'], etiqueta: 'Teletrabajo',
+    en: ['probar'], nombre: 'Acta de un claustro', para: ['teletrabajo'], etiqueta: 'Teletrabajo',
     que: 'Un acta corta con su orden del día y sus acuerdos, para probar cómo se guarda y cómo la resume la IA.',
     pasos: ['En Teletrabajo, abre una reunión y adjunta el acta en PDF.', 'Prueba también a pedirle a la IA que la resuma.']
-  }
+  },
+  // ── Lo que sale de cada app (sesión 1): documentos sacados de las apps con datos inventados ──
+  { en: ['productos'], archivo: 'materiales/productos/SdA_En_la_granja_escuela_4EP.pdf', color: '#1E40AF',
+    nombre: 'Situación de aprendizaje completa', para: ['sda'], etiqueta: 'Generador de SdA',
+    que: 'La SdA de Matemáticas de 4.º «En la granja escuela», con los 7 apartados de la plantilla. La app prepara el prompt y la IA la completa.',
+    pasos: ['Fíjate en las tablas de sesiones: las fechas ya vienen puestas.', 'Las páginas del libro se rellenan a mano.'] },
+  { en: ['productos'], archivo: 'materiales/productos/Horarios_CEIP_Ejemplo.pdf', color: '#B7791F',
+    nombre: 'Horarios de todo el centro', para: ['horarios'], etiqueta: 'Cuadra Horarios',
+    que: 'Los horarios de los nueve grupos y de cada maestro o maestra, sin solapamientos, generados por la app en un segundo.',
+    pasos: ['Primero vienen los grupos y después el profesorado.', 'Cada materia tiene su color.'] },
+  { en: ['productos'], archivo: 'materiales/productos/Plan_de_Lectura_Agora.docx', color: '#1F4E8C',
+    nombre: 'Plan de Lectura del centro', para: ['agora'], etiqueta: 'Ágora',
+    que: 'El documento oficial del plan: programación por cursos, trimestres, meses y semanas, con efemérides y vocabulario. Listo para el Proyecto Educativo.',
+    pasos: ['Ábrelo en Word y busca tu curso.', 'Todo se puede editar.'] },
+  { en: ['productos'], archivo: 'materiales/productos/Plan_de_Resolucion_de_Problemas_Agora.docx', color: '#1F4E8C',
+    nombre: 'Plan de Resolución de Problemas', para: ['agora'], etiqueta: 'Ágora',
+    que: 'Los cinco pasos, el itinerario por cursos y el desglose semanal del trabajo de problemas.',
+    pasos: ['Compáralo con el Plan de Lectura: misma estructura.'] },
+  { en: ['productos'], archivo: 'materiales/productos/Informe_ejecutivo_evaluacion_1T.pdf', color: '#1A237E',
+    nombre: 'Informe ejecutivo de la evaluación', para: ['evaluaciones'], etiqueta: 'Gestor de Evaluaciones',
+    que: 'Resultados del 1.er trimestre de 3.º a 6.º: resumen del centro, resultados por curso y materia, y cursos que necesitan atención.',
+    pasos: ['Sale con las actas de notas importadas.', 'Sirve tal cual para el claustro o el ETCP.'] },
+  { en: ['productos'], archivo: 'materiales/productos/Parte_de_convivencia_ejemplo.pdf', color: '#2563EB',
+    nombre: 'Parte de convivencia', para: ['convivemas'], etiqueta: 'Convive+ (partes)',
+    que: 'Un parte con las conductas del Decreto 328/2010, las medidas aplicadas y el bloque de firma, listo para la familia.',
+    pasos: ['Las conductas y correcciones salen de las listas oficiales.', 'Después se graba en Séneca desde la propia app.'] },
+  { en: ['productos'], archivo: 'materiales/productos/Informe_de_convivencia_5EP.pdf', color: '#D2503B',
+    nombre: 'Informe de convivencia del grupo', para: ['convive'], etiqueta: 'Convivencia+ (sociograma)',
+    que: 'El informe para orientación y el resumen de una página para la tutora. El alumnado aparece solo con sus siglas.',
+    pasos: ['La app calcula los índices y prepara el prompt.', 'La IA redacta los dos documentos.'] },
+  { en: ['productos'], archivo: 'materiales/productos/Acta_equipo_de_ciclo_Teletrabajo.docx', color: '#3949AB',
+    nombre: 'Acta de una reunión', para: ['teletrabajo'], etiqueta: 'Teletrabajo',
+    que: 'El acta de un equipo de ciclo en Word: asistentes, orden del día, desarrollo, acuerdos y funciones del órgano.',
+    pasos: ['La app recoge la reunión y prepara el prompt.', 'La IA la redacta; se corrige en Word y se firma en Séneca.'] },
+  { en: ['productos'], archivo: 'materiales/productos/Circular_para_familias_convertida.docx', color: '#DC2626',
+    nombre: 'La circular, ya en Word', para: ['pdfaword'], etiqueta: 'PDF a Markdown y Word',
+    que: 'La circular de los materiales de prueba convertida por la app: títulos, lista y tabla se mantienen y se puede editar.',
+    pasos: ['Ábrela junto al PDF original y compáralos.'] },
+  // ── Infografías, cómics y guías de cada sesión ──
+  { en: ['lecturas1'], archivo: 'materiales/comics/de-la-servilleta-al-movil.pdf', color: '#7C3AED', nombre: 'Cómic: De la servilleta al móvil', etiqueta: 'Cómic', que: 'Cómo nace una app del cole, de la idea apuntada en una servilleta al móvil del claustro.', pasos: [] },
+  { en: ['lecturas1'], archivo: 'materiales/infografias/camino-4-sesiones.pdf', color: '#0E7490', nombre: 'De la idea a la app en 4 sesiones', etiqueta: 'Infografía', que: 'El recorrido de la formación de un vistazo.', pasos: [] },
+  { en: ['lecturas1'], archivo: 'materiales/infografias/donde-vive-cada-dato.pdf', color: '#0E7490', nombre: 'Dónde vive cada dato', etiqueta: 'Infografía', que: 'Qué se queda en el dispositivo, qué va a la nube y qué no debe llegar nunca a la IA.', pasos: [] },
+  { en: ['lecturas1'], archivo: 'materiales/infografias/semaforo-ia.pdf', color: '#0E7490', nombre: 'Semáforo de la IA', etiqueta: 'Infografía', que: 'Qué datos se pueden usar con la IA, cuáles con cuidado y cuáles nunca.', pasos: [] },
+  { en: ['lecturas1'], archivo: 'materiales/Guia_buenas_practicas_Google_Workspace_v08.pdf', color: '#047857', nombre: 'Guía de buenas prácticas de Google Workspace', etiqueta: 'Guía oficial · Protección de datos', que: 'La guía de la Consejería sobre el uso de Google Workspace y la protección de datos.', pasos: [] },
+  { en: ['lecturas2'], archivo: 'materiales/comics/siempre-salen-los-mismos.pdf', color: '#7C3AED', nombre: 'Cómic: Siempre salen los mismos', etiqueta: 'Cómic', que: 'La historia de la rueda de participación: una necesidad del aula convertida en app.', pasos: [] },
+  { en: ['lecturas2'], archivo: 'materiales/infografias/como-pedir-una-app.pdf', color: '#0E7490', nombre: 'Cómo pedir una app a la IA', etiqueta: 'Infografía', que: 'Los pasos del método para que la IA entienda lo que necesitas.', pasos: [] },
+  { en: ['lecturas3', 'lecturas4'], archivo: 'materiales/infografias/como-funciona-una-app.pdf', color: '#0E7490', nombre: 'Cómo funciona una app', etiqueta: 'Infografía', que: 'Qué es cada pieza: la página, los datos, la nube y la publicación.', pasos: [] },
+  { en: ['lecturas4'], archivo: 'materiales/infografias/chuleta-firebase.pdf', color: '#F59E0B', nombre: 'Chuleta: Firebase en 3 pasos', etiqueta: 'Infografía', que: 'Proyecto, base de datos en Europa y acceso con usuario, en una página.', pasos: [] }
 ];
 
 /* ── En directo: radiografía, modo ponente y galería ───────────────
@@ -3331,20 +3390,47 @@ const ICO = {
 
 /* ── Materiales de las prácticas ──────────────────────── */
 const matDeApp = id => MATERIALES.filter(m => (m.para || []).includes(id));
+const MAT_SESIONES = [
+  { id: 's1', grupos: [
+    { en: 'probar', t: 'Para probar las apps', d: 'Los documentos que piden las apps cuando las probamos. Inventados de arriba abajo: ni un dato real.' },
+    { en: 'productos', t: 'Lo que sale de cada app', d: 'Documentos sacados de las apps con datos inventados: así queda el trabajo terminado.' },
+    { en: 'lecturas1', t: 'Cómic, infografías y guía' } ] },
+  { id: 's2', grupos: [ { en: 'lecturas2', t: 'Cómic e infografía' } ] },
+  { id: 's3', grupos: [ { en: 'lecturas3', t: 'Infografía' } ] },
+  { id: 's4', grupos: [
+    { en: 'importar', t: 'Para cargar datos en vuestra app', d: 'Los mismos documentos de prueba, para ensayar la importación antes de usar los reales.' },
+    { en: 'lecturas4', t: 'Infografías' } ] }
+];
+function tarjetaMat(m) {
+  const ext = (m.archivo.split('.').pop() || '').toUpperCase();
+  return '<article class="mat" style="--c:' + m.color + '">' +
+    '<div class="mat-cab"><span class="mat-ext" aria-hidden="true">' + esc(ext) + '</span>' +
+    '<div><h3>' + esc(m.nombre) + '</h3><div class="mat-para">' + esc(m.etiqueta) + '</div></div></div>' +
+    '<p>' + esc(m.que) + '</p>' +
+    ((m.pasos || []).length ? '<ol class="mat-pasos">' + m.pasos.map(x => '<li>' + esc(x) + '</li>').join('') + '</ol>' : '') +
+    '<a class="btn linea" href="' + esc(m.archivo) + '" download>' + ICO.bajar + ' Descargar ' + esc(ext) + '</a>' +
+    '</article>';
+}
 function pintarMateriales() {
   const caja = $('matRejilla'); if (!caja) return;
-  caja.innerHTML = MATERIALES.map(m => {
-    const ext = (m.archivo.split('.').pop() || '').toUpperCase();
-    return '<article class="mat" style="--c:' + m.color + '">' +
-      '<div class="mat-cab"><span class="mat-ext" aria-hidden="true">' + esc(ext) + '</span>' +
-      '<div><h3>' + esc(m.nombre) + '</h3><div class="mat-para">' + esc(m.etiqueta) + '</div></div></div>' +
-      '<p>' + esc(m.que) + '</p>' +
-      '<ol class="mat-pasos">' + m.pasos.map(x => '<li>' + esc(x) + '</li>').join('') + '</ol>' +
-      '<a class="btn linea" href="' + esc(m.archivo) + '" download>' + ICO.bajar + ' Descargar ' + esc(ext) + '</a>' +
-      '</article>';
-  }).join('');
+  const ver = id => (typeof puedeVer === 'function') ? puedeVer(id) : true;
+  const abierta = id => (typeof ABIERTAS !== 'undefined') ? ABIERTAS.has(id) : true;
+  const visibles = MAT_SESIONES.filter(x => ver(x.id));
+  caja.innerHTML = visibles.map(x => {
+    const n = x.id.slice(1), tit = ((document.querySelector('#panel-' + x.id + ' .intro h2') || {}).textContent || '').trim();
+    return '<section class="mat-ses" style="--ses:var(--s' + n + ')">' +
+      '<div class="mat-ses-cab"><span class="mat-ses-n">' + n + '</span><div><h3>Sesión ' + n + (tit ? ' · ' + esc(tit) : '') + '</h3>' +
+      (abierta(x.id) ? '' : '<small class="mat-cerrada">🔒 Aún no la ven los asistentes</small>') + '</div>' +
+      '<a class="btn suave" href="materiales/Materiales_sesion_' + n + '.zip" download>' + ICO.bajar + ' Todo de la sesión (.zip)</a></div>' +
+      x.grupos.map(g => {
+        const items = MATERIALES.filter(m => (m.en || []).includes(g.en)); if (!items.length) return '';
+        return '<h4 class="mat-grupo">' + esc(g.t) + '</h4>' + (g.d ? '<p class="mat-grupo-d">' + esc(g.d) + '</p>' : '') +
+          '<div class="mat-rejilla">' + items.map(tarjetaMat).join('') + '</div>';
+      }).join('') + '</section>';
+  }).join('') || '<div class="vacio">Los materiales aparecerán aquí cuando se abra la primera sesión.</div>';
 }
 pintarMateriales();
+document.addEventListener('acceso', pintarMateriales);
 
 
 /* ── Avisos de estado (los usan la sala en directo y la galería) ── */
@@ -5020,7 +5106,7 @@ document.addEventListener('click', e => {
 
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-17-diseno-azul-noche';
+  const ID = 'formacion-novedades-2026-11-17-materiales-sesiones';
   if (typeof esPonente === 'function' && !esPonente()) return;
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
@@ -5028,7 +5114,7 @@ document.addEventListener('click', e => {
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">Nuevo diseño: cabecera azul noche, pestañas renovadas e indicador de sesión. Todo funciona igual que antes.</p>'
+    + '<p style="margin-bottom:14px">Materiales por sesiones: los asistentes solo ven los de las sesiones abiertas. En la sesión 1 hay un documento de ejemplo sacado de cada app.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
