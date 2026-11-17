@@ -1541,6 +1541,20 @@ footer{background:#fff;border-top:1px solid var(--linea)}
   details.guia > summary{padding:16px}
   .btn{min-height:48px}
 }
+
+/* Página de apoyo del libro y enlaces del muro de QR */
+.apoyo-libro{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center;margin:22px 0 8px;
+  background:linear-gradient(135deg,#fff 0%,#fff 60%,var(--turquesa-claro) 100%);border-left:4px solid var(--turquesa-osc)}
+.apoyo-libro h3{font-family:var(--display);font-weight:800;color:var(--noche);margin-bottom:4px}
+.apoyo-libro p{margin-bottom:12px}
+.apoyo-qr{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:8px;display:flex;justify-content:center}
+.apoyo-url{font:600 .85rem var(--mono);color:var(--tinta-suave);overflow-wrap:anywhere}
+.fx-qr{display:flex;flex-direction:column;align-items:center}
+.fx-qr small{display:block;line-height:1.35;margin-bottom:10px}
+.fx-abrir{display:inline-flex;align-items:center;justify-content:center;margin-top:auto;min-height:40px;padding:6px 14px;border-radius:999px;
+  font:700 .85rem var(--texto);text-decoration:none;color:var(--c);border:1.5px solid color-mix(in srgb,var(--c) 45%,#fff);background:#fff}
+.fx-abrir:hover{background:color-mix(in srgb,var(--c) 10%,#fff);border-color:var(--c)}
+@media (max-width:620px){.apoyo-libro{grid-template-columns:1fr;text-align:left}.apoyo-qr{max-width:170px}}
 /* Escritorio: las pestañas nunca se cortan (pasan a otra línea si no caben) */
 @media (min-width:861px){
   nav.pestanas{flex-wrap:wrap;overflow:visible;row-gap:10px;padding:8px 4px}
@@ -2287,6 +2301,7 @@ Que funcione también en el móvil.</pre></div>
   </div>
   <p class="ses-lleva"><strong>Te llevas:</strong> tu app publicada en internet con su dirección y su código QR, instalada en el móvil con su icono y con el estilo del centro, y una canción para tu clase hecha con IA.</p>
   <p><strong>Antes de venir:</strong> crea tu cuenta en <a href="https://github.com" target="_blank" rel="noopener">github.com</a> (gratuita) y trae el archivo de la herramienta que hiciste en la sesión 2 o de tu reto del mes. Para la música, piensa el tema de la canción de tu clase.</p>
+  <div class="tarjeta apoyo-libro"><div class="apoyo-qr" data-qr-apoyo="https://vunisal706-droid.github.io/IAparadocentes/"></div><div><h3>IA para docentes · página de apoyo</h3><p>Las plantillas de las apps al día, el configurador, Firebase paso a paso y la ayuda para publicar. Sin datos de ningún centro: os sirve para seguir cuando acabe la formación.</p><div class="fila"><a class="btn azul" href="https://vunisal706-droid.github.io/IAparadocentes/" target="_blank" rel="noopener">Abrir la página de apoyo</a><span class="apoyo-url">vunisal706-droid.github.io/IAparadocentes</span></div></div></div>
   <h3 class="bloque" style="margin-top:26px" id="guion-s3">La sesión, paso a paso</h3>
   <div class="gp-cab"><p class="gp-ayuda">Cada parte de la sesión, en orden. Ábrela para leer lo que se cuenta y ver el material. Con <b>✓</b> se marca como vista y se pliega.</p><p class="gp-reinicio solo-ponente no-imprimir"><button class="enlace" data-gpreset="s3">Desmarcar todas</button> · <button class="enlace" data-gptodo="s3">Abrir todas</button></p></div>
   <div class="gp">
@@ -2474,6 +2489,7 @@ Usa esta letra:
   </div>
   <p class="ses-lleva"><strong>Te llevas:</strong> la app que eligió el centro funcionando con vuestra propia base de datos, con inicio de sesión y reglas de seguridad, tu app revisada y presentada en la galería, y un plan para que todo siga funcionando.</p>
   <p><strong>Antes de venir:</strong> trae la cuenta de Google del centro. La app será la que ganó la votación de la sesión 1; si prefieres otra, mírala antes en la pestaña <a href="https://vunisal706-droid.github.io/IAparadocentes/#apps" target="_blank" rel="noopener">Apps</a> de la página de apoyo. Ten a mano tu cuenta de GitHub de la sesión 3.</p>
+  <div class="tarjeta apoyo-libro"><div class="apoyo-qr" data-qr-apoyo="https://vunisal706-droid.github.io/IAparadocentes/"></div><div><h3>IA para docentes · página de apoyo</h3><p>Las plantillas de las apps al día, el configurador, Firebase paso a paso y la ayuda para publicar. Sin datos de ningún centro: os sirve para seguir cuando acabe la formación.</p><div class="fila"><a class="btn azul" href="https://vunisal706-droid.github.io/IAparadocentes/" target="_blank" rel="noopener">Abrir la página de apoyo</a><span class="apoyo-url">vunisal706-droid.github.io/IAparadocentes</span></div></div></div>
   <h3 class="bloque" style="margin-top:26px" id="guion-s4">La sesión, paso a paso</h3>
   <div class="gp-cab"><p class="gp-ayuda">Cada parte de la sesión, en orden. Ábrela para leer lo que se cuenta y ver el material. Con <b>✓</b> se marca como vista y se pliega.</p><p class="gp-reinicio solo-ponente no-imprimir"><button class="enlace" data-gpreset="s4">Desmarcar todas</button> · <button class="enlace" data-gptodo="s4">Abrir todas</button></p></div>
   <div class="gp">
@@ -2788,6 +2804,8 @@ Añade una opción para practicar una tabla de multiplicar concreta, del 1 al 10
     <span class="mat-aviso"><b>Antes de la sesión:</b> descárgalos y descomprímelos en una carpeta del escritorio. Desde ahí se arrastran a cada app. De una pestaña del navegador a otra no se pueden arrastrar.</span>
   </div>
   <div class="mat-rejilla" id="matRejilla"></div>
+  <h3 class="bloque">Para seguir después</h3>
+  <div class="tarjeta apoyo-libro"><div class="apoyo-qr" data-qr-apoyo="https://vunisal706-droid.github.io/IAparadocentes/"></div><div><h3>IA para docentes · página de apoyo</h3><p>Las plantillas de las apps al día, el configurador, Firebase paso a paso y la ayuda para publicar. Sin datos de ningún centro: os sirve para seguir cuando acabe la formación.</p><div class="fila"><a class="btn azul" href="https://vunisal706-droid.github.io/IAparadocentes/" target="_blank" rel="noopener">Abrir la página de apoyo</a><span class="apoyo-url">vunisal706-droid.github.io/IAparadocentes</span></div></div></div>
 </section>
 
 <!-- ═════════════════════ PRIVACIDAD Y DATOS ═════════════════════ -->
@@ -4770,7 +4788,7 @@ $$('[data-grupo]').forEach(cont => { const gi = +cont.dataset.grupo, g = GRUPOS[
 let muroHecho = false;
 function pintarMuro() {
   if (muroHecho) return; muroHecho = true;
-  $('fxMuro').innerHTML = LISTA.map(a => '<div class="fx-qr" style="--c:' + a.color + '"><div class="q" data-q="' + esc(a.url) + '"></div><b>' + esc(a.nombre) + '</b><small>' + (conUsuario(a) ? 'Con usuario · la enseña el ponente' : 'Pruébala tú') + '</small></div>').join('');
+  $('fxMuro').innerHTML = LISTA.map(a => '<div class="fx-qr" style="--c:' + a.color + '"><div class="q" data-q="' + esc(a.url) + '"></div><b>' + esc(a.nombre) + '</b><small>' + (conUsuario(a) ? 'Con usuario · la enseña el ponente' : 'Pruébala tú') + '</small><a class="fx-abrir" href="' + esc(a.url) + '" target="_blank" rel="noopener">Abrir enlace ↗</a></div>').join('');
   $$('#fxMuro .q').forEach(q => pintarQR(q, q.dataset.q, 132));
 }
 
@@ -5150,6 +5168,10 @@ document.addEventListener('click', e => {
   document.querySelectorAll('section.panel').forEach(function(p){ obs.observe(p,{attributes:true,attributeFilter:['class']}); });
   pinta();
 })();
+</script>
+<script>
+/* QR de la página de apoyo del libro */
+(function(){ document.querySelectorAll('[data-qr-apoyo]').forEach(function(c){ c.innerHTML=''; if(window.QRCode) new QRCode(c,{text:c.dataset.qrApoyo,width:140,height:140,colorDark:'#061A38',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M}); else c.textContent=c.dataset.qrApoyo; }); })();
 </script>
 </body>
 </html>
