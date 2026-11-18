@@ -4527,7 +4527,7 @@ const FX = {
 const EXTRA = [
   { id: 'capitool', nombre: 'Capitoolappciones', color: '#0E7490', url: 'https://vunisal706-droid.github.io/central/' },
   { id: 'tablon', nombre: 'Tablón de Avisos', color: '#C2410C', url: 'https://vunisal706-droid.github.io/tablon/' },
-  { id: 'agenda', nombre: 'Agenda del Equipo Directivo', color: '#7C3AED', url: 'https://vunisal706-droid.github.io/agenda/', u: 1 },
+  { id: 'agenda', nombre: 'Agenda del Equipo Directivo', color: '#7C3AED', url: 'https://vunisal706-droid.github.io/agenda/' },
   { id: 'capiguia', nombre: 'CapiGuía', color: '#0F766E', url: 'https://vunisal706-droid.github.io/capiguia/' },
   { id: 'pcentro', nombre: 'Plan de Centro', color: '#BE123C', url: 'https://vunisal706-droid.github.io/proyectocentro/' },
   { id: 'programas', nombre: 'Programas del cole', color: '#4D7C0F', url: 'https://vunisal706-droid.github.io/programas/', u: 1 },
@@ -4571,6 +4571,9 @@ const ORDEN = ['troglodita', 'portal', 'registro', 'aulapt', 'agora', 'sda', 're
 const TODAS = APPS.concat(EXTRA);
 const LISTA = ORDEN.map(id => TODAS.find(a => a.id === id)).filter(Boolean);
 const conUsuario = a => !!a.u || /usuario/i.test(a.usa || '');
+// Apps con usuario que traen modo demostración (datos inventados y guía): se abren y se mandan con ?demo
+const CON_DEMO = { evaluaciones: 1, convive: 1, convivemas: 1, programas: 1, refuerzo: 1, gestorpt: 1 };
+const urlDemo = a => a.url + (a.url.includes('?') ? '&' : '?') + 'demo';
 const B = 'rgba(255,255,255,';
 /* Pantallas en miniatura dibujadas: cada una cuenta de un vistazo qué hace la app */
 const MINI = {
@@ -4610,7 +4613,7 @@ pista.innerHTML = LISTA.map(a => {
   const f = FX[a.id] || { cat: '', problema: a.desc };
   return '<article class="fx-carta" style="--c:' + a.color + '" data-fx="' + a.id + '"><div class="fx-pant">' + mini(a.id) + '</div><div class="fx-cuerpo">' +
     '<span class="fx-cat">' + esc(f.cat) + '</span><h3>' + esc(a.nombre) + '</h3><p>' + esc(f.problema) + '</p>' +
-    '<div class="fx-pie">' + (a.url ? '<a class="btn linea" href="' + esc(a.url) + '" target="_blank" rel="noopener">Abrir</a>' : '') +
+    '<div class="fx-pie">' + (a.url ? '<a class="btn linea" href="' + esc(a.url) + '" target="_blank" rel="noopener">Abrir</a>' : '') + (a.url && CON_DEMO[a.id] ? '<a class="btn linea" href="' + esc(urlDemo(a)) + '" target="_blank" rel="noopener" title="Datos inventados y guía de cada apartado">🧪 Demo</a>' : '') +
     matDeApp(a.id).map(m => '<a class="fx-mat" href="' + esc(m.archivo) + '" download title="Material de ejemplo: ' + esc(m.nombre) + '">📎 ' + esc((m.archivo.split('.').pop() || '').toUpperCase()) + '</a>').join('') +
     '<button class="fx-voto" data-fxvoto="' + a.id + '" aria-pressed="false" hidden>Votar</button></div></div></article>';
 }).join('');
@@ -4834,7 +4837,7 @@ function decorarApps() {
     const a = appPorId(c.dataset.fx), pie = c.querySelector('.fx-pie');
     if (!a || !a.url || !pie || pie.querySelector('.dv-app')) return;
     const ej = ejemploDe(a);
-    pie.insertAdjacentHTML('beforeend', '<button type="button" class="btn suave dv-app solo-ponente no-imprimir" data-app="' + escH(a.id) + '">📲 ' + (conUsuario(a) ? 'Enlace' : 'En todos los móviles') + '</button>' +
+    pie.insertAdjacentHTML('beforeend', '<button type="button" class="btn suave dv-app solo-ponente no-imprimir" data-app="' + escH(a.id) + '">📲 ' + (CON_DEMO[a.id] ? 'Demo a los móviles' : conUsuario(a) ? 'Enlace' : 'En todos los móviles') + '</button>' +
       (ej ? '<button type="button" class="btn suave dv-ej solo-ponente no-imprimir" data-app="' + escH(a.id) + '">📄 Ejemplo</button>' : ''));
   });
   document.querySelectorAll('[data-grupo] li').forEach(li => {
@@ -4842,7 +4845,7 @@ function decorarApps() {
     const nom = (li.querySelector('b') || {}).textContent, a = LISTA.find(x => x.nombre === nom);
     if (!a || !a.url) return;
     const ej = ejemploDe(a);
-    li.insertAdjacentHTML('beforeend', '<span class="dv-botones solo-ponente no-imprimir"><button type="button" class="dv-app dv-app-mini" data-app="' + escH(a.id) + '" title="Mandar el enlace a todos los móviles">📲</button>' +
+    li.insertAdjacentHTML('beforeend', '<span class="dv-botones solo-ponente no-imprimir"><button type="button" class="dv-app dv-app-mini" data-app="' + escH(a.id) + '" title="' + (CON_DEMO[a.id] ? 'Mandar la demostración (datos inventados) a todos los móviles' : 'Mandar el enlace a todos los móviles') + '">📲</button>' +
       (ej ? '<button type="button" class="dv-ej dv-app-mini" data-app="' + escH(a.id) + '" title="Mandar a los móviles su documento de ejemplo">📄</button>' : '') + '</span>');
   });
 }
@@ -4855,7 +4858,7 @@ decorarApps(); setTimeout(decorarApps, 1500);
 document.addEventListener('click', e => {
   const b = e.target.closest('.dv-app'); if (!b) return; e.preventDefault(); e.stopPropagation();
   const a = appPorId(b.dataset.app); if (!a || !window.enviarAMoviles) return;
-  window.enviarAMoviles({ tipo: 'app', titulo: a.nombre, sub: (FX[a.id] || {}).problema || '', url: a.url, color: a.color });
+  window.enviarAMoviles({ tipo: 'app', titulo: a.nombre + (CON_DEMO[a.id] ? ' · demostración' : ''), sub: (FX[a.id] || {}).problema || '', url: CON_DEMO[a.id] ? urlDemo(a) : a.url, color: a.color });
 }, true);
 if ($('qrFijoQ')) pintarQR($('qrFijoQ'), BASE + '#sala=' + SALA_FIJA, 150);
 Object.assign(window, { pizarraEnVivo, pizarraFin, asistenteEnVivo, recibirVoto });
@@ -5153,7 +5156,7 @@ document.addEventListener('click', e => {
 
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-18-apps-por-dificultad';
+  const ID = 'formacion-novedades-2026-11-18-demos';
   if (typeof esPonente === 'function' && !esPonente()) return;
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
@@ -5161,7 +5164,7 @@ document.addEventListener('click', e => {
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">Sesión 1: las apps van ahora por dificultad (sin base de datos, con base de datos y el ecosistema). Todas se pueden mandar a los móviles y las que piden usuario, también su documento de ejemplo.</p>'
+    + '<p style="margin-bottom:14px">🧪 Las apps con usuario (Evaluaciones, Convivencia+, Convive+, Programas, Refuerzo y Gestor PT) tienen ahora <b>modo demostración</b>: datos inventados y una guía de cada apartado. Botón «🧪 Demo» en su tarjeta y 📲 manda la demo a los móviles.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
