@@ -5166,7 +5166,7 @@ document.addEventListener('click', e => {
 
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-19-bingo4';
+  const ID = 'formacion-novedades-2026-11-19-bingo45';
   if (typeof esPonente === 'function' && !esPonente()) return;
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
@@ -5174,7 +5174,7 @@ document.addEventListener('click', e => {
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">🎱 Cuatro frases nuevas en el bingo del recreo.</p>'
+    + '<p style="margin-bottom:14px">🎱 Bingo del recreo renovado: 45 frases de cole.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
@@ -5439,16 +5439,51 @@ body.rc-abierto .rc-lanzar{display:none}
   const { S, FB, ref } = window.DIRECTO_PUENTE;
   const RC = window.RECREO_DATOS = {
     bingo: [
-      'Esto ya lo hablamos en el ciclo', '¿Quién tiene la llave del aula de música?', 'La fotocopiadora se ha atascado',
-      'Hay que subirlo a Séneca', '¿Esto entra en la memoria?', 'Que conste en acta', 'Hay que rellenar un anexo',
-      'El proyector no se ve bien', '¿Alguien tiene un cargador?', 'Se ha caído el wifi', 'Lo dejamos para la próxima reunión',
-      'Es para ayer', 'Ha llegado un correo de la Delegación', '¿Dónde está el mando de la pizarra?', 'Es por la normativa',
-      '¿A quién le toca la guardia?', 'Lo comento con Jefatura', 'Este rotulador no pinta', 'Me he dejado el café en la sala',
-      'Han vuelto a cambiar la contraseña', 'Una cosa rápida…', 'Eso va en el Plan de Centro', '¿Lo ponemos en el grupo de WhatsApp?',
-      'No me he sentado en toda la mañana', '¿Cuándo es la sesión de evaluación?', 'Quedan dos semanas para las vacaciones',
-      '¿Quién trae algo para el desayuno?', 'No me ha llegado la convocatoria', '¿Me dejas tus fotocopias?', 'Esto mejor por escrito',
-      'Hasta que no haya silencio, no salimos al recreo', 'Esto entra en el examen… bueno, todo lo que hemos dado entra',
-      'El que tenga dudas, que pregunte ahora, no el día del examen', 'Los de infantil se portan mejor que vosotros'
+      '¿Quién tiene la llave del aula de música?',
+      'La fotocopiadora se ha atascado',
+      'Hay que subirlo a Séneca',
+      'Hay que rellenar un anexo',
+      'El proyector no se ve bien',
+      '¿Alguien tiene un cargador?',
+      'No va Andared',
+      'Lo dejamos para la próxima reunión',
+      '¿Dónde está el mando del proyector… o del aire?',
+      'Es por la normativa',
+      '¿A quién le toca el recreo?',
+      'Este rotulador no pinta',
+      'Eso va en el Plan de Centro',
+      '¿Lo ponemos en el grupo de WhatsApp?',
+      'No me he sentado en toda la mañana',
+      '¿Cuándo es la sesión de evaluación?',
+      'Quedan dos semanas para las vacaciones',
+      '¿Quién trae algo para el desayuno?',
+      'No me ha llegado la convocatoria',
+      'Esto mejor por escrito',
+      'Hasta que no haya silencio, no salimos al recreo',
+      'Esto entra en el examen… bueno, todo lo que hemos dado entra',
+      'El que tenga dudas, que pregunte ahora, no el día del examen',
+      'Los de infantil se portan mejor que vosotros',
+      '¡Madre mía, qué día llevo!',
+      'Hace un calor en esta clase que no se puede estar',
+      '¡Cerrad la puerta, que se va el aire!',
+      'Lo mando por iPasen',
+      'Las familias no leen el iPasen',
+      'Eso, en la tutoría del lunes por la tarde',
+      '¿Ha llegado ya la fruta del programa?',
+      'Mañana viene el inspector',
+      'Falta la autorización de la excursión',
+      'Mañana hay simulacro de evacuación',
+      'Ha habido piojos en la clase',
+      'Silencio, que os estoy viendo',
+      'Hay que subirlo al Drive',
+      '¡Que esto no es el patio!',
+      '¿Quién se ha llevado mi grapadora?',
+      'Se han acabado los folios',
+      'Esta tarde hay claustro… otra vez',
+      'Mi niño dice que no tenía deberes',
+      'Falta la SdA de este mes',
+      'La reunión es telemática, ¿no?',
+      'Ya se ha metido el frío'
     ],
     signos: [['♈', 'Aries'], ['♉', 'Tauro'], ['♊', 'Géminis'], ['♋', 'Cáncer'], ['♌', 'Leo'], ['♍', 'Virgo'],
       ['♎', 'Libra'], ['♏', 'Escorpio'], ['♐', 'Sagitario'], ['♑', 'Capricornio'], ['♒', 'Acuario'], ['♓', 'Piscis']],
