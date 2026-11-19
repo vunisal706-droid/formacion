@@ -5160,7 +5160,7 @@ document.addEventListener('click', e => {
 
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-19-recreo';
+  const ID = 'formacion-novedades-2026-11-19-recreo-mini';
   if (typeof esPonente === 'function' && !esPonente()) return;
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
@@ -5168,7 +5168,7 @@ document.addEventListener('click', e => {
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">😂 Nuevo botón <b>«Mientras la IA piensa»</b> para las esperas: bingo del claustro, horóscopo docente y excusas épicas, en la pizarra y en los móviles. También desde el mando.</p>'
+    + '<p style="margin-bottom:14px">😂 El botón «Mientras la IA piensa» ahora es un icono pequeño, abajo a la izquierda.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
@@ -5315,10 +5315,10 @@ document.addEventListener('click', e => {
 </script>
 <style>
 /* ══════════ RECREO · «Mientras la IA piensa» ══════════ */
-.rc-lanzar{position:fixed;left:14px;bottom:14px;z-index:61;display:flex;align-items:center;gap:8px;border:0;cursor:pointer;
-  font:700 .95rem var(--display);color:#fff;padding:11px 18px 11px 12px;border-radius:999px;
+.rc-lanzar{position:fixed;left:12px;bottom:12px;z-index:61;display:grid;place-items:center;border:0;cursor:pointer;
+  width:42px;height:42px;padding:0;border-radius:50%;
   background:linear-gradient(120deg,#FF7A59,#FF4F8B 55%,#8057F5);box-shadow:0 10px 24px -10px rgba(255,79,139,.75);opacity:.9;transition:transform .15s,opacity .15s}
-.rc-lanzar span{font-size:1.35rem;line-height:1}
+.rc-lanzar span{font-size:1.3rem;line-height:1}
 .rc-lanzar:hover{opacity:1;transform:translateY(-2px)}
 body.rc-abierto .rc-lanzar{display:none}
 @media print{.rc-lanzar,.rc-capa,.rc-movil{display:none!important}}
@@ -5548,8 +5548,8 @@ body.rc-abierto .rc-lanzar{display:none}
 
   /* ── Pizarra ── */
   const btn = document.createElement('button');
-  btn.type = 'button'; btn.className = 'rc-lanzar solo-ponente no-imprimir'; btn.innerHTML = '<span>😂</span> Mientras la IA piensa';
-  btn.title = 'Juegos para las esperas: bingo del claustro, horóscopo docente y excusas épicas';
+  btn.type = 'button'; btn.className = 'rc-lanzar solo-ponente no-imprimir'; btn.innerHTML = '<span>😂</span>'; btn.setAttribute('aria-label', 'Mientras la IA piensa');
+  btn.title = 'Mientras la IA piensa: bingo, horóscopo y excusas';
   document.body.appendChild(btn);
   btn.onclick = () => accion(R0() && R0().j ? R0().j : 'bingo');
 
