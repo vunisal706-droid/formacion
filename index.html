@@ -5166,7 +5166,7 @@ document.addEventListener('click', e => {
 
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-19-informes';
+  const ID = 'formacion-novedades-2026-11-19-bingo4';
   if (typeof esPonente === 'function' && !esPonente()) return;
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
@@ -5174,7 +5174,7 @@ document.addEventListener('click', e => {
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">📄 En Materiales tenéis el informe de IA para vuestro centro, en PDF.</p>'
+    + '<p style="margin-bottom:14px">🎱 Cuatro frases nuevas en el bingo del recreo.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
@@ -5446,7 +5446,9 @@ body.rc-abierto .rc-lanzar{display:none}
       '¿A quién le toca la guardia?', 'Lo comento con Jefatura', 'Este rotulador no pinta', 'Me he dejado el café en la sala',
       'Han vuelto a cambiar la contraseña', 'Una cosa rápida…', 'Eso va en el Plan de Centro', '¿Lo ponemos en el grupo de WhatsApp?',
       'No me he sentado en toda la mañana', '¿Cuándo es la sesión de evaluación?', 'Quedan dos semanas para las vacaciones',
-      '¿Quién trae algo para el desayuno?', 'No me ha llegado la convocatoria', '¿Me dejas tus fotocopias?', 'Esto mejor por escrito'
+      '¿Quién trae algo para el desayuno?', 'No me ha llegado la convocatoria', '¿Me dejas tus fotocopias?', 'Esto mejor por escrito',
+      'Hasta que no haya silencio, no salimos al recreo', 'Esto entra en el examen… bueno, todo lo que hemos dado entra',
+      'El que tenga dudas, que pregunte ahora, no el día del examen', 'Los de infantil se portan mejor que vosotros'
     ],
     signos: [['♈', 'Aries'], ['♉', 'Tauro'], ['♊', 'Géminis'], ['♋', 'Cáncer'], ['♌', 'Leo'], ['♍', 'Virgo'],
       ['♎', 'Libra'], ['♏', 'Escorpio'], ['♐', 'Sagitario'], ['♑', 'Capricornio'], ['♒', 'Acuario'], ['♓', 'Piscis']],
