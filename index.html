@@ -3645,6 +3645,7 @@ function aplicarEstado(e, navegar) {
   S.estado.parte = e.parte || S.estado.parte || '';
   S.estado.actividad = e.actividad || '';
   S.estado.feria = e.feria || ''; S.estado.ganadora = e.ganadora || '';
+  { const rc = e.recreo || null; if (JSON.stringify(rc) !== JSON.stringify(S.estado.recreo || null)) { S.estado.recreo = rc; if (window.recibirRecreo) window.recibirRecreo(); } }
   if (e.voto && (!S.estado.voto || S.estado.voto.n !== e.voto.n || S.estado.voto.abierto !== e.voto.abierto)) { S.estado.voto = e.voto; if (window.recibirVoto) window.recibirVoto(e.voto); }
   if (e.envio && (!S.estado.envio || S.estado.envio.n !== e.envio.n)) { S.estado.envio = e.envio; if (window.recibirEnvio) window.recibirEnvio(e.envio); }
   if (typeof e.abiertas === 'string' && S.rol !== 'dueno' && S.rol !== 'local') { S.estado.abiertas = e.abiertas; if (e.abiertas !== [...ABIERTAS].join(',')) fijarAbiertas(e.abiertas.split(',')); }
@@ -3933,6 +3934,7 @@ function pintarMando() {
     h += '<div class="mando-botones"><button class="ant" data-m="pant" aria-label="Parte anterior">‹</button><button class="sig" data-m="psig" aria-label="Parte siguiente">›</button></div>';
   }
   if (G) h += '<div class="mando-partes">' + G.map((x, i) => '<button data-m="parte" data-i="' + i + '" aria-current="' + (i === pi) + '" class="' + (vistos.includes(i) ? 'visto' : '') + '">' + x.h + ' · ' + (i + 1) + '. ' + esc(x.t) + '</button>').join('') + '</div>';
+  if (window.mandoRecreo) h += window.mandoRecreo();
   h += '<div class="mando-paneles">' + Object.keys(TITULOS_PANEL).map(p =>
       '<button data-m="panel" data-p="' + p + '" aria-current="' + (pan === p) + '">' + TITULOS_PANEL[p] + '</button>').join('') + '</div>';
   mando.innerHTML = cab + '<div class="mando-cuerpo">' + h + '</div>';
@@ -3950,6 +3952,7 @@ mando.addEventListener('click', e => {
     const n = Math.max(0, Math.min(G.length - 1, pi + (m === 'psig' ? 1 : -1)));
     if (G.length) emitir({ parte: pan + ':' + n });
   } else if (m === 'panel') irA(b.dataset.p);
+  else if (m === 'recreo' && window.recreoAccion) window.recreoAccion(b.dataset.q);
   if (navigator.vibrate) navigator.vibrate(15);
 });
 function arrancarReloj() { clearInterval(M.reloj); M.reloj = setInterval(() => { const r = $('mReloj'); if (r) r.textContent = mmss(Date.now() - M.inicio); }, 1000); }
@@ -4863,7 +4866,7 @@ document.addEventListener('click', e => {
 }, true);
 if ($('qrFijoQ')) pintarQR($('qrFijoQ'), BASE + '#sala=' + SALA_FIJA, 150);
 Object.assign(window, { pizarraEnVivo, pizarraFin, asistenteEnVivo, recibirVoto });
-window.DIRECTO_PUENTE = { S, emitir };   // para la guía de privacidad (envío a los móviles)
+window.DIRECTO_PUENTE = { S, emitir, FB, ref };   // para la guía de privacidad (envío a los móviles)
 })();
 
 /* ── Guion con reloj ── */
@@ -5157,7 +5160,7 @@ document.addEventListener('click', e => {
 
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-18-demos';
+  const ID = 'formacion-novedades-2026-11-19-recreo';
   if (typeof esPonente === 'function' && !esPonente()) return;
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
@@ -5165,7 +5168,7 @@ document.addEventListener('click', e => {
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">🧪 Las apps con usuario (Evaluaciones, Convivencia+, Convive+, Programas, Refuerzo y Gestor PT) tienen ahora <b>modo demostración</b>: datos inventados y una guía de cada apartado. Botón «🧪 Demo» en su tarjeta y 📲 manda la demo a los móviles.</p>'
+    + '<p style="margin-bottom:14px">😂 Nuevo botón <b>«Mientras la IA piensa»</b> para las esperas: bingo del claustro, horóscopo docente y excusas épicas, en la pizarra y en los móviles. También desde el mando.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
@@ -5309,6 +5312,391 @@ document.addEventListener('click', e => {
 <script>
 /* QR de la página de apoyo del libro */
 (function(){ document.querySelectorAll('[data-qr-apoyo]').forEach(function(c){ c.innerHTML=''; if(window.QRCode) new QRCode(c,{text:c.dataset.qrApoyo,width:140,height:140,colorDark:'#061A38',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M}); else c.textContent=c.dataset.qrApoyo; }); })();
+</script>
+<style>
+/* ══════════ RECREO · «Mientras la IA piensa» ══════════ */
+.rc-lanzar{position:fixed;left:14px;bottom:14px;z-index:61;display:flex;align-items:center;gap:8px;border:0;cursor:pointer;
+  font:700 .95rem var(--display);color:#fff;padding:11px 18px 11px 12px;border-radius:999px;
+  background:linear-gradient(120deg,#FF7A59,#FF4F8B 55%,#8057F5);box-shadow:0 10px 24px -10px rgba(255,79,139,.75);opacity:.9;transition:transform .15s,opacity .15s}
+.rc-lanzar span{font-size:1.35rem;line-height:1}
+.rc-lanzar:hover{opacity:1;transform:translateY(-2px)}
+body.rc-abierto .rc-lanzar{display:none}
+@media print{.rc-lanzar,.rc-capa,.rc-movil{display:none!important}}
+
+.rc-capa{position:fixed;inset:0;z-index:9990;overflow:auto;color:#1B1F3B;
+  background:radial-gradient(60% 50% at 0% 0%,#FFE1D6 0%,transparent 60%),radial-gradient(55% 55% at 100% 10%,#E6DCFF 0%,transparent 60%),radial-gradient(60% 60% at 50% 100%,#D3F6F1 0%,transparent 60%),#FFFBF7;
+  animation:rcEntra .35s ease-out}
+.rc-capa[hidden]{display:none}
+@keyframes rcEntra{from{opacity:0;transform:scale(.98)}to{opacity:1;transform:none}}
+.rc-tabs{display:flex;gap:10px;flex-wrap:wrap;padding:18px 24px 0;align-items:center}
+.rc-tabs button{display:flex;align-items:center;gap:8px;border:2px solid transparent;background:rgba(255,255,255,.75);cursor:pointer;
+  font:700 1rem var(--display);color:#3B3F63;padding:10px 18px;border-radius:999px;box-shadow:0 4px 14px -8px rgba(60,40,140,.4)}
+.rc-tabs button span{font-size:1.3rem}
+.rc-tabs button[aria-current="true"]{background:#fff;border-color:#FF4F8B;color:#1B1F3B}
+.rc-tabs .rc-volver{margin-left:auto;background:#1B1F3B;color:#fff}
+.rc-cuerpo{max-width:1180px;margin:0 auto;padding:18px 28px 34px}
+.rc-cab h2{font:800 clamp(1.8rem,3.4vw,2.8rem)/1.05 var(--display);margin:6px 0 6px;letter-spacing:-.02em}
+.rc-cab p{font-size:1.12rem;color:#4B4F72;margin:0 0 18px;max-width:70ch}
+.rc-acc{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:20px}
+.rc-b{border:0;cursor:pointer;font:800 1.05rem var(--display);padding:14px 22px;border-radius:16px;background:#fff;color:#1B1F3B;box-shadow:0 6px 18px -10px rgba(60,40,140,.5)}
+.rc-b.grande{background:linear-gradient(120deg,#FF7A59,#FF4F8B 60%,#8057F5);color:#fff;font-size:1.2rem;padding:16px 28px}
+.rc-b:active{transform:scale(.97)}
+.rc-cont{font-weight:700;color:#4B4F72;background:rgba(255,255,255,.7);padding:8px 14px;border-radius:999px}
+
+/* bingo */
+.rc-bola{background:#fff;border-radius:28px;padding:30px 36px;box-shadow:0 20px 40px -22px rgba(80,40,160,.5);border:3px solid #FFD2E2;
+  animation:rcBola .5s cubic-bezier(.2,1.4,.4,1)}
+.rc-bola small{display:inline-block;font:800 .9rem var(--display);text-transform:uppercase;letter-spacing:.12em;color:#fff;background:#FF4F8B;padding:5px 12px;border-radius:999px}
+.rc-bola strong{display:block;font:800 clamp(2rem,4.6vw,3.6rem)/1.1 var(--display);margin-top:12px;color:#1B1F3B;letter-spacing:-.015em}
+.rc-bola.vacia strong{color:#8A8DAA;font-size:clamp(1.4rem,2.6vw,2rem)}
+@keyframes rcBola{from{opacity:0;transform:translateY(16px) scale(.96)}to{opacity:1;transform:none}}
+.rc-salidas{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.rc-salidas span{background:rgba(255,255,255,.85);border:1px solid #EAE3FF;color:#4B4F72;font-weight:600;font-size:.95rem;padding:6px 12px;border-radius:999px}
+.rc-bingo-grito{position:fixed;inset:0;display:grid;place-content:center;text-align:center;pointer-events:none;z-index:2;background:rgba(255,251,247,.6);animation:rcGrito 4.2s ease forwards}
+.rc-bingo-grito b{font:900 clamp(4rem,14vw,11rem)/1 var(--display);color:#FF4F8B;text-shadow:6px 6px 0 #FFD2E2;animation:rcLatido .6s ease-in-out 3}
+.rc-bingo-grito span{font:800 1.6rem var(--display);color:#1B1F3B;margin-top:10px}
+@keyframes rcGrito{0%{opacity:0}8%{opacity:1}85%{opacity:1}100%{opacity:0}}
+@keyframes rcLatido{50%{transform:scale(1.08) rotate(-2deg)}}
+
+/* horóscopo */
+.rc-horo{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.rc-signo{background:#fff;border-radius:18px;padding:14px 16px;box-shadow:0 8px 20px -14px rgba(80,40,160,.55);border-top:5px solid hsl(calc(var(--i)*30) 85% 62%);
+  animation:rcBola .45s ease-out both;animation-delay:calc(var(--i)*40ms)}
+.rc-sg{display:flex;align-items:center;gap:8px;font:800 1.05rem var(--display);margin-bottom:6px}
+.rc-sg span{font-size:1.5rem;width:36px;height:36px;display:grid;place-items:center;border-radius:12px;background:hsl(calc(var(--i)*30) 90% 94%);color:hsl(calc(var(--i)*30) 70% 38%)}
+.rc-signo p{margin:0;font-size:.98rem;line-height:1.38;color:#33375A}
+@media (max-width:900px){.rc-horo{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* excusas */
+.rc-excusa{position:relative;background:#fff;border-radius:28px;padding:34px 40px 30px 72px;box-shadow:0 20px 40px -22px rgba(80,40,160,.5);border:3px solid #E6DCFF;animation:rcBola .5s ease-out}
+.rc-comillas{position:absolute;left:22px;top:6px;font:900 6rem/1 var(--display);color:#FFB4CF}
+.rc-excusa strong{display:block;font:800 clamp(1.9rem,4.2vw,3.3rem)/1.12 var(--display);letter-spacing:-.015em}
+.rc-excusa.desvelada.clasica{border-color:#8BD9A8}.rc-excusa.desvelada.ia{border-color:#B79CFF}
+.rc-sol{margin-top:18px;display:flex;flex-direction:column;gap:4px;animation:rcBola .5s ease-out}
+.rc-sol b{font:800 1.5rem var(--display)}.rc-sol span{font-size:1.15rem;color:#4B4F72}
+.rc-excusa.clasica .rc-sol b{color:#177A4C}.rc-excusa.ia .rc-sol b{color:#6D3FD1}
+.rc-barras{margin-top:16px;display:grid;gap:10px;max-width:760px}
+.rc-barras[hidden]{display:none}
+.rc-barras .f{display:grid;grid-template-columns:230px 1fr 48px;align-items:center;gap:12px;font-weight:700;font-size:1.05rem}
+.rc-barras .f div{height:20px;border-radius:999px;background:rgba(255,255,255,.85);overflow:hidden}
+.rc-barras .f i{display:block;height:100%;width:0;border-radius:999px;transition:width .5s}
+.rc-barras .clasica i{background:linear-gradient(90deg,#34D399,#177A4C)}.rc-barras .ia i{background:linear-gradient(90deg,#B79CFF,#6D3FD1)}
+.rc-barras .f b{font:800 1.3rem var(--display);text-align:right}
+
+/* móvil del asistente */
+.rc-movil{position:fixed;inset:0;z-index:9995;background:rgba(27,31,59,.35);display:flex;align-items:flex-end;justify-content:center;padding:10px}
+.rc-movil[hidden]{display:none}
+.rc-hoja{position:relative;width:100%;max-width:480px;max-height:92vh;overflow:auto;background:#FFFBF7;border-radius:24px;padding:20px 16px 18px;
+  box-shadow:0 -10px 40px -10px rgba(0,0,0,.3);animation:rcSube .3s ease-out;color:#1B1F3B}
+@keyframes rcSube{from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1}}
+.rc-hoja h3{font:800 1.4rem var(--display);margin:0 0 6px}
+.rc-min{position:absolute;right:12px;top:12px;border:0;background:#EEE9FF;color:#3B3F63;font-weight:700;border-radius:999px;padding:6px 12px;cursor:pointer}
+.rc-ayu{color:#4B4F72;margin:0 0 12px;font-size:.95rem}
+.rc-carton{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.rc-c{aspect-ratio:1;border:2px solid #EAE3FF;background:#fff;border-radius:14px;padding:6px;font:700 .8rem/1.2 var(--display);color:#33375A;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;transition:transform .15s}
+.rc-c.salio{border-color:#FF9EC0;box-shadow:0 0 0 3px #FFE1EC}
+.rc-c.marcada{background:linear-gradient(135deg,#FF7A59,#FF4F8B);border-color:transparent;color:#fff;box-shadow:none}
+.rc-c.libre{background:linear-gradient(135deg,#34D399,#0A8FA3);font-size:1.6rem}.rc-c.libre small{font-size:.7rem}
+.rc-c.nope{animation:rcNo .35s}
+@keyframes rcNo{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.rc-cantar{width:100%;margin-top:12px;min-height:58px;border:0;border-radius:16px;font:900 1.4rem var(--display);color:#fff;background:linear-gradient(120deg,#FF7A59,#FF4F8B 60%,#8057F5);cursor:pointer;animation:rcLatido .8s ease-in-out infinite}
+.rc-cantar:disabled{background:#E7E3F5;color:#8A8DAA;animation:none;font-size:1rem;cursor:default}
+.rc-hecho{margin-top:12px;font-weight:800;text-align:center;font-size:1.1rem;color:#177A4C}
+.rc-signos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rc-signos button{border:2px solid #EAE3FF;background:#fff;border-radius:14px;padding:10px 4px;font:700 .9rem var(--display);color:#33375A;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+.rc-signos button span{font-size:1.6rem}
+.rc-mi-signo{text-align:center;padding:10px 6px}
+.rc-mi-signo span{font-size:3.4rem;display:block}
+.rc-mi-signo p{font-size:1.2rem;line-height:1.45;margin:8px 0 0}
+.rc-enlace{display:block;margin:14px auto 0;border:0;background:none;color:#6D3FD1;font-weight:700;text-decoration:underline;cursor:pointer}
+.rc-ex{font:800 1.35rem/1.25 var(--display);margin:8px 0 14px}
+.rc-voto{width:100%;min-height:58px;border:0;border-radius:16px;font:800 1.15rem var(--display);color:#fff;cursor:pointer;margin-top:8px}
+.rc-voto.clasica{background:#177A4C}.rc-voto.ia{background:#6D3FD1}
+.rc-res{border-radius:16px;padding:14px;background:#fff;border:2px solid #EAE3FF;display:flex;flex-direction:column;gap:4px}
+.rc-res b{font:800 1.3rem var(--display)}.rc-res.bien{border-color:#8BD9A8}.rc-res.mal{border-color:#FFB4CF}
+
+/* mando */
+.mando-recreo{margin:14px 0;padding:12px;border-radius:14px;background:rgba(255,79,139,.1);border:1px solid rgba(255,79,139,.35)}
+.mando-recreo .n{font-weight:800;margin-bottom:8px}
+.mando-recreo .fila{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.mando-recreo button{flex:1;min-height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.12);color:inherit;font-weight:700;cursor:pointer}
+.mando-recreo button.act{border-color:#FF4F8B;background:rgba(255,79,139,.25)}
+.mando-recreo button.gr{background:linear-gradient(120deg,#FF7A59,#FF4F8B);color:#fff;border:0}
+</style>
+<script>
+/* ══════════ RECREO · «Mientras la IA piensa» (bingo, horóscopo y excusas) ══════════
+   El ponente lo abre desde la pizarra (botón flotante) o desde el mando.
+   El estado viaja en salas/COD/estado/recreo; los votos y los bingos usan salas/COD/votos
+   con claves «b…» (bingo) y «e…» (excusas), así que no hace falta cambiar las reglas. */
+(function () {
+  if (!window.DIRECTO_PUENTE) return;
+  const { S, FB, ref } = window.DIRECTO_PUENTE;
+  const RC = window.RECREO_DATOS = {
+    bingo: [
+      'Esto ya lo hablamos en el ciclo', '¿Quién tiene la llave del aula de música?', 'La fotocopiadora se ha atascado',
+      'Hay que subirlo a Séneca', '¿Esto entra en la memoria?', 'Que conste en acta', 'Hay que rellenar un anexo',
+      'El proyector no se ve bien', '¿Alguien tiene un cargador?', 'Se ha caído el wifi', 'Lo dejamos para la próxima reunión',
+      'Es para ayer', 'Ha llegado un correo de la Delegación', '¿Dónde está el mando de la pizarra?', 'Es por la normativa',
+      '¿A quién le toca la guardia?', 'Lo comento con Jefatura', 'Este rotulador no pinta', 'Me he dejado el café en la sala',
+      'Han vuelto a cambiar la contraseña', 'Una cosa rápida…', 'Eso va en el Plan de Centro', '¿Lo ponemos en el grupo de WhatsApp?',
+      'No me he sentado en toda la mañana', '¿Cuándo es la sesión de evaluación?', 'Quedan dos semanas para las vacaciones',
+      '¿Quién trae algo para el desayuno?', 'No me ha llegado la convocatoria', '¿Me dejas tus fotocopias?', 'Esto mejor por escrito'
+    ],
+    signos: [['♈', 'Aries'], ['♉', 'Tauro'], ['♊', 'Géminis'], ['♋', 'Cáncer'], ['♌', 'Leo'], ['♍', 'Virgo'],
+      ['♎', 'Libra'], ['♏', 'Escorpio'], ['♐', 'Sagitario'], ['♑', 'Capricornio'], ['♒', 'Acuario'], ['♓', 'Piscis']],
+    horoscopo: [
+      ['Hoy un alumno jurará que no había deberes. Respira hondo: los astros están de tu parte.',
+       'La fotocopiadora te mirará fijamente. No le muestres miedo.',
+       'Recibirás tres correos con «urgente» en el asunto. Solo uno lo será de verdad.',
+       'Alguien se comerá tu yogur de la nevera de la sala. Venganza no, perdón sí.',
+       'Brillarás en el claustro. Lástima que nadie esté escuchando.',
+       'Ordenarás tu mesa a las 9:00. A las 9:05 volverá a ser un volcán.',
+       'Te pedirán «un favor rápido». Duración estimada: toda la tarde.',
+       'Un rotulador gastado se cruzará en tu camino. Desconfía de los que parecen nuevos.',
+       'Sentirás una llamada a la aventura: ir al almacén a por folios.',
+       'Tu productividad será legendaria hasta que alguien diga «una cosa rápida».',
+       'Una idea genial te llegará en la ducha. Para cuando llegues al cole, se habrá ido.',
+       'Hoy el recreo se te hará cortísimo. Como todos los días, pero más.'],
+      ['Marte te da energía para corregir 25 exámenes. Venus te pide que lo dejes para mañana.',
+       'Encontrarás la llave que buscabas. Abrirá una puerta que nadie usa.',
+       'Hablarás tanto que tu voz pedirá baja laboral. Bebe agua.',
+       'Un padre te saludará en el supermercado. Sonríe: estás en horario no lectivo.',
+       'Te tocará la guardia más tranquila del trimestre. Disfrútala: no se repetirá.',
+       'Tu agenda tendrá más colores que un arcoíris y menos huecos que el aparcamiento.',
+       'La impresora imprimirá a la primera. Es una señal: compra lotería.',
+       'Alguien te preguntará por un documento que solo existe en tu memoria.',
+       'Planearás una salida perfecta. El autobús tendrá otros planes.',
+       'Escribirás un acta tan bonita que dará pena archivarla.',
+       'Un alumno te llamará «mamá» o «papá». Es amor verdadero, acéptalo.',
+       'Soñarás con el horario del curso que viene. Despertarás sudando.'],
+      ['Júpiter te regala una semana sin reuniones. Saturno ya está convocando una.',
+       'Un compañero te traerá churros. Ese día valdrá la pena.',
+       'Perderás el boli rojo. Volverá a aparecer en la mochila de un alumno de 3.º.',
+       'Te llegará la inspiración para una SdA. Y el plazo para entregarla.',
+       'La pizarra digital funcionará sin reiniciarla. Hazle una foto: nadie te creerá.',
+       'Contarás los días que faltan para las vacaciones. Saldrán más de los que querías.',
+       'Hoy alguien dirá tu nombre en el claustro. Asiente con seguridad.',
+       'Te sobrarán cinco minutos de clase. El universo te pide un dictado sorpresa.',
+       'Recibirás un dibujo de regalo. Irá directo a la nevera de casa.',
+       'Tu café estará caliente cuando te lo bebas. Eso no pasa desde 2019.',
+       'Encontrarás aparcamiento a la primera. Que no se entere nadie.',
+       'Hoy ganarás una discusión con un niño de seis años. O eso creerás.'],
+      ['Las estrellas dicen que mañana será viernes. Las estrellas mienten.',
+       'Un sobre de la Delegación te espera. Ábrelo con el estómago lleno.',
+       'Tu clase estará en silencio tres segundos seguidos. Récord del curso.',
+       'Te pedirán una evidencia de algo que hiciste con cariño. Hazle una foto al cariño.',
+       'Hoy cantarás bingo en el claustro. Al menos en este.',
+       'Tu mochila pesará más que la de tu alumnado. Algo estás haciendo mal.',
+       'Alguien elogiará tu letra en la pizarra. Ensaya tu cara de modestia.',
+       'Se acerca un cambio importante: alguien moverá la mesa de la sala de profes.',
+       'Un rayo de sol entrará por la ventana justo en la hora de lectura. Magia pura.',
+       'Explicarás algo por quinta vez y alguien te preguntará lo mismo. Paciencia cósmica.',
+       'Hoy una app hecha por ti salvará la mañana. Los astros ya lo sabían.',
+       'Llegarás a casa y no recordarás qué comiste. Normal: no comiste.']
+    ],
+    // [excusa, 1 = clásica (se oye en las aulas) / 0 = inventada por la IA, comentario]
+    excusas: [
+      ['El perro se comió los deberes.', 1, 'Un clásico eterno. Hay perros con dieta rica en fichas.'],
+      ['Un dron de reparto se llevó mi cuaderno por error.', 0, 'Inventada por la IA. De momento los drones no reparten cuadernos… que sepamos.'],
+      ['Me los dejé en casa de mi abuela.', 1, 'Clásica. Las abuelas guardan más deberes que la Biblioteca Nacional.'],
+      ['Mi gato aprendió a desbloquear la tableta y borró la carpeta.', 0, 'Inventada por la IA. Aunque con los gatos nunca se sabe.'],
+      ['Pensaba que era para el lunes.', 1, 'Clásica. El lunes es ese lugar mágico donde viven todos los plazos.'],
+      ['Los hice en sueños y al despertar no estaban.', 0, 'Inventada por la IA. Eso sí, merece un positivo por creatividad.'],
+      ['Mi hermano pequeño me los pintó.', 1, 'Clásica. Los hermanos pequeños son grandes artistas de la tinta ajena.'],
+      ['El cuaderno se quedó en modo avión.', 0, 'Inventada por la IA. Los cuadernos aún no tienen wifi… de momento.'],
+      ['Se me mojaron con la lluvia.', 1, 'Clásica. Y siempre llueve justo el día de entregar.'],
+      ['Un influencer dijo que hacer deberes gasta la batería del móvil.', 0, 'Inventada por la IA. Aunque suena peligrosamente real.'],
+      ['Mi madre los metió en la lavadora con el pantalón.', 1, 'Clásica. Salen limpios, pero ilegibles.'],
+      ['Los dejé cargando en el microondas.', 0, 'Inventada por la IA. Por favor, que nadie lo intente.'],
+      ['Se me olvidó la mochila en el coche de mi padre.', 1, 'Clásica. El coche de papá: el triángulo de las Bermudas escolar.'],
+      ['Mi abuelo los usó para encender la chimenea.', 0, 'Inventada por la IA. Calentitos, eso sí.'],
+      ['Los hice pero no los traje.', 1, 'Clásica y sincera. La versión más honesta de todas.'],
+      ['Un compañero de otra galaxia me los pidió prestados.', 0, 'Inventada por la IA. Y aun así, alguien lo habrá dicho.']
+    ]
+  };
+
+  const R0 = () => S.estado.recreo || null;
+  const enVivo = () => !!(S.sala && FB.ok);
+  const azar = semilla => { let h = 2166136261; for (const c of String(semilla)) h = Math.imul(h ^ c.charCodeAt(0), 16777619); return () => { h += 0x6D2B79F5; let t = h; t = Math.imul(t ^ t >>> 15, t | 1); t ^= t + Math.imul(t ^ t >>> 7, t | 61); return ((t ^ t >>> 14) >>> 0) / 4294967296; }; };
+  const barajar = (n, semilla) => { const a = [...Array(n).keys()], r = azar(semilla); for (let i = n - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+  /* ── Acciones (las usa la pizarra y el mando) ── */
+  function emitir(x) { window.DIRECTO_PUENTE.emitir(x); if (window.recibirRecreo) window.recibirRecreo(); }
+  function accion(q) {
+    const r = R0();
+    if (q === 'cerrar') return emitir({ recreo: null });
+    if (q === 'bingo' || q === 'bnueva') {
+      if (q === 'bingo' && r && r.p) return emitir({ recreo: Object.assign({}, r, { j: 'bingo' }) });
+      return emitir({ recreo: Object.assign({}, r || {}, { j: 'bingo', p: Date.now(), s: [] }) });
+    }
+    if (q === 'bsacar') {
+      const base = r && r.p ? r : { p: Date.now(), s: [] }, s = base.s || [];
+      if (s.length >= RC.bingo.length) { tostada('Ya han salido todas las frases'); return; }
+      const orden = barajar(RC.bingo.length, 'orden' + base.p);
+      return emitir({ recreo: Object.assign({}, r || {}, base, { j: 'bingo', s: s.concat(orden[s.length]) }) });
+    }
+    if (q === 'horo') return emitir({ recreo: Object.assign({}, r || {}, { j: 'horo', r: r && typeof r.r === 'number' ? r.r : 0 }) });
+    if (q === 'hnueva') return emitir({ recreo: Object.assign({}, r || {}, { j: 'horo', r: ((r && typeof r.r === 'number' ? r.r : -1) + 1) % RC.horoscopo.length }) });
+    if (q === 'excusa') {
+      if (r && typeof r.i === 'number') return emitir({ recreo: Object.assign({}, r, { j: 'excusa' }) });
+      return emitir({ recreo: Object.assign({}, r || {}, { j: 'excusa', i: 0, n: Date.now(), a: true }) });
+    }
+    if (q === 'eotra') { const i = r && typeof r.i === 'number' ? (r.i + 1) % RC.excusas.length : 0; return emitir({ recreo: Object.assign({}, r || {}, { j: 'excusa', i, n: Date.now(), a: true }) }); }
+    if (q === 'edesvelar') { if (r && r.j === 'excusa') emitir({ recreo: Object.assign({}, r, { a: false }) }); }
+  }
+  window.recreoAccion = accion;
+
+  /* ── Pizarra ── */
+  const btn = document.createElement('button');
+  btn.type = 'button'; btn.className = 'rc-lanzar solo-ponente no-imprimir'; btn.innerHTML = '<span>😂</span> Mientras la IA piensa';
+  btn.title = 'Juegos para las esperas: bingo del claustro, horóscopo docente y excusas épicas';
+  document.body.appendChild(btn);
+  btn.onclick = () => accion(R0() && R0().j ? R0().j : 'bingo');
+
+  const capa = document.createElement('div'); capa.className = 'rc-capa no-imprimir'; capa.hidden = true;
+  capa.setAttribute('role', 'dialog'); capa.setAttribute('aria-label', 'Mientras la IA piensa');
+  document.body.appendChild(capa);
+  const P = { refB: null, keyB: '', bingos: 0, refE: null, keyE: '', votosE: [], ult: '' };
+
+  function escucharVotos(r) {
+    if (!enVivo()) return;
+    const kb = r && r.j === 'bingo' && r.p ? 'b' + r.p : '';
+    if (kb !== P.keyB) {
+      if (P.refB) P.refB.off(); P.refB = null; P.keyB = kb; P.bingos = 0;
+      if (kb) { let primera = true; P.refB = ref('salas/' + S.sala + '/votos/' + kb); P.refB.on('value', sn => { const n = Object.keys(sn.val() || {}).length; const sube = !primera && n > P.bingos; primera = false; P.bingos = n; pintarCapa(); if (sube) celebrar(); }); }
+    }
+    const ke = r && r.j === 'excusa' && r.n ? 'e' + r.n : '';
+    if (ke !== P.keyE) {
+      if (P.refE) P.refE.off(); P.refE = null; P.keyE = ke; P.votosE = [];
+      if (ke) { P.refE = ref('salas/' + S.sala + '/votos/' + ke); P.refE.on('value', sn => { P.votosE = Object.values(sn.val() || {}); pintarBarras(); }); }
+    }
+  }
+  function celebrar() {
+    const c = document.createElement('div'); c.className = 'rc-bingo-grito'; c.innerHTML = '<b>¡BINGO!</b><span>Que se levante quien lo ha cantado 🙋</span>';
+    capa.appendChild(c); setTimeout(() => c.remove(), 4200);
+  }
+  function tabs(j) {
+    return '<nav class="rc-tabs">' + [['bingo', '🎱', 'Bingo del claustro'], ['horo', '🔮', 'Horóscopo docente'], ['excusa', '🐶', 'Excusas épicas']].map(t =>
+      '<button type="button" data-rc="' + t[0] + '" aria-current="' + (j === t[0]) + '"><span>' + t[1] + '</span>' + t[2] + '</button>').join('') +
+      '<button type="button" class="rc-volver" data-rc="cerrar">Volver a la sesión ✕</button></nav>';
+  }
+  function pintarCapa() {
+    const r = R0();
+    const ver = !!(r && r.j) && S.rol !== 'asistente' && S.rol !== 'mando';
+    capa.hidden = !ver; document.body.classList.toggle('rc-abierto', ver);
+    if (!ver) return;
+    let h = tabs(r.j) + '<div class="rc-cuerpo">';
+    if (r.j === 'bingo') {
+      const s = r.s || [], ult = s.length ? RC.bingo[s[s.length - 1]] : '';
+      h += '<div class="rc-cab"><h2>🎱 Bingo del claustro</h2><p>Cada móvil tiene su cartón. Marca las frases que salgan y canta <b>¡Bingo!</b> con tres en raya.</p></div>' +
+        '<div class="rc-bola' + (ult ? '' : ' vacia') + '" data-k="' + s.length + '"><small>' + (s.length ? 'Frase ' + s.length : 'Preparados…') + '</small><strong>' + esc(ult ? '«' + ult + '»' : 'Pulsa «Sacar frase» para empezar') + '</strong></div>' +
+        '<div class="rc-salidas">' + s.slice(0, -1).reverse().map(i => '<span>' + esc(RC.bingo[i]) + '</span>').join('') + '</div>' +
+        '<div class="rc-acc"><button type="button" class="rc-b grande" data-rc="bsacar">🎱 Sacar frase</button><button type="button" class="rc-b suave" data-rc="bnueva">🔄 Nueva partida</button>' +
+        (enVivo() ? '<span class="rc-cont">' + (P.bingos ? '🏆 ' + P.bingos + (P.bingos === 1 ? ' bingo cantado' : ' bingos cantados') : 'Nadie ha cantado todavía') + '</span>' : '<span class="rc-cont">Sin sesión en directo: los cartones salen en los móviles cuando la empiezas.</span>') + '</div>';
+    } else if (r.j === 'horo') {
+      const ron = RC.horoscopo[(r.r || 0) % RC.horoscopo.length];
+      h += '<div class="rc-cab"><h2>🔮 Horóscopo docente</h2><p>Busca tu signo. En el móvil te sale el tuyo en grande.</p></div><div class="rc-horo">' +
+        RC.signos.map((g, i) => '<div class="rc-signo" style="--i:' + i + '"><div class="rc-sg"><span>' + g[0] + '</span>' + g[1] + '</div><p>' + esc(ron[i]) + '</p></div>').join('') +
+        '</div><div class="rc-acc"><button type="button" class="rc-b grande" data-rc="hnueva">🔮 Nuevas predicciones</button><span class="rc-cont">Tanda ' + (((r.r || 0) % RC.horoscopo.length) + 1) + ' de ' + RC.horoscopo.length + '</span></div>';
+    } else if (r.j === 'excusa') {
+      const e = RC.excusas[r.i || 0];
+      h += '<div class="rc-cab"><h2>🐶 Excusas épicas</h2><p>¿Es una excusa <b>clásica</b> de las que se oyen en clase o la ha <b>inventado la IA</b>? Vota en el móvil.</p></div>' +
+        '<div class="rc-excusa' + (r.a ? '' : ' desvelada ' + (e[1] ? 'clasica' : 'ia')) + '"><span class="rc-comillas">“</span><strong>' + esc(e[0]) + '</strong>' +
+        (r.a ? '' : '<div class="rc-sol"><b>' + (e[1] ? '😅 Excusa clásica' : '🤖 Inventada por la IA') + '</b><span>' + esc(e[2]) + '</span></div>') + '</div>' +
+        '<div class="rc-barras" id="rcBarras"><div class="f clasica"><span>😅 Me la han dicho</span><div><i></i></div><b>0</b></div><div class="f ia"><span>🤖 La ha inventado la IA</span><div><i></i></div><b>0</b></div></div>' +
+        '<div class="rc-acc">' + (r.a ? '<button type="button" class="rc-b grande" data-rc="edesvelar">🔓 Desvelar</button>' : '') + '<button type="button" class="rc-b ' + (r.a ? 'suave' : 'grande') + '" data-rc="eotra">➡️ Otra excusa</button><span class="rc-cont">Excusa ' + ((r.i || 0) + 1) + ' de ' + RC.excusas.length + '</span></div>';
+    }
+    h += '</div>';
+    const clave = JSON.stringify(r) + '|' + P.bingos;
+    if (clave === P.ult) return; P.ult = clave;
+    capa.innerHTML = h; pintarBarras();
+  }
+  function pintarBarras() {
+    const b = capa.querySelector('#rcBarras'); if (!b) return;
+    const v = P.votosE, cl = v.filter(x => x === 1).length, ia = v.length - cl, pc = n => v.length ? Math.round(n * 100 / v.length) : 0;
+    b.querySelector('.clasica i').style.width = pc(cl) + '%'; b.querySelector('.clasica b').textContent = cl;
+    b.querySelector('.ia i').style.width = pc(ia) + '%'; b.querySelector('.ia b').textContent = ia;
+    b.hidden = !enVivo();
+  }
+  capa.addEventListener('click', e => { const b = e.target.closest('[data-rc]'); if (b) accion(b.dataset.rc); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !capa.hidden) accion('cerrar'); });
+
+  /* ── Móvil del asistente ── */
+  const movil = document.createElement('div'); movil.className = 'rc-movil no-imprimir'; movil.hidden = true; document.body.appendChild(movil);
+  const MV = { min: '', ult: '' };
+  function carton(p) {
+    const ids = barajar(RC.bingo.length, (FB.uid || 'x') + ':' + p).slice(0, 8);
+    ids.splice(4, 0, -1); return ids;
+  }
+  function linea(marcas) {
+    const L = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
+    return L.some(l => l.every(i => i === 4 || marcas.includes(i)));
+  }
+  function pintarMovil() {
+    const r = R0();
+    if (S.rol !== 'asistente' || !r || !r.j) { movil.hidden = true; return; }
+    const sig = r.j + ':' + (r.p || r.r || r.n || 0);
+    if (MV.min === sig) { movil.hidden = true; return; }
+    let h = '<button type="button" class="rc-min" data-mv="min" aria-label="Ocultar">Ocultar ✕</button>';
+    if (r.j === 'bingo') {
+      const ids = carton(r.p), s = r.s || [], marcas = leer('rcm:' + r.p, []), cantado = leer('rcb:' + r.p, false), ok = linea(marcas);
+      h += '<h3>🎱 Tu cartón</h3><p class="rc-ayu">Toca las frases que salgan en la pizarra. Tres en raya y… ¡a cantar!</p><div class="rc-carton">' +
+        ids.map((id, i) => id < 0 ? '<button type="button" class="rc-c libre marcada" disabled>☕<small>Café (libre)</small></button>'
+          : '<button type="button" class="rc-c' + (marcas.includes(i) ? ' marcada' : '') + (s.includes(id) ? ' salio' : '') + '" data-mv="c" data-i="' + i + '" data-id="' + id + '">' + esc(RC.bingo[id]) + '</button>').join('') + '</div>' +
+        (cantado ? '<p class="rc-hecho">🏆 ¡Bingo cantado! Levanta la mano.</p>' : '<button type="button" class="rc-cantar" data-mv="cantar"' + (ok ? '' : ' disabled') + '>' + (ok ? '🎉 ¡BINGO!' : 'Te falta para el bingo') + '</button>');
+    } else if (r.j === 'horo') {
+      const g = leer('rcSigno', -1);
+      if (g < 0) h += '<h3>🔮 ¿Cuál es tu signo?</h3><div class="rc-signos">' + RC.signos.map((x, i) => '<button type="button" data-mv="signo" data-i="' + i + '"><span>' + x[0] + '</span>' + x[1] + '</button>').join('') + '</div>';
+      else {
+        const ron = RC.horoscopo[(r.r || 0) % RC.horoscopo.length];
+        h += '<div class="rc-mi-signo"><span>' + RC.signos[g][0] + '</span><h3>' + RC.signos[g][1] + '</h3><p>' + esc(ron[g]) + '</p></div><button type="button" class="rc-enlace" data-mv="cambiar">Cambiar de signo</button>';
+      }
+    } else if (r.j === 'excusa') {
+      const e = RC.excusas[r.i || 0], mio = leer('rce:' + r.n, null);
+      h += '<h3>🐶 ¿Clásica o de la IA?</h3><p class="rc-ex">«' + esc(e[0]) + '»</p>';
+      if (r.a) h += mio === null ? '<button type="button" class="rc-voto clasica" data-mv="v" data-v="1">😅 Me la han dicho</button><button type="button" class="rc-voto ia" data-mv="v" data-v="0">🤖 La ha inventado la IA</button>'
+        : '<p class="rc-hecho">✓ Votado. Mira la pizarra.</p>';
+      else h += '<div class="rc-res ' + (mio === null ? '' : mio === e[1] ? 'bien' : 'mal') + '"><b>' + (mio === null ? '💡 Solución' : mio === e[1] ? '🎉 ¡Acertaste!' : '🙈 ¡Te la ha colado!') + '</b><span>' + (e[1] ? 'Excusa clásica. ' : 'Inventada por la IA. ') + esc(e[2]) + '</span></div>';
+    }
+    if (h === MV.ult && !movil.hidden) return; MV.ult = h;
+    movil.innerHTML = '<div class="rc-hoja">' + h + '</div>'; movil.hidden = false;
+  }
+  movil.addEventListener('click', async e => {
+    const b = e.target.closest('[data-mv]'); if (!b) return;
+    const r = R0(); if (!r) return; const m = b.dataset.mv;
+    if (m === 'min') { MV.min = r.j + ':' + (r.p || r.r || r.n || 0); movil.hidden = true; return; }
+    if (m === 'c') {
+      const i = +b.dataset.i, id = +b.dataset.id, k = 'rcm:' + r.p, marcas = leer(k, []);
+      if (marcas.includes(i)) guardar(k, marcas.filter(x => x !== i));
+      else if ((r.s || []).includes(id)) { guardar(k, marcas.concat(i)); if (navigator.vibrate) navigator.vibrate(15); }
+      else { b.classList.remove('nope'); void b.offsetWidth; b.classList.add('nope'); return; }
+    } else if (m === 'cantar') {
+      try { await ref('salas/' + S.sala + '/votos/b' + r.p + '/' + FB.uid).set(1); guardar('rcb:' + r.p, true); if (navigator.vibrate) navigator.vibrate([40, 60, 40]); }
+      catch (x) { tostada('No se pudo cantar. ¡Grítalo!'); }
+    } else if (m === 'signo') guardar('rcSigno', +b.dataset.i);
+    else if (m === 'cambiar') guardar('rcSigno', -1);
+    else if (m === 'v') {
+      if (!r.a) return; const v = +b.dataset.v;
+      try { await ref('salas/' + S.sala + '/votos/e' + r.n + '/' + FB.uid).set(v); guardar('rce:' + r.n, v); if (navigator.vibrate) navigator.vibrate(20); }
+      catch (x) { tostada('No se pudo votar'); }
+    }
+    MV.ult = ''; pintarMovil();
+  });
+
+  /* ── Lo llama aplicarEstado y el mando ── */
+  window.recibirRecreo = function () { MV.min = MV.min && R0() && (R0().j + ':' + (R0().p || R0().r || R0().n || 0)) === MV.min ? MV.min : ''; escucharVotos(R0()); pintarCapa(); pintarMovil(); };
+  window.mandoRecreo = function () {
+    const r = R0(), j = r && r.j;
+    const b = (q, t, cl) => '<button data-m="recreo" data-q="' + q + '"' + (cl ? ' class="' + cl + '"' : '') + '>' + t + '</button>';
+    let h = '<div class="mando-recreo"><div class="n">😂 Mientras la IA piensa</div><div class="fila">' + b('bingo', '🎱 Bingo', j === 'bingo' ? 'act' : '') + b('horo', '🔮 Horóscopo', j === 'horo' ? 'act' : '') + b('excusa', '🐶 Excusas', j === 'excusa' ? 'act' : '') + '</div>';
+    if (j === 'bingo') h += '<div class="fila">' + b('bsacar', '🎱 Sacar frase', 'gr') + b('bnueva', '🔄 Nueva') + '</div>';
+    if (j === 'horo') h += '<div class="fila">' + b('hnueva', '🔮 Nuevas predicciones', 'gr') + '</div>';
+    if (j === 'excusa') h += '<div class="fila">' + (r.a ? b('edesvelar', '🔓 Desvelar', 'gr') : '') + b('eotra', '➡️ Otra excusa', r.a ? '' : 'gr') + '</div>';
+    if (j) h += '<div class="fila">' + b('cerrar', '✕ Volver a la sesión') + '</div>';
+    return h + '</div>';
+  };
+  document.addEventListener('panel', () => { if (!capa.hidden) pintarCapa(); });
+})();
 </script>
 </body>
 </html>
