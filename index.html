@@ -2826,6 +2826,12 @@ Añade una opción para practicar una tabla de multiplicar concreta, del 1 al 10
     <span class="mat-aviso"><b>Antes de la sesión:</b> descárgalos y descomprímelos en una carpeta del escritorio. Desde ahí se arrastran a cada app. De una pestaña del navegador a otra no se pueden arrastrar.</span>
   </div>
   <div class="mat-sesiones" id="matRejilla"></div>
+  <h3 class="bloque">Informe para vuestro centro</h3>
+  <p style="color:var(--tinta-suave);margin:-6px 0 14px;max-width:70ch">Un resumen de lo que ya hacéis bien, en qué os puede ayudar la IA, por dónde empezar y seis prompts para probar mañana.</p>
+  <div class="fila" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px">
+    <a class="btn azul" href="materiales/informes/Resumen_IA_CEIP_Medina_Elvira.pdf" target="_blank" rel="noopener">📄 CEIP Medina Elvira</a>
+    <a class="btn azul" href="materiales/informes/Resumen_IA_CEIP_Clara_Campoamor.pdf" target="_blank" rel="noopener">📄 CEIP Clara Campoamor</a>
+  </div>
   <h3 class="bloque">Para seguir después</h3>
   <div class="tarjeta apoyo-libro"><div class="apoyo-qr" data-qr-apoyo="https://vunisal706-droid.github.io/IAparadocentes/"></div><div><h3>IA para docentes · página de apoyo</h3><p>Las plantillas de las apps al día, el configurador, Firebase paso a paso y la ayuda para publicar. Sin datos de ningún centro: os sirve para seguir cuando acabe la formación.</p><div class="fila"><a class="btn azul" href="https://vunisal706-droid.github.io/IAparadocentes/" target="_blank" rel="noopener">Abrir la página de apoyo</a><span class="apoyo-url">vunisal706-droid.github.io/IAparadocentes</span></div></div></div>
 </section>
@@ -5160,7 +5166,7 @@ document.addEventListener('click', e => {
 
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-19-recreo-mini';
+  const ID = 'formacion-novedades-2026-11-19-informes';
   if (typeof esPonente === 'function' && !esPonente()) return;
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
@@ -5168,7 +5174,7 @@ document.addEventListener('click', e => {
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">😂 El botón «Mientras la IA piensa» ahora es un icono pequeño, abajo a la izquierda.</p>'
+    + '<p style="margin-bottom:14px">📄 En Materiales tenéis el informe de IA para vuestro centro, en PDF.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
