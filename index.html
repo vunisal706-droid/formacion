@@ -841,6 +841,28 @@ p,li,dd{text-wrap:pretty}
   *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
 }
 
+/* ══════════ ENTRAR EN LA WEB (Sesión 1) ══════════ */
+.entra{position:relative;margin:22px 0 26px;padding:26px 26px 22px;border-radius:24px;background:linear-gradient(135deg,#F3F7FF 0%,#FFFFFF 45%,#F2FBF6 100%);border:1px solid #DCE6F7;box-shadow:0 14px 40px -24px rgba(27,42,78,.45);overflow:hidden}
+.entra::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:linear-gradient(90deg,#2459C7,#2F9BE0,#4CD964,#FF9500)}
+.entra-k{display:inline-flex;align-items:center;gap:8px;margin:0 0 6px;padding:5px 12px;border-radius:999px;background:#E8EFFC;color:#1B47A3;font-weight:700;font-size:.86rem;letter-spacing:.02em}
+.entra h3{margin:4px 0 4px;font-size:1.7rem;color:var(--tinta)}
+.entra-sub{margin:0 0 18px;color:var(--tinta-suave);font-size:1.05rem;max-width:62ch}
+.entra-vias{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.entra-via{position:relative;background:#fff;border:1px solid #E3E9F4;border-radius:18px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:10px}
+.entra-num{position:absolute;top:-12px;left:16px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#fff;background:var(--c,#2459C7);box-shadow:0 4px 10px -4px var(--c,#2459C7)}
+.entra-via h4{margin:8px 0 0;font-size:1.12rem;color:var(--tinta);display:flex;align-items:center;gap:8px}
+.entra-via p{margin:0;color:var(--tinta-suave);line-height:1.5}
+.entra-qr{align-self:center;padding:10px;background:#fff;border-radius:14px;border:2px solid #E3E9F4;line-height:0}
+.entra-qr canvas,.entra-qr img{width:170px!important;height:170px!important;display:block}
+.entra-ruta{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.entra-ruta li{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:12px;background:#F5F8FD;color:var(--tinta);font-size:.98rem}
+.entra-ruta li span{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:.78rem;font-weight:800;color:#fff;background:#2F9BE0}
+.entra-url{display:block;padding:10px 12px;font-size:1rem;border-radius:12px;background:#F5F8FD;color:#1B47A3;font-weight:700;overflow-wrap:break-word;text-decoration:none}
+.entra-clave{margin-top:18px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:16px 20px;border-radius:18px;background:linear-gradient(135deg,#1B2A4E,#2459C7);color:#fff}
+.entra-clave .ek{font-size:1rem;opacity:.85}
+.entra-clave b{display:inline-block;padding:8px 20px;border-radius:12px;background:#fff;color:#1B2A4E;font-size:2rem;letter-spacing:.06em;font-weight:800}
+.entra-clave p{margin:0;flex:1 1 260px;font-size:.98rem;opacity:.92;line-height:1.5}
+@media (max-width:820px){.entra-vias{grid-template-columns:1fr}.entra{padding:22px 16px 18px}.entra h3{font-size:1.4rem}}
 /* ══════════ ACCESO: clave de asistentes y de ponente ══════════ */
 body:not(.rol-ponente) .solo-ponente{display:none!important}
 .pestana[hidden]{display:none!important}
@@ -1770,6 +1792,41 @@ nav.pestanas{padding-top:10px;padding-bottom:10px;margin-top:-4px;margin-bottom:
   </div>
   <p class="ses-lleva"><strong>Te llevas:</strong> todas las apps del cole vistas y las que más te interesen probadas en tu móvil, un juego hecho por ti con Gemini y la app que tu centro pondrá en marcha en la sesión 4, elegida por votación.</p>
   <p><strong>Antes de venir:</strong> el móvil con batería y, si puede ser, un ordenador por pareja con <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> abierto y funcionando.</p>
+
+  <section class="entra" id="entrar-web" aria-labelledby="entraTit">
+    <p class="entra-k">📲 Lo primero</p>
+    <h3 id="entraTit">Entra en la web de la formación</h3>
+    <p class="entra-sub">Todo lo de hoy está aquí: lo que vemos, los materiales y los enlaces. Elige la forma que te sea más cómoda.</p>
+    <div class="entra-vias">
+      <div class="entra-via" style="--c:#2459C7">
+        <span class="entra-num">1</span>
+        <h4>📷 Con el código QR</h4>
+        <div class="entra-qr" id="entraQR" aria-label="Código QR para entrar en la web de la formación"></div>
+        <p>Abre la cámara del móvil y apunta al código. Entras directamente, sin escribir nada.</p>
+      </div>
+      <div class="entra-via" style="--c:#2F9BE0">
+        <span class="entra-num">2</span>
+        <h4>🏫 Desde la web del CEIP Capitulaciones</h4>
+        <ol class="entra-ruta">
+          <li><span>1</span><div>Entra en <b>colegiocapitulaciones.com</b></div></li>
+          <li><span>2</span><div>Baja hasta <b>«Nuestros proyectos»</b></div></li>
+          <li><span>3</span><div>Busca la tarjeta <b>«IA en el cole · Formación»</b></div></li>
+          <li><span>4</span><div>Pulsa <b>«Entrar»</b></div></li>
+        </ol>
+      </div>
+      <div class="entra-via" style="--c:#4CAF50">
+        <span class="entra-num">3</span>
+        <h4>⌨️ Escribiendo la dirección</h4>
+        <a class="entra-url" href="https://vunisal706-droid.github.io/formacion/" target="_blank" rel="noopener">vunisal706-droid.github.io/<wbr>formacion</a>
+        <p>Guárdala en favoritos: te servirá en las cuatro sesiones y para volver desde casa.</p>
+      </div>
+    </div>
+    <div class="entra-clave">
+      <span class="ek">🔑 Clave para entrar</span>
+      <b id="entraClave">—</b>
+      <p>Si al abrir la web te pide una clave, escribe esta. Da igual en mayúsculas o en minúsculas.</p>
+    </div>
+  </section>
 
   <section class="vcard" id="activar-seneca">
     <div class="vcard-in">
@@ -4960,6 +5017,8 @@ document.addEventListener('click', e => {
   window.enviarAMoviles({ tipo: 'app', titulo: a.nombre + (CON_DEMO[a.id] ? ' · demostración' : ''), sub: (FX[a.id] || {}).problema || '', url: CON_DEMO[a.id] ? urlDemo(a) : a.url, color: a.color });
 }, true);
 if ($('qrFijoQ')) pintarQR($('qrFijoQ'), BASE + '#sala=' + SALA_FIJA, 150);
+if ($('entraQR')) pintarQR($('entraQR'), BASE + '#sala=' + SALA_FIJA, 170);
+if ($('entraClave')) $('entraClave').textContent = ACCESO.claveAsistentes;
 Object.assign(window, { pizarraEnVivo, pizarraFin, asistenteEnVivo, recibirVoto });
 window.DIRECTO_PUENTE = { S, emitir, FB, ref };   // para la guía de privacidad (envío a los móviles)
 })();
@@ -5255,7 +5314,7 @@ document.addEventListener('click', e => {
 
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-22-tiempos-s1';
+  const ID = 'formacion-novedades-2026-11-22-entrar-web';
   if (typeof esPonente === 'function' && !esPonente()) return;
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
@@ -5263,7 +5322,7 @@ document.addEventListener('click', e => {
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">⏱ Sesión 1: tiempos ajustados y nueva parte final de repaso y dudas.</p>'
+    + '<p style="margin-bottom:14px">📲 Sesión 1: nuevo apartado inicial para entrar en la web (QR, web del cole y clave).</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
