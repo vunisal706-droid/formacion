@@ -468,6 +468,10 @@ details.activar > div{padding:0 16px 16px}
 .vcard-nb .vcard-boton{left:78%;top:40%}
 .vcard-nb .vcard-pasos li::before{background:linear-gradient(135deg,#6C3FBE,#FF8028)}
 .vcard-nb .vcard-kicker{color:#5B2FA8;background:#F1EAFE}.vcard-nb .vcard-dot{background:#6C3FBE}
+.vcard-cv{background:linear-gradient(120deg,#2F9BE0,#4CD964,#FF9500,#2F9BE0);background-size:300% 300%}
+.vcard-cv .vcard-boton{left:72%;top:58%}
+.vcard-cv .vcard-pasos li::before{background:linear-gradient(135deg,#2F9BE0,#4CD964)}
+.vcard-cv .vcard-kicker{color:#0B6AA8;background:#E3F3FD}.vcard-cv .vcard-dot{background:#2F9BE0}
 @media (max-width:820px){.vcard-in{grid-template-columns:1fr;gap:18px;padding:16px}.vcard-txt h3{font-size:1.35rem}.vcard-boton{width:56px;height:56px;margin:-28px 0 0 -28px}.vcard-boton svg{width:26px;height:26px}}
 @media (prefers-reduced-motion:reduce){.vcard,.vcard-boton::before,.vcard-boton::after,.vcard-dot{animation:none}}
 @media print{.vcard{display:none}}
@@ -1991,6 +1995,33 @@ En la base de datos en la nube guarda solo siglas. Dame el archivo completo.</pr
   <details class="gp-p" id="parte-s1-8" data-sid="s1" data-i="8"><summary><span class="gp-h">1:28</span><span class="gp-n">9</span><span class="gp-t">Crea un juego en diez minutos</span><span class="gp-min">15 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
   <div class="gp-c"><div class="gp-texto"><p>No quiero que os vayáis pensando que esto es cosa mía. En diez minutos vais a tener un juego hecho por vosotros y funcionando.</p><p>Abrid gemini.google.com con vuestra cuenta, pulsad el botón + que hay junto al cuadro de escribir y elegid Canvas. Canvas es la parte de Gemini que, además de escribir el código, os enseña el juego funcionando a la derecha de la conversación.</p><p>Copiad el encargo de abajo, cambiad lo que va entre corchetes, el curso y el tema, y pegadlo en Gemini. En un minuto tendréis el juego. Si algo no os gusta, pedidlo en una frase: «hazlo más lento», «cambia los globos por estrellas». Un cambio cada vez: así se trabaja con la IA.</p><p>Cuando lo tengáis, enseñádselo a quien tengáis al lado. Proyectaremos dos o tres en la pizarra.</p></div><div class="gp-mat">
   <p class="nota-video">¿Gemini no te deja entrar con la cuenta del cole? <a href="#activar-seneca" >Actívalo en Séneca (vídeo de 1 min)</a></p>
+  <section class="vcard vcard-cv" id="video-canvas-juego">
+    <div class="vcard-in">
+      <div class="vcard-media">
+        <button type="button" class="vcard-play" data-yt="168j-ezHSwo" aria-label="Reproducir el vídeo: crea un juego para tu clase con Gemini Canvas">
+          <img src="materiales/miniaturas/gemini-canvas-juego.jpg" alt="" width="1280" height="720" loading="lazy">
+          <span class="vcard-velo" aria-hidden="true"></span>
+          <span class="vcard-boton" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+          <span class="vcard-dur" aria-hidden="true">1:32</span>
+        </button>
+      </div>
+      <div class="vcard-txt">
+        <p class="vcard-kicker"><span class="vcard-dot"></span>Vídeo · minuto y medio</p>
+        <h3>Así se hace, paso a paso</h3>
+        <p class="vcard-sub">Este mismo encargo, pegado en Gemini con Canvas:</p>
+        <ol class="vcard-pasos">
+          <li><b>+</b> → <b>Canvas</b></li>
+          <li>Pega el encargo y cambia <b>curso y tema</b></li>
+          <li>Prueba el juego a <b>pantalla completa</b></li>
+          <li>Pide cambios <b>en una frase</b></li>
+        </ol>
+        <div class="vcard-acc">
+          <button type="button" class="btn azul vcard-ver">▶ Ver el vídeo</button>
+          <a class="btn linea" href="https://youtu.be/168j-ezHSwo" target="_blank" rel="noopener">Abrir en YouTube</a>
+        </div>
+      </div>
+    </div>
+  </section>
   <div class="caja-codigo"><pre class="codigo" id="fxPrompt" style="white-space:pre-wrap">Hazme un juego para la pizarra digital de mi clase de [3.º de Primaria] sobre [las tablas de multiplicar del 2 al 5].
 
 Cómo se juega:
@@ -2821,6 +2852,7 @@ Añade una opción para practicar una tabla de multiplicar concreta, del 1 al 10
     <li><a class="btn linea" href="https://notebooklm.google.com" target="_blank" rel="noopener">NotebookLM</a></li>
     <li><a class="btn linea" href="https://youtu.be/9w8Ml4oSVKw" target="_blank" rel="noopener">Vídeo: activar Gemini y NotebookLM en Séneca</a></li>
     <li><a class="btn linea" href="https://youtu.be/vSmXF4l33i0" target="_blank" rel="noopener">Vídeo: Gemini Notebook, de un documento a una web</a></li>
+    <li><a class="btn linea" href="https://youtu.be/168j-ezHSwo" target="_blank" rel="noopener">Vídeo: crea un juego para tu clase con Gemini Canvas</a></li>
     <li><a class="btn linea" href="https://aistudio.google.com" target="_blank" rel="noopener">Google AI Studio</a></li>
     <li><a class="btn linea" href="https://suno.com" target="_blank" rel="noopener">Suno</a></li>
   </ul>
@@ -5210,7 +5242,7 @@ document.addEventListener('click', e => {
 
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-22-notebook-web';
+  const ID = 'formacion-novedades-2026-11-22-canvas-juego';
   if (typeof esPonente === 'function' && !esPonente()) return;
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
@@ -5218,7 +5250,7 @@ document.addEventListener('click', e => {
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">🌐 Sesión 2: nuevo vídeo y prompts para convertir tus documentos en una web interactiva con Gemini Notebook.</p>'
+    + '<p style="margin-bottom:14px">🎈 Sesión 1, parte 9: nuevo vídeo de cómo crear un juego con Gemini Canvas, paso a paso.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
