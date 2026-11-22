@@ -1000,6 +1000,25 @@ body:not(.rol-ponente) .solo-ponente{display:none!important}
 .fx-podio:fullscreen{border-radius:0;padding:5vh 6vw;display:flex;flex-direction:column;justify-content:center}
 .fx-podio:fullscreen .fx-barra{grid-template-columns:minmax(200px,340px) 1fr 70px} .fx-podio:fullscreen .fx-barra span{font-size:1.5rem}
 .fx-podio:fullscreen .fx-barra .r{height:42px} .fx-podio:fullscreen .fx-barra em{font-size:2rem} .fx-podio:fullscreen h4{font-size:2.6rem}
+.enc-tit{margin:22px 0 10px;font-size:1.2rem;color:var(--tinta)}
+.enc-movil{background:#F2F8FF;border:1.5px solid #CFE0F7;border-radius:16px;padding:16px;margin-bottom:14px}
+.enc-movil h5{margin:14px 0 8px;font-size:1.05rem;color:var(--tinta)}
+.enc-movil h5:first-child{margin-top:0}
+.enc-op{display:block;width:100%;text-align:left;appearance:none;border:1.5px solid #C9D8EE;background:#fff;color:var(--tinta);font:600 1rem var(--texto);border-radius:12px;padding:11px 14px;margin:0 0 8px;cursor:pointer}
+.enc-op[aria-pressed="true"]{border-color:#2459C7;background:#2459C7;color:#fff}
+.enc-panel{background:radial-gradient(80% 90% at 100% 0%,rgba(0,213,213,.14),transparent 60%),linear-gradient(160deg,#061A38,#0A2550);color:#fff;border-radius:22px;padding:22px 24px}
+.enc-panel .est{margin:0 0 6px;color:#C9D2F5}
+.enc-q{margin:16px 0 8px;font-weight:800;font-size:1.05rem}
+.enc-b{display:grid;grid-template-columns:minmax(150px,330px) 1fr 52px;gap:12px;align-items:center;margin:6px 0}
+.enc-b span{font-size:.95rem;color:#E6ECFF}
+.enc-b .r{height:16px;border-radius:999px;background:rgba(255,255,255,.1);overflow:hidden}
+.enc-b .r i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#00D5D5,#6EA8FF);transition:width .5s}
+.enc-b em{font-style:normal;font-weight:800;text-align:right}
+.enc-panel .acc{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.enc-panel:fullscreen{padding:48px;overflow:auto}
+.enc-panel:fullscreen .enc-b span{font-size:1.3rem}.enc-panel:fullscreen .enc-q{font-size:1.5rem}
+body:not(.rol-ponente) .enc-panel{display:none}
+@media (max-width:700px){.enc-b{grid-template-columns:120px 1fr 40px}}
 .fx-mivoto{background:#F7F4FE;border:1.5px solid #D9CDF7;border-radius:16px;padding:14px 16px;margin-bottom:14px}
 /* ganadora */
 .fx-gana{position:fixed;inset:0;z-index:9998;display:none;place-items:center;text-align:center;color:#fff;padding:24px;
@@ -1895,7 +1914,7 @@ nav.pestanas{padding-top:10px;padding-bottom:10px;margin-top:-4px;margin-bottom:
   </section>
 
   <h3 class="bloque" id="guion-s1">La sesión, paso a paso</h3>
-  <p class="gp-total solo-ponente no-imprimir">⏱ Previsto: <b>1 h 44 min</b> de 2 h · margen de unos <b>16 min</b> para imprevistos (conexiones, dudas, esperas de la IA).</p>
+  <p class="gp-total solo-ponente no-imprimir">⏱ Previsto: <b>1 h 47 min</b> de 2 h · margen de unos <b>13 min</b> para imprevistos (conexiones, dudas, esperas de la IA).</p>
   <div class="gp-cab"><p class="gp-ayuda">Cada parte de la sesión, en orden. Ábrela para leer lo que se cuenta y ver el material. Con <b>✓</b> se marca como vista y se pliega.</p><p class="gp-reinicio solo-ponente no-imprimir"><button class="enlace" data-gpreset="s1">Desmarcar todas</button> · <button class="enlace" data-gptodo="s1">Abrir todas</button></p></div>
   <div class="gp">
   <details class="gp-p" id="parte-s1-0" data-sid="s1" data-i="0"><summary><span class="gp-h">0:00<small>–0:06</small></span><span class="gp-n">1</span><span class="gp-t">Bienvenida</span><span class="gp-min">6 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
@@ -2139,8 +2158,8 @@ Dame el archivo completo, de principio a fin.</pre><button class="btn suave copi
   </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 15 min</button></div></div>
 </details>
   <span class="ancla" id="fxVotar"></span>
-  <details class="gp-p" id="parte-s1-9" data-sid="s1" data-i="9"><summary><span class="gp-h">1:25<small>–1:29</small></span><span class="gp-n">10</span><span class="gp-t">La votación</span><span class="gp-min">4 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
-  <div class="gp-c"><div class="gp-texto"><p>Llega el momento de decidir. Desde vuestro móvil podéis votar hasta dos apps. Votad pensando en el centro, no solo en vuestra clase: la que gane es la que pondremos en marcha en la cuarta sesión, con vuestra propia base de datos y vuestros usuarios.</p><p>Los votos aparecen en directo en la pantalla. Cuando hayáis votado casi todos, cerramos la votación y descubrimos la ganadora. Si hay empate, o dos apps muy igualadas, podemos trabajar las dos en dos grupos.</p></div><div class="gp-mat">
+  <details class="gp-p" id="parte-s1-9" data-sid="s1" data-i="9"><summary><span class="gp-h">1:25<small>–1:32</small></span><span class="gp-n">10</span><span class="gp-t">La votación y la encuesta</span><span class="gp-min">7 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <div class="gp-c"><div class="gp-texto"><p>Llega el momento de decidir. Desde vuestro móvil podéis votar hasta dos apps. Votad pensando en el centro, no solo en vuestra clase: la que gane es la que pondremos en marcha en la cuarta sesión, con vuestra propia base de datos y vuestros usuarios.</p><p>Los votos aparecen en directo en la pantalla. Cuando hayáis votado casi todos, cerramos la votación y descubrimos la ganadora. Si hay empate, o dos apps muy igualadas, podemos trabajar las dos en dos grupos.</p><p>Y antes de cerrar, una encuesta muy corta, también desde el móvil: tres preguntas sobre cómo usáis la IA, qué sabéis de Gemini y qué os gustaría aprender. Es anónima y me sirve para ajustar las próximas sesiones a vuestro nivel y a lo que de verdad queréis hacer.</p></div><div class="gp-mat">
   <div class="fx-mivoto" id="fxMiVoto" style="display:none"></div>
   <div class="fx-podio" id="fxPodio">
     <h4 id="fxPodioTit">¿Qué app quiere este centro?</h4>
@@ -2148,11 +2167,18 @@ Dame el archivo completo, de principio a fin.</pre><button class="btn suave copi
     <div class="fx-barras" id="fxBarras"></div>
     <div class="acc fx-solo-ponente no-imprimir" id="fxAcc"></div>
   </div>
+  <h4 class="enc-tit">📝 Y ahora, tu opinión: tres preguntas para preparar las próximas sesiones</h4>
+  <div class="enc-movil" id="encMovil" style="display:none"></div>
+  <div class="enc-panel" id="encPanel">
+    <p class="est" id="encEst"></p>
+    <div id="encRes"></div>
+    <div class="acc fx-solo-ponente no-imprimir" id="encAcc"></div>
+  </div>
 
-  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 4 min</button></div></div>
+  </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 7 min</button></div></div>
 </details>
   <span class="ancla" id="fxDespues"></span>
-  <details class="gp-p" id="parte-s1-10" data-sid="s1" data-i="10"><summary><span class="gp-h">1:29<small>–1:34</small></span><span class="gp-n">11</span><span class="gp-t">Qué viene ahora y reto del mes</span><span class="gp-min">5 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <details class="gp-p" id="parte-s1-10" data-sid="s1" data-i="10"><summary><span class="gp-h">1:32<small>–1:37</small></span><span class="gp-n">11</span><span class="gp-t">Qué viene ahora y reto del mes</span><span class="gp-min">5 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
   <div class="gp-c"><div class="gp-texto"><p>Hoy habéis visto lo que se puede hacer. A partir de ahora, lo hacéis vosotros. En la segunda sesión aprenderéis a pedirle una app a la IA: haréis una rueda de participación para la clase y una herramienta para esa tarea que hoy habéis escrito en la radiografía. En la tercera la publicaréis en internet, con su dirección y su código QR, y la instalaréis en el móvil. Y en la cuarta, la app ganadora de hoy quedará funcionando en vuestro centro, con vuestros datos.</p><p>Desde hoy, tres reglas que no se negocian. Ningún dato del alumnado, ni en la conversación con la IA ni dentro del código: números de lista o datos inventados. Una base de datos, siempre con reglas de seguridad; las veremos en la cuarta sesión. Y estas apps no sustituyen a Séneca: ayudan a organizar y a analizar, pero lo oficial se sigue registrando donde corresponde.</p><p>Y como cada mes, un reto pequeño. Usad en clase el juego que habéis hecho hoy, o haced otro de otro tema con el mismo encargo. Y durante el mes, apuntad paso a paso cómo hacéis ahora esa tarea que os quita tiempo: en la segunda sesión la convertiréis en vuestra herramienta. La próxima sesión empieza con vosotros: dos o tres voluntarios enseñarán su juego en la pantalla grande.</p><p>Para la próxima sesión, comprobad también que entráis en Gemini con vuestra cuenta. Muchas gracias.</p></div><div class="gp-mat"><div class="diapos lamina"><div class="diapo" aria-roledescription="diapositiva" data-notas="Recordar qué traer a cada sesión. La cuenta de Google del centro solo hace falta en la cuarta.">
       <h2 class="medio">Qué necesitas en cada sesión</h2>
       <div class="tres">
@@ -2177,7 +2203,7 @@ Dame el archivo completo, de principio a fin.</pre><button class="btn suave copi
 <p class="consejo"><strong>🎯 Reto del mes:</strong> usa en clase el juego que has hecho hoy, o haz otro de otro tema con el mismo encargo. Y apunta, paso a paso, cómo haces ahora esa tarea que te quita tiempo: en la sesión 2 la convertirás en tu herramienta. La sesión 2 empieza con dos o tres juegos vuestros en la pantalla grande.</p>
 </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 5 min</button></div></div>
 </details>
-  <details class="gp-p" id="parte-s1-11" data-sid="s1" data-i="11"><summary><span class="gp-h">1:34<small>–1:44</small></span><span class="gp-n">12</span><span class="gp-t">Repaso de la sesión y dudas</span><span class="gp-min">10 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
+  <details class="gp-p" id="parte-s1-11" data-sid="s1" data-i="11"><summary><span class="gp-h">1:37<small>–1:47</small></span><span class="gp-n">12</span><span class="gp-t">Repaso de la sesión y dudas</span><span class="gp-min">10 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
   <div class="gp-c"><div class="gp-texto"><p>Antes de irnos, repasamos en cinco minutos lo que nos llevamos de hoy.</p><p>Primero, los datos: a una IA nunca le damos nada que identifique a un alumno o a una familia. Siglas, número de lista o datos inventados, y la cuenta del cole siempre que se pueda.</p><p>Segundo, lo que habéis visto: apps que funcionan cada día en un colegio público, hechas por un maestro que no es programador. Unas no guardan nada y se usan al momento; otras guardan datos con usuario y contraseña, y por eso llevan reglas de seguridad.</p><p>Tercero, lo que habéis hecho: un juego para vuestra clase en diez minutos, pidiéndolo con palabras normales y cambiándolo con una frase. Esa es la forma de trabajar: un encargo claro y un cambio cada vez.</p><p>Y cuarto, lo que habéis decidido: la app que queréis para vuestro centro. Esa es la que montaremos juntos en la cuarta sesión.</p><p>Ahora os toca a vosotros: ¿qué os ha sorprendido más? ¿Qué os llevaríais mañana a clase? Cualquier duda, este es el momento.</p></div><div class="gp-mat">
   <div class="retos">
     <div class="reto"><b>🔒 Los datos, primero</b><p>Ni nombres, ni fotos, ni salud. Siglas o datos inventados, y la cuenta del cole.</p></div>
@@ -3839,6 +3865,7 @@ function aplicarEstado(e, navegar) {
   S.estado.parte = e.parte || S.estado.parte || '';
   S.estado.actividad = e.actividad || '';
   S.estado.feria = e.feria || ''; S.estado.ganadora = e.ganadora || '';
+  S.estado.encuesta = e.encuesta || '';
   { const rc = e.recreo || null; if (JSON.stringify(rc) !== JSON.stringify(S.estado.recreo || null)) { S.estado.recreo = rc; if (window.recibirRecreo) window.recibirRecreo(); } }
   if (e.voto && (!S.estado.voto || S.estado.voto.n !== e.voto.n || S.estado.voto.abierto !== e.voto.abierto)) { S.estado.voto = e.voto; if (window.recibirVoto) window.recibirVoto(e.voto); }
   if (e.envio && (!S.estado.envio || S.estado.envio.n !== e.envio.n)) { S.estado.envio = e.envio; if (window.recibirEnvio) window.recibirEnvio(e.envio); }
@@ -5087,7 +5114,7 @@ window.DIRECTO_PUENTE = { S, emitir, FB, ref };   // para la guía de privacidad
 })();
 
 /* ── Guion con reloj ── */
-const GUIONES = window.GUIONES = { s1: [{"h": "0:00", "m": 6, "t": "Bienvenida", "hace": ["Antes de empezar, en la pestaña Directo, marca que los asistentes solo ven la Sesión 1.", "Pulsa «Empezar sesión en directo» para que el QR de la radiografía esté listo.", "Preséntate en treinta segundos."]}, {"h": "0:06", "m": 8, "t": "Privacidad y datos: qué sí y qué no", "hace": ["Muestra el ejemplo de «así no / así sí»: es lo que más se recuerda.", "Recorre el semáforo con un ejemplo de cada color.", "Haz en voz alta dos casos del «Ponte a prueba»."]}, {"h": "0:14", "m": 5, "t": "La radiografía del claustro", "hace": ["Si el QR no aparece, pulsa «Empezar sesión en directo» en la pestaña Directo.", "Comenta en voz alta dos o tres respuestas según llegan.", "Quédate con los temas que más se repiten: los usarás en la sesión 2."]}, {"h": "0:19", "m": 4, "t": "Así nació una app", "hace": ["Recorre la línea del tiempo hito a hito con sus botones.", "Lee en voz alta uno de los encargos reales: se ve que es lenguaje normal.", "No expliques todavía cómo se hace."]}, {"h": "0:23", "m": 15, "t": "Las apps del cole · Sin base de datos", "hace": ["Pon el escaparate en pantalla completa y abre cada app desde su tarjeta.", "Mándalas a los móviles con 📲 mientras las enseñas: ninguna pide usuario.", "Un minuto por app. El Troglodita primero: rompe el hielo."]}, {"h": "0:38", "m": 13, "t": "Las apps del cole · Con base de datos", "hace": ["Entra con tu usuario desde tu ordenador, con un centro inventado.", "Manda a los móviles el enlace (verán la entrada) y su documento de ejemplo con 📄.", "En Teletrabajo, invítalos a entrar como Invitado."]}, {"h": "0:51", "m": 4, "t": "Las apps del cole · El ecosistema", "hace": ["Enseña Capitoolappciones: el panel del día y el asistente.", "Cierra con la pregunta de qué app se llevarían: prepara la votación."]}, {"h": "0:55", "m": 15, "t": "Pruébalas en tu móvil", "hace": ["Pasea por la sala mientras prueban.", "Apunta las dudas que se repitan: te servirán en las sesiones siguientes.", "A mitad de bloque, pide que prueben una segunda app."]}, {"h": "1:10", "m": 15, "t": "Crea un juego en diez minutos", "hace": ["Enseña en la pantalla dónde está Canvas.", "Quien termine antes, que pida un cambio en una sola frase.", "Proyecta dos o tres juegos del grupo."]}, {"h": "1:25", "m": 4, "t": "La votación", "hace": ["Pulsa «Abrir la votación» y pon el marcador en pantalla completa.", "Se vota en un par de minutos desde el móvil: cuando hayan votado casi todos, pulsa «Cerrar y descubrir la ganadora»."]}, {"h": "1:29", "m": 5, "t": "Qué viene ahora y reto del mes", "hace": ["Acuerda quién coordina en el centro y con qué cuenta de Google se creará todo en la sesión 4.", "Lee el reto del mes: usar el juego en clase y apuntar paso a paso la tarea que les quita tiempo."]}, {"h": "1:34", "m": 10, "t": "Repaso de la sesión y dudas", "hace": ["Recorre las seis ideas con una frase cada una.", "Pregunta en voz alta qué app se llevarían mañana y por qué.", "Abre turno de dudas; si no hay, proyecta otra vez uno de los juegos del grupo."]}], s2: [{"h": "0:00", "m": 10, "t": "Ronda del reto y lo que salió en la sesión 1", "hace": ["Pide dos o tres voluntarios que enseñen su juego del reto en la pantalla grande.", "Abre la pestaña Directo y proyecta las respuestas de la radiografía."]}, {"h": "0:10", "m": 10, "t": "Gemini por dentro", "hace": ["Proyecta Gemini y abre el menú +.", "Prueba en directo dos herramientas, Canvas la última."]}, {"h": "0:20", "m": 25, "t": "La rueda de participación", "hace": ["Haz tú la rueda a la vez que el grupo, proyectada.", "Pasea por la sala y ayuda a quien se atasque."]}, {"h": "0:45", "m": 10, "t": "Por qué ha funcionado: el método", "hace": ["Relaciona cada regla con lo que acaban de hacer en la rueda."]}, {"h": "0:55", "m": 25, "t": "Tu asistente y tu herramienta propia", "hace": ["Crea la Gem en directo, paso a paso.", "Enseña dos o tres herramientas del grupo al final."]}, {"h": "1:20", "m": 10, "t": "Taller de errores", "hace": ["Haz el primer nivel en la pantalla grande.", "Enseña dónde está la consola con F12."]}, {"h": "1:30", "m": 25, "t": "NotebookLM: tu centro en un cuaderno", "hace": ["Haz una pregunta real a un documento del centro.", "Genera el resumen en audio y pon un trozo."]}, {"h": "1:55", "m": 5, "t": "Reto del mes y dudas", "hace": ["Resuelve dudas y despide la sesión."]}], s3: [{"h": "0:00", "m": 10, "t": "Ronda del reto", "hace": ["Pide voluntarios antes de empezar.", "Proyecta sus herramientas en la pantalla grande."]}, {"h": "0:10", "m": 30, "t": "Publicar en GitHub Pages", "hace": ["Hazlo en directo con tu cuenta, paso a paso.", "Espera a que todos tengan su dirección antes de seguir."]}, {"h": "0:40", "m": 20, "t": "De web a app instalable", "hace": ["Enseña la instalación en tu móvil o en el ordenador."]}, {"h": "1:00", "m": 15, "t": "Que se vea bien", "hace": ["Compara el antes y el después en una app del grupo."]}, {"h": "1:15", "m": 15, "t": "Compartir y mantenerla al día", "hace": ["Que un compañero escanee el QR de otro.", "Sube un cambio pequeño en directo."]}, {"h": "1:30", "m": 25, "t": "Música con IA: la canción de tu clase", "hace": ["Haz una canción en directo con una letra del grupo.", "Ponla entera: es el momento más divertido."]}, {"h": "1:55", "m": 5, "t": "Reto del mes y dudas", "hace": ["Recuerda la cuenta de Google del centro.", "Resuelve dudas y despide la sesión."]}], s4: [{"h": "0:00", "m": 10, "t": "Dos sitios para guardar", "hace": ["Pon un ejemplo de cada tipo con apps que ya conocen."]}, {"h": "0:10", "m": 15, "t": "Datos del alumnado", "hace": ["Reparte los casos y deja tres minutos por pareja.", "Pon en común dos o tres respuestas."]}, {"h": "0:25", "m": 25, "t": "Firebase paso a paso", "hace": ["Hazlo en directo con la cuenta del centro.", "No sigas hasta que todos tengan el proyecto creado."]}, {"h": "0:50", "m": 25, "t": "Tu app del centro", "hace": ["Sigue los cuatro pasos con la app ganadora.", "Comprueba que todos llegan a abrirla publicada."]}, {"h": "1:15", "m": 10, "t": "Prueba de la cerradura", "hace": ["Haz tú la prueba con alguien del grupo."]}, {"h": "1:25", "m": 10, "t": "La segunda opinión", "hace": ["Enseña una revisión real y qué se cambió por ella."]}, {"h": "1:35", "m": 15, "t": "Galería final y recreativa del claustro", "hace": ["Abre la Recreativa en la pantalla grande.", "Anuncia la favorita del claustro al final."]}, {"h": "1:50", "m": 10, "t": "Cómo seguir", "hace": ["Acordad responsable y suplente de la app del centro.", "Despide la formación y da las gracias."]}] };
+const GUIONES = window.GUIONES = { s1: [{"h": "0:00", "m": 6, "t": "Bienvenida", "hace": ["Antes de empezar, en la pestaña Directo, marca que los asistentes solo ven la Sesión 1.", "Pulsa «Empezar sesión en directo» para que el QR de la radiografía esté listo.", "Preséntate en treinta segundos."]}, {"h": "0:06", "m": 8, "t": "Privacidad y datos: qué sí y qué no", "hace": ["Muestra el ejemplo de «así no / así sí»: es lo que más se recuerda.", "Recorre el semáforo con un ejemplo de cada color.", "Haz en voz alta dos casos del «Ponte a prueba»."]}, {"h": "0:14", "m": 5, "t": "La radiografía del claustro", "hace": ["Si el QR no aparece, pulsa «Empezar sesión en directo» en la pestaña Directo.", "Comenta en voz alta dos o tres respuestas según llegan.", "Quédate con los temas que más se repiten: los usarás en la sesión 2."]}, {"h": "0:19", "m": 4, "t": "Así nació una app", "hace": ["Recorre la línea del tiempo hito a hito con sus botones.", "Lee en voz alta uno de los encargos reales: se ve que es lenguaje normal.", "No expliques todavía cómo se hace."]}, {"h": "0:23", "m": 15, "t": "Las apps del cole · Sin base de datos", "hace": ["Pon el escaparate en pantalla completa y abre cada app desde su tarjeta.", "Mándalas a los móviles con 📲 mientras las enseñas: ninguna pide usuario.", "Un minuto por app. El Troglodita primero: rompe el hielo."]}, {"h": "0:38", "m": 13, "t": "Las apps del cole · Con base de datos", "hace": ["Entra con tu usuario desde tu ordenador, con un centro inventado.", "Manda a los móviles el enlace (verán la entrada) y su documento de ejemplo con 📄.", "En Teletrabajo, invítalos a entrar como Invitado."]}, {"h": "0:51", "m": 4, "t": "Las apps del cole · El ecosistema", "hace": ["Enseña Capitoolappciones: el panel del día y el asistente.", "Cierra con la pregunta de qué app se llevarían: prepara la votación."]}, {"h": "0:55", "m": 15, "t": "Pruébalas en tu móvil", "hace": ["Pasea por la sala mientras prueban.", "Apunta las dudas que se repitan: te servirán en las sesiones siguientes.", "A mitad de bloque, pide que prueben una segunda app."]}, {"h": "1:10", "m": 15, "t": "Crea un juego en diez minutos", "hace": ["Enseña en la pantalla dónde está Canvas.", "Quien termine antes, que pida un cambio en una sola frase.", "Proyecta dos o tres juegos del grupo."]}, {"h": "1:25", "m": 7, "t": "La votación y la encuesta", "hace": ["Pulsa «Abrir la votación» y pon el marcador en pantalla completa.", "Se vota en un par de minutos desde el móvil: cuando hayan votado casi todos, pulsa «Cerrar y descubrir la ganadora».", "Después, pulsa «Abrir la encuesta» (tres preguntas). Al cerrarla, pulsa «Descargar resultados» y guárdalos."]}, {"h": "1:32", "m": 5, "t": "Qué viene ahora y reto del mes", "hace": ["Acuerda quién coordina en el centro y con qué cuenta de Google se creará todo en la sesión 4.", "Lee el reto del mes: usar el juego en clase y apuntar paso a paso la tarea que les quita tiempo."]}, {"h": "1:37", "m": 10, "t": "Repaso de la sesión y dudas", "hace": ["Recorre las seis ideas con una frase cada una.", "Pregunta en voz alta qué app se llevarían mañana y por qué.", "Abre turno de dudas; si no hay, proyecta otra vez uno de los juegos del grupo."]}], s2: [{"h": "0:00", "m": 10, "t": "Ronda del reto y lo que salió en la sesión 1", "hace": ["Pide dos o tres voluntarios que enseñen su juego del reto en la pantalla grande.", "Abre la pestaña Directo y proyecta las respuestas de la radiografía."]}, {"h": "0:10", "m": 10, "t": "Gemini por dentro", "hace": ["Proyecta Gemini y abre el menú +.", "Prueba en directo dos herramientas, Canvas la última."]}, {"h": "0:20", "m": 25, "t": "La rueda de participación", "hace": ["Haz tú la rueda a la vez que el grupo, proyectada.", "Pasea por la sala y ayuda a quien se atasque."]}, {"h": "0:45", "m": 10, "t": "Por qué ha funcionado: el método", "hace": ["Relaciona cada regla con lo que acaban de hacer en la rueda."]}, {"h": "0:55", "m": 25, "t": "Tu asistente y tu herramienta propia", "hace": ["Crea la Gem en directo, paso a paso.", "Enseña dos o tres herramientas del grupo al final."]}, {"h": "1:20", "m": 10, "t": "Taller de errores", "hace": ["Haz el primer nivel en la pantalla grande.", "Enseña dónde está la consola con F12."]}, {"h": "1:30", "m": 25, "t": "NotebookLM: tu centro en un cuaderno", "hace": ["Haz una pregunta real a un documento del centro.", "Genera el resumen en audio y pon un trozo."]}, {"h": "1:55", "m": 5, "t": "Reto del mes y dudas", "hace": ["Resuelve dudas y despide la sesión."]}], s3: [{"h": "0:00", "m": 10, "t": "Ronda del reto", "hace": ["Pide voluntarios antes de empezar.", "Proyecta sus herramientas en la pantalla grande."]}, {"h": "0:10", "m": 30, "t": "Publicar en GitHub Pages", "hace": ["Hazlo en directo con tu cuenta, paso a paso.", "Espera a que todos tengan su dirección antes de seguir."]}, {"h": "0:40", "m": 20, "t": "De web a app instalable", "hace": ["Enseña la instalación en tu móvil o en el ordenador."]}, {"h": "1:00", "m": 15, "t": "Que se vea bien", "hace": ["Compara el antes y el después en una app del grupo."]}, {"h": "1:15", "m": 15, "t": "Compartir y mantenerla al día", "hace": ["Que un compañero escanee el QR de otro.", "Sube un cambio pequeño en directo."]}, {"h": "1:30", "m": 25, "t": "Música con IA: la canción de tu clase", "hace": ["Haz una canción en directo con una letra del grupo.", "Ponla entera: es el momento más divertido."]}, {"h": "1:55", "m": 5, "t": "Reto del mes y dudas", "hace": ["Recuerda la cuenta de Google del centro.", "Resuelve dudas y despide la sesión."]}], s4: [{"h": "0:00", "m": 10, "t": "Dos sitios para guardar", "hace": ["Pon un ejemplo de cada tipo con apps que ya conocen."]}, {"h": "0:10", "m": 15, "t": "Datos del alumnado", "hace": ["Reparte los casos y deja tres minutos por pareja.", "Pon en común dos o tres respuestas."]}, {"h": "0:25", "m": 25, "t": "Firebase paso a paso", "hace": ["Hazlo en directo con la cuenta del centro.", "No sigas hasta que todos tengan el proyecto creado."]}, {"h": "0:50", "m": 25, "t": "Tu app del centro", "hace": ["Sigue los cuatro pasos con la app ganadora.", "Comprueba que todos llegan a abrirla publicada."]}, {"h": "1:15", "m": 10, "t": "Prueba de la cerradura", "hace": ["Haz tú la prueba con alguien del grupo."]}, {"h": "1:25", "m": 10, "t": "La segunda opinión", "hace": ["Enseña una revisión real y qué se cambió por ella."]}, {"h": "1:35", "m": 15, "t": "Galería final y recreativa del claustro", "hace": ["Abre la Recreativa en la pantalla grande.", "Anuncia la favorita del claustro al final."]}, {"h": "1:50", "m": 10, "t": "Cómo seguir", "hace": ["Acordad responsable y suplente de la app del centro.", "Despide la formación y da las gracias."]}] };
 const VISTOS_K = 'guion-vistos';
 window.partesVistas = sid => (leer(VISTOS_K, {}) || {})[sid] || [];
 function marcarVista(sid, i, si) {
@@ -5267,6 +5294,91 @@ document.addEventListener('click', e => {
 document.addEventListener('votos', pintarFeria); document.addEventListener('feria', pintarFeria);
 document.addEventListener('panel', e => { if (e.detail === 's1') pintarFeria(); });
 
+/* ── Encuesta final: nivel e intereses (usa salas/<sala>/votos/<q..>/<uid> = 0 o 1) ── */
+const ENC = [
+  { k: 'ia', t: '¿Cómo usas hoy la inteligencia artificial?', max: 1, o: ['Nunca la he usado', 'La he probado alguna vez', 'La uso de vez en cuando (correos, ideas, materiales)', 'La uso casi a diario'] },
+  { k: 'ge', t: '¿Y Gemini?', max: 1, o: ['No lo había abierto nunca', 'Lo he usado para preguntar o redactar', 'He usado Canvas, Gems o Gemini Notebook', 'Lo manejo con soltura, incluso para crear apps'] },
+  { k: 'ap', t: '¿Qué te gustaría aprender? (hasta tres)', max: 3, o: ['Crear juegos y apps para mi clase', 'Ahorrar tiempo en papeles: actas, informes, correos', 'Preparar materiales y fichas adaptadas', 'Trabajar con mis documentos (Gemini Notebook)', 'Imágenes, música y vídeos con IA', 'Publicar mis apps y compartirlas con QR', 'Crear la app del centro con base de datos', 'Usar la IA con seguridad y sin datos del alumnado'] }
+];
+const EN = { mias: leer('encMias', {}), votos: {}, ref: null, sala: '', sim: null };
+const encKey = (q, i) => 'q' + q.k + i;
+function encConectar() {
+  const sala = enSala() ? S.sala : '';
+  if (sala === EN.sala) return;
+  if (EN.ref) { EN.ref.off(); EN.ref = null; }
+  EN.sala = sala; EN.votos = {};
+  if (!sala) { pintarEncuesta(); return; }
+  EN.ref = ref('salas/' + sala + '/votos');
+  EN.ref.on('value', sn => { const v = sn.val() || {}; EN.votos = {}; Object.keys(v).forEach(k => { if (/^q(ia|ge|ap)\d+$/.test(k)) EN.votos[k] = v[k]; }); pintarEncuesta(); });
+}
+function encRecuento() {
+  if (EN.sim) return EN.sim;
+  const c = {}, gente = new Set();
+  ENC.forEach(q => q.o.forEach((_, i) => { const k = encKey(q, i), v = EN.votos[k] || {}; c[k] = Object.entries(v).filter(([u, x]) => { if (x === 1) gente.add(u); return x === 1; }).length; }));
+  return { c, n: gente.size };
+}
+function encTexto() {
+  const { c, n } = encRecuento(), f = new Date().toLocaleString('es-ES');
+  let t = 'Encuesta de la sesión 1 · ' + f + ' · ' + n + ' personas\n';
+  ENC.forEach(q => { t += '\n' + q.t + '\n'; q.o.forEach((o, i) => { const x = c[encKey(q, i)] || 0; t += '- ' + o + ': ' + x + (n ? ' (' + Math.round(x / n * 100) + ' %)' : '') + '\n'; }); });
+  return t;
+}
+function pintarEncuesta() {
+  if (!$('encPanel')) return;
+  const ef = S.estado.encuesta || '';
+  const { c, n } = encRecuento();
+  if (n && !EN.sim) guardar('encUltima', { texto: encTexto(), n, t: Date.now() });
+  const ult = leer('encUltima', null);
+  $('encEst').innerHTML = (ef === 'abierta' ? '<b>Encuesta abierta.</b> ' : ef === 'cerrada' ? '<b>Encuesta cerrada.</b> ' : '') + '<b>' + n + '</b> ' + (n === 1 ? 'persona ha respondido' : 'personas han respondido') +
+    (EN.sim ? ' · ensayo' : enSala() ? '' : ' · modo ensayo (sin sesión en directo)') +
+    (!n && ult ? ' · últimos resultados guardados: ' + ult.n + ' personas, ' + new Date(ult.t).toLocaleDateString('es-ES') : '');
+  $('encRes').innerHTML = ENC.map(q => { const tot = Math.max(1, ...q.o.map((_, i) => c[encKey(q, i)] || 0));
+    return '<p class="enc-q">' + esc(q.t) + '</p>' + q.o.map((o, i) => { const x = c[encKey(q, i)] || 0; return '<div class="enc-b"><span>' + esc(o) + '</span><div class="r"><i style="width:' + (x / tot * 100) + '%"></i></div><em>' + x + '</em></div>'; }).join(''); }).join('');
+  if (esPonente() && S.rol !== 'asistente' && S.rol !== 'mando') $('encAcc').innerHTML =
+    (ef === 'abierta' ? '<button class="fx-b oro" data-enc="cerrar">Cerrar la encuesta</button>' : '<button class="fx-b oro" data-enc="abrir">' + (ef ? 'Volver a abrir la encuesta' : 'Abrir la encuesta') + '</button>') +
+    '<button class="fx-b" data-enc="pantalla">Pantalla completa</button>' +
+    '<button class="fx-b" data-enc="bajar">Descargar resultados</button>' +
+    (enSala() ? '' : '<button class="fx-b" data-enc="simular">' + (EN.sim ? 'Quitar el ensayo' : 'Simular respuestas (ensayo)') + '</button>');
+  const mv = $('encMovil');
+  if (S.rol === 'asistente') {
+    mv.style.display = '';
+    if (ef !== 'abierta') { mv.innerHTML = ef ? '<b>¡Gracias por responder!</b> Con tus respuestas prepararemos las próximas sesiones.' : 'La encuesta se abrirá al final de la sesión, después de la votación.'; return; }
+    mv.innerHTML = '<p style="margin:0 0 10px">Es anónima. Toca tus respuestas; se guardan solas.</p>' + ENC.map(q => '<h5>' + esc(q.t) + '</h5>' + q.o.map((o, i) => '<button type="button" class="enc-op" data-encop="' + q.k + ':' + i + '" aria-pressed="' + !!EN.mias[encKey(q, i)] + '">' + (EN.mias[encKey(q, i)] ? '✓ ' : '') + esc(o) + '</button>').join('')).join('');
+  } else mv.style.display = 'none';
+}
+async function encResponder(qk, i) {
+  const q = ENC.find(x => x.k === qk); if (!q || !enSala()) return;
+  const k = encKey(q, i), cambios = {};
+  if (q.max === 1) { q.o.forEach((_, j) => { const kj = encKey(q, j); if (EN.mias[kj] && kj !== k) cambios[kj] = 0; }); cambios[k] = 1; }
+  else {
+    if (EN.mias[k]) cambios[k] = 0;
+    else { if (q.o.filter((_, j) => EN.mias[encKey(q, j)]).length >= q.max) { tostada('Como mucho ' + q.max + ': quita una para cambiar'); return; } cambios[k] = 1; }
+  }
+  Object.entries(cambios).forEach(([kk, v]) => { if (v) EN.mias[kk] = 1; else delete EN.mias[kk]; });
+  guardar('encMias', EN.mias); pintarEncuesta();
+  try { await Promise.all(Object.entries(cambios).map(([kk, v]) => ref('salas/' + S.sala + '/votos/' + kk + '/' + FB.uid).set(v))); if (navigator.vibrate) navigator.vibrate(20); }
+  catch (e) { tostada('No se pudo enviar la respuesta'); }
+}
+document.addEventListener('click', e => {
+  const o = e.target.closest('[data-encop]'); if (o) { if (S.rol === 'asistente' && (S.estado.encuesta || '') === 'abierta') { const [qk, i] = o.dataset.encop.split(':'); encResponder(qk, +i); } return; }
+  const b = e.target.closest('[data-enc]'); if (!b) return; const a = b.dataset.enc;
+  if (a === 'abrir') { emitir({ encuesta: 'abierta' }); tostada('Encuesta abierta'); pintarEncuesta(); }
+  else if (a === 'cerrar') { emitir({ encuesta: 'cerrada' }); pintarEncuesta(); }
+  else if (a === 'pantalla') { const el = $('encPanel'); if (document.fullscreenElement) document.exitFullscreen(); else if (el.requestFullscreen) el.requestFullscreen(); }
+  else if (a === 'simular') {
+    if (EN.sim) EN.sim = null; else { const c = {}; ENC.forEach(q => q.o.forEach((_, i) => c[encKey(q, i)] = Math.floor(Math.random() * 9))); EN.sim = { c, n: 18 }; }
+    pintarEncuesta();
+  }
+  else if (a === 'bajar') {
+    const ult = leer('encUltima', null), txt = encRecuento().n ? encTexto() : ult ? ult.texto : encTexto();
+    const url = URL.createObjectURL(new Blob([txt], { type: 'text/plain;charset=utf-8' }));
+    const l = document.createElement('a'); l.href = url; l.download = 'encuesta-sesion1.txt'; document.body.appendChild(l); l.click(); l.remove(); setTimeout(() => URL.revokeObjectURL(url), 2000);
+  }
+});
+document.addEventListener('feria', () => { encConectar(); pintarEncuesta(); });
+document.addEventListener('panel', e => { if (e.detail === 's1') { encConectar(); pintarEncuesta(); } });
+setTimeout(() => { encConectar(); pintarEncuesta(); }, 800);
+
 /* ── La ganadora: cuenta atrás y confeti ── */
 let confetiVivo = false;
 function confeti() {
@@ -5426,7 +5538,7 @@ document.addEventListener('click', e => {
 
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-22-especialidades';
+  const ID = 'formacion-novedades-2026-11-22-encuesta';
   if (typeof esPonente === 'function' && !esPonente()) return;
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
@@ -5434,7 +5546,7 @@ document.addEventListener('click', e => {
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">🎯 Sesión 1, «Pruébalas en tu móvil»: juegos y apps por especialidad.</p>'
+    + '<p style="margin-bottom:14px">📝 Sesión 1: encuesta final en el móvil sobre nivel de IA, Gemini e intereses.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
