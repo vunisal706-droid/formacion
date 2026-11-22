@@ -841,6 +841,14 @@ p,li,dd{text-wrap:pretty}
   *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
 }
 
+/* Botón grande de inicio en la Sesión 1 (solo ponente, desaparece al empezar) */
+.arranque{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:0 0 22px;padding:18px 22px;border-radius:22px;background:linear-gradient(135deg,#FFF4E8,#FFE9EC);border:2px dashed #F08A3C}
+.arranque p{margin:0;flex:1 1 280px;color:var(--tinta);font-size:1.05rem;line-height:1.45}
+.arranque .btn-arranque{flex:none;border:0;cursor:pointer;padding:18px 30px;border-radius:999px;font:inherit;font-size:1.35rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#E8505B,#F08A3C);box-shadow:0 12px 26px -12px rgba(232,80,91,.9);animation:arranqueLatido 1.8s ease-in-out infinite}
+.arranque .btn-arranque:hover{filter:brightness(1.06)}
+.arranque .btn-arranque:disabled{animation:none;opacity:.75;cursor:wait}
+@keyframes arranqueLatido{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+@media (prefers-reduced-motion:reduce){.arranque .btn-arranque{animation:none}}
 /* ══════════ ENTRAR EN LA WEB (Sesión 1) ══════════ */
 .entra{position:relative;margin:22px 0 26px;padding:26px 26px 22px;border-radius:24px;background:linear-gradient(135deg,#F3F7FF 0%,#FFFFFF 45%,#F2FBF6 100%);border:1px solid #DCE6F7;box-shadow:0 14px 40px -24px rgba(27,42,78,.45);overflow:hidden}
 .entra::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:linear-gradient(90deg,#2459C7,#2F9BE0,#4CD964,#FF9500)}
@@ -1785,6 +1793,11 @@ nav.pestanas{padding-top:10px;padding-bottom:10px;margin-top:-4px;margin-bottom:
 
 <!-- ═════════════════════ SESIÓN 1 · Las apps del cole ═════════════════════ -->
 <section class="panel" id="panel-s1" role="tabpanel" aria-labelledby="t-s1">
+
+  <div class="arranque solo-ponente no-imprimir" id="arranqueS1" style="display:none">
+    <button type="button" class="btn-arranque" data-empezar>▶ Empezar sesión en directo</button>
+    <p><b>Antes de nada:</b> pulsa aquí para que funcionen el QR de entrada, la radiografía y la votación. Este aviso desaparece en cuanto la sesión está en directo.</p>
+  </div>
 
   <div class="intro">
     <p class="ses-etq">Sesión 1 de 4 · Mes 1 · Primero ver, después elegir</p>
@@ -3944,6 +3957,7 @@ function pintarSala() {
   if (!$('directoInicio')) return;
   const hay = hayFirebase(), sesion = S.rol === 'dueno', asis = S.rol === 'asistente';
   $('directoInicio').style.display = hay && !sesion && !asis ? '' : 'none';
+  if ($('arranqueS1')) { $('arranqueS1').style.display = hay && !sesion && !asis ? '' : 'none'; const ba = $('arranqueS1').querySelector('button'); ba.disabled = false; ba.textContent = '▶ Empezar sesión en directo'; }
   $('directoSesion').style.display = !hay || sesion || asis ? '' : 'none';
   $('activar').style.display = hay ? 'none' : '';
   $('btnCerrarSala').style.display = sesion ? '' : 'none';
@@ -5314,7 +5328,7 @@ document.addEventListener('click', e => {
 
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-22-entrar-web';
+  const ID = 'formacion-novedades-2026-11-22-boton-directo';
   if (typeof esPonente === 'function' && !esPonente()) return;
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
@@ -5322,7 +5336,7 @@ document.addEventListener('click', e => {
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">📲 Sesión 1: nuevo apartado inicial para entrar en la web (QR, web del cole y clave).</p>'
+    + '<p style="margin-bottom:14px">▶ Sesión 1: botón grande arriba para empezar la sesión en directo.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
