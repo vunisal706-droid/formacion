@@ -471,6 +471,17 @@ details.activar > div{padding:0 16px 16px}
 .vcard-cv{background:linear-gradient(120deg,#2F9BE0,#4CD964,#FF9500,#2F9BE0);background-size:300% 300%}
 .vcard-cv .vcard-boton{left:72%;top:58%}
 .vcard-cv .vcard-pasos li::before{background:linear-gradient(135deg,#2F9BE0,#4CD964)}
+
+.vmini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:18px 0 8px;max-width:1040px}
+.vmini-grid.uno{grid-template-columns:minmax(0,420px)}
+.vcard.vmini{margin:0;max-width:none;background:linear-gradient(120deg,#2F9BE0,#4CD964,#FF9500,#2F9BE0);background-size:300% 300%;border-radius:20px}
+.vmini .vcard-in{display:block;padding:10px 10px 14px;border-radius:18px}
+.vmini .vcard-boton{left:50%;top:50%;width:60px;height:60px;margin:-30px 0 0 -30px}
+.vmini .vcard-boton svg{width:30px;height:30px}
+.vmini h3{font-family:var(--display);font-size:1.05rem;line-height:1.2;margin:10px 4px 2px;color:var(--tinta)}
+.vmini p.vm-s{margin:0 4px 8px;color:var(--tinta-suave);font-size:.9rem;line-height:1.35}
+.vmini .vcard-acc{padding:0 4px}.vmini .vcard-acc .btn{font-size:.85rem;padding:7px 12px}
+.vcard.vmini.vm-sda{background:linear-gradient(120deg,#E85934,#FFB020,#0E8078,#E85934);background-size:300% 300%}
 .vcard-cv .vcard-kicker{color:#0B6AA8;background:#E3F3FD}.vcard-cv .vcard-dot{background:#2F9BE0}
 @media (max-width:820px){.vcard-in{grid-template-columns:1fr;gap:18px;padding:16px}.vcard-txt h3{font-size:1.35rem}.vcard-boton{width:56px;height:56px;margin:-28px 0 0 -28px}.vcard-boton svg{width:26px;height:26px}}
 @media (prefers-reduced-motion:reduce){.vcard,.vcard-boton::before,.vcard-boton::after,.vcard-dot{animation:none}}
@@ -2287,6 +2298,55 @@ Dame el archivo completo, de principio a fin.</pre><button class="btn suave copi
     <div class="gem-ficha tarjeta" id="gemFicha" aria-live="polite"></div>
   </div>
   
+  <h3 style="margin:22px 0 0;font-family:var(--display)">Gemini dentro de tus herramientas de Google</h3>
+  <p style="color:var(--tinta-suave);margin:4px 0 0;max-width:70ch">Tres vídeos cortos para ver después, con tu cuenta del cole: Gemini ya está en el correo, en los documentos y en el Drive.</p>
+  <div class="vmini-grid" id="videos-workspace">
+    <section class="vcard vmini">
+      <div class="vcard-in">
+        <div class="vcard-media">
+          <button type="button" class="vcard-play" data-yt="rwet-PUonbo" aria-label="Reproducir el vídeo: Gemini en Gmail: escribe correos a las familias en segundos">
+            <img src="materiales/miniaturas/gemini-gmail.jpg" alt="" width="1280" height="720" loading="lazy">
+            <span class="vcard-velo" aria-hidden="true"></span>
+            <span class="vcard-boton" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            <span class="vcard-dur" aria-hidden="true">1:48</span>
+          </button>
+        </div>
+        <h3>Gemini en Gmail</h3>
+        <p class="vm-s">Escribe correos a las familias en segundos.</p>
+        <div class="vcard-acc"><button type="button" class="btn azul vcard-ver">▶ Ver</button><a class="btn linea" href="https://youtu.be/rwet-PUonbo" target="_blank" rel="noopener">YouTube</a></div>
+      </div>
+    </section>
+    <section class="vcard vmini">
+      <div class="vcard-in">
+        <div class="vcard-media">
+          <button type="button" class="vcard-play" data-yt="Sp94yPqMGj8" aria-label="Reproducir el vídeo: Gemini y Documentos: de tus documentos a una circular nueva">
+            <img src="materiales/miniaturas/gemini-documentos.jpg" alt="" width="1280" height="720" loading="lazy">
+            <span class="vcard-velo" aria-hidden="true"></span>
+            <span class="vcard-boton" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            <span class="vcard-dur" aria-hidden="true">1:09</span>
+          </button>
+        </div>
+        <h3>Gemini y Documentos</h3>
+        <p class="vm-s">De tus documentos a una circular nueva.</p>
+        <div class="vcard-acc"><button type="button" class="btn azul vcard-ver">▶ Ver</button><a class="btn linea" href="https://youtu.be/Sp94yPqMGj8" target="_blank" rel="noopener">YouTube</a></div>
+      </div>
+    </section>
+    <section class="vcard vmini">
+      <div class="vcard-in">
+        <div class="vcard-media">
+          <button type="button" class="vcard-play" data-yt="Kr1NVTfDrSg" aria-label="Reproducir el vídeo: Gemini y tu Drive: pregunta a tus documentos">
+            <img src="materiales/miniaturas/gemini-drive.jpg" alt="" width="1280" height="720" loading="lazy">
+            <span class="vcard-velo" aria-hidden="true"></span>
+            <span class="vcard-boton" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            <span class="vcard-dur" aria-hidden="true">1:24</span>
+          </button>
+        </div>
+        <h3>Gemini y tu Drive</h3>
+        <p class="vm-s">Pregunta a tus documentos.</p>
+        <div class="vcard-acc"><button type="button" class="btn azul vcard-ver">▶ Ver</button><a class="btn linea" href="https://youtu.be/Kr1NVTfDrSg" target="_blank" rel="noopener">YouTube</a></div>
+      </div>
+    </section>
+  </div>
   </div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 10 min</button></div></div>
 </details>
   <span class="ancla" id="bloqueRueda"></span>
@@ -2553,6 +2613,25 @@ Reglas: lenguaje sencillo; todo sacado de las fuentes, sin inventar; letras gran
     <div style="--c:#8B5CF6"><b>Enlace de Gemini</b><small>Solo cuenta personal de Gmail</small><ul><li>Compartir → Copiar enlace (share.gemini.google/…).</li><li>Con la cuenta g.educaand no sale este botón.</li><li>Se abre en la web de Gemini.</li><li>Para probar y enseñar.</li></ul></div>
     <div style="--c:#F59E0B"><b>Google Sites</b><small>Cuenta del centro o personal</small><ul><li>Exportar → Google Sites → Publicar.</li><li>Sigue publicada mientras no la borres y exista tu cuenta.</li><li>Comprueba en incógnito quién puede abrirla.</li></ul></div>
     <div style="--c:var(--ok)"><b>GitHub Pages</b><small>La app del centro</small><ul><li>Dirección propia y código QR fijo.</li><li>Se instala en el móvil como una app.</li><li>No depende de Gemini y admite Firebase (sesión 4).</li></ul></div>
+  </div>
+  <h3 style="margin:22px 0 0;font-family:var(--display)">Un ejemplo completo: de la idea a la app publicada</h3>
+  <p style="color:var(--tinta-suave);margin:4px 0 0;max-width:70ch">Una app para crear SdA, hecha con Claude, subida a GitHub Pages y compartida con un QR. Es justo lo que vamos a hacer hoy, de principio a fin.</p>
+  <div class="vmini-grid uno" id="video-sda-minutos">
+    <section class="vcard vmini vm-sda">
+      <div class="vcard-in">
+        <div class="vcard-media">
+          <button type="button" class="vcard-play" data-yt="OK_ZgZIzwDk" aria-label="Reproducir el vídeo: Haz tus SdA en minutos con Claude">
+            <img src="materiales/miniaturas/claude-sda-minutos.jpg" alt="" width="1280" height="720" loading="lazy">
+            <span class="vcard-velo" aria-hidden="true"></span>
+            <span class="vcard-boton" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            <span class="vcard-dur" aria-hidden="true">2:40</span>
+          </button>
+        </div>
+        <h3>Haz tus SdA en minutos</h3>
+        <p class="vm-s">Claude, GitHub y un código QR, paso a paso.</p>
+        <div class="vcard-acc"><button type="button" class="btn azul vcard-ver">▶ Ver</button><a class="btn linea" href="https://youtu.be/OK_ZgZIzwDk" target="_blank" rel="noopener">YouTube</a></div>
+      </div>
+    </section>
   </div>
   <p class="consejo" style="max-width:70ch"><strong>Regla fácil:</strong> para probar y enseñar, el enlace de Gemini o Google Sites; para usarla en el cole de verdad, GitHub Pages. Datos del alumnado, nunca en un enlace público.</p>
   <div class="guias"><details class="guia">
@@ -5562,7 +5641,7 @@ document.addEventListener('click', e => {
 
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-22-votacion3';
+  const ID = 'formacion-novedades-2026-11-23-videos';
   if (typeof esPonente === 'function' && !esPonente()) return;
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
@@ -5570,7 +5649,7 @@ document.addEventListener('click', e => {
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">🗳️ Sesión 1: encuesta al principio y votación con todas las apps (hasta tres votos).</p>'
+    + '<p style="margin-bottom:14px">🎬 Nuevos vídeos: Gemini en Gmail, Documentos y Drive (sesión 2) y «Haz tus SdA en minutos» (sesión 3).</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
