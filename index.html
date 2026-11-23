@@ -3263,6 +3263,12 @@ const MATERIALES = [
     pasos: ['Abre el Gestor de Evaluaciones y ve a «Importar notas».', 'Suelta el archivo: reconoce solo que es 5.º de Primaria.', 'Pulsa «Extraer notas», revisa la tabla y guarda.']
   },
   {
+    archivo: 'materiales/Acta_6EP_2T_ejemplo_nombres_inventados.docx', color: '#1A237E',
+    en: ['probar','importar'], nombre: 'Acta de notas de 6.º con nombres inventados', para: ['evaluaciones'], etiqueta: 'Gestor de Evaluaciones',
+    que: 'Un acta de 6.º con 18 alumnos y alumnas de nombres inventados (Lucía Caballito de Mar, Luis Nube Negra…) y sus notas. Cada uno tiene Religión o Atención Educativa, y Francés o su alternativa.',
+    pasos: ['Abre la demostración del Gestor de Evaluaciones: 6.º está vacío a propósito.', 'Ve a «Importar notas» y suelta el archivo: reconoce solo que es 6.º de Primaria.', 'Pulsa «Extraer notas», guarda y pulsa «Ver resultados del curso»: aparecen las notas y las gráficas de 6.º. Los nombres no se guardan, solo el número de lista.']
+  },
+  {
     archivo: 'materiales/Relacion_personal_del_centro_ejemplo.pdf', color: '#B7791F',
     en: ['probar','importar'], nombre: 'Relación de personal del centro', para: ['horarios', 'convivemas'], etiqueta: 'Cuadra Horarios · Convive+',
     que: 'El listado del claustro en PDF, con las dos columnas de Séneca: Empleado/a y Puesto. Trae 16 maestros y maestras de todas las especialidades.',
@@ -5641,7 +5647,7 @@ document.addEventListener('click', e => {
 
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-23-videos';
+  const ID = 'formacion-novedades-2026-11-23-acta6';
   if (typeof esPonente === 'function' && !esPonente()) return;
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
@@ -5649,7 +5655,7 @@ document.addEventListener('click', e => {
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">🎬 Nuevos vídeos: Gemini en Gmail, Documentos y Drive (sesión 2) y «Haz tus SdA en minutos» (sesión 3).</p>'
+    + '<p style="margin-bottom:14px">📄 Nuevo material: acta de 6.º con nombres inventados para probar el Gestor de Evaluaciones.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
