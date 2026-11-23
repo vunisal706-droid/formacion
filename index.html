@@ -5645,9 +5645,24 @@ document.addEventListener('click', e => {
 })();
 
 
+// ── Descargas de materiales: se bajan por JavaScript y avisan con un mensaje ──
+document.addEventListener('click', async e => {
+  const a = e.target.closest('a[download]'); if (!a || e.defaultPrevented) return;
+  const url = a.getAttribute('href'); if (!url || /^(blob:|data:|https?:)/.test(url)) return;
+  e.preventDefault();
+  const nombre = decodeURIComponent(url.split('?')[0].split('/').pop());
+  try { tostada('⬇ Descargando ' + nombre + '…'); } catch (x) {}
+  try {
+    const r = await fetch(url, { cache: 'no-store' }); if (!r.ok) throw new Error(r.status);
+    const blob = await r.blob(), u = URL.createObjectURL(blob), t = document.createElement('a');
+    t.href = u; t.download = nombre; document.body.appendChild(t); t.click(); t.remove();
+    setTimeout(() => URL.revokeObjectURL(u), 10000);
+    try { tostada('✓ Descargado: ' + nombre + ' (mira en Descargas)'); } catch (x) {}
+  } catch (err) { window.open(url, '_blank', 'noopener'); }
+});
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-23-acta6';
+  const ID = 'formacion-novedades-2026-11-23-descargas';
   if (typeof esPonente === 'function' && !esPonente()) return;
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
@@ -5655,7 +5670,7 @@ document.addEventListener('click', e => {
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">📄 Nuevo material: acta de 6.º con nombres inventados para probar el Gestor de Evaluaciones.</p>'
+    + '<p style="margin-bottom:14px">⬇ Las descargas de materiales avisan ahora con un mensaje. Nuevo: acta de 6.º con nombres inventados para probar el Gestor de Evaluaciones.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
