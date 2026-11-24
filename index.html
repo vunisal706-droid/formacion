@@ -865,6 +865,9 @@ p,li,dd{text-wrap:pretty}
 .pestanas{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:12px 16px;border-radius:18px;background:#EEF4FF;border:1px solid #D3E0F7}
 .btn-pestanas{flex:none;border:0;cursor:pointer;padding:12px 20px;border-radius:999px;font:inherit;font-size:1.05rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#2459C7,#2F9BE0);box-shadow:0 8px 20px -12px rgba(36,89,199,.9)}
 .btn-pestanas:hover{filter:brightness(1.06)}
+a.btn-pestanas{display:inline-block;text-decoration:none}
+.btn-lanzar{border:0;cursor:pointer;padding:10px 18px;border-radius:999px;font:inherit;font-weight:800;color:#fff;background:linear-gradient(135deg,#7C3AED,#C026D3);box-shadow:0 8px 20px -12px rgba(124,58,237,.9)}
+.btn-lanzar.lanzada{background:#E8F7EE;color:#166534;box-shadow:none;border:1.5px solid #86EFAC}
 .pestanas-info{margin:0;flex:1 1 240px;color:var(--tinta-suave);font-size:.95rem}
 .pestanas-aviso{flex-basis:100%;padding:12px 14px;border-radius:12px;background:#FFF4E5;border:1px solid #F5C98A;color:var(--tinta);font-size:.95rem;line-height:1.5}
 .pestanas-aviso ul{margin:6px 0 0;padding-left:20px}
@@ -1771,6 +1774,7 @@ nav.pestanas{padding-top:10px;padding-bottom:10px;margin-top:-4px;margin-bottom:
         <div>
           <div class="pregunta-fila">
             <p><span class="radio-pregunta" id="radioPregunta"></span></p>
+            <button type="button" class="btn-lanzar no-proyectar solo-ponente" data-lanzar style="flex:none;white-space:nowrap;min-height:38px;padding:5px 12px;font-size:.88rem">📣 Lanzar la pregunta a los móviles</button>
             <button class="btn linea no-proyectar solo-ponente" id="btnEditarPregunta" style="flex:none;white-space:nowrap;min-height:38px;padding:5px 12px;font-size:.88rem">Cambiar pregunta</button>
           </div>
           <div class="ensayo-caja no-proyectar solo-ponente" id="campoPregunta" style="display:none">
@@ -1848,7 +1852,7 @@ nav.pestanas{padding-top:10px;padding-bottom:10px;margin-top:-4px;margin-bottom:
       <p><b>Antes de nada:</b> pulsa aquí para que funcionen el QR de entrada, la radiografía y la votación. Este aviso desaparece en cuanto la sesión está en directo.</p>
     </div>
     <div class="pestanas">
-      <button type="button" class="btn-pestanas" data-pestanas="s1">🗂️ Abrir las pestañas de la sesión</button>
+      <a class="btn-pestanas" data-pestanas="s1" href="https://gemini.google.com/app" target="_blank" rel="noopener">🗂️ Abrir las pestañas de la sesión</a>
       <p class="pestanas-info">Gemini, la web del CEIP Capitulaciones y Capitoolappciones, cada una en su pestaña.</p>
       <div class="pestanas-aviso" hidden></div>
     </div>
@@ -2046,7 +2050,7 @@ En la base de datos en la nube guarda solo siglas. Dame el archivo completo.</pr
   <p class="dt-fuente">Fuente: <i>Guía de Buenas Prácticas para el uso de Google Workspace for Education y la Protección de Datos</i>, Consejería de Educación de la Junta de Andalucía, versión 08 (28/10/2026). Lo referido a Claude, ChatGPT y a las apps del centro son recomendaciones del centro a partir de los mismos principios (RGPD y LOPDGDD).</p></div></div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 8 min</button></div></div>
 </details>
   <details class="gp-p" id="parte-s1-2" data-sid="s1" data-i="2"><summary><span class="gp-h">0:14<small>–0:22</small></span><span class="gp-n">3</span><span class="gp-t">La radiografía del claustro y tu punto de partida</span><span class="gp-min">8 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
-  <div class="gp-c"><div class="gp-texto"><p>Antes de enseñaros nada, quiero saber algo de vosotros. Sacad el móvil y escanead el código que aparece en la pantalla. Os sale una sola pregunta: ¿qué tarea del cole os quita más tiempo? Respondedla en una frase. Es anónimo: nadie sabrá quién ha escrito qué.</p><p>Mientras llegan las respuestas, las vamos viendo en la pantalla, y las palabras que más se repiten se hacen más grandes. Fijaos en lo que sale: casi siempre son papeles, listas, actas, horarios, comunicar a las familias… Tareas que repetimos cada semana y que no tienen nada que ver con enseñar.</p><p>Guardad bien vuestra respuesta. En la segunda sesión cada uno va a construir una herramienta precisamente para eso que hoy habéis escrito.</p><p>Y antes de empezar con las apps, tres preguntas rápidas en el mismo móvil: cómo usáis hoy la IA, qué sabéis de Gemini y qué os gustaría aprender. Es anónimo y tarda un minuto. Con lo que respondáis ajustaré las próximas sesiones a vuestro nivel y a lo que de verdad queréis hacer.</p></div><div class="gp-mat"><div class="diapos lamina"><div class="diapo" aria-roledescription="diapositiva" data-notas="Si el QR no aparece, pulsa «Empezar sesión en directo». Que escaneen y respondan en una frase; mientras llegan, comentar qué temas suben. Las respuestas dicen qué apps destacar hoy; en la sesión 2 volverán para que cada persona haga su herramienta." data-actividad="radiografia">
+  <div class="gp-c"><div class="gp-texto"><p>Antes de enseñaros nada, quiero saber algo de vosotros. Sacad el móvil y escanead el código que aparece en la pantalla. Os sale una sola pregunta: ¿qué tarea del cole os quita más tiempo? Respondedla en una frase. Es anónimo: nadie sabrá quién ha escrito qué.</p><p>Mientras llegan las respuestas, las vamos viendo en la pantalla, y las palabras que más se repiten se hacen más grandes. Fijaos en lo que sale: casi siempre son papeles, listas, actas, horarios, comunicar a las familias… Tareas que repetimos cada semana y que no tienen nada que ver con enseñar.</p><p>Guardad bien vuestra respuesta. En la segunda sesión cada uno va a construir una herramienta precisamente para eso que hoy habéis escrito.</p><p>Y antes de empezar con las apps, tres preguntas rápidas en el mismo móvil: cómo usáis hoy la IA, qué sabéis de Gemini y qué os gustaría aprender. Es anónimo y tarda un minuto. Con lo que respondáis ajustaré las próximas sesiones a vuestro nivel y a lo que de verdad queréis hacer.</p></div><div class="gp-mat"><div class="diapos lamina"><div class="diapo" aria-roledescription="diapositiva" data-notas="Si el QR no aparece, pulsa «Empezar sesión en directo». Cuando quieras, pulsa «Lanzar la pregunta a los móviles». Que escaneen y respondan en una frase; mientras llegan, comentar qué temas suben. Las respuestas dicen qué apps destacar hoy; en la sesión 2 volverán para que cada persona haga su herramienta." data-actividad="radiografia">
       <p class="num">Antes de empezar</p>
       <h2 class="medio" data-pregunta-diapo></h2>
       <div class="radio-diapo">
@@ -2065,7 +2069,7 @@ En la base de datos en la nube guarda solo siglas. Dame el archivo completo.</pr
     <div id="encRes"></div>
     <div class="acc fx-solo-ponente no-imprimir" id="encAcc"></div>
   </div>
-</div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 8 min</button></div></div>
+</div><div class="gp-acc no-imprimir solo-ponente"><button type="button" class="btn-lanzar" data-lanzar>📣 Lanzar la pregunta a los móviles</button><button type="button" class="btn linea" data-gpcrono>⏱ Reloj de 8 min</button></div></div>
 </details>
   <details class="gp-p" id="parte-s1-3" data-sid="s1" data-i="3"><summary><span class="gp-h">0:22<small>–0:26</small></span><span class="gp-n">4</span><span class="gp-t">Así nació una app</span><span class="gp-min">4 min</span><button type="button" class="gp-ok no-imprimir" data-gpok title="Marcar como vista" aria-label="Marcar como vista">✓</button></summary>
   <div class="gp-c"><div class="gp-texto"><p>Todas las apps que vais a ver nacieron igual: de un problema concreto del día a día, no de una idea brillante. Y todas siguen el mismo patrón: son un único archivo, una página web, que se abre en cualquier navegador y en el móvil.</p><p>El camino es siempre el mismo. Primero, una necesidad: algo que hoy hacéis con papel, con correos o con una hoja de cálculo. Después, una conversación con la IA: le contáis el problema con vuestras palabras y ella escribe el código. Ese código es un solo archivo. Si varias personas tienen que compartir datos, se le añade una base de datos en la nube, Firebase. Y para que tenga dirección en internet, se publica gratis en GitHub Pages.</p><p>Os cuento cómo nació una de ellas, Teletrabajo, la app de las reuniones en línea. Fijaos en que cada paso fue una conversación: no hubo ningún curso de programación. Lo único que hace falta es saber qué queréis y tener paciencia para probar.</p><p>Hoy solo vamos a ver que es posible. Cómo se hace, paso a paso, lo aprenderéis en la segunda sesión.</p></div><div class="gp-mat"><div class="diapos lamina"><div class="diapo" aria-roledescription="diapositiva" data-notas="Cada app nació de un problema concreto del centro. Preguntar: ¿cuál os suena más?">
@@ -3929,7 +3933,7 @@ function columna(fila, claves) {
 const S = {
   rol: 'local',        // local · dueno · asistente · mando · ponenteLocal
   sala: '', aplicando: false, siguiendo: true, autorizado: false,
-  estado: { panel: 's1', diapo: 0, actividad: '', pregunta: '', parte: '' },
+  estado: { panel: 's1', diapo: 0, actividad: '', pregunta: '', parte: '', lanzada: 0 },
   solicitudes: {}, errorSala: '', admin: false, aviso: ''
 };
 const canal = ('BroadcastChannel' in window) ? new BroadcastChannel('ia-en-el-cole') : null;
@@ -3951,6 +3955,7 @@ function aplicarEstado(e, navegar) {
   S.estado.actividad = e.actividad || '';
   S.estado.feria = e.feria || ''; S.estado.ganadora = e.ganadora || '';
   S.estado.encuesta = e.encuesta || '';
+  S.estado.lanzada = e.lanzada || 0;
   { const rc = e.recreo || null; if (JSON.stringify(rc) !== JSON.stringify(S.estado.recreo || null)) { S.estado.recreo = rc; if (window.recibirRecreo) window.recibirRecreo(); } }
   if (e.voto && (!S.estado.voto || S.estado.voto.n !== e.voto.n || S.estado.voto.abierto !== e.voto.abierto)) { S.estado.voto = e.voto; if (window.recibirVoto) window.recibirVoto(e.voto); }
   if (e.envio && (!S.estado.envio || S.estado.envio.n !== e.envio.n)) { S.estado.envio = e.envio; if (window.recibirEnvio) window.recibirEnvio(e.envio); }
@@ -4138,15 +4143,19 @@ const PESTANAS = {
 };
 document.addEventListener('click', e => {
   const b = e.target.closest('[data-pestanas]'); if (!b) return;
-  const lista = PESTANAS[b.dataset.pestanas] || [];
+  const todas = PESTANAS[b.dataset.pestanas] || [];
+  // Gemini la abre el propio enlace del botón (así nunca la bloquea el navegador); el resto, con window.open
+  const lista = todas.filter(p => !b.href || p.u !== b.href);
   const aviso = b.parentElement.querySelector('.pestanas-aviso');
+  setTimeout(() => {
   const fallidas = [];
   lista.forEach(p => { let w = null; try { w = window.open(p.u, '_blank'); } catch (err) {} if (!w) fallidas.push(p); });
   if (!aviso) return;
-  if (!fallidas.length) { aviso.hidden = true; tostada && tostada('Pestañas abiertas: ' + lista.length); return; }
+  if (!fallidas.length) { aviso.hidden = true; tostada && tostada('Pestañas abiertas: ' + todas.length); return; }
   aviso.hidden = false;
-  aviso.innerHTML = '<b>El navegador ha bloqueado ' + fallidas.length + ' de ' + lista.length + ' pestañas.</b> Pulsa el aviso de ventanas bloqueadas de la barra de direcciones, elige «Permitir siempre» y vuelve a pulsar el botón. Solo hay que hacerlo una vez. Mientras, puedes abrirlas aquí:<ul>' +
+  aviso.innerHTML = '<b>El navegador ha bloqueado ' + fallidas.length + ' de ' + todas.length + ' pestañas.</b> Pulsa el aviso de ventanas bloqueadas de la barra de direcciones, elige «Permitir siempre» y vuelve a pulsar el botón. Solo hay que hacerlo una vez. Mientras, puedes abrirlas aquí:<ul>' +
     fallidas.map(p => '<li><a href="' + p.u + '" target="_blank" rel="noopener">' + p.t + '</a></li>').join('') + '</ul>';
+  }, 0);
 });
 function pintarModo() {
   document.dispatchEvent(new Event('feria'));
@@ -4208,8 +4217,8 @@ function revisarActividad() {
   if ($('veloResp').classList.contains('ver')) $('respTitulo').textContent = p;
   else if (tocaPregunta()) { if (p !== R.ultPregunta && !leer(claveResp(), false) && !bienvenidaAbierta()) abrirRespuesta(); R.ultPregunta = p; }
 }
-// La pregunta de la radiografía solo salta cuando llega su momento (parte 3 de la Sesión 1 o diapositiva de la radiografía)
-function tocaPregunta() { return S.estado.parte === 's1:2' || S.estado.actividad === 'radiografia'; }
+// La pregunta de la radiografía solo llega a los móviles cuando el ponente pulsa «Lanzar la pregunta»
+function tocaPregunta() { return !!S.estado.lanzada; }
 // Bienvenida al conectarse (una vez por sesión y dispositivo)
 const bienvenidaAbierta = () => !!document.querySelector('.dv-bienvenida');
 function darBienvenida() {
@@ -4437,7 +4446,20 @@ function pintarRadio() {
   if (R.error) estado('radioEstado', 'error', esc(R.error)); else ocultarEstado('radioEstado');
   pintarBotonActividad(); pintarDiapoRadio(); pintarModo();
 }
-function pintarBotonActividad() {}
+function pintarBotonActividad() {
+  document.querySelectorAll('[data-lanzar]').forEach(b => {
+    const on = !!S.estado.lanzada;
+    b.classList.toggle('lanzada', on);
+    b.textContent = on ? '✅ Pregunta lanzada a los móviles · Retirar' : '📣 Lanzar la pregunta a los móviles';
+  });
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-lanzar]'); if (!b) return;
+  if (!(S.sala && FB.ok) || !(S.rol === 'dueno' || S.rol === 'mando' || S.rol === 'ponenteLocal')) { tostada('Primero pulsa «Empezar sesión en directo»'); return; }
+  const on = !S.estado.lanzada;
+  emitir({ lanzada: on ? Date.now() : 0 });
+  tostada(on ? 'Pregunta enviada a los móviles' : 'Pregunta retirada de los móviles');
+});
 let ultimoQRDiapo = null;
 function pintarDiapoRadio() {
   const q = $('diapoQR'); if (!q) return;
@@ -5662,7 +5684,7 @@ document.addEventListener('click', async e => {
 });
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-23-descargas';
+  const ID = 'formacion-novedades-2026-11-24-lanzar';
   if (typeof esPonente === 'function' && !esPonente()) return;
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
@@ -5670,7 +5692,7 @@ document.addEventListener('click', async e => {
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">⬇ Las descargas de materiales avisan ahora con un mensaje. Nuevo: acta de 6.º con nombres inventados para probar el Gestor de Evaluaciones.</p>'
+    + '<p style="margin-bottom:14px">📣 Nuevo botón «Lanzar la pregunta a los móviles» en la radiografía de la Sesión 1: la pregunta solo sale en los móviles cuando lo pulses.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
