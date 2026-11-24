@@ -1853,7 +1853,7 @@ nav.pestanas{padding-top:10px;padding-bottom:10px;margin-top:-4px;margin-bottom:
     </div>
     <div class="pestanas">
       <a class="btn-pestanas" data-pestanas="s1" href="https://gemini.google.com/app" target="_blank" rel="noopener">🗂️ Abrir las pestañas de la sesión</a>
-      <p class="pestanas-info">Gemini, la web del CEIP Capitulaciones y Capitoolappciones, cada una en su pestaña.</p>
+      <p class="pestanas-info">Gemini, la web del CEIP Capitulaciones, Capitoolappciones y Claude, cada una en su pestaña.</p>
       <div class="pestanas-aviso" hidden></div>
     </div>
   </div>
@@ -4138,7 +4138,8 @@ const PESTANAS = {
   s1: [
     { t: 'Gemini (para el juego con Canvas)', u: 'https://gemini.google.com/app' },
     { t: 'Web del CEIP Capitulaciones (cómo entrar a la formación)', u: 'https://www.colegiocapitulaciones.com/' },
-    { t: 'Capitoolappciones (el ecosistema)', u: 'https://vunisal706-droid.github.io/central/' }
+    { t: 'Capitoolappciones (el ecosistema)', u: 'https://vunisal706-droid.github.io/central/' },
+    { t: 'Claude', u: 'https://claude.ai/new' }
   ]
 };
 document.addEventListener('click', e => {
@@ -5684,7 +5685,7 @@ document.addEventListener('click', async e => {
 });
 // ── Aviso de novedades (una sola vez en cada dispositivo) ──
 (function () {
-  const ID = 'formacion-novedades-2026-11-24-lanzar';
+  const ID = 'formacion-novedades-2026-11-24-claude';
   if (typeof esPonente === 'function' && !esPonente()) return;
   try { if (localStorage.getItem(ID)) return; } catch (e) { return; }
   const d = document.createElement('div');
@@ -5692,7 +5693,7 @@ document.addEventListener('click', async e => {
   d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(27,42,78,.45);display:flex;align-items:center;justify-content:center;padding:16px';
   d.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:16px;padding:22px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)">'
     + '<div style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:8px">Novedades</div>'
-    + '<p style="margin-bottom:14px">📣 Nuevo botón «Lanzar la pregunta a los móviles» en la radiografía de la Sesión 1: la pregunta solo sale en los móviles cuando lo pulses.</p>'
+    + '<p style="margin-bottom:14px">🗂️ «Abrir las pestañas de la sesión» abre ahora también Claude.</p>'
     + '<button class="btn azul" style="width:100%">Entendido</button></div>';
   d.querySelector('button').onclick = () => { try { localStorage.setItem(ID, '1'); } catch (e) {} d.remove(); };
   document.body.appendChild(d);
