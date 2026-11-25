@@ -1,0 +1,20 @@
+En Gemini, usa la herramienta Canvas.
+
+Actúa como desarrollador web experto en aplicaciones educativas. Quiero que crees una aplicación web COMPLETA en un ÚNICO archivo index.html (HTML, CSS y JavaScript juntos, sin frameworks ni pasos de instalación, sin librerías externas salvo las que indique). En español de España, diseño claro y luminoso (nunca modo oscuro), letra de 16px mínimo, botones grandes, accesible y responsive (móvil y pizarra digital).
+
+QUÉ HACE LA APP («Ágora»): planificador anual de lectura y resolución de problemas para Educación Primaria.
+- Selección de curso (1º a 6º), trimestre y mes.
+- Cuatro vistas: «Todo el trimestre» (visión general), «Un mes» (qué y cómo trabajarlo), «Semana a semana» (plan día a día con una casilla para marcar cada semana como hecha) y «Dificultades» (guía de dificultades lectoras y quién necesita ayuda).
+- Para cada mes, un tema y una propuesta de textos y actividades de comprensión, y un itinerario de resolución de problemas por tipos.
+- Botón para descargar en Word (.docx) los documentos del plan, usando la librería JSZip desde cdnjs para generar el .docx; los documentos deben rellenarse con el nombre del centro, la localidad, la provincia y el curso escolar.
+- Botón «¿Qué es cada tipo de texto?» con explicaciones breves.
+
+DATOS: no usa base de datos. Guarda en el navegador (localStorage) qué semanas están marcadas como hechas. Ofrece un botón para exportar e importar ese progreso como archivo JSON.
+
+CONFIGURACIÓN DEL CENTRO: al principio del archivo incluye este bloque y lee de él todos los datos del centro (nombre, localidad, etc.), sin escribir jamás datos reales en el código:
+<script id="config-centro">
+window.CONFIG_CENTRO = { "_app": "agora", "_requiere": ["nombre","localidad","curso"], "nombre": "CEIP Nombre del Centro", "nombreCorto": "CEIP Nombre", "localidad": "Localidad", "provincia": "Provincia", "codigo": "00000000", "curso": "2026/2027", "contexto": "", "enlaceProblemas": "" };
+<\/script>
+Si «contexto» tiene texto, tenlo en cuenta en las propuestas. Si «enlaceProblemas» está vacío, no muestres el botón que lleva a esa app externa.
+
+Entrégame el index.html completo, sin recortes ni «el resto sigue igual». Antes de programar, hazme como máximo 3 preguntas si algo no queda claro.

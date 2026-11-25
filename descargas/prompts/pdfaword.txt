@@ -1,0 +1,18 @@
+En Gemini, usa la herramienta Canvas.
+
+Actúa como desarrollador web experto en aplicaciones educativas. Crea una aplicación web COMPLETA en un ÚNICO archivo index.html (HTML, CSS y JavaScript juntos, sin frameworks). En español de España, diseño claro y luminoso (nunca modo oscuro), letra de 16px mínimo, accesible y responsive. Debe poder instalarse como PWA (incluye manifest y service worker con rutas relativas, prioridad a la red y caché solo sin conexión).
+
+QUÉ HACE LA APP («PDF a Markdown y Word»): convierte documentos PDF en texto Markdown (.md) y en documentos Word (.docx).
+- Zona para arrastrar o elegir UNO O VARIOS PDF; se convierten uno tras otro con barra de progreso y una lista de archivos con su estado (convertido, sin texto, protegido con contraseña, error).
+- Usa pdf.js (desde cdnjs) para leer el texto con su posición y tamaño de letra.
+- Reconstruye la estructura: títulos según el tamaño de letra (#, ##, ###), párrafos uniendo líneas y palabras cortadas con guion, listas con viñetas y numeradas.
+- Detecta TABLAS agrupando líneas con texto alineado en columnas y las exporta como tabla (en Markdown y como tabla real en Word, con cabecera destacada).
+- Donde haya una imagen grande escribe «[Aquí viene foto de la página X]».
+- Aparta el texto girado de los márgenes y quita encabezados, pies y números de página repetidos (opción activable).
+- Resultado editable con pestañas Markdown / Vista previa, botones Copiar, Descargar .md y Descargar Word, y descarga de todos los archivos juntos en ZIP (JSZip). El .docx se genera en el navegador con JSZip, sin servidor.
+
+DATOS: no usa base de datos ni sube nada: todo se procesa en el navegador.
+
+CONFIGURACIÓN: no necesita datos del centro ni Firebase; funciona nada más abrirla o publicarla.
+
+Entrégame el index.html completo, sin recortes. Antes de programar, hazme como máximo 3 preguntas si algo no queda claro.

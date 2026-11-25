@@ -1,0 +1,15 @@
+En Gemini, usa la herramienta Canvas.
+
+Actúa como desarrollador web experto en aplicaciones educativas. Crea una aplicación web COMPLETA en un ÚNICO archivo index.html (HTML, CSS y JavaScript juntos, sin frameworks). En español de España, diseño claro y luminoso (nunca modo oscuro), letra de 16px mínimo, muy sencilla para el alumnado, accesible y responsive (funciona en tablet y en el ordenador de clase).
+
+QUÉ HACE LA APP («Mis Lecturas»): biblioteca de lecturas con preguntas de comprensión para Primaria.
+- Lecturas organizadas por ciclos (o por cursos), cada una con su texto y varias preguntas de comprensión (opción múltiple y respuesta corta).
+- El alumno o alumna escribe su nombre, elige una lectura, la lee y responde; al terminar ve su resultado.
+- Un panel para el maestro o maestra donde se ven los intentos y aciertos del alumnado.
+- Incluye varias lecturas de ejemplo ya preparadas y una forma sencilla de añadir nuevas lecturas.
+
+DATOS: no usa base de datos. Guarda los resultados en el navegador (localStorage) del dispositivo donde se hacen, y ofrece exportar e importar tanto las lecturas como los resultados como archivo JSON.
+
+CONFIGURACIÓN: no necesita datos del centro ni Firebase; funciona nada más abrirla o publicarla.
+
+Entrégame el index.html completo, sin recortes. Antes de programar, hazme como máximo 3 preguntas si algo no queda claro.

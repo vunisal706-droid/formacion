@@ -1,0 +1,16 @@
+En Gemini, usa la herramienta Canvas.
+
+Actúa como desarrollador web experto en aplicaciones educativas. Crea una aplicación web COMPLETA en un ÚNICO archivo index.html (HTML, CSS y JavaScript juntos, sin frameworks). En español de España, diseño claro y luminoso (nunca modo oscuro), letra de 16px mínimo, accesible y responsive. Debe poder instalarse como PWA (manifest y service worker con rutas relativas, prioridad a la red y caché solo sin conexión).
+
+QUÉ HACE LA APP («Cuadra Horarios»): generador del horario de un centro de Primaria.
+- Definir el profesorado y sus condiciones (reducciones, disponibilidad, especialidades), las horas de cada área por curso y las horas de religión/alternativa.
+- Generar automáticamente el horario de cada grupo respetando esas condiciones (método por restricciones), y detectar y avisar de los choques (un maestro en dos sitios a la vez).
+- Permitir intercambios manuales entre grupos y recalcular.
+- Vista por grupo y vista por maestro.
+- Un botón «Cargar ejemplo» que rellene un centro de prueba completo para ver cómo funciona.
+
+DATOS: no usa base de datos. Guarda todo en el navegador (localStorage) y ofrece «Guardar archivo» y «Cargar archivo» para exportar e importar el trabajo como JSON, de modo que se pueda continuar en otro ordenador.
+
+CONFIGURACIÓN: no necesita datos del centro ni Firebase; funciona nada más abrirla.
+
+Entrégame el index.html completo, sin recortes ni «el resto sigue igual». Antes de programar, hazme como máximo 3 preguntas si algo no queda claro.

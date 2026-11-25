@@ -1,0 +1,14 @@
+Actúa como desarrollador web experto en aplicaciones educativas. Crea en Canvas una aplicación web COMPLETA en un ÚNICO archivo index.html (HTML, CSS y JavaScript juntos, sin frameworks; solo fuentes o librerías desde un CDN si hacen falta). En español de España, diseño claro y luminoso (nunca modo oscuro), letra grande y botones grandes, pensada para la pizarra digital, la tableta y el móvil. Sonidos suaves con un botón para silenciarlos.
+
+QUÉ HACE LA APP («SuperLector»): juego de lectura para Infantil de 5 años y 1.º de Primaria.
+- Niveles por sílabas: directas (ma, pe…), luego palabras de dos sílabas, de tres y frases cortas.
+- En cada pantalla aparece una palabra en grande, en letra escolar clara.
+- El niño o la niña la lee en voz alta y el maestro o maestra pulsa «Bien leída» o «Otra vez».
+- Monedas por acierto y una tienda con objetos para la mascota.
+- Pantalla de «¡Nivel completado!» y aviso de girar la tableta si está en vertical.
+
+DATOS: no usa base de datos. Lo que haya que recordar (puntos, nivel, ajustes) se guarda en el navegador (localStorage). Nunca pide nombres de alumnos.
+
+MI CENTRO: al principio del código deja una constante NOMBRE_CENTRO = "[nombre de tu colegio]" y muéstrala en la portada. La mascota es [un personaje inventado o la mascota de tu cole].
+
+Entrégame el index.html completo, sin recortes ni «el resto sigue igual». Antes de programar, hazme como máximo 3 preguntas si algo no queda claro.
