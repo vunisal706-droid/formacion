@@ -1,0 +1,15 @@
+Actúa como desarrollador web experto en aplicaciones educativas. Crea en Canvas una aplicación web COMPLETA en un ÚNICO archivo index.html (HTML, CSS y JavaScript juntos, sin frameworks; solo fuentes o librerías desde un CDN si hacen falta). En español de España, diseño claro y luminoso (nunca modo oscuro), letra grande y botones grandes, pensada para la pizarra digital, la tableta y el móvil. Sonidos suaves con un botón para silenciarlos.
+
+QUÉ HACE LA APP («Estudio de croma»): un estudio de croma (fondo verde) con la cámara del ordenador o la tableta.
+- Botón «Iniciar cámara» y selector de cámara.
+- Subir una imagen de fondo arrastrándola.
+- Elegir el color que se elimina (verde por defecto, o tocando la imagen) con controles de tolerancia y suavizado de bordes.
+- Vista en directo del resultado a pantalla grande.
+- Botón de foto (descarga PNG) y de grabar vídeo con el resultado (descarga WebM), con aviso de «Grabando».
+- Todo ocurre en el dispositivo: no se envía nada.
+
+DATOS: no usa base de datos. Lo que haya que recordar (puntos, nivel, ajustes) se guarda en el navegador (localStorage). Nunca pide nombres de alumnos.
+
+MI CENTRO: al principio del código deja una constante NOMBRE_CENTRO = "[nombre de tu colegio]" y muéstrala en la portada. La mascota es [un personaje inventado o la mascota de tu cole].
+
+Entrégame el index.html completo, sin recortes ni «el resto sigue igual». Antes de programar, hazme como máximo 3 preguntas si algo no queda claro.

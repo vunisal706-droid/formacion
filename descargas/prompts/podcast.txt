@@ -1,0 +1,14 @@
+Actúa como desarrollador web experto en aplicaciones educativas. Crea en Canvas una aplicación web COMPLETA en un ÚNICO archivo index.html (HTML, CSS y JavaScript juntos, sin frameworks; solo fuentes o librerías desde un CDN si hacen falta). En español de España, diseño claro y luminoso (nunca modo oscuro), letra grande y botones grandes, pensada para la pizarra digital, la tableta y el móvil. Sonidos suaves con un botón para silenciarlos.
+
+QUÉ HACE LA APP («Podcast a vídeo»): convierte el pódcast de la clase en un vídeo para compartir.
+- Asistente en pasos: 1) subir o grabar el audio; 2) añadir fotos y vídeos cortos; 3) ordenarlos en una línea de tiempo y decidir cuánto dura cada uno; 4) título, música de fondo opcional y efectos de transición suaves; 5) portada y cierre con el nombre del centro; 6) generar.
+- Genera el vídeo en el propio navegador (canvas + MediaRecorder) y lo descarga en MP4 o WebM.
+- Vista previa antes de generar y barra de progreso.
+- Plantillas de estilo que se guardan en el navegador.
+- Aviso: no subir fotos con caras del alumnado sin autorización.
+
+DATOS: no usa base de datos. Lo que haya que recordar (puntos, nivel, ajustes) se guarda en el navegador (localStorage). Nunca pide nombres de alumnos.
+
+MI CENTRO: al principio del código deja una constante NOMBRE_CENTRO = "[nombre de tu colegio]" y muéstrala en la portada. La mascota es [un personaje inventado o la mascota de tu cole].
+
+Entrégame el index.html completo, sin recortes ni «el resto sigue igual». Antes de programar, hazme como máximo 3 preguntas si algo no queda claro.

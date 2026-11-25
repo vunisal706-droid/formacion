@@ -1,0 +1,14 @@
+Actúa como desarrollador web experto en aplicaciones educativas. Crea en Canvas una aplicación web COMPLETA en un ÚNICO archivo index.html (HTML, CSS y JavaScript juntos, sin frameworks; solo fuentes o librerías desde un CDN si hacen falta). En español de España, diseño claro y luminoso (nunca modo oscuro), letra grande y botones grandes, pensada para la pizarra digital, la tableta y el móvil. Sonidos suaves con un botón para silenciarlos.
+
+QUÉ HACE LA APP («Mural gigante»): convierte un PDF o una foto en un mural grande para imprimir en folios.
+- Paso 1: subir un PDF, JPG o PNG (o una foto del móvil). Si es PDF de varias páginas, elegir la página (usa pdf.js desde un CDN).
+- Paso 2: elegir papel A4 o A3, folios verticales u horizontales y cuántos folios de ancho; el alto se calcula solo para no deformar la imagen.
+- Vista previa con la cuadrícula de folios encima de la imagen.
+- Margen de solapamiento de 1 cm entre folios, con marcas de corte y el número de fila y columna en cada folio para montarlo.
+- Botón para descargar un PDF con todos los folios (jsPDF desde un CDN) listo para imprimir.
+
+DATOS: no usa base de datos. Lo que haya que recordar (puntos, nivel, ajustes) se guarda en el navegador (localStorage). Nunca pide nombres de alumnos.
+
+MI CENTRO: al principio del código deja una constante NOMBRE_CENTRO = "[nombre de tu colegio]" y muéstrala en la portada. La mascota es [un personaje inventado o la mascota de tu cole].
+
+Entrégame el index.html completo, sin recortes ni «el resto sigue igual». Antes de programar, hazme como máximo 3 preguntas si algo no queda claro.
