@@ -2816,7 +2816,20 @@ No quites ni cambies nada más. Dame el archivo completo, de principio a fin, si
     <div class="reto"><b>Temporizador de rincones</b><p>Grupos que rotan cada X minutos, con aviso sonoro y el nombre del rincón en grande para la pizarra digital.</p></div>
     <div class="reto"><b>Semáforo del ruido</b><p>Usa el micrófono del ordenador y cambia de verde a rojo cuando el aula pasa de cierto nivel.</p></div>
     <div class="reto"><b>Préstamos de la biblioteca de aula</b><p>Quién tiene qué libro y desde cuándo. Exporta e importa un archivo para no perder nada.</p></div>
-  </div><h4 class="ses-h4">Guárdala para subirla</h4>
+  </div>
+  <h4 class="ses-h4">Otra opción: una app para el centro, las sustituciones</h4>
+  <div class="tarjeta apoyo-libro"><div class="apoyo-qr" data-qr-apoyo="https://vunisal706-droid.github.io/formacion/sustituciones/"></div><div><h3>Sustituciones</h3><p>Propone quién cubre cada grupo cuando falta alguien, según el orden de sustituciones y los criterios del centro, con hueco para el recreo y el PDF del día. Sin cuentas ni base de datos: la primera vez, un asistente pide los datos del centro, y se guarda todo en el propio dispositivo. Con «Cargar un centro de ejemplo» se prueba sin meter nada.</p><div class="fila"><a class="btn azul" href="https://vunisal706-droid.github.io/formacion/sustituciones/" target="_blank" rel="noopener">Abrir la app</a><a class="btn linea" href="descargas/sustituciones.zip" download>Descargar</a></div></div></div>
+  <ol class="pasos-lista" style="max-width:70ch">
+    <li>Ábrela y pulsa <strong>Cargar un centro de ejemplo</strong>. Marca a alguien que falte y pulsa <strong>Proponer sustituciones</strong>.</li>
+    <li>Descárgala y adjunta el archivo <code>itinerario.html</code> a tu asistente con el encargo de abajo, para adaptarla a tu centro.</li>
+    <li>Guarda el archivo que te devuelva y ábrelo con doble clic: ya es tu app.</li>
+  </ol>
+  <div class="caja-codigo"><button class="btn suave copiar" data-copiar="promptSust">Copiar prompt</button><pre class="codigo" id="promptSust" style="white-space:pre-wrap">Te adjunto una app de sustituciones del profesorado, en un solo archivo HTML. Quiero adaptarla a mi centro.
+- En nuestro centro, [explica un criterio vuestro: por ejemplo, «Infantil se cubre siempre con maestras de Infantil»].
+- Cambia [lo que quieras: colores, textos, el pie del PDF…].
+Antes de cambiar nada, hazme las preguntas que necesites. Después, dame el archivo completo, de principio a fin.</pre></div>
+
+<h4 class="ses-h4">Guárdala para subirla</h4>
 <ol class="pasos-lista" style="max-width:70ch">
   <li>En Canvas, cambia a la vista de <strong>código</strong> y cópialo entero.</li>
   <li>Crea una carpeta nueva, abre el Bloc de notas, pega y guarda como <code>index.html</code> dentro de ella (en «Tipo», elige <em>Todos los archivos</em>).</li>
@@ -3461,6 +3474,11 @@ const APPS = [
     id: 'pdfaword', nombre: 'PDF a Markdown y Word', color: '#DC2626',
     desc: 'Convierte uno o varios PDF en Markdown y en Word respetando títulos, listas y tablas, e indica dónde iba cada foto. Se revisa antes de descargar y todo se procesa en el propio dispositivo.',
     usa: 'Sin base de datos · Lista para usar', url: 'https://vunisal706-droid.github.io/pdfaword/', descarga: 'descargas/pdfaword.zip'
+  },
+  {
+    id: 'sustituciones', nombre: 'Sustituciones', color: '#1F5FD6',
+    desc: 'Propone quién cubre cada grupo cuando falta alguien, según el orden de sustituciones y los criterios del centro, con hueco para el recreo, registro para repartir las sustituciones y PDF del día en una cara. Un asistente pide los datos del centro la primera vez.',
+    usa: 'Sin base de datos · Configurable', url: 'https://vunisal706-droid.github.io/formacion/sustituciones/', descarga: 'descargas/sustituciones.zip'
   }
 ];
 
@@ -5087,7 +5105,8 @@ const FX = {
   evaluaciones: { cat: 'Gestión',     g: 2, problema: 'Los resultados de cada evaluación analizados sin hojas de cálculo, con actas e informes.' },
   horarios:     { cat: 'Gestión',     g: 2, problema: 'El horario del centro sin choques, a partir de las condiciones del profesorado.' },
   teletrabajo:  { cat: 'Gestión',     g: 2, problema: 'Reuniones en línea con asistencia, votaciones y el acta casi hecha.' },
-  pdfaword:     { cat: 'Gestión',     g: 2, problema: 'Ese PDF que no se puede editar, convertido a Word en tu propio ordenador.' }
+  pdfaword:     { cat: 'Gestión',     g: 2, problema: 'Ese PDF que no se puede editar, convertido a Word en tu propio ordenador.' },
+  sustituciones: { cat: 'Gestión',    g: 2, problema: '¿Quién cubre a quién hoy? Propone las sustituciones según el orden del centro y saca el PDF del día.' }
 };
 const EXTRA = [
   { id: 'capitool', nombre: 'Capitoolappciones', color: '#0E7490', url: 'https://vunisal706-droid.github.io/central/' },
@@ -5105,7 +5124,8 @@ const EXTRA = [
   { id: 'portal', nombre: 'Portal Educativo', color: '#DB2777', url: 'https://vunisal706-droid.github.io/webcentral/' },
   { id: 'capitexto', nombre: 'Capitexto', color: '#1D4ED8', url: 'https://vunisal706-droid.github.io/central/texto/' },
   { id: 'mural', nombre: 'Mural Gigante', color: '#BE185D', url: 'https://vunisal706-droid.github.io/central/mural/' },
-  { id: 'tiempo', nombre: 'El tiempo del patio', color: '#0369A1', url: 'https://vunisal706-droid.github.io/tiempo/' }
+  { id: 'tiempo', nombre: 'El tiempo del patio', color: '#0369A1', url: 'https://vunisal706-droid.github.io/tiempo/' },
+  { id: 'sustcole', nombre: 'Sustituciones', color: '#1F5FD6', url: 'https://vunisal706-droid.github.io/central/sustituciones/', u: 1 }
 ];
 Object.assign(FX, {
   capitool:   { cat: 'El centro en el móvil', g: 4, problema: 'Todas las apps del cole en una sola pantalla, con los avisos del día y un asistente que responde dudas.' },
@@ -5123,22 +5143,23 @@ Object.assign(FX, {
   portal:     { cat: 'En el aula', g: 0, problema: 'Los juegos y actividades del cole para el alumnado, reunidos en un portal.' },
   capitexto:  { cat: 'Gestión del centro', g: 0, problema: 'Un procesador de textos propio, como Word, para escribir y retocar documentos del centro.' },
   mural:      { cat: 'En el aula', g: 0, problema: 'Un PDF o una foto troceados en folios que encajan para imprimir un mural gigante.' },
+  sustcole:   { cat: 'Gestión del centro', g: 1, problema: '¿Quién cubre a quién hoy? Propone las sustituciones con los horarios y el cuadrante del centro, y saca el PDF del día para el claustro.' },
   tiempo:     { cat: 'El centro en el móvil', g: 0, problema: 'El tiempo de mañana a la hora del recreo: si se sale al patio y con qué ropa.' }
 });
 Object.assign(FX.agora, { cat: 'Lectura y problemas', g: 1 }); Object.assign(FX.sda, { cat: 'Lectura y problemas', g: 1 });
 FX.troglodita.cat = FX.registro.cat = 'En el aula';
 ['convive', 'convivemas'].forEach(k => Object.assign(FX[k], { cat: 'Alumnado y convivencia', g: 2 }));
-['evaluaciones', 'horarios', 'teletrabajo', 'pdfaword'].forEach(k => Object.assign(FX[k], { cat: 'Gestión del centro', g: 3 }));
+['evaluaciones', 'horarios', 'teletrabajo', 'pdfaword', 'sustituciones'].forEach(k => Object.assign(FX[k], { cat: 'Gestión del centro', g: 3 }));
 const GRUPOS = [
   { n: 'Sin base de datos', s: 'Funcionan en el navegador · las harás en la sesión 2', c: '#0A8FA3' },
   { n: 'Con base de datos', s: 'Guardan los datos en la nube · sesiones 3 y 4', c: '#2F6BEA' },
   { n: 'El ecosistema', s: 'Todas las apps del centro en una', c: '#8057F5' }
 ];
-['troglodita', 'portal', 'registro', 'aulapt', 'agora', 'sda', 'resolucion', 'horarios', 'pdfaword', 'podcast', 'capiguia', 'pcentro', 'capitexto', 'mural', 'tiempo'].forEach(k => FX[k] && Object.assign(FX[k], { cat: 'Sin base de datos', g: 0 }));
-['tablon', 'evaluaciones', 'convive', 'convivemas', 'teletrabajo', 'reglectura', 'refuerzo', 'gestorpt', 'programas', 'agenda'].forEach(k => FX[k] && Object.assign(FX[k], { cat: 'Con base de datos', g: 1 }));
+['troglodita', 'portal', 'registro', 'aulapt', 'agora', 'sda', 'resolucion', 'horarios', 'sustituciones', 'pdfaword', 'podcast', 'capiguia', 'pcentro', 'capitexto', 'mural', 'tiempo'].forEach(k => FX[k] && Object.assign(FX[k], { cat: 'Sin base de datos', g: 0 }));
+['tablon', 'evaluaciones', 'convive', 'convivemas', 'teletrabajo', 'reglectura', 'refuerzo', 'gestorpt', 'programas', 'agenda', 'sustcole'].forEach(k => FX[k] && Object.assign(FX[k], { cat: 'Con base de datos', g: 1 }));
 Object.assign(FX.capitool, { cat: 'El ecosistema', g: 2 });
 const ORDEN = ['troglodita', 'portal', 'registro', 'aulapt', 'agora', 'sda', 'resolucion', 'horarios', 'pdfaword', 'podcast', 'capiguia', 'pcentro', 'capitexto', 'mural', 'tiempo',
-  'tablon', 'evaluaciones', 'convive', 'convivemas', 'teletrabajo', 'reglectura', 'refuerzo', 'gestorpt', 'programas', 'agenda', 'capitool'];
+  'tablon', 'evaluaciones', 'convive', 'convivemas', 'teletrabajo', 'reglectura', 'refuerzo', 'gestorpt', 'programas', 'agenda', 'sustcole', 'capitool'];
 const TODAS = APPS.concat(EXTRA);
 const LISTA = ORDEN.map(id => TODAS.find(a => a.id === id)).filter(Boolean);
 const conUsuario = a => !!a.u || /usuario/i.test(a.usa || '');
@@ -5148,6 +5169,7 @@ const urlDemo = a => a.url + (a.url.includes('?') ? '&' : '?') + 'demo';
 const B = 'rgba(255,255,255,';
 /* Pantallas en miniatura dibujadas: cada una cuenta de un vistazo qué hace la app */
 const MINI = {
+  sustituciones: '<rect x="50" y="30" width="240" height="136" rx="10" fill="' + B + '.95)"/><rect x="50" y="30" width="240" height="24" rx="10" fill="#1F5FD6"/><g font-family="system-ui" font-weight="800" font-size="15"><text x="66" y="82" fill="#1F2433">9:00</text><text x="126" y="82" fill="#1F2433">3.º</text><text x="186" y="82" fill="#0F766E">Ana</text><text x="66" y="112" fill="#C47A0A">12:00</text><text x="126" y="112" fill="#C47A0A">RECREO</text><text x="66" y="142" fill="#1F2433">12:30</text><text x="126" y="142" fill="#1F2433">1.º</text><text x="186" y="142" fill="#0F766E">Luis</text></g><g class="fx-flota"><circle cx="262" cy="138" r="18" fill="#0F766E"/><path d="M253 138l6 6 12-12" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/></g>',
   capitexto: '<rect x="70" y="26" width="200" height="146" rx="10" fill="' + B + '.95)"/><rect x="70" y="26" width="200" height="22" rx="10" fill="#1D4ED8"/><g stroke="#93A9D6" stroke-width="6" stroke-linecap="round"><path d="M92 72h156M92 92h156M92 112h120M92 132h140"/></g><rect class="fx-flota" x="218" y="122" width="4" height="22" fill="#1D4ED8"/>',
   mural: '<g fill="' + B + '.95)" stroke="#BE185D" stroke-width="3" stroke-dasharray="6 5"><rect x="60" y="30" width="110" height="68" rx="4"/><rect x="172" y="30" width="110" height="68" rx="4"/><rect x="60" y="100" width="110" height="68" rx="4"/><rect x="172" y="100" width="110" height="68" rx="4"/></g><circle class="fx-late" cx="171" cy="99" r="34" fill="#FFE45C" opacity=".9"/>',
   tiempo: '<circle class="fx-late" cx="120" cy="80" r="34" fill="#FFE45C"/><g class="fx-flota" fill="' + B + '.95)"><circle cx="200" cy="100" r="30"/><circle cx="240" cy="92" r="36"/><circle cx="276" cy="106" r="26"/><rect x="190" y="100" width="100" height="32" rx="16"/></g><path d="M40 160h260" stroke="' + B + '.6)" stroke-width="3"/>',
@@ -5178,6 +5200,7 @@ Object.assign(MINI, {
   refuerzo: '<path d="M44 160h252" stroke="' + B + '.6)" stroke-width="3"/><g fill="' + B + '.94)"><rect x="60" y="126" width="46" height="34" rx="5"/><rect x="118" y="100" width="46" height="60" rx="5"/><rect x="176" y="74" width="46" height="86" rx="5"/></g><rect x="234" y="46" width="46" height="114" rx="5" fill="#FFE45C" class="fx-sube"/><path d="M70 104l58-28 58-24 62-22" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" class="fx-raya"/>',
   portal: '<g class="fx-flota"><rect x="60" y="62" width="220" height="86" rx="43" fill="' + B + '.96)"/><path d="M104 94v24M92 106h24" stroke="#DB2777" stroke-width="8" stroke-linecap="round"/><circle cx="226" cy="94" r="10" fill="#2459C7"/><circle cx="248" cy="116" r="10" fill="#177A4C"/></g><circle cx="286" cy="42" r="12" fill="#FFE45C" class="fx-late"/><circle cx="52" cy="46" r="8" fill="' + B + '.7)" class="fx-late"/>'
 });
+MINI.sustcole = MINI.sustituciones;
 const mini = id => '<svg viewBox="0 0 340 190" preserveAspectRatio="xMidYMid slice" aria-hidden="true">' + (MINI[id] || '') + '</svg>';
 
 /* ── Escaparate ── */
@@ -5532,7 +5555,7 @@ const JUEGOS = [
 const ESP_APPS = {
   capitexto: 'centro len', mural: 'centro inf', tiempo: 'centro ef',
   agora: 'lec mat centro', evaluaciones: 'centro', convive: 'coe centro', convivemas: 'coe centro', horarios: 'centro',
-  registro: 'lec len', sda: 'centro', teletrabajo: 'centro', troglodita: 'cien mat', pdfaword: 'centro', capitool: 'centro',
+  registro: 'lec len', sda: 'centro', teletrabajo: 'centro', troglodita: 'cien mat', pdfaword: 'centro', sustituciones: 'centro', sustcole: 'centro', capitool: 'centro',
   tablon: 'centro', agenda: 'centro', capiguia: 'centro', pcentro: 'centro', programas: 'centro', resolucion: 'mat',
   reglectura: 'lec mat centro', podcast: 'len centro', aulapt: 'pt al inf tea', refuerzo: 'pt centro', gestorpt: 'pt al centro',
   portal: 'inf len lec mat ing ef tea rob cien'
