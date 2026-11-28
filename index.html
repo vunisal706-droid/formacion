@@ -4893,7 +4893,8 @@ const FX = {
   evaluaciones: { cat: 'Gestión',     g: 2, problema: 'Los resultados de cada evaluación analizados sin hojas de cálculo, con actas e informes.' },
   horarios:     { cat: 'Gestión',     g: 2, problema: 'El horario del centro sin choques, a partir de las condiciones del profesorado.' },
   teletrabajo:  { cat: 'Gestión',     g: 2, problema: 'Reuniones en línea con asistencia, votaciones y el acta casi hecha.' },
-  pdfaword:     { cat: 'Gestión',     g: 2, problema: 'Ese PDF que no se puede editar, convertido a Word en tu propio ordenador.' }
+  pdfaword:     { cat: 'Gestión',     g: 2, problema: 'Ese PDF que no se puede editar, convertido a Word en tu propio ordenador.' },
+  sustituciones: { cat: 'Gestión',    g: 2, problema: '¿Quién cubre a quién hoy? Propone las sustituciones según el orden del centro y saca el PDF del día.' }
 };
 const EXTRA = [
   { id: 'capitool', nombre: 'Capitoolappciones', color: '#0E7490', url: 'https://vunisal706-droid.github.io/central/' },
@@ -4934,16 +4935,16 @@ Object.assign(FX, {
 Object.assign(FX.agora, { cat: 'Lectura y problemas', g: 1 }); Object.assign(FX.sda, { cat: 'Lectura y problemas', g: 1 });
 FX.troglodita.cat = FX.registro.cat = 'En el aula';
 ['convive', 'convivemas'].forEach(k => Object.assign(FX[k], { cat: 'Alumnado y convivencia', g: 2 }));
-['evaluaciones', 'horarios', 'teletrabajo', 'pdfaword'].forEach(k => Object.assign(FX[k], { cat: 'Gestión del centro', g: 3 }));
+['evaluaciones', 'horarios', 'teletrabajo', 'pdfaword', 'sustituciones'].forEach(k => Object.assign(FX[k], { cat: 'Gestión del centro', g: 3 }));
 const GRUPOS = [
   { n: 'Sin base de datos', s: 'Funcionan en el navegador · las harás en la sesión 2', c: '#0A8FA3' },
   { n: 'Con base de datos', s: 'Guardan los datos en la nube · sesiones 3 y 4', c: '#2F6BEA' },
   { n: 'El ecosistema', s: 'Todas las apps del centro en una', c: '#8057F5' }
 ];
-['troglodita', 'portal', 'registro', 'aulapt', 'agora', 'sda', 'resolucion', 'horarios', 'pdfaword', 'podcast', 'capiguia', 'pcentro', 'capitexto', 'mural', 'tiempo'].forEach(k => FX[k] && Object.assign(FX[k], { cat: 'Sin base de datos', g: 0 }));
+['troglodita', 'portal', 'registro', 'aulapt', 'agora', 'sda', 'resolucion', 'horarios', 'sustituciones', 'pdfaword', 'podcast', 'capiguia', 'pcentro', 'capitexto', 'mural', 'tiempo'].forEach(k => FX[k] && Object.assign(FX[k], { cat: 'Sin base de datos', g: 0 }));
 ['tablon', 'evaluaciones', 'convive', 'convivemas', 'teletrabajo', 'reglectura', 'refuerzo', 'gestorpt', 'programas', 'agenda'].forEach(k => FX[k] && Object.assign(FX[k], { cat: 'Con base de datos', g: 1 }));
 Object.assign(FX.capitool, { cat: 'El ecosistema', g: 2 });
-const ORDEN = ['troglodita', 'portal', 'registro', 'aulapt', 'agora', 'sda', 'resolucion', 'horarios', 'pdfaword', 'podcast', 'capiguia', 'pcentro', 'capitexto', 'mural', 'tiempo',
+const ORDEN = ['troglodita', 'portal', 'registro', 'aulapt', 'agora', 'sda', 'resolucion', 'horarios', 'sustituciones', 'pdfaword', 'podcast', 'capiguia', 'pcentro', 'capitexto', 'mural', 'tiempo',
   'tablon', 'evaluaciones', 'convive', 'convivemas', 'teletrabajo', 'reglectura', 'refuerzo', 'gestorpt', 'programas', 'agenda', 'capitool'];
 const TODAS = APPS.concat(EXTRA);
 const LISTA = ORDEN.map(id => TODAS.find(a => a.id === id)).filter(Boolean);
@@ -4954,6 +4955,7 @@ const urlDemo = a => a.url + (a.url.includes('?') ? '&' : '?') + 'demo';
 const B = 'rgba(255,255,255,';
 /* Pantallas en miniatura dibujadas: cada una cuenta de un vistazo qué hace la app */
 const MINI = {
+  sustituciones: '<rect x="50" y="30" width="240" height="136" rx="10" fill="' + B + '.95)"/><rect x="50" y="30" width="240" height="24" rx="10" fill="#1F5FD6"/><g font-family="system-ui" font-weight="800" font-size="15"><text x="66" y="82" fill="#1F2433">9:00</text><text x="126" y="82" fill="#1F2433">3.º</text><text x="186" y="82" fill="#0F766E">Ana</text><text x="66" y="112" fill="#C47A0A">12:00</text><text x="126" y="112" fill="#C47A0A">RECREO</text><text x="66" y="142" fill="#1F2433">12:30</text><text x="126" y="142" fill="#1F2433">1.º</text><text x="186" y="142" fill="#0F766E">Luis</text></g><g class="fx-flota"><circle cx="262" cy="138" r="18" fill="#0F766E"/><path d="M253 138l6 6 12-12" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/></g>',
   capitexto: '<rect x="70" y="26" width="200" height="146" rx="10" fill="' + B + '.95)"/><rect x="70" y="26" width="200" height="22" rx="10" fill="#1D4ED8"/><g stroke="#93A9D6" stroke-width="6" stroke-linecap="round"><path d="M92 72h156M92 92h156M92 112h120M92 132h140"/></g><rect class="fx-flota" x="218" y="122" width="4" height="22" fill="#1D4ED8"/>',
   mural: '<g fill="' + B + '.95)" stroke="#BE185D" stroke-width="3" stroke-dasharray="6 5"><rect x="60" y="30" width="110" height="68" rx="4"/><rect x="172" y="30" width="110" height="68" rx="4"/><rect x="60" y="100" width="110" height="68" rx="4"/><rect x="172" y="100" width="110" height="68" rx="4"/></g><circle class="fx-late" cx="171" cy="99" r="34" fill="#FFE45C" opacity=".9"/>',
   tiempo: '<circle class="fx-late" cx="120" cy="80" r="34" fill="#FFE45C"/><g class="fx-flota" fill="' + B + '.95)"><circle cx="200" cy="100" r="30"/><circle cx="240" cy="92" r="36"/><circle cx="276" cy="106" r="26"/><rect x="190" y="100" width="100" height="32" rx="16"/></g><path d="M40 160h260" stroke="' + B + '.6)" stroke-width="3"/>',
@@ -5338,7 +5340,7 @@ const JUEGOS = [
 const ESP_APPS = {
   capitexto: 'centro len', mural: 'centro inf', tiempo: 'centro ef',
   agora: 'lec mat centro', evaluaciones: 'centro', convive: 'coe centro', convivemas: 'coe centro', horarios: 'centro',
-  registro: 'lec len', sda: 'centro', teletrabajo: 'centro', troglodita: 'cien mat', pdfaword: 'centro', capitool: 'centro',
+  registro: 'lec len', sda: 'centro', teletrabajo: 'centro', troglodita: 'cien mat', pdfaword: 'centro', sustituciones: 'centro', capitool: 'centro',
   tablon: 'centro', agenda: 'centro', capiguia: 'centro', pcentro: 'centro', programas: 'centro', resolucion: 'mat',
   reglectura: 'lec mat centro', podcast: 'len centro', aulapt: 'pt al inf tea', refuerzo: 'pt centro', gestorpt: 'pt al centro',
   portal: 'inf len lec mat ing ef tea rob cien'
