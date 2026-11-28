@@ -4912,7 +4912,8 @@ const EXTRA = [
   { id: 'portal', nombre: 'Portal Educativo', color: '#DB2777', url: 'https://vunisal706-droid.github.io/webcentral/' },
   { id: 'capitexto', nombre: 'Capitexto', color: '#1D4ED8', url: 'https://vunisal706-droid.github.io/central/texto/' },
   { id: 'mural', nombre: 'Mural Gigante', color: '#BE185D', url: 'https://vunisal706-droid.github.io/central/mural/' },
-  { id: 'tiempo', nombre: 'El tiempo del patio', color: '#0369A1', url: 'https://vunisal706-droid.github.io/tiempo/' }
+  { id: 'tiempo', nombre: 'El tiempo del patio', color: '#0369A1', url: 'https://vunisal706-droid.github.io/tiempo/' },
+  { id: 'sustcole', nombre: 'Sustituciones', color: '#1F5FD6', url: 'https://vunisal706-droid.github.io/central/sustituciones/', u: 1 }
 ];
 Object.assign(FX, {
   capitool:   { cat: 'El centro en el móvil', g: 4, problema: 'Todas las apps del cole en una sola pantalla, con los avisos del día y un asistente que responde dudas.' },
@@ -4930,6 +4931,7 @@ Object.assign(FX, {
   portal:     { cat: 'En el aula', g: 0, problema: 'Los juegos y actividades del cole para el alumnado, reunidos en un portal.' },
   capitexto:  { cat: 'Gestión del centro', g: 0, problema: 'Un procesador de textos propio, como Word, para escribir y retocar documentos del centro.' },
   mural:      { cat: 'En el aula', g: 0, problema: 'Un PDF o una foto troceados en folios que encajan para imprimir un mural gigante.' },
+  sustcole:   { cat: 'Gestión del centro', g: 1, problema: '¿Quién cubre a quién hoy? Propone las sustituciones con los horarios y el cuadrante del centro, y saca el PDF del día para el claustro.' },
   tiempo:     { cat: 'El centro en el móvil', g: 0, problema: 'El tiempo de mañana a la hora del recreo: si se sale al patio y con qué ropa.' }
 });
 Object.assign(FX.agora, { cat: 'Lectura y problemas', g: 1 }); Object.assign(FX.sda, { cat: 'Lectura y problemas', g: 1 });
@@ -4942,10 +4944,10 @@ const GRUPOS = [
   { n: 'El ecosistema', s: 'Todas las apps del centro en una', c: '#8057F5' }
 ];
 ['troglodita', 'portal', 'registro', 'aulapt', 'agora', 'sda', 'resolucion', 'horarios', 'sustituciones', 'pdfaword', 'podcast', 'capiguia', 'pcentro', 'capitexto', 'mural', 'tiempo'].forEach(k => FX[k] && Object.assign(FX[k], { cat: 'Sin base de datos', g: 0 }));
-['tablon', 'evaluaciones', 'convive', 'convivemas', 'teletrabajo', 'reglectura', 'refuerzo', 'gestorpt', 'programas', 'agenda'].forEach(k => FX[k] && Object.assign(FX[k], { cat: 'Con base de datos', g: 1 }));
+['tablon', 'evaluaciones', 'convive', 'convivemas', 'teletrabajo', 'reglectura', 'refuerzo', 'gestorpt', 'programas', 'agenda', 'sustcole'].forEach(k => FX[k] && Object.assign(FX[k], { cat: 'Con base de datos', g: 1 }));
 Object.assign(FX.capitool, { cat: 'El ecosistema', g: 2 });
-const ORDEN = ['troglodita', 'portal', 'registro', 'aulapt', 'agora', 'sda', 'resolucion', 'horarios', 'sustituciones', 'pdfaword', 'podcast', 'capiguia', 'pcentro', 'capitexto', 'mural', 'tiempo',
-  'tablon', 'evaluaciones', 'convive', 'convivemas', 'teletrabajo', 'reglectura', 'refuerzo', 'gestorpt', 'programas', 'agenda', 'capitool'];
+const ORDEN = ['troglodita', 'portal', 'registro', 'aulapt', 'agora', 'sda', 'resolucion', 'horarios', 'pdfaword', 'podcast', 'capiguia', 'pcentro', 'capitexto', 'mural', 'tiempo',
+  'tablon', 'evaluaciones', 'convive', 'convivemas', 'teletrabajo', 'reglectura', 'refuerzo', 'gestorpt', 'programas', 'agenda', 'sustcole', 'capitool'];
 const TODAS = APPS.concat(EXTRA);
 const LISTA = ORDEN.map(id => TODAS.find(a => a.id === id)).filter(Boolean);
 const conUsuario = a => !!a.u || /usuario/i.test(a.usa || '');
@@ -4986,6 +4988,7 @@ Object.assign(MINI, {
   refuerzo: '<path d="M44 160h252" stroke="' + B + '.6)" stroke-width="3"/><g fill="' + B + '.94)"><rect x="60" y="126" width="46" height="34" rx="5"/><rect x="118" y="100" width="46" height="60" rx="5"/><rect x="176" y="74" width="46" height="86" rx="5"/></g><rect x="234" y="46" width="46" height="114" rx="5" fill="#FFE45C" class="fx-sube"/><path d="M70 104l58-28 58-24 62-22" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" class="fx-raya"/>',
   portal: '<g class="fx-flota"><rect x="60" y="62" width="220" height="86" rx="43" fill="' + B + '.96)"/><path d="M104 94v24M92 106h24" stroke="#DB2777" stroke-width="8" stroke-linecap="round"/><circle cx="226" cy="94" r="10" fill="#2459C7"/><circle cx="248" cy="116" r="10" fill="#177A4C"/></g><circle cx="286" cy="42" r="12" fill="#FFE45C" class="fx-late"/><circle cx="52" cy="46" r="8" fill="' + B + '.7)" class="fx-late"/>'
 });
+MINI.sustcole = MINI.sustituciones;
 const mini = id => '<svg viewBox="0 0 340 190" preserveAspectRatio="xMidYMid slice" aria-hidden="true">' + (MINI[id] || '') + '</svg>';
 
 /* ── Escaparate ── */
@@ -5340,7 +5343,7 @@ const JUEGOS = [
 const ESP_APPS = {
   capitexto: 'centro len', mural: 'centro inf', tiempo: 'centro ef',
   agora: 'lec mat centro', evaluaciones: 'centro', convive: 'coe centro', convivemas: 'coe centro', horarios: 'centro',
-  registro: 'lec len', sda: 'centro', teletrabajo: 'centro', troglodita: 'cien mat', pdfaword: 'centro', sustituciones: 'centro', capitool: 'centro',
+  registro: 'lec len', sda: 'centro', teletrabajo: 'centro', troglodita: 'cien mat', pdfaword: 'centro', sustituciones: 'centro', sustcole: 'centro', capitool: 'centro',
   tablon: 'centro', agenda: 'centro', capiguia: 'centro', pcentro: 'centro', programas: 'centro', resolucion: 'mat',
   reglectura: 'lec mat centro', podcast: 'len centro', aulapt: 'pt al inf tea', refuerzo: 'pt centro', gestorpt: 'pt al centro',
   portal: 'inf len lec mat ing ef tea rob cien'
